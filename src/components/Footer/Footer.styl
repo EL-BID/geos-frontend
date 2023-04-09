@@ -1,0 +1,44 @@
+@import '../../variables.styl';
+
+.footer
+  background-color $footer-bg-color
+  padding 50px 30px
+  border-top 1px solid #eeeeee
+  font-size 0.9em
+  color $color-edutec-logo-2
+
+  p, strong
+    color $color-edutec-logo-2
+
+  .logo
+    display inline-block
+    float left
+    margin-right 3rem
+
+  .right
+    text-align right
+
+  .center_vertical
+    position relative
+    top 50%
+
+  a
+    color $white
+    font-weight normal
+    transition color 0.15s linear
+    &:hover,
+    &:focus
+      color $white
+      text-decoration underline
+
+  .policy_links
+    text-align right
+    a:not(:first-child)
+      margin-left 2rem
+    
+
+  .copyright
+    font-size 0.9em
+    color $medium-grey
+
+  
