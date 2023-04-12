@@ -40,7 +40,13 @@ class SchoolFormSurvey extends Component {
         let obj_post = assemble_school_form_json(values);
         API.Schools.patch(obj_post).then(
           (response) => {
+
             this.cleanDirty();
+
+            if (this.despuesDeEnviar) {
+              this.despuesDeEnviar();
+            }
+
             resolve();
           },
           (err) => {
@@ -56,6 +62,7 @@ class SchoolFormSurvey extends Component {
   }
 
   componentDidMount() {
+    this.despuesDeEnviar = this.props.despuesDeEnviar || null;
     this.loadData();
   }
 
@@ -208,12 +215,12 @@ class SchoolFormSurvey extends Component {
           )}
           {hideEducationLevel !== true && (
             <SchoolClasses
-             // kindergarten={fields.kindergarten}
+              // kindergarten={fields.kindergarten}
               elementary_1={fields.elementary_1}
-             // elementary_2={fields.elementary_2}
+              // elementary_2={fields.elementary_2}
               highschool={fields.highschool}
               technical={fields.technical}
-             // adult={fields.adult}
+              // adult={fields.adult}
               school_classe={fields.school_classe}
             />
           )}
