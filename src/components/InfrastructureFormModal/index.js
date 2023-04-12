@@ -18,9 +18,6 @@ import history from "~/core/history";
 
 // Components
 import schema from "./schema";
-import Field from "~/components/Form/Field";
-import FieldTextArea from "~/components/Form/FieldTextArea";
-import SubmitBtn from "~/components/SubmitBtn";
 import Modal from "~/components/Modal";
 
 // Containers
@@ -30,52 +27,39 @@ import AccountsContainer from "~/containers/accounts";
 import styles from "./InfrastructureFormModal.styl";
 
 class InfrastructureFormModal extends React.Component {
+
+  constructor() {
+    super();
+    this.forceSubmitBeforeClose = false;
+    this.submitted = false;
+  }
+
   componentDidMount() {
     if (this.props.schoolId)
       this.props.fetchSchool(this.props.accounts.user.school_id.$oid);
   }
 
   componentDidMount() {
-    const school = this.props.accounts.user.school;
+    //const school = this.props.accounts.user.school;
+    this.forceSubmitBeforeClose = !!this.props.forceSubmitBeforeClose;
   }
 
   translate(id) {
     return this.props.intl.formatMessage({ id });
   }
 
-  _submit(values) {
-    const schemaValidation = this.handleDirtyFields(schema);
-    const schoolId = _.get(this.props, "accounts.user.school_id.$oid");
-
-    return new Promise((resolve, reject) => {
-      const errors = _.mapValues(
-        validate(values, schemaValidation, { fullMessages: false }),
-        (value) => {
-          return value[0];
-        }
-      );
-
-      /* eslint-disable no-console */
-      if (_.isEmpty(errors)) {
-        updateSchoolCensus(schoolId, values).then((response) => {
-          this._closeModal();
-          resolve();
-        });
-      } else {
-        reject(errors);
-      }
-    });
-  }
-
   _closeModal() {
+    if (this.forceSubmitBeforeClose && !this.submitted) {
+      console.log("Por favor llene el formulario");
+      return;
+    }
+
     this.props.toggleModal();
     history.replace("/recursos");
   }
 
   render() {
     const { fields, handleSubmit, submitting } = this.props;
-
-    const onSubmit = handleSubmit(this._submit.bind(this));
 
     return (
       <Modal
@@ -87,6 +71,7 @@ class InfrastructureFormModal extends React.Component {
           idSchool={this.props.schoolId}
           hideSchoolData={true}
           hideEducationLevel={true}
+          despuesDeEnviar={() => this.submitted = true}
         />
       </Modal>
     );
