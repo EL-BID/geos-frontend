@@ -1350,9 +1350,9 @@ class SignUpForm extends React.Component {
                   noOptionsMessage={() => {
                     return parse(this.translate("SignUpForm.noOptions"));
                   }}
-                  loadingMessage={() => {
-                    return "Carregando...";
-                  }}
+                  loadingMessage={() => this.translate(
+                    "Global.loading"
+                  )}
                   placeholder={this.translate(
                     "SignUpForm.placeholderSelectOptions"
                   )}
@@ -1367,9 +1367,9 @@ class SignUpForm extends React.Component {
                   noOptionsMessage={() => {
                     return parse(this.translate("SignUpForm.noOptions"));
                   }}
-                  loadingMessage={() => {
-                    return "Carregando...";
-                  }}
+                  loadingMessage={() => this.translate(
+                  "Global.loading"
+                  )}
                   placeholder={this.translate(
                     "SignUpForm.placeholderSelectOptions"
                   )}
@@ -1564,12 +1564,14 @@ class SignUpForm extends React.Component {
                 closeMenuOnSelect={true}
                 classField="slim"
                 noOptionsMessage={() => {
-                  return "Sem opções.";
+                  return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => {
-                  return "Carregando...";
-                }}
-                placeholder="Selecione uma opção"
+                loadingMessage={() => this.translate(
+                  "Global.loading"
+                )}
+                placeholder={this.translate(
+                  "SignUpForm.placeholderSelectOption"
+                )}
               />
 
               <FieldCreatableSelect
@@ -1595,12 +1597,14 @@ class SignUpForm extends React.Component {
                 closeMenuOnSelect={true}
                 classField="slim"
                 noOptionsMessage={() => {
-                  return "Sem opções.";
+                  return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => {
-                  return "Carregando...";
-                }}
-                placeholder="Selecione uma opção"
+                loadingMessage={() => this.translate(
+                  "Global.loading"
+                )}
+                placeholder={this.translate(
+                  "SignUpForm.placeholderSelectOption"
+                )}
               />
 
               <div className={classnames("column is-half", styles.form_born)}>
@@ -1693,12 +1697,14 @@ class SignUpForm extends React.Component {
                 closeMenuOnSelect={true}
                 classField="slim"
                 noOptionsMessage={() => {
-                  return "Sem opções.";
+                  return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => {
-                  return "Carregando...";
-                }}
-                placeholder="Selecione uma opção"
+                loadingMessage={() => this.translate(
+                  "Global.loading"
+                )}
+                placeholder={this.translate(
+                  "SignUpForm.placeholderSelectOption"
+                )}
               />
 
               <FieldCreatableSelect
@@ -1723,12 +1729,14 @@ class SignUpForm extends React.Component {
                 closeMenuOnSelect={true}
                 classField="slim"
                 noOptionsMessage={() => {
-                  return "Sem opções.";
+                  return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => {
-                  return "Carregando...";
-                }}
-                placeholder="Selecione uma opção"
+                loadingMessage={() => this.translate(
+                  "Global.loading"
+                )}
+                placeholder={this.translate(
+                  "SignUpForm.placeholderSelectOption"
+                )}
               />
 
               <label className={classnames("label", styles.form__label)}>
@@ -1983,12 +1991,14 @@ class SignUpForm extends React.Component {
                 closeMenuOnSelect={true}
                 classField="slim"
                 noOptionsMessage={() => {
-                  return "Sem opções.";
+                  return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => {
-                  return "Carregando...";
-                }}
-                placeholder="Selecione uma opção"
+                loadingMessage={() => this.translate(
+                  "Global.loading"
+                )}
+                placeholder={this.translate(
+                  "SignUpForm.placeholderSelectOption"
+                )}
               />
               <FieldSelect
                 {...omitFieldProperties(fields.years_teaching)}
@@ -2017,12 +2027,14 @@ class SignUpForm extends React.Component {
                 closeMenuOnSelect={true}
                 classField="slim"
                 noOptionsMessage={() => {
-                  return "Sem opções.";
+                  return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => {
-                  return "Carregando...";
-                }}
-                placeholder="Selecione uma opção"
+                loadingMessage={() => this.translate(
+                  "Global.loading"
+                )}
+                placeholder={this.translate(
+                  "SignUpForm.placeholderSelectOption"
+                )}
               />
               <FieldSelect
                 {...omitFieldProperties(
@@ -2090,12 +2102,14 @@ class SignUpForm extends React.Component {
                 closeMenuOnSelect={true}
                 classField="slim"
                 noOptionsMessage={() => {
-                  return "Sem opções.";
+                  return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => {
-                  return "Carregando...";
-                }}
-                placeholder="Selecione uma opção"
+                loadingMessage={() => this.translate(
+                  "Global.loading"
+                )}
+                placeholder={this.translate(
+                  "SignUpForm.placeholderSelectOption"
+                )}
               />
               {fields.years_of_uses_technology_for_teaching.value.value !==
                 this.translate(
@@ -2179,10 +2193,12 @@ class SignUpForm extends React.Component {
                   noOptionsMessage={() => {
                     return "Sem opções.";
                   }}
-                  loadingMessage={() => {
-                    return "Carregando...";
-                  }}
-                  placeholder="Selecione uma ou mais opções"
+                  loadingMessage={() => this.translate(
+                    "Global.loading"
+                  )}
+                  placeholder={this.translate(
+                    "SignUpForm.placeholderSelectOptions"
+                  )}
                 />
               )}
             </div>
