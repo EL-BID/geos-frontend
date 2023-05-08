@@ -102,7 +102,6 @@ class Resources extends React.Component {
     if (document.location.search.includes("from=survey")) {
       this.infrastructureModalForceSubmitBeforeClose = true;
       this.handleInfrastructure();
-      console.log("opening modal");
     }
   };
 

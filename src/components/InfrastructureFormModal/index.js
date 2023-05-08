@@ -71,7 +71,10 @@ class InfrastructureFormModal extends React.Component {
           idSchool={this.props.schoolId}
           hideSchoolData={true}
           hideEducationLevel={true}
-          despuesDeEnviar={() => this.submitted = true}
+          despuesDeEnviar={() => {
+            this.submitted = true;
+            this._closeModal();
+          }}
         />
       </Modal>
     );
