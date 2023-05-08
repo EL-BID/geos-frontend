@@ -35,7 +35,7 @@ export default class FieldCreatableSelect extends Component {
             classNamePrefix="react-select"
             formatCreateLabel={(inputValue) => (
               <p>
-                Criar <strong>{inputValue}</strong>
+                Crear <strong>{inputValue}</strong>
               </p>
             )}
             {...customFields}

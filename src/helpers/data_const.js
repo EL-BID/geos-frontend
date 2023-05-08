@@ -447,46 +447,18 @@ export function getFormation(props) {
       isDisabled: false,
     },
     {
-      value: props.intl.formatMessage({ id: "DataConst.diploma",}),
-      label: props.intl.formatMessage({id: "DataConst.diploma",}),
+      value: props.intl.formatMessage({ id: "DataConst.technical",}),
+      label: props.intl.formatMessage({id: "DataConst.technical",}),
       isDisabled: false,
     },
     {
-      value: props.intl.formatMessage({id: "DataConst.seminar",}),
-      label: props.intl.formatMessage({id: "DataConst.seminar",}),
-      isDisabled: false,
-    },
-
-
-    {
-      value: props.intl.formatMessage({ id: "DataConst.specializationInProgress", }),
-      label: props.intl.formatMessage({ id: "DataConst.specializationInProgress", }),
-      isDisabled: false,
-    },
-    {
-      value: props.intl.formatMessage({ id: "DataConst.specializationCompleted", }),
-      label: props.intl.formatMessage({ id: "DataConst.specializationCompleted", }),
-      isDisabled: false,
-    },
-
-
-    {
-      value: props.intl.formatMessage({ id: "DataConst.masterInProgress", }),
-      label: props.intl.formatMessage({ id: "DataConst.masterInProgress", }),
+      value: props.intl.formatMessage({id: "DataConst.postgrado",}),
+      label: props.intl.formatMessage({id: "DataConst.postgrado",}),
       isDisabled: false,
     },
     {
       value: props.intl.formatMessage({ id: "DataConst.masterCompleted", }),
       label: props.intl.formatMessage({ id: "DataConst.masterCompleted", }),
-      isDisabled: false,
-    },
-
-
-
-
-    {
-      value: props.intl.formatMessage({ id: "DataConst.phdInProgress", }),
-      label: props.intl.formatMessage({ id: "DataConst.phdInProgress", }),
       isDisabled: false,
     },
     {
