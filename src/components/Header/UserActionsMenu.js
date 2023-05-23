@@ -41,7 +41,7 @@ class UserActionsMenu extends React.Component {
           <div className={styles.top_line}>
             <p></p>
             <div className={styles.base_right}>
-              {/*<DropdownLanguage />*/}
+              <DropdownLanguage />
               {/* SOCIAL MEDIA
               <div className={classNames(styles.social_media, "ml-20")}>
                 <a
