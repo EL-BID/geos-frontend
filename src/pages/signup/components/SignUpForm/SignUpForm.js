@@ -247,10 +247,10 @@ class SignUpForm extends React.Component {
       return axios
         .get(
           CONF.ApiURL +
-            "/api/v1/validate_principal.json?schoolId=" +
-            this.props.fields.school.value +
-            "&email=" +
-            this.props.fields.email.value,
+          "/api/v1/validate_principal.json?schoolId=" +
+          this.props.fields.school.value +
+          "&email=" +
+          this.props.fields.email.value,
           {}
         )
         .then((result) => {
@@ -293,6 +293,9 @@ class SignUpForm extends React.Component {
         affiliation_id = affiliation_id.$oid;
       }
     }
+
+    console.log("_createUser validation ok");
+
     return createUser(
       values,
       affiliation_id,
@@ -357,7 +360,10 @@ class SignUpForm extends React.Component {
   }
 
   _submit(values) {
-    console.log(values);
+    console.log("VALUES", values);
+
+    let schemaCopy = { ...schema };
+
     const params = new URLSearchParams(window.location.search);
     if (params.get("origem") !== null) values.origin = params.get("origem");
 
@@ -389,8 +395,8 @@ class SignUpForm extends React.Component {
       this.props.profile === "educador"
         ? "teacher"
         : this.props.profile === "escola"
-        ? "principal"
-        : "admin_state";
+          ? "principal"
+          : "admin_state";
     values.term = this.props.fields.term.checked
       ? this.props.fields.term.checked
       : undefined;
@@ -398,7 +404,6 @@ class SignUpForm extends React.Component {
     values.isTeacherWithoutLinks = this.state.isTeacherWithoutLinks;
     values.isPrincipalWithoutLinks = this.state.isPrincipalWithoutLinks;
 
-    let schemaAux;
 
     if (values.profile === "teacher") {
       values.technology_application =
@@ -416,27 +421,30 @@ class SignUpForm extends React.Component {
         values.technology_in_teaching_and_learning = null;
       }
 
+      //Remove technology_application from validation schema
       if (values.years_of_uses_technology_for_teaching) {
-        if (values.years_of_uses_technology_for_teaching.value === "Não uso") {
-          const { technology_application, ...rest } = schema;
-          schemaAux = { ...rest };
+        if (values.years_of_uses_technology_for_teaching.value === "No uso") {
+          delete schemaCopy.technology_application;
         }
       }
     }
 
     return new Promise((resolve, reject) => {
       const errors = _.mapValues(
-        validate(values, schema, { fullMessages: false }),
+        validate(values, schemaCopy, { fullMessages: false }),
         (value) => {
           return value[0];
         }
       );
 
-      console.log(errors);
       delete values["isTeacherWithoutLinks"];
       delete values["isPrincipalWithoutLinks"];
+
       /* eslint-disable no-console */
       if (_.isEmpty(errors)) {
+
+        console.log("No errors, saving....");
+
         this._save_user(values).then(
           (err) => {
             reject(err);
@@ -446,6 +454,9 @@ class SignUpForm extends React.Component {
           }
         );
       } else {
+
+        console.log("Errors, not saving", errors);
+
         var name = Object.entries(errors)[0][0];
         var field = $('[name="' + name + '"]')
           .first()
@@ -458,6 +469,7 @@ class SignUpForm extends React.Component {
           },
           400
         );
+
         reject(errors);
       }
     });
@@ -825,7 +837,7 @@ class SignUpForm extends React.Component {
             </div>
             <div className={classnames(stylesModal.modal__body)}>
               {!this.state.isTeacherWithoutLinks &&
-              !this.state.isPrincipalWithoutLinks ? (
+                !this.state.isPrincipalWithoutLinks ? (
                 <div>
                   {this.props.profile === "educador" ? (
                     parse(this.translate("ModalSignUpFormTeachers.description"))
@@ -861,16 +873,16 @@ class SignUpForm extends React.Component {
                 <div>
                   {this.state.isTeacherWithoutLinks
                     ? parse(
-                        this.translate(
-                          "ModalSignUpFormTeachers.withoutLinksDescription"
-                        )
+                      this.translate(
+                        "ModalSignUpFormTeachers.withoutLinksDescription"
                       )
+                    )
                     : this.state.isPrincipalWithoutLinks &&
-                      parse(
-                        this.translate(
-                          "ModalSignUpFormDirectors.withoutLinksDescription"
-                        )
-                      )}
+                    parse(
+                      this.translate(
+                        "ModalSignUpFormDirectors.withoutLinksDescription"
+                      )
+                    )}
                 </div>
               )}
             </div>
@@ -1017,7 +1029,10 @@ class SignUpForm extends React.Component {
                 <div
                   className={classnames(
                     "control columns is-multiline",
-                    styles.form__input
+                    styles.form__input,
+                    Boolean(fields.gender.error)
+                      ? styles.is_danger
+                      : null
                   )}
                 >
                   <label
@@ -1035,7 +1050,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.feminine")
                       }
                       {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
+                        this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1056,7 +1071,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.masculine")
                       }
                       {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
+                        this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1077,7 +1092,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.others")
                       }
                       {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
+                        this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1098,7 +1113,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.preferNotToSay")
                       }
                       {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
+                        this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1368,7 +1383,7 @@ class SignUpForm extends React.Component {
                     return parse(this.translate("SignUpForm.noOptions"));
                   }}
                   loadingMessage={() => this.translate(
-                  "Global.loading"
+                    "Global.loading"
                   )}
                   placeholder={this.translate(
                     "SignUpForm.placeholderSelectOptions"
@@ -1390,7 +1405,7 @@ class SignUpForm extends React.Component {
                     this.handleButtonUserWithoutLinks(e, false, "withLink")
                   }
                 />
-                 {" "}
+                {" "}
                 <label for="withLink">
                   {parse(this.translate("SignUpForm.withLink"))}
                 </label>
@@ -1404,7 +1419,7 @@ class SignUpForm extends React.Component {
                     this.handleButtonUserWithoutLinks(e, true, "withoutLink")
                   }
                 />
-                 {" "}
+                {" "}
                 <label for="withoutLink">
                   {parse(this.translate("SignUpForm.noLink"))}
                 </label>
@@ -1645,7 +1660,7 @@ class SignUpForm extends React.Component {
                       // readOnly={true}
                       // dateFormatCalendar={"DD/MM/YYYY"}
                       dateFormat="dd/MM/yyyy"
-                      // locale="pt-BR"
+                    // locale="pt-BR"
                     />
                   </div>
                   <i
@@ -1774,7 +1789,7 @@ class SignUpForm extends React.Component {
                       )
                     }
                     {...(this.state.disabledAdminCity ||
-                    this.state.disabledAdminState
+                      this.state.disabledAdminState
                       ? { disabled: true }
                       : {})}
                   />
@@ -1803,7 +1818,7 @@ class SignUpForm extends React.Component {
                       )
                     }
                     {...(this.state.disabledAdminCity ||
-                    this.state.disabledAdminState
+                      this.state.disabledAdminState
                       ? { disabled: true }
                       : {})}
                   />
@@ -1854,7 +1869,7 @@ class SignUpForm extends React.Component {
                       this.translate("SignUpForm.course_modality.inPerson")
                     }
                     {...(this.state.disabledAdminCity ||
-                    this.state.disabledAdminState
+                      this.state.disabledAdminState
                       ? { disabled: true }
                       : {})}
                   />
@@ -1875,7 +1890,7 @@ class SignUpForm extends React.Component {
                       this.translate("SignUpForm.course_modality.blended")
                     }
                     {...(this.state.disabledAdminCity ||
-                    this.state.disabledAdminState
+                      this.state.disabledAdminState
                       ? { disabled: true }
                       : {})}
                   />
@@ -1898,7 +1913,7 @@ class SignUpForm extends React.Component {
                       this.translate("SignUpForm.course_modality.fromADistance")
                     }
                     {...(this.state.disabledAdminCity ||
-                    this.state.disabledAdminState
+                      this.state.disabledAdminState
                       ? { disabled: true }
                       : {})}
                   />
@@ -2115,92 +2130,92 @@ class SignUpForm extends React.Component {
                 this.translate(
                   "SignUpForm.years_of_uses_technology_for_teaching.0"
                 ) && (
-                <FieldSelect
-                  {...omitFieldProperties(fields.technology_application)}
-                  name="technology_application"
-                  error={fields.technology_application.error}
-                  label={this.translate(
-                    "SignUpForm.label.technology_application"
-                  )}
-                  options={[
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.0"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.0"
-                      ),
-                    },
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.1"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.1"
-                      ),
-                    },
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.2"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.2"
-                      ),
-                    },
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.3"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.3"
-                      ),
-                    },
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.4"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.4"
-                      ),
-                    },
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.5"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.5"
-                      ),
-                    },
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.6"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.6"
-                      ),
-                    },
-                    {
-                      label: this.translate(
-                        "SignUpForm.technology_application.7"
-                      ),
-                      value: this.translate(
-                        "SignUpForm.technology_application.7"
-                      ),
-                    },
-                  ]}
-                  isMulti={true}
-                  classField="slim"
-                  noOptionsMessage={() => {
-                    return "Sem opções.";
-                  }}
-                  loadingMessage={() => this.translate(
-                    "Global.loading"
-                  )}
-                  placeholder={this.translate(
-                    "SignUpForm.placeholderSelectOptions"
-                  )}
-                />
-              )}
+                  <FieldSelect
+                    {...omitFieldProperties(fields.technology_application)}
+                    name="technology_application"
+                    error={fields.technology_application.error}
+                    label={this.translate(
+                      "SignUpForm.label.technology_application"
+                    )}
+                    options={[
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.0"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.0"
+                        ),
+                      },
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.1"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.1"
+                        ),
+                      },
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.2"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.2"
+                        ),
+                      },
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.3"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.3"
+                        ),
+                      },
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.4"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.4"
+                        ),
+                      },
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.5"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.5"
+                        ),
+                      },
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.6"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.6"
+                        ),
+                      },
+                      {
+                        label: this.translate(
+                          "SignUpForm.technology_application.7"
+                        ),
+                        value: this.translate(
+                          "SignUpForm.technology_application.7"
+                        ),
+                      },
+                    ]}
+                    isMulti={true}
+                    classField="slim"
+                    noOptionsMessage={() => {
+                      return "Sem opções.";
+                    }}
+                    loadingMessage={() => this.translate(
+                      "Global.loading"
+                    )}
+                    placeholder={this.translate(
+                      "SignUpForm.placeholderSelectOptions"
+                    )}
+                  />
+                )}
             </div>
           ) : null}
           {this.props.profile === "educador" ? (
