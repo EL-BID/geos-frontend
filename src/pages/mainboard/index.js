@@ -234,6 +234,66 @@ class Mainboard extends React.Component {
                     </div>
                   </div>
                 </div>
+                <div className={classNames("columns")}>
+                  <div className={classNames("column")}>
+                    <div
+                      className={classNames(
+                        "card tutorial-step-4",
+                        styles.card
+                      )}
+                      id="tutorial-step-4"
+                    >
+                      <div className="card-content">
+                        <div className="content">
+                          <h4
+                            className={classNames("is-uppercase", styles.title)}
+                          >
+                            {parse(
+                              this.translate("Panel.followUpReportTitle")
+                            )}
+                          </h4>
+                          <p
+                            className={classNames("subtitle", styles.subtitle)}
+                          >
+                            {parse(
+                              this.translate(
+                                "Panel.followUpReportDesc"
+                              )
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                      <footer
+                        className={classNames(
+                          "card-footer",
+                          styles.main_card_footer
+                        )}
+                      >
+                        <p className="card-footer-item">
+                          <span>
+                            <a
+                              href={CONF.ApiURL + "api/v1/reports/follow_up.xls"}
+                              className={styles.button_link}
+                              target="_blank"
+                            >
+                              {parse(
+                                this.translate(
+                                  "Panel.followUpReportLink"
+                                )
+                              )}
+                            </a>
+                          </span>
+                        </p>
+                      </footer>
+                    </div>
+                  </div>
+                  <div className={classNames("column")}>
+
+                  </div>
+                  <div className={classNames("column")}>
+                    
+                  </div>
+                </div>
               </div>
             </section>
           ) : null}
