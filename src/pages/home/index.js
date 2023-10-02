@@ -95,25 +95,7 @@ class Home extends React.Component {
                     </div>
                   </div>
                 </div>
-              </section>
-
-              {/*
-              <section>
-                <div className={classnames(styles.site__content, "container")}>
-                  <section className={styles.home__dashboard}>
-                    <div className="columns">
-                      <div className="column is-full has-text-centered">
-                        <h4 className={classnames("is-size-4", styles.strip)}>
-                          {parse(this.translate("Home.edutecGuideInNumbers"))}
-                        </h4>
-                      </div>
-                    </div>
-                    <Dashboard />
-                  </section>
-                </div>
-              </section>
-              */}
-
+              </section> 
             </Body>
           </Layout>
         )}
