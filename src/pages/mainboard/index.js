@@ -272,7 +272,7 @@ class Mainboard extends React.Component {
                         <p className="card-footer-item">
                           <span>
                             <a
-                              href={CONF.ApiURL + "api/v1/reports/follow_up.xls"}
+                              href={CONF.ApiURL + "/api/v1/reports/follow_up.xls"}
                               className={styles.button_link}
                               target="_blank"
                             >
