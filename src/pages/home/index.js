@@ -77,19 +77,19 @@ class Home extends React.Component {
                 <div className={classnames(styles.site__content, "container")}>
                   <div className={styles.content}>
                     <h4 className="is-size-3 mb-10">
-                      Articulación BID, Guia Edutec, Alcaldía de Manizales y Fundación Luker
+                      Articulación BID, Guia Edutec
                     </h4>
                     <div className="columns">
                       <div className="column is-half">
                         
                         <p>
-                        Manizales será una de las primeras ciudades en Colombia en implementar la Guía Edutec que permite diagnosticar las competencias digitales en los docentes y comunidad educativa, y conocer cómo se están utilizando las tecnologías en la escuela, gracias a la articulación con el Banco Interamericano de Desarrollo, alcaldía de Manizales por medio de la Secretaría de educación de Manizales y Fundación Luker.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                         
                       </div>
                       <div className="column is-half">
                         <p>
-                        La herramienta desarrollada por el CIEB, que pretende estimular el desarrollo y la actualización de las competencias digitales de profesores, escuelas y redes educativas, se compone de tres módulos: una herramienta de autoevaluación de las competencias digitales para los profesores, una herramienta de diagnóstico que identifica el nivel de madurez de las tecnologías digitales en las Instituciones educativas y un tercer módulo que permite observar y gestionar la transformación digital en una red de escuelas por parte de la Secretaría de Educación. Los tres módulos proporcionan informes que permiten identificar buenas prácticas en el desarrollo de las competencias digitales de los profesores, en la integración de la tecnología a la educación y en la gestión de los centros educativos, además de generar retroalimentaciones personalizadas en los procesos que vinculan bancos de herramientas digitales específicas para cada nivel de uso.  
+                        Dignissim suspendisse in est ante in. Tortor at risus viverra adipiscing at. Neque vitae tempus quam pellentesque nec nam aliquam. Gravida cum sociis natoque penatibus et magnis dis. Eget egestas purus viverra accumsan in nisl nisi scelerisque eu. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Imperdiet sed euismod nisi porta. Ipsum faucibus vitae aliquet nec ullamcorper sit. Mauris ultrices eros in cursus turpis. Ornare massa eget egestas purus.
                         </p>
                       </div>
                     </div>
