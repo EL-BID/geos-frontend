@@ -78,22 +78,7 @@ class NavUser extends React.Component {
                 src={require("../../../public/images/theme/logo-bid.png")}
               />
             </a>
-            <a
-              className={classnames("navbar-item", styles.header__logo, styles.logo3)}
-              href="/"
-            >
-              <img
-                src={require("../../../public/images/theme/logo05.png")}
-              />
-            </a>
-            <a
-              className={classnames("navbar-item", styles.header__logo, styles.logo2)}
-              href="/"
-            >
-              <img
-                src={require("../../../public/images/theme/logo06.png")}
-              />
-            </a>
+            
             
             
           </div>
