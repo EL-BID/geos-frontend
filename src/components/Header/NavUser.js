@@ -80,7 +80,6 @@ class NavUser extends React.Component {
             </a>
             
             
-            
           </div>
 
           <a
