@@ -64,8 +64,11 @@ class Modal extends React.Component {
                 <i className="fa fa-print" aria-hidden="true"></i>
               </button>
             ) : null}
-            <div id="otnotice-4cf5effc-3048-4585-91c1-6495a23ee037" class="otnotice"></div>
-            <div id="body-print">{this.props.children}</div>
+            {this.props.privacyNotice ? (
+              <div id="otnotice-4cf5effc-3048-4585-91c1-6495a23ee037" class="otnotice"></div>
+            ) : (
+              <div id="body-print">{this.props.children}</div>
+            )}
           </section>
           {!this.props.hideFooter ? (
             <footer className="modal-card-foot"></footer>

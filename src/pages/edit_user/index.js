@@ -77,7 +77,6 @@ const updateUser = (values, affiliation_id) => {
     school_type: values.school_type,
     stages: values.stages,
     knowledges: values.knowledges,
-    sharing: values.sharing,
     formation: values.formation,
     formation_level: values.formation_level,
     geo_structure_level1_name: "",

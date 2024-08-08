@@ -203,9 +203,12 @@ export default {
 
   formation_level: requiredForTeacherWithFormation,
 
-  term: requiredForTeacher,
+  term: {
+    presence: {
+      message: <FormattedMessage id="SchemaSignUpForm.requiredForOther.presence.message" />,
+    }
+  },
 
-  sharing: requiredForTeacherWithLinks,
 
   profile: {
     presence: false,

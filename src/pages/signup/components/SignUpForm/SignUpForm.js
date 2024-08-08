@@ -65,7 +65,6 @@ const createUser = (values, affiliation_id, noLogin = false, noaff = false) => {
     stages: values.stages,
     knowledges: values.knowledges,
     term: values.term,
-    sharing: values.sharing,
     formation: values.formation,
     formation_level: values.formation_level,
 
@@ -126,7 +125,7 @@ class SignUpForm extends React.Component {
       knowledges: [],
       knowledgesSelect: [],
       modalTerm: false,
-      sharingAnswers: true,
+      modalPrivacy: false,
       formationAnswers: false,
       formation_level: [],
       setUser: false,
@@ -162,8 +161,8 @@ class SignUpForm extends React.Component {
       this.handleCloseModalEmailAndContinue.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this._onClickModalTerm = this._onClickModalTerm.bind(this);
+    this._onClickModalPrivacy = this._onClickModalPrivacy.bind(this);
     this._onChangeFormation = this._onChangeFormation.bind(this);
-    this._onChangeSharing = this._onChangeSharing.bind(this);
     this.handleButtonUserWithoutLinks =
       this.handleButtonUserWithoutLinks.bind(this);
     this.setInitialFormation = this.setInitialFormation.bind(this);
@@ -367,11 +366,6 @@ class SignUpForm extends React.Component {
     const params = new URLSearchParams(window.location.search);
     if (params.get("origem") !== null) values.origin = params.get("origem");
 
-    if (values.sharing === "sim") {
-      values.sharing = true;
-    } else if (values.sharing === "nao") {
-      values.sharing = false;
-    }
 
     if (values.school_type === "Particular") {
       values.school =
@@ -546,17 +540,6 @@ class SignUpForm extends React.Component {
     });
   }
 
-  _onChangeSharing(e) {
-    if (e.target.value == "sim") {
-      this.setState({
-        sharingAnswers: true,
-      });
-    } else if (e.target.value == "nao") {
-      this.setState({
-        sharingAnswers: false,
-      });
-    }
-  }
 
   _onClickModalTerm() {
     this.setState({
@@ -564,9 +547,21 @@ class SignUpForm extends React.Component {
     });
   }
 
-  _closeModal() {
+  _closeModalTerm() {
     this.setState({
       modalTerm: false,
+    });
+  }
+
+  _onClickModalPrivacy() {
+    this.setState({
+      modalPrivacy: true,
+    });
+  }
+
+  _closeModalPrivacy() {
+    this.setState({
+      modalPrivacy: false,
     });
   }
 
@@ -764,7 +759,6 @@ class SignUpForm extends React.Component {
     this.props.fields.state.onChange("");
     this.props.fields.city.onChange("");
     this.props.fields.school.onChange("");
-    this.props.fields.sharing.onChange("");
   }
 
   render() {
@@ -2218,7 +2212,7 @@ class SignUpForm extends React.Component {
                 )}
             </div>
           ) : null}
-          {this.props.profile === "educador" ? (
+          {this.props.profile === "educador" || this.props.profile === "escola"  ? (
             <div>
               <div
                 className={classnames(
@@ -2240,6 +2234,11 @@ class SignUpForm extends React.Component {
                         {this.translate("SignUpForm.termsOfUse")}
                       </a>
                     ),
+                    privacyNoticeLink: (
+                      <a onClick={this._onClickModalPrivacy}>
+                        {this.translate("SignUpForm.privacyNotice")}
+                      </a>
+                    ),
                   }}
                 />
 
@@ -2255,84 +2254,7 @@ class SignUpForm extends React.Component {
                   <span className="help is-danger">{fields.term.error}</span>
                 ) : null}
               </div>
-              {this.state.isTeacherWithoutLinks === false && (
-                <div>
-                  <label
-                    className={classnames(
-                      "label",
-                      styles.form__label,
-                      styles.sharing
-                    )}
-                  >
-                    {parse(this.translate("SignUpForm.shareData"))}
-                  </label>
-                  <div className={styles.is_relative}>
-                    <div
-                      className={classnames(
-                        "control",
-                        styles.form__input,
-                        Boolean(fields.sharing.error) ? styles.is_danger : null
-                      )}
-                    >
-                      <div>
-                        <label
-                          className={classnames("radio", styles.form__radio)}
-                        >
-                          <input
-                            type="radio"
-                            {...omitFieldProperties(fields.sharing)}
-                            onClick={this._onChangeSharing}
-                            value="sim"
-                          />
-                          {parse(
-                            this.translate("SignUpForm.radioAcceptshareData")
-                          )}
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          className={classnames(
-                            "radio is-marginless",
-                            styles.form__radio
-                          )}
-                        >
-                          <input
-                            type="radio"
-                            {...omitFieldProperties(fields.sharing)}
-                            onClick={this._onChangeSharing}
-                            value="nao"
-                          />
-                          {parse(
-                            this.translate("SignUpForm.radioNoAcceptshareData")
-                          )}
-                        </label>
-                      </div>
-                    </div>
-                    {fields.sharing.error ? (
-                      <i
-                        className={classnames(
-                          "fas fa-exclamation-triangle",
-                          styles.field__warning
-                        )}
-                      ></i>
-                    ) : null}
-                    {fields.sharing.error ? (
-                      <span className="help is-danger">
-                        {fields.sharing.error}
-                      </span>
-                    ) : null}
-                    {!this.state.sharingAnswers ? (
-                      <div className="notification is-warning">
-                        {parse(
-                          this.translate(
-                            "SignUpForm.radioNoAcceptshareDataDescription"
-                          )
-                        )}
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-              )}
+              
             </div>
           ) : null}
           <div
@@ -2360,9 +2282,20 @@ class SignUpForm extends React.Component {
           isActive={this.state.modalTerm}
           title="Condiciones de Uso"
           className={styles.modal_termo}
-          closeModal={() => this._closeModal()}
-          print={true}
+          closeModal={() => this._closeModalTerm()}
+          print={false}
+          privacyNotice={false}
           children={parse(this.translate("useTerms"))}
+        />
+
+        <Modal
+          isActive={this.state.modalPrivacy}
+          title="Aviso de Privacidad"
+          className={styles.modal_termo}
+          closeModal={() => this._closeModalPrivacy()}
+          print={false}
+          privacyNotice={true}
+          children={null}
         />
 
         {this.submitted && (

@@ -120,8 +120,6 @@ export default {
 
   formation_level: requiredForTeacher,
 
-  sharing: isNoRequiredIfIsTeacherOrPrincipalWithoutLinks,
-
   profile: {
     presence: false,
   },
