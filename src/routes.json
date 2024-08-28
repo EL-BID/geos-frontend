@@ -267,5 +267,9 @@
   {
     "path": "/mapeamento-professor/frequencia",
     "page": "./pages/scheduling_teacher"
+  },
+  {
+    "path": "/privacy-notice",
+    "page": "./pages/privacy_notice"
   }
 ]
