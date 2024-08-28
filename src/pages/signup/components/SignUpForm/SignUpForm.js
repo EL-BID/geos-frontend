@@ -125,7 +125,6 @@ class SignUpForm extends React.Component {
       knowledges: [],
       knowledgesSelect: [],
       modalTerm: false,
-      modalPrivacy: false,
       formationAnswers: false,
       formation_level: [],
       setUser: false,
@@ -161,7 +160,6 @@ class SignUpForm extends React.Component {
       this.handleCloseModalEmailAndContinue.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this._onClickModalTerm = this._onClickModalTerm.bind(this);
-    this._onClickModalPrivacy = this._onClickModalPrivacy.bind(this);
     this._onChangeFormation = this._onChangeFormation.bind(this);
     this.handleButtonUserWithoutLinks =
       this.handleButtonUserWithoutLinks.bind(this);
@@ -553,17 +551,6 @@ class SignUpForm extends React.Component {
     });
   }
 
-  _onClickModalPrivacy() {
-    this.setState({
-      modalPrivacy: true,
-    });
-  }
-
-  _closeModalPrivacy() {
-    this.setState({
-      modalPrivacy: false,
-    });
-  }
 
   insertGeographicElements = (e) => {
     if (
@@ -2233,12 +2220,7 @@ class SignUpForm extends React.Component {
                       <a onClick={this._onClickModalTerm}>
                         {this.translate("SignUpForm.termsOfUse")}
                       </a>
-                    ),
-                    privacyNoticeLink: (
-                      <a onClick={this._onClickModalPrivacy}>
-                        {this.translate("SignUpForm.privacyNotice")}
-                      </a>
-                    ),
+                    )
                   }}
                 />
 
@@ -2288,15 +2270,6 @@ class SignUpForm extends React.Component {
           children={parse(this.translate("useTerms"))}
         />
 
-        <Modal
-          isActive={this.state.modalPrivacy}
-          title="Aviso de Privacidad"
-          className={styles.modal_termo}
-          closeModal={() => this._closeModalPrivacy()}
-          print={false}
-          privacyNotice={true}
-          children={null}
-        />
 
         {this.submitted && (
           <CensusFormModal

@@ -10,6 +10,8 @@ function Footer({ intl }) {
     return intl.formatMessage({ id });
   };
 
+
+
   return (
     <footer
       className={classnames("footer is-fullwidth not_print", styles.footer)}
@@ -28,9 +30,10 @@ function Footer({ intl }) {
             */}
           </div>
           <div className={classnames("column is-half", styles.right)}>
-            <a href="#" className={classnames("", styles.center_vertical)}>
-              CIEB
+            <a href="/privacy-notice" target="_blank" className={classnames("", styles.center_vertical)}>
+              {parse(translate("SignUpForm.privacyNotice"))}
             </a>
+            
           </div>
           {/*
           <div className={classnames("column is-two-fifths", styles.address)}>
@@ -96,6 +99,7 @@ function Footer({ intl }) {
           */}
         </div>
       </div>
+
     </footer>
   );
 }

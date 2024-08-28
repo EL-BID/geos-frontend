@@ -25,11 +25,7 @@ class Modal extends React.Component {
     return this.props.intl.formatMessage({ id });
   }
 
-  componentDidMount(){
-    OneTrust.NoticeApi.Initialized.then(function() {
-      OneTrust.NoticeApi.LoadNotices(["https://privacyportal-cdn.onetrust.com/95fde4ae-d4a8-40df-8d0f-755994f74dc5/privacy-notices/draft/4cf5effc-3048-4585-91c1-6495a23ee037.json"], false);
-    });
-  }
+
 
   render() {
     return (
@@ -64,9 +60,7 @@ class Modal extends React.Component {
                 <i className="fa fa-print" aria-hidden="true"></i>
               </button>
             ) : null}
-            {this.props.privacyNotice ? (
-              <div id="otnotice-4cf5effc-3048-4585-91c1-6495a23ee037" class="otnotice"></div>
-            ) : (
+            {(
               <div id="body-print">{this.props.children}</div>
             )}
           </section>
