@@ -7,8 +7,6 @@ import validate from "validate.js";
 import _ from "lodash";
 import classnames from "classnames";
 import axios from "axios";
-import Select from "react-select";
-import Button from "../../../../components/Button";
 import history from "~/core/history";
 import API from "~/api";
 import CONF from "~/api/index";
@@ -18,8 +16,6 @@ import parse from "html-react-parser";
 import FieldCreatableSelect from "~/components/Form/FieldCreatableSelect";
 
 // Components
-import SignUpFormPrincipalFields from "./PrincipalFields";
-import SignUpFormOtherProfileFields from "./OtherProfileFields";
 import schema from "./schema";
 import Field from "~/components/Form/Field";
 import stylesField from "~/components/Form/Field.styl";
@@ -28,7 +24,7 @@ import SubmitBtn from "~/components/SubmitBtn";
 import CensusFormModal from "~/components/CensusFormModal";
 import Modal from "~/components/Modal";
 import ReactModal from "react-modal";
-import { getStages, getKnowledges, getFormation } from "~/helpers/data_const";
+import { getKnowledges, getFormation } from "~/helpers/data_const";
 
 import APIDataContainer from "~/containers/api_data";
 import AccountsContainer from "~/containers/accounts";
@@ -37,12 +33,13 @@ import ModalContainer from "~/containers/modal";
 import styles from "../../signup.styl";
 import stylesModal from "../../../../components/Modal/Modal.styl";
 import DatePicker from "react-datepicker";
-import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import { setUserId, setUserToken } from "~/api/utils";
 import { omitFieldProperties } from "../../../../helpers/redux-form-fields";
 const regex = new RegExp("^([A-zÀ-ú \\- \\/ \\( \\) ])+$");
+
+const d = console.log;
 
 const createUser = (values, affiliation_id, noLogin = false, noaff = false) => {
   let user = {
@@ -78,12 +75,12 @@ const createUser = (values, affiliation_id, noLogin = false, noaff = false) => {
       ...user,
       gender: values.gender,
       initial_formation: values.initial_formation.value,
-      institution_initial_formation: values.institution_initial_formation.value,
-      internship_practice: values.internship_practice.value,
+      //   institution_initial_formation: values.institution_initial_formation.value,
+      //   internship_practice: values.internship_practice.value,
       technology_in_teaching_and_learning:
         values.technology_in_teaching_and_learning,
       course_modality: values.course_modality,
-      final_year_of_initial_formation: values.final_year_of_initial_formation,
+      //   final_year_of_initial_formation: values.final_year_of_initial_formation,
       teacher_data: {
         formation_level: values.formation_level.value,
         cont_educ_in_the_use_of_digital_technologies:
@@ -108,6 +105,7 @@ const createUser = (values, affiliation_id, noLogin = false, noaff = false) => {
 
   return API.Users.create(user, noLogin, noaff);
 };
+
 class SignUpForm extends React.Component {
   submitted = false;
 
@@ -244,10 +242,10 @@ class SignUpForm extends React.Component {
       return axios
         .get(
           CONF.ApiURL +
-          "/api/v1/validate_principal.json?schoolId=" +
-          this.props.fields.school.value +
-          "&email=" +
-          this.props.fields.email.value,
+            "/api/v1/validate_principal.json?schoolId=" +
+            this.props.fields.school.value +
+            "&email=" +
+            this.props.fields.email.value,
           {}
         )
         .then((result) => {
@@ -260,6 +258,7 @@ class SignUpForm extends React.Component {
           return this._createUser(values);
         });
     } else {
+      d("TRACE sresrdietsdfp");
       return this._createUser(values);
     }
   }
@@ -273,23 +272,30 @@ class SignUpForm extends React.Component {
       noaff = true;
     }
 
-    if (!this.state.dataConfirmation && !this.props.isRouteConfig) {
-      this.setState({ showModal: true });
-      return Promise.resolve(true);
-    }
-    let affiliation_id;
-    if (
-      values.profile !== "admin_state" &&
-      this.state.isPrincipalWithoutLinks === false &&
-      this.state.isTeacherWithoutLinks === false
-    ) {
-      affiliation_id = this.props.apiData.schools.find(
-        (school) => school._id.$oid === values.school
-      ).affiliation_id;
-      if (affiliation_id instanceof Object) {
-        affiliation_id = affiliation_id.$oid;
-      }
-    }
+    this.setState({
+      dataConfirmation: true,
+      showModal: false,
+    });
+
+    // if (!this.state.dataConfirmation && !this.props.isRouteConfig) {
+    //   this.setState({ showModal: true });
+    //   return Promise.resolve(true);
+    // }
+
+    // let affiliation_id;
+    // if (
+    //   values.profile !== "admin_state" &&
+    //   this.state.isPrincipalWithoutLinks === false &&
+    //   this.state.isTeacherWithoutLinks === false
+    // ) {
+    //   affiliation_id = this.props.apiData.schools.find(
+    //     (school) => school._id.$oid === values.school
+    //   ).affiliation_id;
+    //   if (affiliation_id instanceof Object) {
+    //     affiliation_id = affiliation_id.$oid;
+    //   }
+    // }
+    let affiliation_id = null;
 
     console.log("_createUser validation ok");
 
@@ -357,13 +363,12 @@ class SignUpForm extends React.Component {
   }
 
   _submit(values) {
-    console.log("VALUES", values);
+    console.log("VALUES", JSON.stringify(values, null, 4));
 
     let schemaCopy = { ...schema };
 
     const params = new URLSearchParams(window.location.search);
     if (params.get("origem") !== null) values.origin = params.get("origem");
-
 
     if (values.school_type === "Particular") {
       values.school =
@@ -387,15 +392,14 @@ class SignUpForm extends React.Component {
       this.props.profile === "educador"
         ? "teacher"
         : this.props.profile === "escola"
-          ? "principal"
-          : "admin_state";
+        ? "principal"
+        : "admin_state";
     values.term = this.props.fields.term.checked
       ? this.props.fields.term.checked
       : undefined;
 
     values.isTeacherWithoutLinks = this.state.isTeacherWithoutLinks;
     values.isPrincipalWithoutLinks = this.state.isPrincipalWithoutLinks;
-
 
     if (values.profile === "teacher") {
       values.technology_application =
@@ -434,7 +438,6 @@ class SignUpForm extends React.Component {
 
       /* eslint-disable no-console */
       if (_.isEmpty(errors)) {
-
         console.log("No errors, saving....");
 
         this._save_user(values).then(
@@ -446,7 +449,6 @@ class SignUpForm extends React.Component {
           }
         );
       } else {
-
         console.log("Errors, not saving", errors);
 
         var name = Object.entries(errors)[0][0];
@@ -468,13 +470,12 @@ class SignUpForm extends React.Component {
   }
 
   setInitialFormation = () => {
-    console.log("oi");
     const initial_formation_options = this.translate(
       "SignUpForm.initial_formation.options"
     )
       .split(",")
+      .map((o) => o.trim())
       .map((option) => ({ label: option, value: option }));
-    console.log(initial_formation_options);
     this.setState({ initial_formation_options: initial_formation_options });
   };
 
@@ -538,7 +539,6 @@ class SignUpForm extends React.Component {
     });
   }
 
-
   _onClickModalTerm() {
     this.setState({
       modalTerm: true,
@@ -551,74 +551,73 @@ class SignUpForm extends React.Component {
     });
   }
 
+  //   insertGeographicElements = (e) => {
+  //     if (
+  //       this.props.accounts.user &&
+  //       Object.keys(this.props.accounts.user).length !== 0 &&
+  //       this.props.apiData.schools
+  //     ) {
+  //       const selectedSchool = this.props.apiData.schools.find(
+  //         (school) => school.affiliation_id.$oid === this.state.affiliation_id
+  //       );
+  //       const country_id = selectedSchool.country_id.$oid
+  //         ? selectedSchool.country_id.$oid
+  //         : selectedSchool.country_id;
+  //       const province_id = selectedSchool.province_id.$oid
+  //         ? selectedSchool.province_id.$oid
+  //         : selectedSchool.province_id;
+  //       const state_id = selectedSchool.state_id.$oid
+  //         ? selectedSchool.state_id.$oid
+  //         : selectedSchool.state_id;
+  //       const city_id = selectedSchool.city_id.$oid
+  //         ? selectedSchool.city_id.$oid
+  //         : selectedSchool.city_id;
+  //       this.props.fields.school.onChange(e.target.value);
+  //       this.props.fields.country.onChange(country_id);
+  //       this.props.fields.province.onChange(province_id);
+  //       this.props.fields.state.onChange(state_id);
+  //       this.props.fields.city.onChange(city_id);
+  //     } else {
+  //       this.props.fields.school.onChange(e.target.value);
+  //     }
+  //   };
 
-  insertGeographicElements = (e) => {
-    if (
-      this.props.accounts.user &&
-      Object.keys(this.props.accounts.user).length !== 0 &&
-      this.props.apiData.schools
-    ) {
-      const selectedSchool = this.props.apiData.schools.find(
-        (school) => school.affiliation_id.$oid === this.state.affiliation_id
-      );
-      const country_id = selectedSchool.country_id.$oid
-        ? selectedSchool.country_id.$oid
-        : selectedSchool.country_id;
-      const province_id = selectedSchool.province_id.$oid
-        ? selectedSchool.province_id.$oid
-        : selectedSchool.province_id;
-      const state_id = selectedSchool.state_id.$oid
-        ? selectedSchool.state_id.$oid
-        : selectedSchool.state_id;
-      const city_id = selectedSchool.city_id.$oid
-        ? selectedSchool.city_id.$oid
-        : selectedSchool.city_id;
-      this.props.fields.school.onChange(e.target.value);
-      this.props.fields.country.onChange(country_id);
-      this.props.fields.province.onChange(province_id);
-      this.props.fields.state.onChange(state_id);
-      this.props.fields.city.onChange(city_id);
-    } else {
-      this.props.fields.school.onChange(e.target.value);
-    }
-  };
+  //   getProvinces = (e) => {
+  //     const country_id = e.target.value;
+  //     if (country_id) {
+  //       this.props.fetchProvinces(country_id);
+  //     }
+  //   };
 
-  getProvinces = (e) => {
-    const country_id = e.target.value;
-    if (country_id) {
-      this.props.fetchProvinces(country_id);
-    }
-  };
+  //   getStates = (e) => {
+  //     const province_id = e.target.value;
+  //     if (province_id) {
+  //       this.props.fetchStates(this.props.fields.country.value, province_id);
+  //     }
+  //   };
 
-  getStates = (e) => {
-    const province_id = e.target.value;
-    if (province_id) {
-      this.props.fetchStates(this.props.fields.country.value, province_id);
-    }
-  };
+  //   getCities = (e) => {
+  //     const state_id = e.target.value;
+  //     if (state_id) {
+  //       this.props.fetchCities(
+  //         this.props.fields.country.value,
+  //         this.props.fields.province.value,
+  //         state_id
+  //       );
+  //     }
+  //   };
 
-  getCities = (e) => {
-    const state_id = e.target.value;
-    if (state_id) {
-      this.props.fetchCities(
-        this.props.fields.country.value,
-        this.props.fields.province.value,
-        state_id
-      );
-    }
-  };
-
-  getSchools = (e) => {
-    const city_id = e.target.value;
-    if (city_id) {
-      this.props.fetchSchools(
-        this.props.fields.country.value,
-        this.props.fields.province.value,
-        this.props.fields.state.value,
-        city_id
-      );
-    }
-  };
+  //   getSchools = (e) => {
+  //     const city_id = e.target.value;
+  //     if (city_id) {
+  //       this.props.fetchSchools(
+  //         this.props.fields.country.value,
+  //         this.props.fields.province.value,
+  //         this.props.fields.state.value,
+  //         city_id
+  //       );
+  //     }
+  //   };
 
   updateSelectedAffiliation = (e) => {
     if (e) {
@@ -736,17 +735,17 @@ class SignUpForm extends React.Component {
       this.state.isTeacherWithoutLinks == false ||
       this.state.isPrincipalWithoutLinks === false
     ) {
-      this.clearFieldsAreNotRequiredToWithoutLinks();
+      //   this.clearFieldsAreNotRequiredToWithoutLinks();
     }
   }
 
-  clearFieldsAreNotRequiredToWithoutLinks() {
-    this.props.fields.country.onChange("");
-    this.props.fields.province.onChange("");
-    this.props.fields.state.onChange("");
-    this.props.fields.city.onChange("");
-    this.props.fields.school.onChange("");
-  }
+  //   clearFieldsAreNotRequiredToWithoutLinks() {
+  //     this.props.fields.country.onChange("");
+  //     this.props.fields.province.onChange("");
+  //     this.props.fields.state.onChange("");
+  //     this.props.fields.city.onChange("");
+  //     this.props.fields.school.onChange("");
+  //   }
 
   render() {
     const { fields, handleSubmit, submitting, apiData } = this.props;
@@ -758,11 +757,23 @@ class SignUpForm extends React.Component {
       isFetichingState,
     } = apiData;
 
+    fields.name.value = "Probando123";
+    fields.cpf.value = "1234567";
+    fields.email.value = "a@a.com";
+    fields.emailConfirmation.value = "a@a.com";
+    fields.password.value = "1234567";
+    fields.confirmPassword.value = "1234567";
+    fields.formation_level = {
+      value: "Bachiller",
+      label: "Bachiller",
+      isDisabled: false,
+    };
+
     const onSubmit = handleSubmit(this._submit.bind(this));
 
     return (
       <div>
-        {this.props.profile === "gestor" ? (
+        {this.props.profile === "gestor" && (
           <ReactModal
             isOpen={this.state.showModal}
             className={classnames(stylesModal.modal)}
@@ -804,91 +815,6 @@ class SignUpForm extends React.Component {
                 onClick={this.handleCloseModalAndContinue}
               >
                 {parse(this.translate("ModalSignUpFormAdminState.btnConfirm"))}
-              </button>
-            </div>
-          </ReactModal>
-        ) : (
-          <ReactModal
-            isOpen={this.state.showModal}
-            className={classnames(stylesModal.modal)}
-            overlayClassName={classnames(stylesModal.overlay)}
-          >
-            <div className={classnames(stylesModal.modal__header)}>
-              <h4>{parse(this.translate("ModalSignUpFormTeachers.title"))}</h4>
-            </div>
-            <div className={classnames(stylesModal.modal__body)}>
-              {!this.state.isTeacherWithoutLinks &&
-                !this.state.isPrincipalWithoutLinks ? (
-                <div>
-                  {this.props.profile === "educador" ? (
-                    parse(this.translate("ModalSignUpFormTeachers.description"))
-                  ) : (
-                    <p>
-                      {parse(
-                        this.translate("ModalSignUpFormDirectors.description")
-                      )}
-                    </p>
-                  )}
-                  <p>
-                    <strong>
-                      {parse(
-                        this.translate("ModalSignUpFormDirectors.network")
-                      )}
-                      {this.props.fields.school_type.value}:{" "}
-                    </strong>{" "}
-                    {$("select[name='city'] :checked").text() +
-                      "/" +
-                      $("select[name='state'] :checked").text()}
-                  </p>
-                  <p>
-                    <strong>
-                      {parse(this.translate("ModalSignUpFormDirectors.school"))}
-                      :
-                    </strong>{" "}
-                    {fields.school_type.value == "Particular"
-                      ? fields.institution.value
-                      : $("select[name='school'] :checked").text()}{" "}
-                  </p>
-                </div>
-              ) : (
-                <div>
-                  {this.state.isTeacherWithoutLinks
-                    ? parse(
-                      this.translate(
-                        "ModalSignUpFormTeachers.withoutLinksDescription"
-                      )
-                    )
-                    : this.state.isPrincipalWithoutLinks &&
-                    parse(
-                      this.translate(
-                        "ModalSignUpFormDirectors.withoutLinksDescription"
-                      )
-                    )}
-                </div>
-              )}
-            </div>
-            <div className={classnames(stylesModal.modal__footer)}>
-              <button
-                className={classnames(
-                  "button is-danger",
-                  stylesModal.modal__btn
-                )}
-                onClick={this.handleCloseModal}
-              >
-                {parse(
-                  this.translate("SignUpFormDirectors.ModalRegister.btnRectify")
-                )}
-              </button>
-              <button
-                className={classnames(
-                  "button is-primary",
-                  stylesModal.modal__btn
-                )}
-                onClick={this.handleCloseModalAndContinue}
-              >
-                {parse(
-                  this.translate("SignUpFormDirectors.ModalRegister.btnConfirm")
-                )}
               </button>
             </div>
           </ReactModal>
@@ -1005,15 +931,14 @@ class SignUpForm extends React.Component {
                   </div>
                 </div>
                 <label className={classnames("label", styles.form__label)}>
-                  {this.translate("SignUpForm.label.gender")}
+                  {/* {this.translate("SignUpForm.label.gender")} */}
+                  ¿Con qué género te identificas?
                 </label>
                 <div
                   className={classnames(
                     "control columns is-multiline",
                     styles.form__input,
-                    Boolean(fields.gender.error)
-                      ? styles.is_danger
-                      : null
+                    Boolean(fields.gender.error) ? styles.is_danger : null
                   )}
                 >
                   <label
@@ -1031,7 +956,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.feminine")
                       }
                       {...(this.state.disabledAdminCity ||
-                        this.state.disabledAdminState
+                      this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1052,7 +977,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.masculine")
                       }
                       {...(this.state.disabledAdminCity ||
-                        this.state.disabledAdminState
+                      this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1073,7 +998,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.others")
                       }
                       {...(this.state.disabledAdminCity ||
-                        this.state.disabledAdminState
+                      this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1094,7 +1019,7 @@ class SignUpForm extends React.Component {
                         this.translate("SignUpForm.gender.preferNotToSay")
                       }
                       {...(this.state.disabledAdminCity ||
-                        this.state.disabledAdminState
+                      this.state.disabledAdminState
                         ? { disabled: true }
                         : {})}
                     />
@@ -1127,287 +1052,6 @@ class SignUpForm extends React.Component {
               {...omitFieldProperties(fields.confirmPassword)}
             />
           </div>
-
-          <div className="box">
-            <h1 className={styles.title_section}>
-              {parse(this.translate("SignUpForm.professionalsData"))}
-            </h1>
-
-            {/* País */}
-            {this.state.isTeacherWithoutLinks === false &&
-              this.state.isPrincipalWithoutLinks === false && (
-                <div>
-                  {this.props.accounts.user &&
-                    Object.keys(this.props.accounts.user).length === 0 && (
-                      <div>
-                        <label
-                          className={classnames("label", styles.form__label)}
-                        >
-                          {parse(this.translate("SignUpForm.label.region"))}
-                        </label>
-                        <div
-                          className={classnames("control", styles.form__input, {
-                            "has-icon has-icon-right": Boolean(
-                              fields.country.error
-                            ),
-                          })}
-                        >
-                          <span
-                            className={classnames(
-                              "select",
-                              styles.form__select,
-                              {
-                                "is-danger": Boolean(fields.country.error),
-                              }
-                            )}
-                          >
-                            <select
-                              {...omitFieldProperties(fields.country)}
-                              onChange={(e) => {
-                                this.updateSelectedCountry(e);
-                                this.getProvinces(e);
-                              }}
-                            >
-                              <option value="">
-                                {this.translate("SignUpForm.selectRegion")}
-                              </option>
-                              {this.props.apiData.countries instanceof Array &&
-                                this.props.apiData.countries.map((country) => (
-                                  <option
-                                    key={country._id.$oid}
-                                    value={country._id.$oid}
-                                  >
-                                    {country.name}
-                                  </option>
-                                ))}
-                            </select>
-                          </span>
-                          {fields.country.error ? (
-                            <i
-                              className={classnames(
-                                "fas fa-exclamation-triangle",
-                                stylesField.field__warning
-                              )}
-                            ></i>
-                          ) : null}
-                          {fields.country.error ? (
-                            <span className="help is-danger">
-                              {fields.country.error}
-                            </span>
-                          ) : null}
-                        </div>
-                        <label
-                          className={classnames("label", styles.form__label)}
-                        >
-                          {this.state.geo_structure_level2_name === ""
-                            ? parse(this.translate("SignUpForm.label.province"))
-                            : this.state.geo_structure_level2_name}
-                        </label>
-                        <div
-                          className={classnames("control", styles.form__input, {
-                            "has-icon has-icon-right": Boolean(
-                              fields.province.error
-                            ),
-                          })}
-                        >
-                          <span
-                            className={classnames(
-                              "select",
-                              styles.form__select,
-                              {
-                                "is-danger": Boolean(fields.province.error),
-                              }
-                            )}
-                          >
-                            <select
-                              {...omitFieldProperties(fields.province)}
-                              onChange={(e) => {
-                                this.updateSelectedProvince(e);
-                                this.getStates(e);
-                              }}
-                              disabled={
-                                fields.country.value === "" ? true : false
-                              }
-                            >
-                              <option value="">
-                                {this.translate("SignUpForm.selectProvince")}
-                              </option>
-                              {this.props.apiData.provinces.map((province) => (
-                                <option
-                                  key={province._id.$oid}
-                                  value={province._id.$oid}
-                                >
-                                  {province.name}
-                                </option>
-                              ))}
-                            </select>
-                          </span>
-                          {fields.province.error ? (
-                            <i
-                              className={classnames(
-                                "fas fa-exclamation-triangle",
-                                stylesField.field__warning
-                              )}
-                            ></i>
-                          ) : null}
-                          {fields.province.error ? (
-                            <span className="help is-danger">
-                              {fields.province.error}
-                            </span>
-                          ) : null}
-                        </div>
-                        <label
-                          className={classnames("label", styles.form__label)}
-                        >
-                          {this.state.geo_structure_level3_name === ""
-                            ? parse(this.translate("SignUpForm.label.state"))
-                            : this.state.geo_structure_level3_name}
-                        </label>
-                        <div
-                          className={classnames("control", styles.form__input, {
-                            "has-icon has-icon-right": Boolean(
-                              fields.state.error
-                            ),
-                          })}
-                        >
-                          <span
-                            className={classnames(
-                              "select",
-                              styles.form__select,
-                              {
-                                "is-danger": Boolean(fields.state.error),
-                              }
-                            )}
-                          >
-                            <select
-                              {...omitFieldProperties(fields.state)}
-                              onChange={(e) => {
-                                this.updateSelectedState(e);
-                                this.getCities(e);
-                              }}
-                              disabled={
-                                fields.province.value === "" ? true : false
-                              }
-                            >
-                              <option value="">
-                                {this.translate("SignUpForm.selectState")}
-                              </option>
-                              {this.props.apiData.states.map((state) => (
-                                <option
-                                  key={state._id.$oid}
-                                  value={state._id.$oid}
-                                >
-                                  {state.name}
-                                </option>
-                              ))}
-                            </select>
-                          </span>
-                          {fields.state.error ? (
-                            <i
-                              className={classnames(
-                                "fas fa-exclamation-triangle",
-                                stylesField.field__warning
-                              )}
-                            ></i>
-                          ) : null}
-                          {fields.state.error ? (
-                            <span className="help is-danger">
-                              {fields.state.error}
-                            </span>
-                          ) : null}
-                        </div>
-                      </div>
-                    )}
-                  <SignUpFormPrincipalFields
-                    getSchools={this.getSchools}
-                    insertGeographicElements={this.insertGeographicElements}
-                    updateSelectedCity={this.updateSelectedCity}
-                    fields={fields}
-                    apiData={this.props.apiData}
-                    disabled={this.state.disabledAdminCity}
-                    profile={this.props.profile}
-                    geo_structure_level4_name={
-                      this.state.geo_structure_level4_name
-                    }
-                    user={this.props.accounts.user}
-                  />
-                  {this.props.profile !== "gestor" && <hr></hr>}
-                </div>
-              )}
-            {this.props.profile === "educador" ? (
-              <div>
-                <FieldSelect
-                  name="stages"
-                  error={fields.stages.error}
-                  label={this.translate("SignUpForm.label.teachingStages")}
-                  options={getStages(this.props)}
-                  classField="slim"
-                  onChange={this._onChangeStages.bind(this)}
-                  noOptionsMessage={() => {
-                    return parse(this.translate("SignUpForm.noOptions"));
-                  }}
-                  loadingMessage={() => this.translate(
-                    "Global.loading"
-                  )}
-                  placeholder={this.translate(
-                    "SignUpForm.placeholderSelectOptions"
-                  )}
-                />
-                <FieldSelect
-                  name="knowledges"
-                  error={fields.knowledges.error}
-                  label={this.translate("SignUpForm.label.knowledges")}
-                  options={this.state.knowledgesSelect}
-                  classField="slim"
-                  onChange={this._onChangeKnowledges.bind(this)}
-                  noOptionsMessage={() => {
-                    return parse(this.translate("SignUpForm.noOptions"));
-                  }}
-                  loadingMessage={() => this.translate(
-                    "Global.loading"
-                  )}
-                  placeholder={this.translate(
-                    "SignUpForm.placeholderSelectOptions"
-                  )}
-                />
-                {this.props.profile !== "gestor" && <hr></hr>}
-              </div>
-            ) : null}
-
-            {this.props.profile !== "gestor" && (
-              <div style={{ marginTop: "10px" }}>
-                <input
-                  type="radio"
-                  id="withLink"
-                  name="link"
-                  style={{ marginBottom: "12px" }}
-                  checked={this.state.radioOption === "withLink"}
-                  onChange={(e) =>
-                    this.handleButtonUserWithoutLinks(e, false, "withLink")
-                  }
-                />
-                {" "}
-                <label for="withLink">
-                  {parse(this.translate("SignUpForm.withLink"))}
-                </label>
-                <br />
-                <input
-                  type="radio"
-                  id="withoutLink"
-                  name="link"
-                  checked={this.state.radioOption === "withoutLink"}
-                  onChange={(e) =>
-                    this.handleButtonUserWithoutLinks(e, true, "withoutLink")
-                  }
-                />
-                {" "}
-                <label for="withoutLink">
-                  {parse(this.translate("SignUpForm.noLink"))}
-                </label>
-              </div>
-            )}
-          </div>
-
           {this.props.profile === "gestor" && (
             <div className="box">
               <h1 className={styles.title_section}>
@@ -1451,7 +1095,6 @@ class SignUpForm extends React.Component {
                       {this.translate(
                         "SignUpFormAdminStates.affiliationBox.selectAffiliation"
                       )}
-                      {/* {parse(this.translate("SignUpFormAdminStates.affiliationBox.selectAffiliation"))} */}
                     </option>
                     {this.state.affiliationsRender instanceof Array &&
                       this.state.affiliationsRender.map((affiliation) => (
@@ -1502,7 +1145,6 @@ class SignUpForm extends React.Component {
               />
             </div>
           )}
-
           {this.props.profile === "gestor" && (
             <div className="box">
               <h1 className={styles.title_section}>
@@ -1545,6 +1187,8 @@ class SignUpForm extends React.Component {
               </div>
             </div>
           )}
+
+          {/* Educador: Formacion */}
           {this.props.profile === "educador" ? (
             <div className="box">
               <h1 className={styles.title_section}>
@@ -1562,12 +1206,7 @@ class SignUpForm extends React.Component {
                 noOptionsMessage={() => {
                   return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => this.translate(
-                  "Global.loading"
-                )}
-                placeholder={this.translate(
-                  "SignUpForm.placeholderSelectOption"
-                )}
+                loadingMessage={() => this.translate("Global.loading")}
               />
 
               <FieldCreatableSelect
@@ -1579,7 +1218,6 @@ class SignUpForm extends React.Component {
                 {...omitFieldProperties(fields.initial_formation)}
                 onCreateOption={(option) => {
                   if (!option.trim()) return;
-                  // if (!regex.test(option)) return;
                   const value = { label: option, value: option };
                   fields.initial_formation.onChange(value);
                   this.setState({
@@ -1595,144 +1233,7 @@ class SignUpForm extends React.Component {
                 noOptionsMessage={() => {
                   return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => this.translate(
-                  "Global.loading"
-                )}
-                placeholder={this.translate(
-                  "SignUpForm.placeholderSelectOption"
-                )}
-              />
-
-              <div className={classnames("column is-half", styles.form_born)}>
-                <label className={classnames("label", styles.form__label)}>
-                  {this.translate(
-                    "SignUpForm.label.final_year_of_initial_formation"
-                  )}
-                </label>
-                <div
-                  className={classnames("is-small", styles.field__description)}
-                >
-                  Formato correto DD/MM/AAAA
-                </div>
-                <div className={styles.is_relative}>
-                  <div
-                    className={classnames(
-                      "control react-datepicker-width-large"
-                    )}
-                  >
-                    <DatePicker
-                      name="final_year_of_initial_formation"
-                      {...omitFieldProperties(
-                        fields.final_year_of_initial_formation
-                      )}
-                      className={classnames(
-                        "input",
-                        styles.field__datepicker,
-                        Boolean(fields.final_year_of_initial_formation.error)
-                          ? styles.is_danger
-                          : null
-                      )}
-                      peekNextMonth
-                      showMonthDropdown
-                      showYearDropdown
-                      dropdownMode="select"
-                      disabled={false}
-                      selected={fields.final_year_of_initial_formation.value}
-                      // readOnly={true}
-                      // dateFormatCalendar={"DD/MM/YYYY"}
-                      dateFormat="dd/MM/yyyy"
-                    // locale="pt-BR"
-                    />
-                  </div>
-                  <i
-                    className={classnames(
-                      "fas fa-calendar-alt",
-                      styles.field__calendar
-                    )}
-                  ></i>
-                  {fields.final_year_of_initial_formation.error ? (
-                    <i
-                      className={classnames(
-                        "fas fa-exclamation-triangle",
-                        styles.field__warning
-                      )}
-                    ></i>
-                  ) : null}
-                  {fields.final_year_of_initial_formation.error ? (
-                    <span className="help is-danger">
-                      {fields.final_year_of_initial_formation.error}
-                    </span>
-                  ) : null}
-                </div>
-              </div>
-
-              <FieldSelect
-                name="internship_practice"
-                {...omitFieldProperties(fields.internship_practice)}
-                error={fields.internship_practice.error}
-                label={this.translate("SignUpForm.label.internship_practice")}
-                options={[
-                  {
-                    label: this.translate("SignUpForm.internship_practice.0"),
-                    value: this.translate("SignUpForm.internship_practice.0"),
-                  },
-                  {
-                    label: this.translate("SignUpForm.internship_practice.1"),
-                    value: this.translate("SignUpForm.internship_practice.1"),
-                  },
-                  {
-                    label: this.translate("SignUpForm.internship_practice.2"),
-                    value: this.translate("SignUpForm.internship_practice.2"),
-                  },
-                  {
-                    label: this.translate("SignUpForm.internship_practice.3"),
-                    value: this.translate("SignUpForm.internship_practice.3"),
-                  },
-                ]}
-                isMulti={false}
-                closeMenuOnSelect={true}
-                classField="slim"
-                noOptionsMessage={() => {
-                  return parse(this.translate("SignUpForm.noOptions"));
-                }}
-                loadingMessage={() => this.translate(
-                  "Global.loading"
-                )}
-                placeholder={this.translate(
-                  "SignUpForm.placeholderSelectOption"
-                )}
-              />
-
-              <FieldCreatableSelect
-                name="institution_initial_formation"
-                error={fields.institution_initial_formation.error}
-                label={this.translate(
-                  "SignUpForm.label.institution_initial_formation"
-                )}
-                options={this.state.institution_initial_formation_options}
-                {...omitFieldProperties(fields.institution_initial_formation)}
-                onCreateOption={(option) => {
-                  const value = { label: option, value: option };
-                  fields.institution_initial_formation.onChange(value);
-                  this.setState({
-                    institution_initial_formation_options: [
-                      ...this.state.institution_initial_formation_options,
-                      value,
-                    ],
-                  });
-                }}
-                isMulti={false}
-                closeMenuOnSelect={true}
-                classField="slim"
-                noOptionsMessage={() => {
-                  return parse(this.translate("SignUpForm.noOptions"));
-                }}
-                loadingMessage={() => this.translate(
-                  "Global.loading"
-                )}
-                placeholder={this.translate(
-                  "SignUpForm.placeholderSelectOption"
-                )}
+                loadingMessage={() => this.translate("Global.loading")}
               />
 
               <label className={classnames("label", styles.form__label)}>
@@ -1770,7 +1271,7 @@ class SignUpForm extends React.Component {
                       )
                     }
                     {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
+                    this.state.disabledAdminState
                       ? { disabled: true }
                       : {})}
                   />
@@ -1799,7 +1300,7 @@ class SignUpForm extends React.Component {
                       )
                     }
                     {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
+                    this.state.disabledAdminState
                       ? { disabled: true }
                       : {})}
                   />
@@ -1819,99 +1320,6 @@ class SignUpForm extends React.Component {
               {fields.technology_in_teaching_and_learning.error ? (
                 <span className="help is-danger">
                   {fields.technology_in_teaching_and_learning.error}
-                </span>
-              ) : null}
-              <label className={classnames("label", styles.form__label)}>
-                {this.translate("SignUpForm.label.course_modality")}
-              </label>
-              <div
-                className={classnames(
-                  "control columns is-multiline",
-                  styles.form__input,
-                  Boolean(fields.course_modality.error)
-                    ? styles.is_danger
-                    : null
-                )}
-              >
-                <label
-                  className={classnames(
-                    "radio column is-3",
-                    styles.form__radio
-                  )}
-                >
-                  <input
-                    type="radio"
-                    {...omitFieldProperties(fields.course_modality)}
-                    value={this.translate(
-                      "SignUpForm.course_modality.inPerson"
-                    )}
-                    checked={
-                      fields.course_modality.value ===
-                      this.translate("SignUpForm.course_modality.inPerson")
-                    }
-                    {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
-                      ? { disabled: true }
-                      : {})}
-                  />
-                  {this.translate("SignUpForm.course_modality.inPerson")}
-                </label>
-                <label
-                  className={classnames(
-                    "radio column is-3",
-                    styles.form__radio
-                  )}
-                >
-                  <input
-                    type="radio"
-                    {...omitFieldProperties(fields.course_modality)}
-                    value={this.translate("SignUpForm.course_modality.blended")}
-                    checked={
-                      fields.course_modality.value ===
-                      this.translate("SignUpForm.course_modality.blended")
-                    }
-                    {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
-                      ? { disabled: true }
-                      : {})}
-                  />
-                  {this.translate("SignUpForm.course_modality.blended")}
-                </label>
-                <label
-                  className={classnames(
-                    "radio column is-3",
-                    styles.form__radio
-                  )}
-                >
-                  <input
-                    type="radio"
-                    {...omitFieldProperties(fields.course_modality)}
-                    value={this.translate(
-                      "SignUpForm.course_modality.fromADistance"
-                    )}
-                    checked={
-                      fields.course_modality.value ===
-                      this.translate("SignUpForm.course_modality.fromADistance")
-                    }
-                    {...(this.state.disabledAdminCity ||
-                      this.state.disabledAdminState
-                      ? { disabled: true }
-                      : {})}
-                  />
-                  {this.translate("SignUpForm.course_modality.fromADistance")}
-                </label>
-              </div>
-              {fields.course_modality.error ? (
-                <i
-                  className={classnames(
-                    "fas fa-exclamation-triangle",
-                    styles.field__warning
-                  )}
-                ></i>
-              ) : null}
-              {fields.course_modality.error ? (
-                <span className="help is-danger">
-                  {fields.course_modality.error}
                 </span>
               ) : null}
               <FieldSelect
@@ -1958,30 +1366,6 @@ class SignUpForm extends React.Component {
                       "SignUpForm.cont_educ_in_the_use_of_digital_technologies.3"
                     ),
                   },
-                  {
-                    label: this.translate(
-                      "SignUpForm.cont_educ_in_the_use_of_digital_technologies.4"
-                    ),
-                    value: this.translate(
-                      "SignUpForm.cont_educ_in_the_use_of_digital_technologies.4"
-                    ),
-                  },
-                  {
-                    label: this.translate(
-                      "SignUpForm.cont_educ_in_the_use_of_digital_technologies.5"
-                    ),
-                    value: this.translate(
-                      "SignUpForm.cont_educ_in_the_use_of_digital_technologies.5"
-                    ),
-                  },
-                  {
-                    label: this.translate(
-                      "SignUpForm.cont_educ_in_the_use_of_digital_technologies.6"
-                    ),
-                    value: this.translate(
-                      "SignUpForm.cont_educ_in_the_use_of_digital_technologies.6"
-                    ),
-                  },
                 ]}
                 isMulti={false}
                 closeMenuOnSelect={true}
@@ -1989,12 +1373,7 @@ class SignUpForm extends React.Component {
                 noOptionsMessage={() => {
                   return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => this.translate(
-                  "Global.loading"
-                )}
-                placeholder={this.translate(
-                  "SignUpForm.placeholderSelectOption"
-                )}
+                loadingMessage={() => this.translate("Global.loading")}
               />
               <FieldSelect
                 {...omitFieldProperties(fields.years_teaching)}
@@ -2025,13 +1404,45 @@ class SignUpForm extends React.Component {
                 noOptionsMessage={() => {
                   return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => this.translate(
-                  "Global.loading"
-                )}
-                placeholder={this.translate(
-                  "SignUpForm.placeholderSelectOption"
-                )}
+                loadingMessage={() => this.translate("Global.loading")}
               />
+
+              <FieldSelect
+                {...omitFieldProperties(fields.cargo_docente)}
+                name="cargo_docente"
+                error={fields.cargo_docente.error}
+                label="¿Cuál es tu tipo de cargo docente?"
+                options={"Efectivo,Interino,Suplente".split(",").map((i) => ({
+                  label: i,
+                  value: i,
+                }))}
+                isMulti={false}
+                closeMenuOnSelect={true}
+                classField="slim"
+                noOptionsMessage={() => {
+                  return parse(this.translate("SignUpForm.noOptions"));
+                }}
+                loadingMessage={() => this.translate("Global.loading")}
+              />
+
+              <FieldSelect
+                {...omitFieldProperties(fields.grado_docente)}
+                name="grado_docente"
+                error={fields.grado_docente.error}
+                label="¿Cuál es tu grado docente?"
+                options={"1,2,3,4,5,6,7".split(",").map((i) => ({
+                  label: i,
+                  value: i,
+                }))}
+                isMulti={false}
+                closeMenuOnSelect={true}
+                classField="slim"
+                noOptionsMessage={() => {
+                  return parse(this.translate("SignUpForm.noOptions"));
+                }}
+                loadingMessage={() => this.translate("Global.loading")}
+              />
+
               <FieldSelect
                 {...omitFieldProperties(
                   fields.years_of_uses_technology_for_teaching
@@ -2100,106 +1511,12 @@ class SignUpForm extends React.Component {
                 noOptionsMessage={() => {
                   return parse(this.translate("SignUpForm.noOptions"));
                 }}
-                loadingMessage={() => this.translate(
-                  "Global.loading"
-                )}
-                placeholder={this.translate(
-                  "SignUpForm.placeholderSelectOption"
-                )}
+                loadingMessage={() => this.translate("Global.loading")}
               />
-              {fields.years_of_uses_technology_for_teaching.value.value !==
-                this.translate(
-                  "SignUpForm.years_of_uses_technology_for_teaching.0"
-                ) && (
-                  <FieldSelect
-                    {...omitFieldProperties(fields.technology_application)}
-                    name="technology_application"
-                    error={fields.technology_application.error}
-                    label={this.translate(
-                      "SignUpForm.label.technology_application"
-                    )}
-                    options={[
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.0"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.0"
-                        ),
-                      },
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.1"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.1"
-                        ),
-                      },
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.2"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.2"
-                        ),
-                      },
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.3"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.3"
-                        ),
-                      },
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.4"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.4"
-                        ),
-                      },
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.5"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.5"
-                        ),
-                      },
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.6"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.6"
-                        ),
-                      },
-                      {
-                        label: this.translate(
-                          "SignUpForm.technology_application.7"
-                        ),
-                        value: this.translate(
-                          "SignUpForm.technology_application.7"
-                        ),
-                      },
-                    ]}
-                    isMulti={true}
-                    classField="slim"
-                    noOptionsMessage={() => {
-                      return "Sem opções.";
-                    }}
-                    loadingMessage={() => this.translate(
-                      "Global.loading"
-                    )}
-                    placeholder={this.translate(
-                      "SignUpForm.placeholderSelectOptions"
-                    )}
-                  />
-                )}
             </div>
           ) : null}
-          {this.props.profile === "educador" || this.props.profile === "escola"  ? (
+          {this.props.profile === "educador" ||
+          this.props.profile === "escola" ? (
             <div>
               <div
                 className={classnames(
@@ -2220,7 +1537,7 @@ class SignUpForm extends React.Component {
                       <a onClick={this._onClickModalTerm}>
                         {this.translate("SignUpForm.termsOfUse")}
                       </a>
-                    )
+                    ),
                   }}
                 />
 
@@ -2236,7 +1553,6 @@ class SignUpForm extends React.Component {
                   <span className="help is-danger">{fields.term.error}</span>
                 ) : null}
               </div>
-              
             </div>
           ) : null}
           <div
@@ -2269,7 +1585,6 @@ class SignUpForm extends React.Component {
           privacyNotice={false}
           children={parse(this.translate("useTerms"))}
         />
-
 
         {this.submitted && (
           <CensusFormModal

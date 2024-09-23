@@ -121,7 +121,9 @@ export default {
 
   born: requiredForTeacher,
 
-  cpf: {},
+  cpf: {
+    presence: false,
+  },
 
   email: {
     presence: {
@@ -179,36 +181,21 @@ export default {
     },
   },
 
-  school_type: {
-    presence: false,
-  },
-
-  affiliation_id: {},
-  affiliation_name: {},
+  //   affiliation_id: {},
+  //   affiliation_name: {},
   responsible_name: {},
   responsible_email: {},
   responsible_phone_number: {},
-
-  country: isNoRequiredIfIsTeacherOrPrincipalWithoutLinks,
-  province: isNoRequiredIfIsTeacherOrPrincipalWithoutLinks,
-  state: isNoRequiredIfIsTeacherOrPrincipalWithoutLinks,
-
-  city: isNoRequiredIfIsTeacherOrPrincipalWithoutLinks,
-
-  school: specificRequiredToSchool,
-
-  stages: requiredForTeacher,
-
-  knowledges: requiredForTeacher,
 
   formation_level: requiredForTeacherWithFormation,
 
   term: {
     presence: {
-      message: <FormattedMessage id="SchemaSignUpForm.requiredForOther.presence.message" />,
-    }
+      message: (
+        <FormattedMessage id="SchemaSignUpForm.requiredForOther.presence.message" />
+      ),
+    },
   },
-
 
   profile: {
     presence: false,
@@ -218,27 +205,19 @@ export default {
 
   initial_formation: requiredForTeacher,
 
-  final_year_of_initial_formation: requiredForTeacher,
-
-  internship_practice: requiredForTeacher,
-
-  institution_initial_formation: requiredForTeacher,
-
   technology_in_teaching_and_learning: requiredForTeacher,
 
   cont_educ_in_the_use_of_digital_technologies: requiredForTeacher,
 
-  course_modality: requiredForTeacher,
-
   years_teaching: requiredForTeacher,
+
+  cargo_docente: requiredForTeacher,
+
+  grado_docente: requiredForTeacher,
 
   years_of_uses_technology_for_teaching: requiredForTeacher,
 
-  technology_application: requiredForTeacher,
-
   locked: {},
-
-  institution: requiredForTeacherPrivate,
 
   role: requiredForOther,
 };
