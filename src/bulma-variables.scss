@@ -30,3 +30,18 @@ $sides: (top, bottom, left, right);
 }
 
 @import "~bulma";
+
+.react-datepicker-wrapper,
+.input__datepicker {
+  width: 100%;
+}
+
+#SignUpForm {
+  .columns,
+  .column {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
