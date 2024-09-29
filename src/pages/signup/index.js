@@ -51,7 +51,12 @@ class SignUp extends React.Component {
             <div className={classnames("columns is-multiline", styles.section)}>
               {isHeader ? (
                 <div className="column is-full">
-                  <div className={classnames("title is-5 mb-15", styles.header__holder)}>
+                  <div
+                    className={classnames(
+                      "title is-5 mb-15",
+                      styles.header__holder
+                    )}
+                  >
                     {parse(this.translate("SignUp.firstAccessTitle"))}
                     {profile === "educador"
                       ? parse(this.translate("SignUp.teacher"))
@@ -77,11 +82,6 @@ class SignUp extends React.Component {
                   ) : (
                     <p>
                       {parse(this.translate("SignUp.descriptionAdminState"))}
-
-                      {/* {parse(this.translate("SignUp.descriptionDirector1"))}
-                      <span className={styles.highlighted}>
-                        {parse(this.translate("SignUp.descriptionDirector2"))}
-                      </span> */}
                     </p>
                   )}
                 </div>
