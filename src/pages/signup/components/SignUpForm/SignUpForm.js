@@ -1,43 +1,23 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { compose } from "redux";
 import "url-search-params-polyfill";
-import validate from "validate.js";
-import _, { isEmpty, isNumber, keys } from "lodash";
+import { isEmpty, keys } from "lodash";
 import classnames from "classnames";
-import axios from "axios";
-import history from "~/core/history";
 import API from "~/api";
-import CONF from "~/api/index";
-import $, { error } from "jquery";
 import { FormattedMessage, injectIntl } from "react-intl";
 import parse from "html-react-parser";
-import FieldCreatableSelect from "~/components/Form/FieldCreatableSelect";
 
 // Components
-import schema from "./schema";
 import Field from "~/components/Form/Field";
-import stylesField from "~/components/Form/Field.styl";
-import FieldSelect from "~/components/Form/FieldSelect";
 import SubmitBtn from "~/components/SubmitBtn";
-import CensusFormModal from "~/components/CensusFormModal";
-import Modal from "~/components/Modal";
-import ReactModal from "react-modal";
-import { getKnowledges, getFormation } from "~/helpers/data_const";
 
-import APIDataContainer from "~/containers/api_data";
-import AccountsContainer from "~/containers/accounts";
 import ModalContainer from "~/containers/modal";
 
 import styles from "../../signup.styl";
-import stylesModal from "../../../../components/Modal/Modal.styl";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
-import { setUserId, setUserToken } from "~/api/utils";
-import { omitFieldProperties } from "../../../../helpers/redux-form-fields";
-import { render } from "nprogress";
 const regex = new RegExp("^([A-zÀ-ú \\- \\/ \\( \\) ])+$");
 
 const d = console.log;
@@ -46,7 +26,6 @@ const j = (m) => JSON.stringify(m, null, 4);
 const FieldNames = {
   name: "Nombre",
   password: "Contrasena",
-  cpf: "Documento nacional de identidad",
   born: "Fecha de nacimiento",
   gender: "Género",
   email: "Correo electrónico",
@@ -54,11 +33,10 @@ const FieldNames = {
 
 const UserModel = {
   profile: "teacher",
-  name: null,
+  name: "John Doe",
   password: null,
   email: null,
-  cpf: null,
-  born: null,
+  born: "1985-05-15",
   gender: null,
   term: null,
   initial_formation: null,
@@ -85,8 +63,6 @@ const UserModelTest = {
   name: "Jane Doe",
   password: "securePassword123",
   email: "janedoe@example.com",
-  //   cpf: "60711184",
-  cpf: "12345678901",
   born: "1985-05-15",
   gender: "female",
   term: true,
@@ -115,7 +91,6 @@ const ReduxFormFields = [
   "passwordConfirm",
   "email",
   "emailConfirm",
-  "cpf",
   "born",
   "gender",
   "term",
@@ -232,13 +207,6 @@ const validateModel = (fields) => {
 
   if (!allFilled) {
     errors.push("Todos los campos son requeridos.");
-  }
-
-  // Check if cpf is a numeric string
-  if (!/^\d+$/.test(fields.cpf.value)) {
-    errors.push(
-      "El Documento nacional de identidad debe contener solo números."
-    );
   }
 
   //Check if the email is valid
@@ -377,7 +345,7 @@ const Formacion = ({ l, fields }) => {
       <SelectField
         l={l}
         field={fields.formation_level}
-        titleId="¿Cuál es tu mayor grado de estudios?"
+        titleId="¿Cuál es tu mayor nivel de estudios alcanzado?"
         options={FormationLevelsOptns}
       />
       <SelectField
@@ -404,6 +372,16 @@ const Formacion = ({ l, fields }) => {
         titleId="¿Cuántos años llevas enseñando?"
         options={YearsOptns}
       />
+      {/* TODO: field name needed */}
+      <Field
+        label="¿Cuál fue el año de conclusión de tu formación inicial docente?"
+        classField="slim"
+        description="Por favor, ingresa solo el año."
+        {...f(fields.born)}
+        type="number"
+        min="1950"
+        max={new Date().getFullYear()}
+      />
       <SelectField
         l={l}
         field={fields.cargo_docente}
@@ -427,6 +405,17 @@ const Formacion = ({ l, fields }) => {
 };
 
 const DatosPersonales = ({ l, fields }) => {
+  //Default born value to today minus 18 years
+  if (isEmpty(fields.born.value)) {
+    const today = new Date();
+    const year = today.getFullYear() - 18;
+    const month = today.getMonth();
+    const day = today.getDate();
+    const isoDate = new Date(year, month, day).toISOString();
+    // fields.born.onChange(isoDate);
+    fields.born.value = isoDate;
+  }
+
   return (
     <div className="box">
       <h1 className={styles.title_section}>{l("SignUpForm.personalData")}</h1>
@@ -437,18 +426,13 @@ const DatosPersonales = ({ l, fields }) => {
       />
       <div className="columns" style={{ marginBottom: 0, marginTop: 0 }}>
         <div className="column">
-          <Field
-            label={l("SignUpForm.label.cpf")}
-            classField="slim"
-            description={l("SignUpForm.description.cpf")}
-            {...f(fields.cpf)}
-          />
-        </div>
-        <div className="column">
           <DateField
             l={l}
             field={fields.born}
+            name="born"
             titleId="SignUpForm.label.birthDate"
+            maxDate={new Date()}
+            minDate={new Date(1900, 0, 1)}
           />
         </div>
         <div className="column">
@@ -530,18 +514,23 @@ const SelectField = ({ l, field, titleId, descrId, options }) => {
   );
 };
 
-const DateField = ({ l, field, titleId }) => {
+const DateField = ({
+  l,
+  field,
+  titleId,
+  dateFormat = "dd/MM/yyyy",
+  ...attrs
+}) => {
   return (
     <div>
       <label className={classnames("label", styles.form__label)}>
         {parse(l(titleId))}
       </label>
       <div className={classnames("is-small", styles.field__description)}>
-        {parse(l("SignUpForm.description.birthDate"))}
+        Formato correcto: {dateFormat}
       </div>
       <div className={classnames("control")}>
         <DatePicker
-          name="born"
           className={classnames(
             "input",
             "input__datepicker",
@@ -554,7 +543,8 @@ const DateField = ({ l, field, titleId }) => {
           dropdownMode="select"
           selected={field.value ? new Date(field.value) : null}
           onChange={(date) => field.onChange(date.toISOString())}
-          dateFormat="dd/MM/yyyy"
+          dateFormat={dateFormat}
+          {...attrs}
         />
       </div>
       <i

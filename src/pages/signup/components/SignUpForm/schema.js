@@ -122,7 +122,7 @@ export default {
   born: requiredForTeacher,
 
   cpf: {
-    presence: false,
+    // presence: false,
   },
 
   email: {

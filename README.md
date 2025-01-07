@@ -35,7 +35,7 @@ networks:
 
 ## Dev environment
 
-NOTE: Requires NodeJS 13.14.0n
+Requires NodeJS 13.14.0
 
 ```
 npm i
