@@ -15,7 +15,6 @@ firebase-debug.log
 .vscode/
 .DS_Store
 
-
 .env
 sonar-project.properties
 package-lock.json
