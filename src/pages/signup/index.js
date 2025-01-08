@@ -2,12 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import classnames from "classnames";
 import { compose } from "redux";
-import {
-  FormattedMessage,
-  FormattedHTMLMessage,
-  injectIntl,
-  intlShape,
-} from "react-intl";
+import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
 // Components
@@ -25,19 +20,23 @@ class SignUp extends React.Component {
   translate(id) {
     return this.props.intl.formatMessage({ id });
   }
+
   render() {
     let profile = "";
     let isHeader = true;
 
-    if (this.props.route.path === "/criar-usuario/diretores") {
+    const path = this.props.route.path;
+
+    //User profile
+    if (path.endsWith("/escola")) {
       isHeader = false;
-      profile = "escola";
-    } else if (this.props.route.path === "/criar-usuario/professores") {
+      profile = "principal";
+    } else if (path.endsWith("/educador")) {
       isHeader = false;
-      profile = "educador";
+      profile = "teacher";
     } else {
       isHeader = true;
-      profile = this.props.route.path.replace("/criar-conta/", "");
+      profile = "other";
     }
 
     return (
@@ -58,21 +57,21 @@ class SignUp extends React.Component {
                     )}
                   >
                     {parse(this.translate("SignUp.firstAccessTitle"))}
-                    {profile === "educador"
+                    {profile === "teacher"
                       ? parse(this.translate("SignUp.teacher"))
-                      : profile === "escola"
+                      : profile === "principal"
                       ? parse(this.translate("SignUp.director"))
                       : parse(this.translate("SignUp.adminState"))}
                   </div>
 
-                  {profile === "educador" ? (
+                  {profile === "teacher" ? (
                     <p>
                       {parse(this.translate("SignUp.descriptionTeacher1"))}
                       <span className={styles.highlighted}>
                         {parse(this.translate("SignUp.descriptionTeacher2"))}
                       </span>
                     </p>
-                  ) : profile === "escola" ? (
+                  ) : profile === "principal" ? (
                     <p>
                       {parse(this.translate("SignUp.descriptionDirector1"))}
                       <span className={styles.highlighted}>

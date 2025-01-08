@@ -1,15 +1,7 @@
 import axios from "axios";
 import _ from "lodash";
 import React from "react";
-import { addLocaleData, IntlProvider } from "react-intl";
-import parse from "html-react-parser";
-import CONF from "~/api/index";
-// import es from "react-intl/locale-data/es";
-// import pt from "react-intl/locale-data/pt";
-
-// import es from "@formatjs/intl-relativetimeformat/locale-data/es";
-// import pt from "@formatjs/intl-relativetimeformat/locale-data/pt";
-// addLocaleData([...es, ...pt]);
+import { IntlProvider } from "react-intl";
 import { flattenMessages } from "~/i18n/utils";
 let locale = localStorage.getItem("lang") || process.env.DEFAULT_LOCALE;
 
@@ -31,16 +23,17 @@ export default class LangConfig extends React.Component {
   }
 
   componentDidMount() {
-    this.insertLangInLocalStorage();
+    // this.insertLangInLocalStorage();
     this.fetchTranslations();
   }
 
   async fetchTranslations() {
     try {
+      //   const dictionaryLocation = CONF.ApiURL + `/api/v1/translation/${locale}`;
+      const dictionaryLocation = `/translations/${locale}.json`;
+
       this.setState({ loading: true });
-      const response = await axios.get(
-        CONF.ApiURL + `/api/v1/translation/${locale}`
-      );
+      const response = await axios.get(dictionaryLocation);
 
       const data = response.data.data[0];
       const dataOmitedProps = _.omit(data, [

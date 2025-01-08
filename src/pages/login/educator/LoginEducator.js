@@ -115,12 +115,6 @@ export class LoginEducator extends React.Component {
                   >
                     <h2 className="is-size-4-mobile">
                       {parse(this.translate("LoginEducator.whatIs"))}
-                      <br className="is-hidden-tablet" />
-                      <span className="is-size-5-mobile">
-                        {parse(
-                          this.translate("LoginEducator.titleSelfEvaluation")
-                        )}
-                      </span>
                     </h2>
                     <p>
                       {parse(
@@ -129,11 +123,6 @@ export class LoginEducator extends React.Component {
                         )
                       )}
                     </p>
-                    <img
-                      className={classNames(styles.big_image, styles.espelho)}
-                      src={require("../../../../public/images/icons/espelho.svg")}
-                      alt=""
-                    />
                   </div>
                   <div
                     className={classNames(
@@ -141,17 +130,12 @@ export class LoginEducator extends React.Component {
                       styles.video
                     )}
                   >
-                    <div className={styles.video_container}>
-                      <iframe
-                        width="640"
-                        height="360"
-                        src={parse(
-                          this.translate("LoginEducator.videoSrcSelfEvaluation")
-                        )}
-                        frameBorder="0"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+                    <img
+                      className={classNames(styles.big_image, styles.espelho)}
+                      src={require("../../../../public/images/icons/espelho.svg")}
+                      alt=""
+                      style={{ float: "right" }}
+                    />
                   </div>
                 </div>
               </div>
@@ -675,7 +659,6 @@ export class LoginEducator extends React.Component {
               </div>
             </section>
           </div>
-
           <div className={classNames("column is-full", styles.devolutive)}>
             <section className={classNames("section", styles.section)}>
               <div className="container">
@@ -750,7 +733,9 @@ export class LoginEducator extends React.Component {
                     }}
                   />
                   <span className="is-size-5-mobile">
-                    {parse(this.translate("LoginEducator.startNowSelfEvaluation"))}
+                    {parse(
+                      this.translate("LoginEducator.startNowSelfEvaluation")
+                    )}
                   </span>
                 </h2>
                 <div className="btn-call-to-action"></div>

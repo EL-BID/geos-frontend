@@ -2,11 +2,12 @@ import React from "react";
 import { reduxForm } from "redux-form";
 import { compose } from "redux";
 import "url-search-params-polyfill";
-import { isEmpty, keys } from "lodash";
+import { concat, isEmpty, keys } from "lodash";
 import classnames from "classnames";
 import API from "~/api";
 import { FormattedMessage, injectIntl } from "react-intl";
 import parse from "html-react-parser";
+import { UserModel, TeacherDataModel, PrincipalDataModel } from "./Models";
 
 // Components
 import Field from "~/components/Form/Field";
@@ -18,7 +19,6 @@ import styles from "../../signup.styl";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
-const regex = new RegExp("^([A-zÀ-ú \\- \\/ \\( \\) ])+$");
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
@@ -31,83 +31,16 @@ const FieldNames = {
   email: "Correo electrónico",
 };
 
-const UserModel = {
-  profile: "teacher",
-  name: "John Doe",
-  password: null,
-  email: null,
-  born: "1985-05-15",
-  gender: null,
-  term: null,
-  initial_formation: null,
-  technology_in_teaching_and_learning: null,
-  formation_level: {
-    value: null,
-    label: null,
-    isDisabled: false,
-  },
-  term: false,
-  teacher_data: {
-    formation_level: null,
-    cont_educ_in_the_use_of_digital_technologies: null,
-    years_teaching: null,
-    years_of_uses_technology_for_teaching: null,
-    technology_application: [],
-    cargo_docente: null,
-    grado_docente: null,
-  },
-};
+const ReduxFormFields = concat(
+  UserModel,
+  TeacherDataModel,
+  //Add view-model properties
+  ["emailConfirm", "passwordConfirm"]
+);
 
-const UserModelTest = {
-  profile: "teacher",
-  name: "Jane Doe",
-  password: "securePassword123",
-  email: "janedoe@example.com",
-  born: "1985-05-15",
-  gender: "female",
-  term: true,
-  initial_formation: "Bachelor's Degree in Education",
-  technology_in_teaching_and_learning: "Advanced",
-  formation_level: {
-    value: "Master's Degree",
-    label: "Master's Degree",
-    isDisabled: false,
-  },
-  term: true,
-  teacher_data: {
-    formation_level: "PhD",
-    cont_educ_in_the_use_of_digital_technologies: "Yes",
-    years_teaching: 10,
-    years_of_uses_technology_for_teaching: 8,
-    technology_application: [],
-    cargo_docente: "Senior Lecturer",
-    grado_docente: "PhD",
-  },
-};
-
-const ReduxFormFields = [
-  "name",
-  "password",
-  "passwordConfirm",
-  "email",
-  "emailConfirm",
-  "born",
-  "gender",
-  "term",
-  "initial_formation",
-  "technology_in_teaching_and_learning",
-  "term",
-  "formation_level",
-  "cont_educ_in_the_use_of_digital_technologies",
-  "years_teaching",
-  "years_of_uses_technology_for_teaching",
-  "cargo_docente",
-  "grado_docente",
-];
-
-const saveUser = (fields) => {
-  //Convert from ReduxFormFields to UserModel
-  const userModel = reduxFormModelToUserModelConverter(fields);
+const saveUser = (userModel) => {
+  d("Saving", j(userModel));
+  return;
 
   const noLogin = true;
   const noaff = true;
@@ -193,101 +126,105 @@ const fieldsToArray = (fields) => keys(fields).map((k) => [k, fields[k].value]);
 
 const getFieldTranslatedName = (field) => FieldNames[field] || field;
 
-const validateModel = (fields) => {
+const validateModel = (userModel, fields) => {
   let errors = [];
 
+  //Check if all basic user fields are filled
   const ignoreFields = ["term"];
+  let allFieldsFilled = UserModel.filter(
+    (key) => !ignoreFields.includes(key)
+  ).reduce((acc, key) => {
+    const value = userModel[key];
+    return acc && !isEmpty(value);
+  }, true);
 
-  const allFilled = keys(fields)
-    .filter((k) => !ignoreFields.includes(k))
-    .reduce((acc, key) => {
-      const value = fields[key].value;
-      return acc && !isEmpty(value);
-    }, true);
-
-  if (!allFilled) {
+  if (!allFieldsFilled) {
     errors.push("Todos los campos son requeridos.");
   }
 
+  //Check user type fields
+  if (userModel.profile === "teacher") {
+    let allTeacherFieldsFilled = TeacherDataModel.reduce((acc, key) => {
+      const value = userModel.teacher_data[key];
+      return acc && !isEmpty(value);
+    }, true);
+    if (!allTeacherFieldsFilled) {
+      errors.push("Todos los campos son requeridos.");
+    }
+  } else {
+    let allPrincipalFieldsFilled = PrincipalDataModel.reduce((acc, key) => {
+      const value = userModel.principal_data[key];
+      return acc && !isEmpty(value);
+    }, true);
+    if (!allPrincipalFieldsFilled) {
+      errors.push("Todos los campos son requeridos.");
+    }
+  }
+
   //Check if the email is valid
-  if (
-    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(fields.email.value)
-  ) {
+  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userModel.email)) {
     errors.push("El correo electrónico no es válido.");
   }
 
   //check if emails match
-  if (fields.email.value !== fields.emailConfirm.value) {
+  if (userModel.email !== fields.emailConfirm.value) {
     errors.push("Los correos electrónicos no coinciden.");
   }
 
   //Check if passwords match
-  if (fields.password.value !== fields.passwordConfirm.value) {
+  if (userModel.password !== fields.passwordConfirm.value) {
     errors.push("Las contraseñas no coinciden.");
   }
 
   //Check password is at least 6 chars long
-  if (fields.password.value.length < 6) {
+  if (userModel.password.length < 6) {
     errors.push("La contraseña debe tener al menos 6 caracteres.");
   }
 
   //Check ToS are accepted
-  if (!fields.term.value) {
+  if (!userModel.term) {
     errors.push("Debes aceptar las Condiciones de uso de la Guía EduTec.");
   }
 
   return errors;
 };
 
-const reduxFormModelToUserModelConverter = (fields) => {
-  const userModel = {
-    profile: "teacher",
-  };
+const toString = (value) => (value || "").toString();
 
-  keys(fields).map((key) => {
-    userModel[key] = fields[key].value;
+const reduxFormModelToUserModelConverter = (fields) => {
+  const user = {};
+
+  //Map basic model fields to user object
+  UserModel.map((key) => {
+    user[key] = toString(fields[key].value);
   });
 
-  //Remove view-model properties
-  delete userModel.emailConfirm;
-  delete userModel.passwordConfirm;
+  //If profile is teacher, add teacher_data
+  if (user.profile === "teacher") {
+    user.teacher_data = {};
+    TeacherDataModel.map((key) => {
+      user.teacher_data[key] = toString(fields[key].value);
+    });
+  }
 
-  //Convert formation_level to object
-  userModel.formation_level = {
-    value: userModel.formation_level,
-    label: userModel.formation_level,
-    isDisabled: false,
-  };
+  //Principal
+  else {
+    user.principal_data = {};
+    PrincipalDataModel.map((key) => {
+      user.principal_data[key] = toString(fields[key].value);
+    });
+  }
 
-  //Add teacher_data
-  userModel.teacher_data = {
-    formation_level: userModel.formation_level.value,
-    cont_educ_in_the_use_of_digital_technologies:
-      userModel.technology_in_teaching_and_learning,
-    years_teaching: userModel.years_teaching,
-    years_of_uses_technology_for_teaching:
-      userModel.years_of_uses_technology_for_teaching,
-    technology_application: [],
-    cargo_docente: userModel.cargo_docente,
-    grado_docente: userModel.grado_docente,
-  };
-
-  //Remove teacher_data fields from main object
-  delete userModel.technology_in_teaching_and_learning;
-  delete userModel.years_teaching;
-  delete userModel.years_of_uses_technology_for_teaching;
-  delete userModel.technology_application;
-  delete userModel.cargo_docente;
-  delete userModel.grado_docente;
-
-  return userModel;
+  return user;
 };
 
-const SignUpForm = ({ intl, fields, submitting, handleSubmit }) => {
+const SignUpForm = ({ intl, fields, submitting, handleSubmit, profile }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const errors = validateModel(fields);
+    const userModel = reduxFormModelToUserModelConverter(fields);
+
+    const errors = validateModel(userModel, fields);
 
     if (!isEmpty(errors)) {
       const errs = errors.map((err) => `- ${err}`).join("\n");
@@ -295,7 +232,7 @@ const SignUpForm = ({ intl, fields, submitting, handleSubmit }) => {
       return;
     }
 
-    return saveUser(fields).then((res) => {
+    return saveUser(userModel).then((res) => {
       //Error
       if (isEmpty(res._id)) {
         let msg = keys(res)
@@ -316,8 +253,13 @@ const SignUpForm = ({ intl, fields, submitting, handleSubmit }) => {
 
   return (
     <form className={styles.form} onSubmit={onSubmit} id="SignUpForm">
-      <DatosPersonales l={l} fields={fields} />
-      <Formacion l={l} fields={fields} />
+      {profile}
+      <DatosPersonales l={l} fields={fields} profile={profile} />
+      {profile === "teacher" ? (
+        <FieldsTeacher l={l} fields={fields} />
+      ) : profile === "principal" ? (
+        <FieldsPrincipal l={l} fields={fields} />
+      ) : null}
       <ToS l={l} field={fields.term} />
       <div
         className={classnames(
@@ -338,7 +280,15 @@ const SignUpForm = ({ intl, fields, submitting, handleSubmit }) => {
   );
 };
 
-const Formacion = ({ l, fields }) => {
+const FieldsPrincipal = ({ l, fields }) => {
+  return (
+    <div className="box">
+      <h1 className={styles.title_section}>{l("SignUpForm.formation")}</h1>
+    </div>
+  );
+};
+
+const FieldsTeacher = ({ l, fields }) => {
   return (
     <div className="box">
       <h1 className={styles.title_section}>{l("SignUpForm.formation")}</h1>
@@ -348,7 +298,16 @@ const Formacion = ({ l, fields }) => {
         titleId="¿Cuál es tu mayor nivel de estudios alcanzado?"
         options={FormationLevelsOptns}
       />
-      <SelectField
+      <Field
+        label="¿Cuál fue el año de conclusión de tu formación inicial docente?"
+        classField="slim"
+        description="Por favor, ingresa solo el año."
+        {...f(fields.year_finished_formation)}
+        type="number"
+        min="1950"
+        max={new Date().getFullYear()}
+      />
+      {/* <SelectField
         l={l}
         field={fields.initial_formation}
         titleId="Tu formación inicial docente fue en"
@@ -372,16 +331,6 @@ const Formacion = ({ l, fields }) => {
         titleId="¿Cuántos años llevas enseñando?"
         options={YearsOptns}
       />
-      {/* TODO: field name needed */}
-      <Field
-        label="¿Cuál fue el año de conclusión de tu formación inicial docente?"
-        classField="slim"
-        description="Por favor, ingresa solo el año."
-        {...f(fields.born)}
-        type="number"
-        min="1950"
-        max={new Date().getFullYear()}
-      />
       <SelectField
         l={l}
         field={fields.cargo_docente}
@@ -399,12 +348,12 @@ const Formacion = ({ l, fields }) => {
         field={fields.years_of_uses_technology_for_teaching}
         titleId="¿Hace cuántos años usas tecnología en los procesos de enseñanza y aprendizaje?"
         options={YearsOptns}
-      />
+      /> */}
     </div>
   );
 };
 
-const DatosPersonales = ({ l, fields }) => {
+const DatosPersonales = ({ l, fields, profile }) => {
   //Default born value to today minus 18 years
   if (isEmpty(fields.born.value)) {
     const today = new Date();
@@ -416,9 +365,13 @@ const DatosPersonales = ({ l, fields }) => {
     fields.born.value = isoDate;
   }
 
+  //Set profile field
+  fields.profile.value = profile;
+
   return (
     <div className="box">
       <h1 className={styles.title_section}>{l("SignUpForm.personalData")}</h1>
+      <Field {...f(fields.profile)} type="hidden" />
       <Field
         label={l("SignUpForm.label.name")}
         classField="slim"
