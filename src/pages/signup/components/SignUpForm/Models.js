@@ -1,3 +1,12 @@
+/**
+ *
+ * Editing these models require also editing the backend models at
+ * app/controllers/api/v1/users_controller.rb
+ */
+
+/**
+ * Base user model applicable to all users
+ */
 const UserModel = [
   "profile",
   "name",
@@ -6,8 +15,17 @@ const UserModel = [
   "born",
   "gender",
   "term",
+
+  "country",
+  "province",
+  "state",
+  "city",
+  "school",
 ];
 
+/**
+ * Teacher specific data model
+ */
 const TeacherDataModel = [
   "formation_level",
   "year_finished_formation",
@@ -21,7 +39,12 @@ const TeacherDataModel = [
   //   "grado_docente",
 ];
 
+/**
+ * Principal specific data model
+ */
 const PrincipalDataModel = [];
+
+// Add other models here...
 
 module.exports = {
   UserModel,

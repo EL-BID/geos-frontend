@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { reduxForm } from "redux-form";
 import { compose } from "redux";
 import "url-search-params-polyfill";
@@ -8,12 +8,20 @@ import API from "~/api";
 import { FormattedMessage, injectIntl } from "react-intl";
 import parse from "html-react-parser";
 import { UserModel, TeacherDataModel, PrincipalDataModel } from "./Models";
+import { GenderOptns, FormationLevelsOptns } from "./SelectsOptions";
+
+//Form Elements
+// import SelectField from "./FormElements/SelectField";
+
+//Form Sections
+import DatosLaborables from "./FormSections/DatosLaborables";
 
 // Components
 import Field from "~/components/Form/Field";
 import SubmitBtn from "~/components/SubmitBtn";
 
 import ModalContainer from "~/containers/modal";
+import APIDataContainer from "~/containers/api_data";
 
 import styles from "../../signup.styl";
 import DatePicker from "react-datepicker";
@@ -39,78 +47,10 @@ const ReduxFormFields = concat(
 );
 
 const saveUser = (userModel) => {
-  d("Saving", j(userModel));
-  return;
-
   const noLogin = true;
   const noaff = true;
   return API.Users.create(userModel, noLogin, noaff);
 };
-
-const GenderOptns = [
-  { id: "Masculino", label: "Masculino" },
-  { id: "Femenino", label: "Femenino" },
-  { id: "Otro", label: "Otro" },
-  { id: "Prefiero no decirlo", label: "Prefiero no decirlo" },
-];
-
-const FormationLevelsOptns = [
-  { id: "Bachiller", label: "Bachiller" },
-  {
-    id: "Egresado de formación docente",
-    label: "Egresado de formación docente",
-  },
-  { id: "Licenciatura de grado", label: "Licenciatura de grado" },
-  { id: "Curso de posgrado", label: "Curso de posgrado" },
-  { id: "Maestría", label: "Maestría" },
-  { id: "Doctorado", label: "Doctorado" },
-];
-
-const InitialFormationOptns = [
-  { id: "Maestro de Primera Infancia", label: "Maestro de Primera Infancia" },
-  {
-    id: "Maestro de Educación Primaria",
-    label: "Maestro de Educación Primaria",
-  },
-  { id: "Profesor de Educación Media", label: "Profesor de Educación Media" },
-  { id: "Maestro / Profesor Técnico", label: "Maestro / Profesor Técnico" },
-  { id: "Otro", label: "Otro" },
-];
-
-const CourseModalityOptns = [
-  { id: "Presencial", label: "Presencial" },
-  { id: "Online", label: "Online" },
-  { id: "Ambas", label: "Ambas" },
-  { id: "No", label: "No" },
-];
-
-const YesNoOptns = [
-  { id: "Sí", label: "Sí" },
-  { id: "No", label: "No" },
-];
-
-const YearsOptns = [
-  { id: "Entre 1 y 3", label: "Entre 1 y 3" },
-  { id: "Entre 4 y 6", label: "Entre 4 y 6" },
-  { id: "Entre 7 y 9", label: "Entre 7 y 9" },
-  { id: "Más de 10 años", label: "Más de 10 años" },
-];
-
-const CargoDocenteOptns = [
-  { id: "Efectivo", label: "Efectivo" },
-  { id: "Interino", label: "Interino" },
-  { id: "Suplente", label: "Suplente" },
-];
-
-const OneToSevenOptns = [
-  { id: "1", label: "1" },
-  { id: "2", label: "2" },
-  { id: "3", label: "3" },
-  { id: "4", label: "4" },
-  { id: "5", label: "5" },
-  { id: "6", label: "6" },
-  { id: "7", label: "7" },
-];
 
 //Helper for destructuring ReduxForm fields
 const f = ({ value, onChange, checked, name, error }) => ({
@@ -124,66 +64,59 @@ const f = ({ value, onChange, checked, name, error }) => ({
 //Helper function to transform ReduxForm fields to array [key, value]
 const fieldsToArray = (fields) => keys(fields).map((k) => [k, fields[k].value]);
 
-const getFieldTranslatedName = (field) => FieldNames[field] || field;
-
-const validateModel = (userModel, fields) => {
+const validateModel = (userModel, fields, l) => {
+  let allFieldsFilled = true;
   let errors = [];
 
   //Check if all basic user fields are filled
   const ignoreFields = ["term"];
-  let allFieldsFilled = UserModel.filter(
+  allFieldsFilled = UserModel.filter(
     (key) => !ignoreFields.includes(key)
   ).reduce((acc, key) => {
     const value = userModel[key];
     return acc && !isEmpty(value);
-  }, true);
-
-  if (!allFieldsFilled) {
-    errors.push("Todos los campos son requeridos.");
-  }
+  }, allFieldsFilled);
 
   //Check user type fields
   if (userModel.profile === "teacher") {
-    let allTeacherFieldsFilled = TeacherDataModel.reduce((acc, key) => {
+    allFieldsFilled = TeacherDataModel.reduce((acc, key) => {
       const value = userModel.teacher_data[key];
       return acc && !isEmpty(value);
-    }, true);
-    if (!allTeacherFieldsFilled) {
-      errors.push("Todos los campos son requeridos.");
-    }
+    }, allFieldsFilled);
   } else {
-    let allPrincipalFieldsFilled = PrincipalDataModel.reduce((acc, key) => {
+    allFieldsFilled = PrincipalDataModel.reduce((acc, key) => {
       const value = userModel.principal_data[key];
       return acc && !isEmpty(value);
-    }, true);
-    if (!allPrincipalFieldsFilled) {
-      errors.push("Todos los campos son requeridos.");
-    }
+    }, allFieldsFilled);
+  }
+
+  if (!allFieldsFilled) {
+    errors.push(l(`SignUpForm.errors.allFieldsRequired`));
   }
 
   //Check if the email is valid
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userModel.email)) {
-    errors.push("El correo electrónico no es válido.");
+    errors.push(l(`SignUpForm.errors.email`));
   }
 
   //check if emails match
   if (userModel.email !== fields.emailConfirm.value) {
-    errors.push("Los correos electrónicos no coinciden.");
+    errors.push(l(`SignUpForm.errors.emailConfirm`));
   }
 
   //Check if passwords match
   if (userModel.password !== fields.passwordConfirm.value) {
-    errors.push("Las contraseñas no coinciden.");
+    errors.push(l(`SignUpForm.errors.passwordConfirm`));
   }
 
   //Check password is at least 6 chars long
   if (userModel.password.length < 6) {
-    errors.push("La contraseña debe tener al menos 6 caracteres.");
+    errors.push(l(`SignUpForm.errors.password`));
   }
 
   //Check ToS are accepted
   if (!userModel.term) {
-    errors.push("Debes aceptar las Condiciones de uso de la Guía EduTec.");
+    errors.push(l(`SignUpForm.errors.tos`));
   }
 
   return errors;
@@ -218,48 +151,108 @@ const reduxFormModelToUserModelConverter = (fields) => {
   return user;
 };
 
-const SignUpForm = ({ intl, fields, submitting, handleSubmit, profile }) => {
+const SignUpForm = ({
+  intl,
+  fields,
+  submitting,
+  handleSubmit,
+  profile,
+  apiData,
+  fetchCountries,
+  fetchProvinces,
+  fetchStates,
+  fetchCities,
+  fetchSchools,
+}) => {
+  //Helper for internationalization
+  const l = (id) => intl.formatMessage({ id });
+
+  //OnMount
+  useEffect(() => {
+    //Fetch countries
+    if (isEmpty(apiData.countries)) {
+      fetchCountries();
+    }
+  }, []);
+
+  //Watcher: provinces
+  useEffect(() => {
+    const idCountry = fields.country.value;
+    if (!isEmpty(idCountry)) {
+      fetchProvinces(idCountry);
+    }
+  }, [fields.country]);
+
+  //Watcher: states
+  useEffect(() => {
+    const idCountry = fields.country.value;
+    const idProvince = fields.province.value;
+    if (!isEmpty(idCountry) && !isEmpty(idProvince)) {
+      fetchStates(idCountry, idProvince);
+    }
+  }, [fields.province]);
+
+  //Watcher: cities
+  useEffect(() => {
+    const idCountry = fields.country.value;
+    const idProvince = fields.province.value;
+    const idState = fields.state.value;
+    if (!isEmpty(idCountry) && !isEmpty(idProvince) && !isEmpty(idState)) {
+      fetchCities(idCountry, idProvince, idState);
+    }
+  }, [fields.state]);
+
+  //Watcher: schools
+  useEffect(() => {
+    const idCountry = fields.country.value;
+    const idProvince = fields.province.value;
+    const idState = fields.state.value;
+    const idCity = fields.city.value;
+    if (
+      !isEmpty(idCountry) &&
+      !isEmpty(idProvince) &&
+      !isEmpty(idState) &&
+      !isEmpty(idCity)
+    ) {
+      fetchSchools(idCountry, idProvince, idState, idCity);
+    }
+  }, [fields.city]);
+
   const onSubmit = (e) => {
     e.preventDefault();
-
     const userModel = reduxFormModelToUserModelConverter(fields);
-
-    const errors = validateModel(userModel, fields);
+    const errors = validateModel(userModel, fields, l);
 
     if (!isEmpty(errors)) {
       const errs = errors.map((err) => `- ${err}`).join("\n");
-      alert(`Se encontraron algunos errores:\n${errs}`);
-      return;
+      return alert(`${l("SignUpForm.errors.found")}:\n${errs}`);
     }
 
     return saveUser(userModel).then((res) => {
       //Error
       if (isEmpty(res._id)) {
         let msg = keys(res)
-          .map((key) => `- ${getFieldTranslatedName(key)}: ${res[key]}`)
+          .map((key) => `- ${l(`SignUpForm.label.${key}`)}: ${res[key]}`)
           .join("\n");
-        alert(`Se encontraron algunos errores:\n${msg}`);
+        alert(`${l("SignUpForm.errors.found")}:\n${msg}`);
       }
       //Success
       else {
-        alert("Usuario creado con éxito");
+        alert(`SignUpForm.success`);
         window.location = "/listar-usuario/professores";
       }
     });
   };
 
-  //Helper for internationalization
-  const l = (id) => intl.formatMessage({ id });
-
   return (
     <form className={styles.form} onSubmit={onSubmit} id="SignUpForm">
-      {profile}
-      <DatosPersonales l={l} fields={fields} profile={profile} />
-      {profile === "teacher" ? (
+      {/* <DatosPersonales l={l} fields={fields} profile={profile} /> */}
+      <DatosLaborables l={l} fields={fields} apiData={apiData} />
+      {/* {profile === "teacher" ? (
         <FieldsTeacher l={l} fields={fields} />
       ) : profile === "principal" ? (
         <FieldsPrincipal l={l} fields={fields} />
-      ) : null}
+      ) : null} */}
       <ToS l={l} field={fields.term} />
       <div
         className={classnames(
@@ -393,8 +386,8 @@ const DatosPersonales = ({ l, fields, profile }) => {
             l={l}
             field={fields.gender}
             options={GenderOptns}
-            titleId="¿Con cuál género te identificas?"
-            descrId="Por favor selecciona"
+            titleId={l("SignUpForm.label.gender")}
+            descrId={l("SignUpForm.help.pleaseSelect")}
           />
         </div>
       </div>
@@ -420,7 +413,7 @@ const DatosPersonales = ({ l, fields, profile }) => {
         <div className="column">
           <Field
             label={l("SignUpForm.label.password")}
-            description={"Debe contener al menos 6 caracteres"}
+            description={l("SignUpForm.help.password")}
             type="password"
             classField="slim"
             {...f(fields.password)}
@@ -429,39 +422,12 @@ const DatosPersonales = ({ l, fields, profile }) => {
         <div className="column">
           <Field
             label={l("SignUpForm.label.confirmPassword")}
-            description={"Repita la contraseña nuevamente"}
+            description={l("SignUpForm.help.confirmPassword")}
             type="password"
             classField="slim"
             {...f(fields.passwordConfirm)}
           />
         </div>
-      </div>
-    </div>
-  );
-};
-
-const SelectField = ({ l, field, titleId, descrId, options }) => {
-  return (
-    <div>
-      <label className={classnames("label", styles.form__label)}>
-        {l(titleId)}
-      </label>
-      {descrId && (
-        <div className={classnames("is-small", styles.field__description)}>
-          {parse(l(descrId))}
-        </div>
-      )}
-      <div className={classnames("control")}>
-        <span className={classnames("select", styles.form__select)}>
-          <select {...f(field)}>
-            <option value="">Seleccione</option>
-            {options.map(({ id, label }) => (
-              <option key={id} value={l(id)}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </span>
       </div>
     </div>
   );
@@ -500,9 +466,6 @@ const DateField = ({
           {...attrs}
         />
       </div>
-      <i
-        className={classnames("fas fa-calendar-alt", styles.field__calendar)}
-      ></i>
       {field.error && <span className="help is-danger">{field.error}</span>}
     </div>
   );
@@ -515,11 +478,7 @@ const ToS = ({ l, field }) => {
       <FormattedMessage
         id="SignUpForm.acceptTermsOfUse"
         values={{
-          termsOfUseLink: (
-            <a onClick={() => field.onChange(1)}>
-              {"Términos y condiciones, y el Aviso de privacidad"}
-            </a>
-          ),
+          termsOfUseLink: <a>{l("SignUpForm.termsOfUse")}</a>,
         }}
       />
     </div>
@@ -532,5 +491,5 @@ export default injectIntl(
   reduxForm({
     form: "signUpForm",
     fields: ReduxFormFields,
-  })(compose(ModalContainer)(SignUpForm))
+  })(compose(APIDataContainer, ModalContainer)(SignUpForm))
 );

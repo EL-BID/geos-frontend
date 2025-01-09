@@ -1,7 +1,7 @@
 {
 	"status": "SUCCESS",
 	"message": "Translation found",
-	"version": 2,
+	"version": 3,
 	"data": [
 		{
 			"AcknowledgmentDevolutive": {
@@ -2234,7 +2234,7 @@
 				"professionalsData": "Datos laborales",
 				"formation": "Formación",
 				"label": {
-					"name": "Nombre",
+					"name": "Nombre y apellido",
 					"cpf": "Documento nacional de identidad",
 					"birthDate": "Fecha de nacimiento",
 					"email": "Correo electrónico",
@@ -2244,11 +2244,13 @@
 					"region": "País",
 					"province": "Nivel geográfico 2",
 					"state": "Nivel geográfico 3",
+					"city": "Nivel geográfico 4",
+					"school": "Centro Educativo",
 					"teachingStages": "Etapas de la educación",
 					"knowledges": "Área de conocimiento / Componente del plan de estudios",
 					"formation": "¿A lo largo de tu carrera, has realizado o estás realizando alguna formación en innovación y tecnología?",
 					"formationLevel": "¿Cuál es tu mayor grado de estudios?",
-					"gender": "¿Cuál es tu género?",
+					"gender": "¿Con cuál género te identificas?",
 					"initial_formation": "Tu formación inicial docente fue en:",
 					"final_year_of_initial_formation": "¿Cuál fue el año de conclusión de tu formación inicial doocente?",
 					"internship_practice": "¿En tu formación inicial docente, has tenido práctica de pasantía?",
@@ -2260,7 +2262,10 @@
 					"years_of_uses_technology_for_teaching": "¿Hace cuántos años usas tecnología en los procesos de enseñanza y aprendizaje?",
 					"technology_application": "¿Cómo se aplica la tecnología en los procesos de enseñanza y aprendizaje?"
 				},
-				"description": {
+				"help": {
+					"pleaseSelect": "Por favor, seleccione",
+					"password": "La contraseña debe tener al menos 6 caracteres",
+					"confirmPassword": "Repita la contraseña nuevamente",
 					"cpf": "Introduce solo los números",
 					"birthDate": "Formato correcto DD/MM/AAAA",
 					"email": "Introduce una dirección de correo electrónico válida"
@@ -2273,9 +2278,8 @@
 				"formationTitle": "Formación",
 				"yes": "Si",
 				"no": "No",
-				"acceptTermsOfUse": "He leido y acepto los {termsOfUseLink}, y el {privacyNoticeLink} de la Guía Edutec.",
-				"termsOfUse": "Términos y condiciones",
-				"privacyNotice": "Aviso de privacidad",
+				"acceptTermsOfUse": "He leido y acepto los {termsOfUseLink} de la Guía Edutec.",
+				"termsOfUse": "Términos y condiciones, y el Aviso de privacidad",
 				"termsOfUseAndDataSharing": "Condiciones de uso e intercambio de datos",
 				"btnSave": "Guardar",
 				"shareData": "Compartir datos con la red educativa",
@@ -2295,11 +2299,19 @@
 				"deleteAccount": "DESEO BORRAR MI CUENTA",
 				"noLink": "No me gustaría identificar mis datos laborales",
 				"withLink": "Me gustaría identificar mis datos laborales",
-				"gender": {
-					"masculine": "Masculino",
-					"feminine": "Femenino",
-					"others": "Otros",
-					"preferNotToSay": "Prefiero no decirlo"
+				"GenderOptns": {
+					"male": "Masculino",
+					"female": "Femenino",
+					"other": "Otro",
+					"prefer_not_to_say": "Prefiero no decirlo"
+				},
+				"FormationLevelsOptns": {
+					"graduate": "Bachiller",
+					"bachelor_degree": "Licenciatura de grado",
+					"teacher_graduate": "Egresado de formación docente",
+					"postgraduate": "Curso de posgrado",
+					"masters": "Maestría",
+					"phd": "Doctorado"
 				},
 				"initial_formation": {
 					"options": "Educación Inicial, Educación Primaria, Educación Secundaria"
@@ -2348,7 +2360,17 @@
 					"6": "Grupo de estudios",
 					"7": "Uso de herramientas"
 				},
-				"placeholderSelectOption": "Selecciona una opción"
+				"placeholderSelectOption": "Selecciona una opción",
+				"errors": {
+					"found": "Se encontraron algunos errores",
+					"allFieldsRequired": "Todos los campos son requeridos.",
+					"email": "El correo electrónico no es válido.",
+					"emailConfirm": "Los correos electrónicos no coinciden.",
+					"password": "La contraseña debe tener al menos 6 caracteres.",
+					"passwordConfirm": "Las contraseñas no coinciden.",
+					"tos": "Debe aceptar los Términos y condiciones, y el Aviso de privacidad de la Guía Edutec."
+				},
+				"success": "Usuario creado con éxito"
 			},
 			"SignUpFormAdminStates": {
 				"affiliationBox": {
