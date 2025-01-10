@@ -2251,16 +2251,18 @@
 					"formation": "¿A lo largo de tu carrera, has realizado o estás realizando alguna formación en innovación y tecnología?",
 					"formationLevel": "¿Cuál es tu mayor grado de estudios?",
 					"gender": "¿Con cuál género te identificas?",
+					"formation_level": "¿Cuál es tu mayor nivel de estudios alcanzado?",
+					"year_finished_formation": "¿Cuál fue el año de conclusión de tu formación inicial docente?",
 					"initial_formation": "Tu formación inicial docente fue en:",
 					"final_year_of_initial_formation": "¿Cuál fue el año de conclusión de tu formación inicial doocente?",
 					"internship_practice": "¿En tu formación inicial docente, has tenido práctica de pasantía?",
 					"institution_initial_formation": "¿Cuál es la institución de enseñanza en la que has estudiado (formación inicial docente)?",
-					"technology_in_teaching_and_learning": "¿Has tenido alguna disciplina o contenido para el uso de la tecnología en la enseñanza y el aprendizaje en tu formación inicial docente?",
+					"tech_in_teaching": "¿Has tenido alguna disciplina o contenido para el uso de la tecnología en la enseñanza y el aprendizaje en tu formación inicial docente?",
 					"course_modality": "¿Cuál ha sido la modalidad de tu formación inicial docente?",
-					"cont_educ_in_the_use_of_digital_technologies": "¿Has participado de formaciones continuas para el uso de tecnologías digitales en los procesos de enseñanza y de aprendizaje en los últimos 2 años?",
+					"formation_in_tech": "¿Has participado de formaciones continuas para el uso de tecnologías digitales en los procesos de enseñanza y de aprendizaje en los últimos 2 años?",
 					"years_teaching": "¿Cuántos años llevas enseñando?",
-					"years_of_uses_technology_for_teaching": "¿Hace cuántos años usas tecnología en los procesos de enseñanza y aprendizaje?",
-					"technology_application": "¿Cómo se aplica la tecnología en los procesos de enseñanza y aprendizaje?"
+					"years_using_tech": "¿Hace cuántos años usas tecnología en los procesos de enseñanza y aprendizaje?",
+					"tech_application": "¿Cómo se aplica la tecnología en los procesos de enseñanza y aprendizaje?"
 				},
 				"help": {
 					"pleaseSelect": "Por favor, seleccione",
@@ -2268,13 +2270,12 @@
 					"confirmPassword": "Repita la contraseña nuevamente",
 					"cpf": "Introduce solo los números",
 					"birthDate": "Formato correcto DD/MM/AAAA",
-					"email": "Introduce una dirección de correo electrónico válida"
+					"email": "Introduce una dirección de correo electrónico válida",
+					"year_finished_formation": "Por favor, ingrese sólo el año."
 				},
-				"selectRegion": "Seleccione una opción",
-				"selectState": "Seleccione una opción",
 				"loading": "Cargando...",
 				"noOptions": "No hay más opciones.",
-				"placeholderSelectOptions": "Selecciona una o varias opciones",
+				"placeholderSelectOptions": "Seleccione una o varias opciones",
 				"formationTitle": "Formación",
 				"yes": "Si",
 				"no": "No",
@@ -2313,54 +2314,54 @@
 					"masters": "Maestría",
 					"phd": "Doctorado"
 				},
-				"initial_formation": {
-					"options": "Educación Inicial, Educación Primaria, Educación Secundaria"
+				"InitialFormationOptns": {
+					"early_childhood_teacher": "Maestro de Primera Infancia",
+					"primary_education_teacher": "Maestro de Educación Primaria",
+					"secondary_education_teacher": "Profesor de Educación Media",
+					"technical_teacher": "Maestro/Profesor Técnico",
+					"other": "Otro"
 				},
-				"internship_practice": {
-					"0": "No tuve práctica de pasantía",
-					"1": "Sí, pero únicamente de observación",
-					"2": "Sí, pero no se exploró el uso de tecnologías y materiales digitales en los procesos de enseñanza y de aprendizaje",
-					"3": "Sí, y se exploró ampliamente el uso de tecnologías y materiales digitales en los procesos de enseñanza y aprendizaje"
+				"InternshipPracticeOptns": {
+					"no": "No tuve práctica de pasantía",
+					"yes_observational": "Sí, pero únicamente de observación",
+					"yes_non_explorative": "Sí, pero no se exploró el uso de tecnologías y materiales digitales en los procesos de enseñanza y de aprendizaje",
+					"yes_explorative": "Sí, y se exploró ampliamente el uso de tecnologías y materiales digitales en los procesos de enseñanza y aprendizaje"
 				},
-				"technology_in_teaching_and_learning": {
-					"yes": "Sí",
+				"CourseModalityOptns": {
+					"on_site": "Presencial",
+					"online": "En línea",
+					"mixed": "Ambas",
+					"none": "Ninguno"
+				},
+				"FormationInTechOptns": {
+					"on_site": "Sí, presencial",
+					"online": "Sí, en línea",
+					"mixed": "Sí, ambas",
 					"no": "No"
 				},
-				"course_modality": {
-					"inPerson": "Presencial",
-					"blended": "Semipresencial",
-					"fromADistance": "A distancia"
+				"YearsTeachingOptns": {
+					"between_1_and_3": "Entre 1 y 3 años",
+					"between_4_and_6": "Entre 4 y 6 años",
+					"between_7_and_9": "Entre 7 y 9 años",
+					"more_than_10_years": "Más de 10 años"
 				},
-				"cont_educ_in_the_use_of_digital_technologies": {
-					"0": "Si, online",
-					"1": "Si, presencial",
-					"2": "Si, ambas",
-					"3": "No"
+				"YearsUsingTechOptns": {
+					"no": "No uso",
+					"between_1_and_3": "Entre 1 y 3 años",
+					"between_4_and_6": "Entre 4 y 6 años",
+					"between_7_and_9": "Entre 7 y 9 años",
+					"more_than_10_years": "Más de 10 años"
 				},
-				"years_teaching": {
-					"0": "Entre 1 y 3 años",
-					"1": "Entre 4 y 6 años",
-					"2": "Entre 7 y 9 años",
-					"3": "Más de 10 años"
+				"TechApplicationOptns": {
+					"preparation_of_materials": "Preparación de materiales",
+					"asynchronous_learning": "Aprendizaje asincrónico",
+					"sending_emails": "Envío de e-mails",
+					"develop_online_tasks_evaluations": "Desarrollar tareas/evaluaciones online",
+					"bureaucratic_and_planning_tasks": "Tareas burocráticas y de planificación",
+					"conducting_research": "Realización de investigaciones",
+					"study_group": "Grupo de estudios",
+					"use_of_tools": "Uso de herramientas"
 				},
-				"years_of_uses_technology_for_teaching": {
-					"0": "No uso",
-					"1": "Entre 1 y 3 años",
-					"2": "Entre 4 y 6 años",
-					"3": "Entre 7 y 9 años",
-					"4": "Más de 10 años"
-				},
-				"technology_application": {
-					"0": "Preparación de materiales",
-					"1": "Aprendizaje asincrónico",
-					"2": "Envío de e-mails",
-					"3": "Desarrollar tareas/evaluaciones online",
-					"4": "Tareas burocráticas y de planificación",
-					"5": "Realización de investigaciones",
-					"6": "Grupo de estudios",
-					"7": "Uso de herramientas"
-				},
-				"placeholderSelectOption": "Selecciona una opción",
 				"errors": {
 					"found": "Se encontraron algunos errores",
 					"allFieldsRequired": "Todos los campos son requeridos.",

@@ -2,7 +2,7 @@
  * These options can change by deployment
  */
 
-const GenderOptns = [
+export const GenderOptns = [
   {
     id: "male",
     label: "SignUpForm.GenderOptns.male",
@@ -21,68 +21,106 @@ const GenderOptns = [
   },
 ];
 
-const FormationLevelsOptns = [
-  { id: "graduate", label: "SignUpForm.FormationLevelsOptns.graduate" },
+export const FormationLevelsOptns = [
+  { id: "graduate" },
+  { id: "teacher_graduate" },
+  { id: "bachelor_degree" },
+  { id: "postgraduate" },
+  { id: "masters" },
+  { id: "phd" },
+];
+for (const opt of FormationLevelsOptns) {
+  opt.label = `SignUpForm.FormationLevelsOptns.${opt.id}`;
+}
+
+export const InitialFormationOptns = [
+  { id: "early_childhood_teacher" },
+  { id: "primary_education_teacher" },
+  { id: "secondary_education_teacher" },
+  { id: "technical_teacher" },
+  { id: "other" },
+];
+for (const opt of InitialFormationOptns) {
+  opt.label = `SignUpForm.InitialFormationOptns.${opt.id}`;
+}
+
+export const InternshipPracticeOptns = [
+  { id: "no" },
+  { id: "yes_observational" },
+  { id: "yes_non_explorative" },
+  { id: "yes_explorative" },
+];
+for (const opt of InternshipPracticeOptns) {
+  opt.label = `SignUpForm.InternshipPracticeOptns.${opt.id}`;
+}
+
+export const CourseModalityOptns = [
+  { id: "on_site" },
+  { id: "online" },
+  { id: "mixed" },
+  { id: "none" },
+];
+for (const opt of CourseModalityOptns) {
+  opt.label = `SignUpForm.CourseModalityOptns.${opt.id}`;
+}
+
+export const FormationInTechOptns = [
+  { id: "on_site" },
+  { id: "online" },
+  { id: "mixed" },
+  { id: "no" },
+];
+for (const opt of FormationInTechOptns) {
+  opt.label = `SignUpForm.FormationInTechOptns.${opt.id}`;
+}
+
+export const YearsTeachingOptns = [
+  { id: "between_1_and_3" },
+  { id: "between_4_and_6" },
+  { id: "between_7_and_9" },
+  { id: "more_than_10_years" },
+];
+for (const opt of YearsTeachingOptns) {
+  opt.label = `SignUpForm.YearsTeachingOptns.${opt.id}`;
+}
+
+export const YearsUsingTechOptns = [
+  { id: "no" },
+  { id: "between_1_and_3" },
+  { id: "between_4_and_6" },
+  { id: "between_7_and_9" },
+  { id: "more_than_10_years" },
+];
+for (const opt of YearsUsingTechOptns) {
+  opt.label = `SignUpForm.YearsUsingTechOptns.${opt.id}`;
+}
+
+export const TechApplicationOptns = [
   {
-    id: "teacher_graduate",
-    label: "SignUpForm.FormationLevelsOptns.teacher_graduate",
+    id: "preparation_of_materials",
   },
   {
-    id: "bachelor_degree",
-    label: "SignUpForm.FormationLevelsOptns.bachelor_degree",
+    id: "asynchronous_learning",
   },
-  { id: "postgraduate", label: "SignUpForm.FormationLevelsOptns.postgraduate" },
-  { id: "masters", label: "SignUpForm.FormationLevelsOptns.masters" },
-  { id: "phd", label: "SignUpForm.FormationLevelsOptns.phd" },
-];
-
-const InitialFormationOptns = [
-  { id: "Maestro de Primera Infancia", label: "Maestro de Primera Infancia" },
   {
-    id: "Maestro de Educación Primaria",
-    label: "Maestro de Educación Primaria",
+    id: "sending_emails",
   },
-  { id: "Profesor de Educación Media", label: "Profesor de Educación Media" },
-  { id: "Maestro / Profesor Técnico", label: "Maestro / Profesor Técnico" },
-  { id: "Otro", label: "Otro" },
+  {
+    id: "develop_online_tasks_evaluations",
+  },
+  {
+    id: "bureaucratic_and_planning_tasks",
+  },
+  {
+    id: "conducting_research",
+  },
+  {
+    id: "study_group",
+  },
+  {
+    id: "use_of_tools",
+  },
 ];
-
-const CourseModalityOptns = [
-  { id: "Presencial", label: "Presencial" },
-  { id: "Online", label: "Online" },
-  { id: "Ambas", label: "Ambas" },
-  { id: "No", label: "No" },
-];
-
-const YesNoOptns = [
-  { id: "Sí", label: "Sí" },
-  { id: "No", label: "No" },
-];
-
-const YearsOptns = [
-  { id: "Entre 1 y 3", label: "Entre 1 y 3" },
-  { id: "Entre 4 y 6", label: "Entre 4 y 6" },
-  { id: "Entre 7 y 9", label: "Entre 7 y 9" },
-  { id: "Más de 10 años", label: "Más de 10 años" },
-];
-
-const CargoDocenteOptns = [
-  { id: "Efectivo", label: "Efectivo" },
-  { id: "Interino", label: "Interino" },
-  { id: "Suplente", label: "Suplente" },
-];
-
-const OneToSevenOptns = [
-  { id: "1", label: "1" },
-  { id: "2", label: "2" },
-  { id: "3", label: "3" },
-  { id: "4", label: "4" },
-  { id: "5", label: "5" },
-  { id: "6", label: "6" },
-  { id: "7", label: "7" },
-];
-
-module.exports = {
-  GenderOptns,
-  FormationLevelsOptns,
-};
+for (const opt of TechApplicationOptns) {
+  opt.label = `SignUpForm.TechApplicationOptns.${opt.id}`;
+}

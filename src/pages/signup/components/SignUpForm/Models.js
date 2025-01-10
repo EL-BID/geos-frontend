@@ -7,7 +7,7 @@
 /**
  * Base user model applicable to all users
  */
-const UserModel = [
+export const UserModel = [
   "profile",
   "name",
   "email",
@@ -26,28 +26,23 @@ const UserModel = [
 /**
  * Teacher specific data model
  */
-const TeacherDataModel = [
+export const TeacherDataModel = [
   "formation_level",
   "year_finished_formation",
-  //   "initial_formation",
-  //   "technology_in_teaching_and_learning",
-  //   "cont_educ_in_the_use_of_digital_technologies",
-  //   "years_teaching",
-  //   "years_of_uses_technology_for_teaching",
-  //   "technology_application",
-  //   "cargo_docente",
-  //   "grado_docente",
+  "initial_formation",
+  "internship_practice",
+  "institution_initial_formation",
+  "tech_in_teaching",
+  "course_modality",
+  "formation_in_tech",
+  "years_teaching",
+  "years_using_tech",
+  "tech_application",
 ];
 
 /**
  * Principal specific data model
  */
-const PrincipalDataModel = [];
+export const PrincipalDataModel = [];
 
 // Add other models here...
-
-module.exports = {
-  UserModel,
-  TeacherDataModel,
-  PrincipalDataModel,
-};
