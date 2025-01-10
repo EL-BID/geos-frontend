@@ -8,7 +8,7 @@
 				"acknowledgmentPrincipal": "¡Gracias por responder el cuestionario de diagnóstico de adopción de tecnología de la escuela!",
 				"acknowledgmentTeacher": "¡Gracias por realizar el diagnóstico de las habilidades digitales de los docentes!",
 				"devolutiveAccessPrincipal": "En unos minutos, recibirá un correo electrónico automático con una retroalimentación que contiene el nivel de adopción de tecnología de su escuela en cada dimensión analizada. También recibirá sugerencias de acciones concretas que puede tomar para garantizar que el uso de la tecnología contribuya cada vez más a la enseñanza y la gestión en su escuela.",
-				"devolutiveAccessTeacher": "A los pocos minutos recibirás un correo electrónico automático con un feedback con tu nivel de apropiación respecto al conocimiento y usos de las tecnologías digitales, además de consultar sugerencias para mejorar tus prácticas profesionales.",
+				"devolutiveAccessTeacher": "A los pocos minutos recibirás un correo electrónico automático con una retroalimentación con tu nivel de apropiación respecto al conocimiento y usos de las tecnologías digitales, además de consultar sugerencias para mejorar tus prácticas profesionales.",
 				"btnDevolutiveAccess": "ACCEDE A LA RETROALIMENTACIÓN"
 			},
 			"ActionsMenu": {
@@ -660,7 +660,7 @@
 				"contemporary": "\u003ch1\u003e Contemporaneidad \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Participación activa de los niños y jóvenes en el aprendizaje \u003c/li\u003e \u003cli\u003e Nuevos enfoques pedagógicos \u003c/li\u003e \u003cli\u003e Estímulos para la plena ciudadanía \u003c/li\u003e \u003cli\u003e Prácticas acordes con las mejores referencias internacionales adaptadas a la realidad local\u003c/li\u003e \u003c/ul\u003e",
 				"equity": "\u003ch1\u003e Equidad \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Ofrecer educación de calidad para todos los estudiantes \u003c/li\u003e \u003cli\u003e Dar acceso a contenidos y recursos digitales de calidad para estudiantes y docentes\n \u003c/li\u003e \u003cli\u003e     Incluir el alumnado con necesidades especiales\n \u003c/li\u003e \u003c/ul\u003e",
 				"management": "\u003ch1\u003e Gestión \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Proporcionar más eficiencia \u003c/li\u003e \u003cli\u003e Optimizar la asignación de recursos \u003c/li\u003e \u003cli\u003e Elaborar bases de datos (Big Data) \u003c/li\u003e \u003cli\u003e Dar información para apoyar en la toma de decisiones \u003c/li\u003e \u003c/ul\u003e",
-				"quality": "\u003ch1\u003e Calidad \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Personalizar la experiencia de aprendizaje \u003c/li\u003e \u003cli\u003e Responder a las diferentes realidades, ritmos y  necesidades del estudiante \u003c/li\u003e \u003cli\u003e Evaluar y dar un feedback a los educadores \u003c/ li\u003e \u003c/ul\u003e"
+				"quality": "\u003ch1\u003e Calidad \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Personalizar la experiencia de aprendizaje \u003c/li\u003e \u003cli\u003e Responder a las diferentes realidades, ritmos y  necesidades del estudiante \u003c/li\u003e \u003cli\u003e Evaluar y dar una retroalimentación a los educadores \u003c/ li\u003e \u003c/ul\u003e"
 			},
 			"Disclosure": {
 				"pageHeader": "Materiales de divulgación",
@@ -1237,7 +1237,7 @@
 				"mappingCollectionOfResponsesDescription": "El sistema organiza las respuestas de todos los/las docentes de la red educativa que han realizado el diagnóstico",
 				"mappingCollectionOfResponsesTitle": "Recogida de respuestas",
 				"mappingDescription": "Una plataforma que permite a la persona gestora conocer las competencias digitales de los docentes de su red y la orienta en el análisis crítico de las políticas, los programas y los proyectos de formación continua relacionados con las tecnologías que ya están en marcha en la red educativa o que deberían implementarse.",
-				"mappingDevolutiveDescription": "Al final de el diagnóstico, el/la docente recibe un feedback sobre su nivel de progreso.",
+				"mappingDevolutiveDescription": "Al final de el diagnóstico, el/la docente recibe una retroalimentación sobre su nivel de progreso.",
 				"mappingDevolutiveTitle": "Informe de resultados del/ de la docente",
 				"mappingQuestionsDescription": "El/la docente, de forma individual, responde al cuestionario",
 				"mappingQuestionsTitle": "Cuestionario",
@@ -1247,7 +1247,7 @@
 				"mappingReportTitle": "Informe de resultados del departamento de educación",
 				"mappingSectionDescription1": "El área de estudio detallado se divide en dos etapas.",
 				"mappingSectionDescription2": "Una de ellas es el estudio detallado de las acciones (políticas, programas, proyectos e iniciativas) que tuvieron lugar en la red educativa.",
-				"mappingSectionDescription3": "La otra es el estudio detallado de las competencias digitales. A través de la herramienta de Diagnóstico de Competencias Digitales del Docente, los docentes responden a un cuestionario en el que se analizan 12 competencias digitales. Tras responder al cuestionario, cada educador/a recibe un feedback —personalizado y en tiempo real— con su nivel de desarrollo en cuanto a conocimientos y usos de la tecnología y sugerencias de materiales que ayuden a su desarrollo profesional. Finalmente, las personas responsables del departamento pueden acceder a los datos recopilados de los docentes para analizarlos e identificar las demandas que deben conformar la planificación de la formación continua.",
+				"mappingSectionDescription3": "La otra es el estudio detallado de las competencias digitales. A través de la herramienta de Diagnóstico de Competencias Digitales del Docente, los docentes responden a un cuestionario en el que se analizan 12 competencias digitales. Tras responder al cuestionario, cada educador/a recibe una retroalimentación —personalizado y en tiempo real— con su nivel de desarrollo en cuanto a conocimientos y usos de la tecnología y sugerencias de materiales que ayuden a su desarrollo profesional. Finalmente, las personas responsables del departamento pueden acceder a los datos recopilados de los docentes para analizarlos e identificar las demandas que deben conformar la planificación de la formación continua.",
 				"mappingSectionTitle": "DIAGNÓSTICO",
 				"mappingSelfEvaluation": "Diagnóstico de las Competencias Digitales del Docente",
 				"mappingTitle": "Diagnóstico",
@@ -1499,12 +1499,12 @@
 				"continueSurvey": "CONTINUAR CON EL CUESTIONARIO",
 				"attention": "¡Atención",
 				"description1": "Para hacer un seguimiento de tu progreso, puedes volver a la herramienta de diagnóstico y responder al cuestionario de",
-				"description2": "Durante este tiempo, puedes acceder a los materiales indicados en tu feedback y buscar formaciones nuevas para desarrollarte profesionalmente.",
-				"historicTitle": "Historial de los cuestionarios y feedback",
+				"description2": "Durante este tiempo, puedes acceder a los materiales indicados en tu retroalimentación y buscar formaciones nuevas para desarrollarte profesionalmente.",
+				"historicTitle": "Historial de los cuestionarios y retroalimentación",
 				"in": "El",
 				"answered": "Respondido",
 				"devolutive": "Comentarios",
-				"accessDevolutive": "Ver feedback",
+				"accessDevolutive": "Ver retroalimentación",
 				"btnSchoolInventary": "INVENTARIO DE LAS INFRAESTRUCTURAS ESCOLARES",
 				"school": "Centro",
 				"title": "Cuestionario y comentarios",
