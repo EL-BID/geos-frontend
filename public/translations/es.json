@@ -36,7 +36,7 @@
 				"connectedSchoolMonitor": "Monitor Escuela Conectada",
 				"networksPanel": "Panel Redes",
 				"panels": "Paneles",
-				"selfEvaluationPanel": "Panel Autoevaluación",
+				"selfEvaluationPanel": "Panel Diagnóstico",
 				"home": "Comienzo",
 				"menu": "Menú",
 				"dashboard": {
@@ -263,7 +263,7 @@
 				"schoolSmallDescription": "ya han realizado el diagnóstico del grado de implementación de la tecnología.",
 				"schoolDescription": "realizaron el diagnóstico del nivel de implementación de la tecnología.",
 				"teachers": "Docentes",
-				"teacherSmallDescription": "que ya respondieron a la Autoevaluación de Competencias Digitales.",
+				"teacherSmallDescription": "que ya respondieron a el Diagnóstico de Competencias Digitales.",
 				"teacherDescription": "respondieron a el diagnóstico de las competencias digitales.",
 				"teste": "Testes",
 				"test": "Te"
@@ -355,10 +355,10 @@
 					"between": "Entre el",
 					"and": "y el",
 					"teachers": "docentes",
-					"info": "respondieron a la Autoevaluación de Competencias Digitales del Docente. Se trata de una herramienta en línea gratuita desarrollada por el CIEB (Centro de Innovación para la Educación Brasileña), con 23 preguntas de opción única divididas en 3 áreas (pedagogía, ciudadanía digital y desarrollo profesional), en la que se evalúan 12 competencias en 5 niveles de adquisición (exposición, familiarización, adaptación, integración y transformación). Al responder a este cuestionario, todo los docentes recibieron información personalizada, en la que se le indicaba en qué punto se encontraba, qué significaba y cómo podía mejorar su práctica profesional de forma inmediata y autónoma, basándose en directrices e indicaciones específicas.",
+					"info": "respondieron a el Diagnóstico de Competencias Digitales del Docente. Se trata de una herramienta en línea gratuita desarrollada por el CIEB (Centro de Innovación para la Educación Brasileña), con 23 preguntas de opción única divididas en 3 áreas (pedagogía, ciudadanía digital y desarrollo profesional), en la que se evalúan 12 competencias en 5 niveles de adquisición (exposición, familiarización, adaptación, integración y transformación). Al responder a este cuestionario, todo los docentes recibieron información personalizada, en la que se le indicaba en qué punto se encontraba, qué significaba y cómo podía mejorar su práctica profesional de forma inmediata y autónoma, basándose en directrices e indicaciones específicas.",
 					"obs": "según datos extraídos de la base nacional",
 					"thisDevolutive": "Estos resultados de la afiliación administrativa",
-					"info2": "consolidan todas las respuestas de los docentes de este departamento que respondieron a la Autoevaluación. El objetivo de este material es apoyar a los líderes regionales a tener un diagnóstico claro para que puedan planificar estrategias eficaces para desarrollar las competencias digitales de los docentes en una dirección, ofreciendo una formación más significativa y enfocada en el área de innovación y tecnología educativa.",
+					"info2": "consolidan todas las respuestas de los docentes de este departamento que respondieron a el Diagnóstico. El objetivo de este material es apoyar a los líderes regionales a tener un diagnóstico claro para que puedan planificar estrategias eficaces para desarrollar las competencias digitales de los docentes en una dirección, ofreciendo una formación más significativa y enfocada en el área de innovación y tecnología educativa.",
 					"report": "El informe se divide en dos partes",
 					"networkStatus": "Situación actual",
 					"teacherDstribution": "muestra la distribución de los docentes por nivel de adquisición en cada área y por competencias.",
@@ -368,7 +368,7 @@
 					"relation1": "(que corresponden al",
 					"relation2": "% de su red *)"
 				},
-				"title": "RESULTADOS: AUTOEVALUACIÓN DE LAS COMPETENCIAS DIGITALES DE LOS DOCENTES",
+				"title": "RESULTADOS: DIAGNÓSTICO DE LAS COMPETENCIAS DIGITALES DE LOS DOCENTES",
 				"filters": "Filtros",
 				"schoolsOrganization": "Organización Escolar",
 				"noOptions": "No hay más opciones.",
@@ -412,7 +412,7 @@
 				"critical": "Uso crítico",
 				"inclusion": "Inclusión",
 				"selfDevelopment": "Autodesarrollo",
-				"selfEvaluation": "Autoevaluación",
+				"selfEvaluation": "Diagnóstico",
 				"share": "Compartir",
 				"communication": "Comunicación",
 				"municipalTeachers": "Los valores presentados en el radar representan el promedio de los niveles de apropiación de los docentes de su Afiliación Administrativa para cada una de las competencias. Este promedio se puede comparar con el promedio nacional.",
@@ -437,7 +437,7 @@
 			},
 			"DevolutiveReport": {
 				"title.h1": "RETROALIMENTACIÓN",
-				"title.h2": "Autoevaluación de competencias digitales docentes",
+				"title.h2": "Diagnóstico de competencias digitales docentes",
 				"levels.0": "Exposición",
 				"levels.1": "Familiarización",
 				"levels.2": "Adaptación",
@@ -456,7 +456,7 @@
 				"instruction.comp.cid.us": "Uso seguro",
 				"instruction.comp.cid.in": "Inclusión",
 				"instruction.comp.des.ad": "Autodesarrollo",
-				"instruction.comp.des.aa": "Autoevaluación",
+				"instruction.comp.des.aa": "Diagnóstico",
 				"instruction.comp.des.cp": "Compartir",
 				"instruction.comp.des.cm": "Comunicación",
 				"label.div.txt1": "¿Dónde estoy?",
@@ -581,7 +581,7 @@
 					"description": "Ser capaz de usar tecnologías digitales en las actividades de formación continua y de desarrollo profesional."
 				},
 				"selfEvaluation": {
-					"title": "AUTOEVALUACIÓN",
+					"title": "DIAGNÓSTICO",
 					"description": "Ser capaz de utilizar las tecnologías digitales para evaluar su práctica docente e implementar acciones para mejorar.",
 					"adaptation": "Adaptación",
 					"allNetworks": "\nTodas las redes",
@@ -613,7 +613,7 @@
 					"responsibleUse": "Uso responsable",
 					"safeUse": "Uso seguro",
 					"selfDevelopment": "Autodesarrollo",
-					"selfEvaluation": "Autoevaluación",
+					"selfEvaluation": "Diagnóstico",
 					"sharing": "Compartir",
 					"affiliation": "Afiliación",
 					"distributionAnswersByCityAndState": "DISTRIBUCIÓN DE RESPUESTAS POR UBICACIÓN"
@@ -627,7 +627,7 @@
 					"description": "Ser capaz de utilizar tecnologías digitales para mantener una comunicación activa, sistemática y eficiente con los actores de mi comunidad educativa."
 				},
 				"tecnhicalNote": "¿Quieres saber más sobre los niveles de apropiación tecnológica y sus respectivos descriptores para cada una de las competencias? Lea la nota técnica ",
-				"tecnhicalNoteTextLink": "nº 15 Autoevaluación del docente de habilidades digitales.",
+				"tecnhicalNoteTextLink": "nº 15 Diagnóstico del docente de habilidades digitales.",
 				"knowMore": "Para aprender un poco más sobre la herramienta, consulte el ",
 				"quiz": "cuestionario",
 				"and": "y un",
@@ -665,13 +665,13 @@
 			"Disclosure": {
 				"pageHeader": "Materiales de divulgación",
 				"titleHelmet": "Materiales de divulgación",
-				"description1": "A continuación te ofrecemos sugerencias de actividades para ayudarte en el proceso de difusión e implementación de la Autoevaluación de las Competencias Digitales del Docente y hacer un estudio detallado de la red educativa.",
+				"description1": "A continuación te ofrecemos sugerencias de actividades para ayudarte en el proceso de difusión e implementación de el Diagnóstico de las Competencias Digitales del Docente y hacer un estudio detallado de la red educativa.",
 				"description2": "Estos materiales se actualizan constantemente, basándose en las experiencias de las redes educativas que aplican la Guía EduTec.",
 				"downloadFile": "Descarga el archivo:",
 				"here": "aquí",
 				"material1": {
 					"title": "Funciones del / de la Secretario/a",
-					"description": "Como primer paso para difundir la Autoevaluación de Competencias Digitales de los Docentes en la red, te aconsejamos que envíes correos electrónicos o cartas a todos los equipos directivos de los centros adjuntando una carta del Departamento de Educación, con la finalidad de informar y orientar sobre cómo acceder a la herramienta de la Guía EduTec. Esta función demuestra la seriedad e importancia de este proceso para la red.",
+					"description": "Como primer paso para difundir el Diagnóstico de Competencias Digitales de los Docentes en la red, te aconsejamos que envíes correos electrónicos o cartas a todos los equipos directivos de los centros adjuntando una carta del Departamento de Educación, con la finalidad de informar y orientar sobre cómo acceder a la herramienta de la Guía EduTec. Esta función demuestra la seriedad e importancia de este proceso para la red.",
 					"href": "https://drive.google.com/file/d/13qvboZ8rqpFcS21LigfV695ya4u2hqUz/view"
 				},
 				"material2": {
@@ -686,7 +686,7 @@
 				},
 				"material4": {
 					"title": "Ejemplo de correo electrónico para enviar a los docentes",
-					"description": "Para empezar a implementar la Autoevaluación de las Competencias Digitales del Docente, recomendamos enviar un correo electrónico a todos los equipos directivos de los centros para que compartan la información necesaria con el docente. El correo electrónico puede contener la carta firmada por el Secretario de Educación de tu red, el archivo de presentación y el tutorial para acceder a la herramienta.",
+					"description": "Para empezar a implementar el Diagnóstico de las Competencias Digitales del Docente, recomendamos enviar un correo electrónico a todos los equipos directivos de los centros para que compartan la información necesaria con el docente. El correo electrónico puede contener la carta firmada por el Secretario de Educación de tu red, el archivo de presentación y el tutorial para acceder a la herramienta.",
 					"href": "https://drive.google.com/file/d/1NxH_6rVMbc2rLS7BAa44T2pxYXPv-aou/view"
 				},
 				"material5": {
@@ -749,7 +749,7 @@
 						"scrollAnimationSpeed": 2000
 					},
 					"5": {
-						"next #tutorial-step-5": "En este apartado se encuentran todos los conceptos y herramientas relacionados con la dimensión Formación - como la Autoevaluación del Docente en Competencias Digitales y los Espacios de Formación y Experimentación en Tecnologías Educativas para Docentes (Efex).",
+						"next #tutorial-step-5": "En este apartado se encuentran todos los conceptos y herramientas relacionados con la dimensión Formación - como el Diagnóstico del Docente en Competencias Digitales y los Espacios de Formación y Experimentación en Tecnologías Educativas para Docentes (Efex).",
 						"scrollAnimationSpeed": 2000
 					},
 					"6": {
@@ -1150,14 +1150,14 @@
 				"responsesAlreadyRecorded": "Ya hay respuestas grabadas."
 			},
 			"LoginEducator": {
-				"title": "AUTOEVALUACIÓN DE {brIsHiddenMobile} COMPETENCIAS DIGITALES {brIsHiddenMobile}DE ",
+				"title": "DIAGNÓSTICO DE {brIsHiddenMobile} COMPETENCIAS DIGITALES {brIsHiddenMobile}DE ",
 				"teachers": "DOCENTES",
-				"whatIs": "¿Qué es la Autoevaluación?",
+				"whatIs": "¿Qué es el Diagnóstico?",
 				"descriptionSelfEvaluation": "Se trata de una herramienta en línea y gratuita* que permite a los docentes de educación básica identificar sus competencias digitales para desarrollarse profesionalmente.",
 				"titleWhyUse": "Por qué utilizarla",
 				"descriptionWhyUse": "Estimula el/la docente a ser el protagonista de su propio desarrollo profesional, orientando itinerarios que posibiliten transformaciones en su práctica pedagógica.",
 				"howWorks": "Ver cómo funciona",
-				"howWorksDescription": "La Autoevaluación de Competencias Digitales está compuesta por 23 preguntas distribuidas en tres áreas",
+				"howWorksDescription": "El Diagnóstico de Competencias Digitales está compuesta por 23 preguntas distribuidas en tres áreas",
 				"questions": "preguntas",
 				"areas": "áreas",
 				"competencies": "competencias",
@@ -1175,10 +1175,10 @@
 				"inclusion": "Inclusión",
 				"selfDevelopment": "Autodesarrollo",
 				"startNow": "Empieza ahora la {brIsHiddenTablet}",
-				"selfEvaluation": "Autoevaluación",
+				"selfEvaluation": "Diagnóstico",
 				"sharing": "Compartir",
 				"communication": "Comunicación",
-				"ownershipLevelsDescription": "El resultado de la Autoevaluación se expresa en un informe de resultados que muestra el perfil del / de la docente en cinco niveles de desarrollo, en cada área y en cada competencia:",
+				"ownershipLevelsDescription": "El resultado de el Diagnóstico se expresa en un informe de resultados que muestra el perfil del / de la docente en cinco niveles de desarrollo, en cada área y en cada competencia:",
 				"ownershipLevels": "Niveles de desarrollo",
 				"exposure": "Exposición",
 				"exposureDescription": "Cuando no se usan las tecnologías en la práctica docente o cuando el/la docente requiere del apoyo de un tercero para utilizarlas, y también cuando su uso es solo personal. El/la docente identifica las tecnologías como una herramienta, no como parte de la cultura digital.",
@@ -1197,7 +1197,7 @@
 				"devolutiveDescription": "El informe de resultados contiene directrices y orientaciones para tu desarrollo profesional.",
 				"notes1": "*La base conceptual de la herramienta fue desarrollada por EL CIEB en colaboración con el Instituto Natura y la red Escola Digital. El contenido de este sitio fue desarrollado por el CIEB.",
 				"videoSrcSelfEvaluation": "//www.youtube.com/embed/-EDSndUuK-8",
-				"startNowSelfEvaluation": "Autoevaluación"
+				"startNowSelfEvaluation": "Diagnóstico"
 			},
 			"LoginManager": {
 				"accessionDescription": "El Departamento de Educación solicita la inscripción gratuita a la Guía EduTec, indicando un responsable que recibe el usuario y la contraseña de la plataforma.",
@@ -1247,12 +1247,12 @@
 				"mappingReportTitle": "Informe de resultados del departamento de educación",
 				"mappingSectionDescription1": "El área de estudio detallado se divide en dos etapas.",
 				"mappingSectionDescription2": "Una de ellas es el estudio detallado de las acciones (políticas, programas, proyectos e iniciativas) que tuvieron lugar en la red educativa.",
-				"mappingSectionDescription3": "La otra es el estudio detallado de las competencias digitales. A través de la herramienta de Autoevaluación de Competencias Digitales del Docente, los docentes responden a un cuestionario en el que se analizan 12 competencias digitales. Tras responder al cuestionario, cada educador/a recibe un feedback —personalizado y en tiempo real— con su nivel de desarrollo en cuanto a conocimientos y usos de la tecnología y sugerencias de materiales que ayuden a su desarrollo profesional. Finalmente, las personas responsables del departamento pueden acceder a los datos recopilados de los docentes para analizarlos e identificar las demandas que deben conformar la planificación de la formación continua.",
-				"mappingSectionTitle": "AUTOEVALUACIÓN",
-				"mappingSelfEvaluation": "Autoevaluación de las Competencias Digitales del Docente",
-				"mappingTitle": "Autoevaluación",
+				"mappingSectionDescription3": "La otra es el estudio detallado de las competencias digitales. A través de la herramienta de Diagnóstico de Competencias Digitales del Docente, los docentes responden a un cuestionario en el que se analizan 12 competencias digitales. Tras responder al cuestionario, cada educador/a recibe un feedback —personalizado y en tiempo real— con su nivel de desarrollo en cuanto a conocimientos y usos de la tecnología y sugerencias de materiales que ayuden a su desarrollo profesional. Finalmente, las personas responsables del departamento pueden acceder a los datos recopilados de los docentes para analizarlos e identificar las demandas que deben conformar la planificación de la formación continua.",
+				"mappingSectionTitle": "DIAGNÓSTICO",
+				"mappingSelfEvaluation": "Diagnóstico de las Competencias Digitales del Docente",
+				"mappingTitle": "Diagnóstico",
 				"mappingToolsDescription": "Elabora un mapa sobre las competencias digitales de los docentes y planifica una formación adecuada al perfil y a las necesidades de la red educativa. Identifica también las políticas, los programas y los proyectos que ya están en marcha en la red.",
-				"mappingToolsTitle": "HERRAMIENTAS DE AUTOEVALUACIÓN",
+				"mappingToolsTitle": "HERRAMIENTAS DE DIAGNÓSTICO",
 				"title": "Conociendo el nivel de implementación de las tecnologías digitales en los centros y el nivel de competencias digitales de los docentes",
 				"whatIsDescription": "Consulta aquí cómo acceder y a la Guía EduTec y qué puedes encontrar:",
 				"whatIsTitle": "Desarrollado por el CIEB, el portal de la Guía EduTec ofrece dos herramientas: el módulo de diagnóstico / la Guía EduTec y el diagnóstico de las competencias digitales de los docentes. La primera identifica el nivel de implementación de las tecnologías digitales en los centros y proporciona informes por centro y red educativa; mientras que la segunda evalúa el desarrollo de las competencias digitales de los docentes y genera informes individuales y globales.",
@@ -1399,7 +1399,7 @@
 			},
 			"PageHeader": {
 				"hello": "¡Hola",
-				"teacherMsg": "La Autoevaluación de las Habilidades Digitales de los Docentes es una herramienta en línea y gratuita que permite la identificación de habilidades digitales.",
+				"teacherMsg": "El Diagnóstico de las Habilidades Digitales de los Docentes es una herramienta en línea y gratuita que permite la identificación de habilidades digitales.",
 				"inovationTechPlanText": "plan de innovación y tecnología",
 				"videoLinkText": "vídeo",
 				"videoUrlTeacher": "https://www.youtube.com/embed/ob3H_KmGGvU?rel=0\u0026amp;showinfo=0",
@@ -1417,7 +1417,7 @@
 				"fourDimensionsTitle": "CONOCE LAS CUATRO DIMENSIONES EN EL USO DE LA TECNOLOGÍA",
 				"teacherSelfEvaluationDescription": "Realiza el estudio detallado de las competencias digitales de los docentes en tu red y conoce el perfil de los docentes en cuanto a la implementación de la tecnología.",
 				"teacherSelfEvaluationLink": "DEFINIR EL PROFESORADO",
-				"teacherSelfEvaluationTitle": "Autoevaluación de los docentes",
+				"teacherSelfEvaluationTitle": "Diagnóstico de los docentes",
 				"degree": "CAPACITACIÓN",
 				"tool": "Herramienta",
 				"trainingDegree": "CAPACITACIÓN / FORMACIÓN",
@@ -2221,7 +2221,7 @@
 				"helmetTitle": "Regístrese",
 				"firstAccessTitle": "Primer acceso de los ",
 				"teacher": "DOCENTES",
-				"descriptionTeacher1": "La herramienta de Autoevaluación de las Competencias Digitales de los/las docentes se elaboró de tal forma que la respondieran los/las ",
+				"descriptionTeacher1": "La herramienta de Diagnóstico de las Competencias Digitales de los/las docentes se elaboró de tal forma que la respondieran los/las ",
 				"descriptionTeacher2": "docentes de educación básica.",
 				"director": "DIRECTORES",
 				"descriptionDirector1": "El cuestionario para el diagnóstico del nivel de implementación de la tecnología en la escuela fue elaborado con la finalidad de que sea respondido por la dirección de la escuela.",
@@ -2288,7 +2288,7 @@
 				"radioNoAcceptshareDataDescription": "Si la secretaría tiene acceso a los datos nominales de los docentes, es posible identificar las demandas e intereses de cada uno y, con ello, diseñar una formación focalizada y significativa. ¿Estás seguro de que prefieres compartir de forma anónima?",
 				"notificationNoSharingAnswers": "Si el Departamento de Educación tiene acceso a los datos nominales de los docentes, es posible identificar las demandas e intereses de cada uno y, con ello, diseñar una formación dirigida y significativa. ¿Estás seguro de que prefieres compartir de forma anónima?",
 				"register": "REGISTRARSE",
-				"termsOfUseModalTitle": "Términos de uso - Guía EduTec Autoevaluación de Competencia Digital de Docentes",
+				"termsOfUseModalTitle": "Términos de uso - Guía EduTec Diagnóstico de Competencia Digital de Docentes",
 				"titleVerificationModal": "VERIFICACIÓN DE DATOS DE REGISTRO",
 				"questionVerificationModal": "¿Es usted docente de este centro educativo?",
 				"placeholderStages": "Seleccione una opción",
