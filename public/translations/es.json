@@ -6,7 +6,7 @@
 		{
 			"AcknowledgmentDevolutive": {
 				"acknowledgmentPrincipal": "¡Gracias por responder el cuestionario de diagnóstico de adopción de tecnología de la escuela!",
-				"acknowledgmentTeacher": "¡Gracias por realizar la autoevaluación de las habilidades digitales de los docentes!",
+				"acknowledgmentTeacher": "¡Gracias por realizar el diagnóstico de las habilidades digitales de los docentes!",
 				"devolutiveAccessPrincipal": "En unos minutos, recibirá un correo electrónico automático con una retroalimentación que contiene el nivel de adopción de tecnología de su escuela en cada dimensión analizada. También recibirá sugerencias de acciones concretas que puede tomar para garantizar que el uso de la tecnología contribuya cada vez más a la enseñanza y la gestión en su escuela.",
 				"devolutiveAccessTeacher": "A los pocos minutos recibirás un correo electrónico automático con un feedback con tu nivel de apropiación respecto al conocimiento y usos de las tecnologías digitales, además de consultar sugerencias para mejorar tus prácticas profesionales.",
 				"btnDevolutiveAccess": "ACCEDE A LA RETROALIMENTACIÓN"
@@ -264,7 +264,7 @@
 				"schoolDescription": "realizaron el diagnóstico del nivel de implementación de la tecnología.",
 				"teachers": "Docentes",
 				"teacherSmallDescription": "que ya respondieron a la Autoevaluación de Competencias Digitales.",
-				"teacherDescription": "respondieron a la autoevaluación de las competencias digitales.",
+				"teacherDescription": "respondieron a el diagnóstico de las competencias digitales.",
 				"teste": "Testes",
 				"test": "Te"
 			},
@@ -388,7 +388,7 @@
 				"dataVisualization": "Visualización de datos",
 				"selectVisualizationType": "Seleccione el tipo de visualización de datos que desee",
 				"currentSituation": "Situación actual",
-				"generalInfo": "Información general sobre las respuestas de los docentes a la autoevaluación: número de docentes por nivel de adquisición en cada área y por competencias.",
+				"generalInfo": "Información general sobre las respuestas de los docentes a el diagnóstico: número de docentes por nivel de adquisición en cada área y por competencias.",
 				"comparative": "Análisis comparativa",
 				"networkComparison": "Comparación entre los resultados de tu Afiliación Administrativa y los resultados nacionales.",
 				"transformation": "Transformación",
@@ -402,7 +402,7 @@
 				"displayValuesChart": "Mostrar los valores en el gráfico",
 				"infoColor": "Cuanto más oscuro sea el color, mayor será el número de docentes en ese nivel de adquisición.",
 				"comparasionEducationNetworks": "COMPARATIVO",
-				"totalAnsweredNetwork": "Número total de docentes de su Afiliación Administrativa que respondieron a la autoevaluación",
+				"totalAnsweredNetwork": "Número total de docentes de su Afiliación Administrativa que respondieron a el diagnóstico",
 				"pedagogicalPractice": "Práctica Pedagógica",
 				"evaluation": "Evaluación",
 				"customization": "Personalización",
@@ -530,14 +530,14 @@
 				"titleHelmet": "Mapeamento de competências digitais de professores",
 				"description": " Este es el entorno de administración y configuración de la herramienta de mapeo. Siga los pasos y personalice la Guía EduTec - Mapeo de competencias digitales de los docentes.",
 				"mappingFrequency": "FRECUENCIA DEL ESTUDIO DETALLADO",
-				"mappingFrequencyDescription": "Personaliza el periodo mínimo en el que tus docentes de la red pueden volver a la herramienta y realizar de nuevo la autoevaluación.",
+				"mappingFrequencyDescription": "Personaliza el periodo mínimo en el que tus docentes de la red pueden volver a la herramienta y realizar de nuevo el diagnóstico.",
 				"materials": "MATERIALES DE DIVULGACIÓN",
 				"materialsDescription": "Organiza acciones de divulgación con la ayuda de algunos de los materiales que hemos preparado.",
 				"result": "ANÁLISIS DE LOS RESULTADOS",
 				"resultDescription": "Implementa la Guía EduTec - Estudio detallado de las competencias digitales de los docentes en tu dirección regional y descubre cuál es el perfil de los docentes en cuanto a la implementación de la tecnología.",
-				"description2": "El estudio detallado del perfil de los docentes se realiza a través de la herramienta en línea de autoevaluación de las competencias digitales de los docentes.",
+				"description2": "El estudio detallado del perfil de los docentes se realiza a través de la herramienta en línea de diagnóstico de las competencias digitales de los docentes.",
 				"description3": "Esta herramienta permite a los docentes de primaria identificar su nivel de adquisición y conocimiento de las tecnologías digitales.",
-				"skillsDescription": "Conozca las 12 competencias digitales que están siendo evaluadas en la autoevaluación",
+				"skillsDescription": "Conozca las 12 competencias digitales que están siendo evaluadas en el diagnóstico",
 				"skillsMatrix": "Matriz de competencias digitales de los docentes- CIEB",
 				"areas": "ÁREAS",
 				"skills": "COMPETENCIAS",
@@ -676,7 +676,7 @@
 				},
 				"material2": {
 					"title": "Presentación y tutorial para las personas gestoras",
-					"description": "Este documento contiene una presentación rápida y sencilla sobre la autoevaluación de las competencias digitales de los docentes, así como un tutorial para que los jefes de sección puedan acceder y utilizar la herramienta de estudio detallado de las competencias digitales. Te sugerimos que los gestores lean el documento, que contiene directrices para acceder a la herramienta, y los datos recogidos.",
+					"description": "Este documento contiene una presentación rápida y sencilla sobre el diagnóstico de las competencias digitales de los docentes, así como un tutorial para que los jefes de sección puedan acceder y utilizar la herramienta de estudio detallado de las competencias digitales. Te sugerimos que los gestores lean el documento, que contiene directrices para acceder a la herramienta, y los datos recogidos.",
 					"href": "https://drive.google.com/file/d/1Jr1j9jGFOUk5ecEyk83zFx3drUEd1OO5/view"
 				},
 				"material3": {
@@ -691,7 +691,7 @@
 				},
 				"material5": {
 					"title": "Cartel para la difusión en las escuelas",
-					"description": "Este archivo hace referencia a un póster que puede imprimirse y colgarse en un panel o en las paredes de los centros para que los docentes lo puedan ver y se sientan invitados a acceder a la herramienta de autoevaluación.",
+					"description": "Este archivo hace referencia a un póster que puede imprimirse y colgarse en un panel o en las paredes de los centros para que los docentes lo puedan ver y se sientan invitados a acceder a la herramienta de diagnóstico.",
 					"href": "https://drive.google.com/file/d/1S6SUubyHCwXLMgROZ6pco8cGB20pdVqp/view"
 				},
 				"material6": {
@@ -718,11 +718,11 @@
 						"scrollAnimationSpeed": 2000
 					},
 					"1": {
-						"next #tutorial-step-1": "Aquí puede comenzar o continuar completando el cuestionario. Encontrarás consejos para realizar la autoevaluación, las preguntas están divididas por áreas y, al final, tendrás acceso a la retroalimentación. También se enviará a su correo electrónico.",
+						"next #tutorial-step-1": "Aquí puede comenzar o continuar completando el cuestionario. Encontrarás consejos para realizar el diagnóstico, las preguntas están divididas por áreas y, al final, tendrás acceso a la retroalimentación. También se enviará a su correo electrónico.",
 						"scrollAnimationSpeed": 2000
 					},
 					"2": {
-						"click #tutorial-step-2": "Puedes imprimir el cuestionario y el resultado de tu autoevaluación sobre competencias digitales para consultar posteriormente. Simplemente haga clic aquí y descargue el archivo.",
+						"click #tutorial-step-2": "Puedes imprimir el cuestionario y el resultado de tu diagnóstico sobre competencias digitales para consultar posteriormente. Simplemente haga clic aquí y descargue el archivo.",
 						"scrollAnimationSpeed": 2000,
 						"showNext": false
 					}
@@ -891,8 +891,8 @@
 			},
 			"FrequencyAnswers": {
 				"btnSave": "Guardar",
-				"description": "\u003cp\u003e Para que la red educativa siga el progreso de los docentes, deben responder el cuestionario de autoevaluación más de una vez. De esta forma, se recopilan nuevos datos, permitiendo una comparación con los datos anteriores e identificando cambios en la red. \u003c/p\u003e \u003cp\u003e En este apartado, debes definir el período mínimo para que los docentes de tu red puedan volver a responder el cuestionario de autoevaluación. Elija, a continuación, el número de meses que debe esperar el docente para hacer un nuevo diagnóstico de sus competencias. \u003c/p\u003e",
-				"description2": "Seleccione el número de meses que el docente debe esperar para volver a realizar la autoevaluación.",
+				"description": "\u003cp\u003e Para que la red educativa siga el progreso de los docentes, deben responder el cuestionario de diagnóstico más de una vez. De esta forma, se recopilan nuevos datos, permitiendo una comparación con los datos anteriores e identificando cambios en la red. \u003c/p\u003e \u003cp\u003e En este apartado, debes definir el período mínimo para que los docentes de tu red puedan volver a responder el cuestionario de diagnóstico. Elija, a continuación, el número de meses que debe esperar el docente para hacer un nuevo diagnóstico de sus competencias. \u003c/p\u003e",
+				"description2": "Seleccione el número de meses que el docente debe esperar para volver a realizar el diagnóstico.",
 				"months": "meses",
 				"numberMonths": "Número de meses entre respuestas:",
 				"title": "Definición del periodo de implementación"
@@ -910,7 +910,7 @@
 				"school": "CENTRO EDUCATIVO",
 				"teacher": "DOCENTE",
 				"teachingNetwork": "RED EDUCATIVA",
-				"whatIsEdutecGuide": "\u003cp\u003e¿Cómo formar docentes capaces de estructurar e implementar prácticas pedagógicas apoyadas por las tecnologías digitales, de un modo innovador y motivador? ¿Qué competencias deben ser trabajadas para hacer un uso efectivo de la tecnología para enseñar y para aprender? ¿cómo las escuelas pueden desarrollar una gestión que favorezca la inclusión de las tecnologías?\u003c/p\u003e\u003cp\u003eEsta herramienta, denominada Guía Edutec, desarrollada por el Centro de Innovación para la Educación Brasileña (CIEB), pretende estimular el desarrollo y la actualización de las competencias digitales de docentes, escuelas y redes educativas. Se compone de tres módulos: una herramienta de autoevaluación de las competencias digitales para los docentes, una herramienta de diagnóstico que identifica el nivel de implementación de las tecnologías digitales en los centros educativos y un tercer módulo que permite observar y gestionar la transformación digital en una red de escuelas. Los tres módulos proporcionan informes que permiten identificar buenas prácticas en el desarrollo de las competencias digitales de los docentes, en la aplicación de la tecnología a la educación y en la gestión de los centros educativos.\u003c/p\u003e",
+				"whatIsEdutecGuide": "\u003cp\u003e¿Cómo formar docentes capaces de estructurar e implementar prácticas pedagógicas apoyadas por las tecnologías digitales, de un modo innovador y motivador? ¿Qué competencias deben ser trabajadas para hacer un uso efectivo de la tecnología para enseñar y para aprender? ¿cómo las escuelas pueden desarrollar una gestión que favorezca la inclusión de las tecnologías?\u003c/p\u003e\u003cp\u003eEsta herramienta, denominada Guía Edutec, desarrollada por el Centro de Innovación para la Educación Brasileña (CIEB), pretende estimular el desarrollo y la actualización de las competencias digitales de docentes, escuelas y redes educativas. Se compone de tres módulos: una herramienta de diagnóstico de las competencias digitales para los docentes, una herramienta de diagnóstico que identifica el nivel de implementación de las tecnologías digitales en los centros educativos y un tercer módulo que permite observar y gestionar la transformación digital en una red de escuelas. Los tres módulos proporcionan informes que permiten identificar buenas prácticas en el desarrollo de las competencias digitales de los docentes, en la aplicación de la tecnología a la educación y en la gestión de los centros educativos.\u003c/p\u003e",
 				"whatIsTitle": "¿QUÉ ES LA GUÍA EDUTEC?",
 				"description": "Una herramienta para que los docentes puedan evaluar sus competencias digitales y los centros educativos conocer cómo se están implementando las tecnologías digitales en la escuela",
 				"edutec": "EDUTEC",
@@ -1234,14 +1234,14 @@
 				"dignosisSectionDescription1": "La herramienta de diagnóstico, fácil de implementar, se basa en un cuestionario en línea que mide el nivel de implementación de la tecnología en los centros y en las redes educativas.",
 				"dignosisSectionDescription2": "Este cuestionario lo responde la dirección del centro. Tras responder, la dirección recibe —en tiempo real— un informe de resultados de su diagnóstico con las acciones que el centro puede llevar a cabo para que la tecnología contribuya cada vez más a la gestión, la enseñanza y el aprendizaje.",
 				"dignosisSectionDescription3": "Finalmente, el departamento de educación recibe un informe detallado basado en las respuestas de sus centros, que le permite elaborar una planificación en base a los datos.",
-				"mappingCollectionOfResponsesDescription": "El sistema organiza las respuestas de todos los/las docentes de la red educativa que han realizado la autoevaluación",
+				"mappingCollectionOfResponsesDescription": "El sistema organiza las respuestas de todos los/las docentes de la red educativa que han realizado el diagnóstico",
 				"mappingCollectionOfResponsesTitle": "Recogida de respuestas",
 				"mappingDescription": "Una plataforma que permite a la persona gestora conocer las competencias digitales de los docentes de su red y la orienta en el análisis crítico de las políticas, los programas y los proyectos de formación continua relacionados con las tecnologías que ya están en marcha en la red educativa o que deberían implementarse.",
-				"mappingDevolutiveDescription": "Al final de la autoevaluación, el/la docente recibe un feedback sobre su nivel de progreso.",
+				"mappingDevolutiveDescription": "Al final de el diagnóstico, el/la docente recibe un feedback sobre su nivel de progreso.",
 				"mappingDevolutiveTitle": "Informe de resultados del/ de la docente",
 				"mappingQuestionsDescription": "El/la docente, de forma individual, responde al cuestionario",
 				"mappingQuestionsTitle": "Cuestionario",
-				"mappingRegisterDescription": "El/la docente accede y se registra en la herramienta de autoevaluación de las competencias digitales de los docentes",
+				"mappingRegisterDescription": "El/la docente accede y se registra en la herramienta de diagnóstico de las competencias digitales de los docentes",
 				"mappingRegisterTitle": "Registro",
 				"mappingReportDescription": "Los gestores educativos tienen acceso a un informe de resultados que indica el estado de la red en cuanto a las competencias digitales de los docentes, lo que permite hacer una comparación con otras redes y presentar prácticas pedagógicas innovadoras para ayudar en la planificación de la formación continua de los docentes.",
 				"mappingReportTitle": "Informe de resultados del departamento de educación",
@@ -1255,7 +1255,7 @@
 				"mappingToolsTitle": "HERRAMIENTAS DE AUTOEVALUACIÓN",
 				"title": "Conociendo el nivel de implementación de las tecnologías digitales en los centros y el nivel de competencias digitales de los docentes",
 				"whatIsDescription": "Consulta aquí cómo acceder y a la Guía EduTec y qué puedes encontrar:",
-				"whatIsTitle": "Desarrollado por el CIEB, el portal de la Guía EduTec ofrece dos herramientas: el módulo de diagnóstico / la Guía EduTec y la autoevaluación de las competencias digitales de los docentes. La primera identifica el nivel de implementación de las tecnologías digitales en los centros y proporciona informes por centro y red educativa; mientras que la segunda evalúa el desarrollo de las competencias digitales de los docentes y genera informes individuales y globales.",
+				"whatIsTitle": "Desarrollado por el CIEB, el portal de la Guía EduTec ofrece dos herramientas: el módulo de diagnóstico / la Guía EduTec y el diagnóstico de las competencias digitales de los docentes. La primera identifica el nivel de implementación de las tecnologías digitales en los centros y proporciona informes por centro y red educativa; mientras que la segunda evalúa el desarrollo de las competencias digitales de los docentes y genera informes individuales y globales.",
 				"videoSrcDiagnosis": "https://www.youtube.com/embed/-7OvClV0ick"
 			},
 			"LoginSchool": {
@@ -1498,7 +1498,7 @@
 				"invitationEmail": "O convite inicialmente foi enviado para o e-mail",
 				"continueSurvey": "CONTINUAR CON EL CUESTIONARIO",
 				"attention": "¡Atención",
-				"description1": "Para hacer un seguimiento de tu progreso, puedes volver a la herramienta de autoevaluación y responder al cuestionario de",
+				"description1": "Para hacer un seguimiento de tu progreso, puedes volver a la herramienta de diagnóstico y responder al cuestionario de",
 				"description2": "Durante este tiempo, puedes acceder a los materiales indicados en tu feedback y buscar formaciones nuevas para desarrollarte profesionalmente.",
 				"historicTitle": "Historial de los cuestionarios y feedback",
 				"in": "El",
