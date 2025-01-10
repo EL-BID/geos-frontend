@@ -1,71 +1,118 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import parse from "html-react-parser";
-import { concat, isEmpty, keys } from "lodash";
+import React, { useEffect } from "react";
+import { isEmpty } from "lodash";
 import styles from "../../../signup.styl";
 
 //Form Elements
-import Test from "../FormElements/Test";
+import SelectField from "../FormElements/SelectField";
 
-class DatosLaborables extends React.Component {
-  render() {
-    const { l, f, fields, apiData } = this.props;
+//Helpers
 
-    const mapApiData = (data) =>
-      data.map((c) => ({ id: c._id.$oid, label: c.name }));
+const DatosLaborables = ({
+  l,
+  fields,
+  apiData,
+  fetchCountries,
+  fetchProvinces,
+  fetchStates,
+  fetchCities,
+  fetchSchools,
+}) => {
+  //OnMount
+  useEffect(() => {
+    //Fetch countries
+    if (isEmpty(apiData.countries)) {
+      fetchCountries();
+    }
+  }, []);
 
-    return (
-      <div className="box">
-        <h1 className={styles.title_section}>
-          {l("SignUpForm.professionalsData")}
-        </h1>
-        <SelectField
-          l={l}
-          field={fields.country}
-          options={mapApiData(apiData.countries)}
-          titleId={l("SignUpForm.label.region")}
-          onChange={(e) => fields.country.onChange(e.target.value)}
-        />
-        {/* <SelectField
-          l={l}
-          field={fields.province}
-          options={mapApiData(apiData.provinces)}
-          titleId={l("SignUpForm.label.province")}
-          onChange={(e) => fields.province.onChange(e.target.value)}
-        />
-        <SelectField
-          l={l}
-          field={fields.state}
-          options={mapApiData(apiData.states)}
-          titleId={l("SignUpForm.label.state")}
-          onChange={(e) => fields.state.onChange(e.target.value)}
-        />
-        <SelectField
-          l={l}
-          field={fields.city}
-          options={mapApiData(apiData.cities)}
-          titleId={l("SignUpForm.label.city")}
-          onChange={(e) => fields.city.onChange(e.target.value)}
-        />
-        <SelectField
-          l={l}
-          field={fields.school}
-          options={mapApiData(apiData.schools)}
-          titleId={l("SignUpForm.label.school")}
-          onChange={(e) => fields.school.onChange(e.target.value)}
-        /> */}
-      </div>
-    );
-  }
-}
+  //Watcher: provinces
+  useEffect(() => {
+    const idCountry = fields.country_id.value;
+    if (!isEmpty(idCountry)) {
+      fetchProvinces(idCountry);
+    }
+  }, [fields.country_id]);
 
-// class DatosLaborables extends React.Component {
-//   render() {
-//     return <h1>TEST121212</h1>;
-//   }
-// }
+  //Watcher: states
+  useEffect(() => {
+    const idCountry = fields.country_id.value;
+    const idProvince = fields.province_id.value;
+    if (!isEmpty(idCountry) && !isEmpty(idProvince)) {
+      fetchStates(idCountry, idProvince);
+    }
+  }, [fields.province_id]);
 
-// DatosLaborables.propTypes = {};
+  //Watcher: cities
+  useEffect(() => {
+    const idCountry = fields.country_id.value;
+    const idProvince = fields.province_id.value;
+    const idState = fields.state_id.value;
+    if (!isEmpty(idCountry) && !isEmpty(idProvince) && !isEmpty(idState)) {
+      fetchCities(idCountry, idProvince, idState);
+    }
+  }, [fields.state_id]);
+
+  //Watcher: schools
+  useEffect(() => {
+    const idCountry = fields.country_id.value;
+    const idProvince = fields.province_id.value;
+    const idState = fields.state_id.value;
+    const idCity = fields.city_id.value;
+    if (
+      !isEmpty(idCountry) &&
+      !isEmpty(idProvince) &&
+      !isEmpty(idState) &&
+      !isEmpty(idCity)
+    ) {
+      fetchSchools(idCountry, idProvince, idState, idCity);
+    }
+  }, [fields.city_id]);
+
+  const mapApiData = (data) =>
+    data.map((c) => ({ id: c._id.$oid, label: c.name }));
+
+  return (
+    <div className="box">
+      <h1 className={styles.title_section}>
+        {l("SignUpForm.professionalsData")}
+      </h1>
+      <SelectField
+        l={l}
+        field={fields.country_id}
+        options={mapApiData(apiData.countries)}
+        titleId="SignUpForm.label.region"
+        onChange={(e) => fields.country_id.onChange(e.target.value)}
+      />
+      <SelectField
+        l={l}
+        field={fields.province_id}
+        options={mapApiData(apiData.provinces)}
+        titleId="SignUpForm.label.province"
+        onChange={(e) => fields.province_id.onChange(e.target.value)}
+      />
+      <SelectField
+        l={l}
+        field={fields.state_id}
+        options={mapApiData(apiData.states)}
+        titleId="SignUpForm.label.state"
+        onChange={(e) => fields.state_id.onChange(e.target.value)}
+      />
+      <SelectField
+        l={l}
+        field={fields.city_id}
+        options={mapApiData(apiData.cities)}
+        titleId="SignUpForm.label.city"
+        onChange={(e) => fields.city_id.onChange(e.target.value)}
+      />
+      <SelectField
+        l={l}
+        field={fields.school_id}
+        options={mapApiData(apiData.schools)}
+        titleId="SignUpForm.label.school"
+        onChange={(e) => fields.school_id.onChange(e.target.value)}
+      />
+    </div>
+  );
+};
 
 export default DatosLaborables;

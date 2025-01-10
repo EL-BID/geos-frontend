@@ -16,11 +16,11 @@ const UserModel = [
   "gender",
   "term",
 
-  "country",
-  "province",
-  "state",
-  "city",
-  "school",
+  "country_id",
+  "province_id",
+  "state_id",
+  "city_id",
+  "school_id",
 ];
 
 /**
