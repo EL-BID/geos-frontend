@@ -443,7 +443,7 @@
 				"levels.2": "Adaptación",
 				"levels.3": "Integración",
 				"levels.4": "Transformación",
-				"instruction.txt1": "La devolutiva presenta su nivel de apropiación respecto al conocimiento y usos de las tecnologías digitales de dos formas, por área (Pedagógica, Ciudadanía Digital y Desarrollo Profesional) y por competencia (en total, son 12 competencias).",
+				"instruction.txt1": "La retroalimentación presenta su nivel de apropiación respecto al conocimiento y usos de las tecnologías digitales de dos formas, por área (Pedagógica, Ciudadanía Digital y Desarrollo Profesional) y por competencia (en total, son 12 competencias).",
 				"instruction.txt2": "Los niveles de apropiación son cinco:",
 				"instruction.areas": "areas",
 				"instruction.comp": "competencias",
@@ -784,7 +784,7 @@
 						"scrollAnimationSpeed": 2000
 					},
 					"5": {
-						"next #tutorial-step-5": "Aqui você encontra as quatro primeiras ações para iniciar o diagnóstico na sua rede de ensino. Você pode revisar os dados das escolas, acrescentar até 4 perguntas ao questionário, personalizar o texto da devolutiva que o(a) diretor(a) receberá e definir o período em que o diagnóstico estará disponível para que as escolas respondam. Essas quatro ações são importantes para uma aplicação eficaz, tenha atenção a ela!",
+						"next #tutorial-step-5": "Aqui você encontra as quatro primeiras ações para iniciar o diagnóstico na sua rede de ensino. Você pode revisar os dados das escolas, acrescentar até 4 perguntas ao questionário, personalizar o texto da retroalimentación que o(a) diretor(a) receberá e definir o período em que o diagnóstico estará disponível para que as escolas respondam. Essas quatro ações são importantes para uma aplicação eficaz, tenha atenção a ela!",
 						"scrollAnimationSpeed": 2000
 					},
 					"6": {
@@ -831,7 +831,7 @@
 						"scrollAnimationSpeed": 2000
 					},
 					"7": {
-						"click #tutorial-step-7": "Cada professor recebe uma devolutiva personalizada ao final do questionário. Veja aqui um exemplo de como é essa devolutiva, que indica onde o(a) docente está em cada área e competência e sugestões de como ele(a) pode evoluir.",
+						"click #tutorial-step-7": "Cada professor recebe uma retroalimentación personalizada ao final do questionário. Veja aqui um exemplo de como é essa retroalimentación, que indica onde o(a) docente está em cada área e competência e sugestões de como ele(a) pode evoluir.",
 						"scrollAnimationSpeed": 2000,
 						"showNext": false
 					}
@@ -1102,7 +1102,7 @@
 			"InitSetupModal": {
 				"btnCancel": "Cancelar",
 				"btnConfirm": "Confirmar",
-				"description": "\u003cp\u003e ¡Felicitaciones! Está a un paso de configurar la Guía Edutec para su uso en su institución. \u003c/p\u003e \u003cp\u003e \u003cstrong\u003e No olvide consultar la documentación de desarrollo \u003ca href = \"https: //docs.dev.guiaedutec .com .br / \"target =\" _ blank \"\u003e aquí \u003c/a\u003e para cambiar el diseño como mejor le parezca. \u003c/strong\u003e \u003c/p\u003e \u003cp\u003e Ahora será redirigido a la pantalla principal del administrador principal de la Guía Edutec. Este usuario le permite: \u003c/p\u003e \u003cul\u003e \u003cli\u003e Crear nuevos países en su base de datos, con: \u003cul\u003e \u003cli\u003e Estructura geográfica \u003c/li\u003e \u003cli\u003e Afiliaciones administrativas \u003c/li\u003e \u003cli\u003e Escuelas \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003cli\u003e Cree usuarios de tipo administrador de país: \u003cul\u003e \u003cli\u003e Estos usuarios tienen los mismos permisos que el usuario administrador principal, pero con restricción de datos solo para el país que administran. \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003cli\u003e Configure traducciones de todos los textos en la Guía Edutec, como: \u003cul\u003e \u003cli\u003e Contenido general \u003c/li\u003e \u003cli\u003e Cuestionarios \u003c/li\u003e \u003cli \u003e Devolutivas \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003c/ul\u003e \u003cp\u003e ¡Bienvenido a la Guía Edutec! \u003c/p\u003e",
+				"description": "\u003cp\u003e ¡Felicitaciones! Está a un paso de configurar la Guía Edutec para su uso en su institución. \u003c/p\u003e \u003cp\u003e \u003cstrong\u003e No olvide consultar la documentación de desarrollo \u003ca href = \"https: //docs.dev.guiaedutec .com .br / \"target =\" _ blank \"\u003e aquí \u003c/a\u003e para cambiar el diseño como mejor le parezca. \u003c/strong\u003e \u003c/p\u003e \u003cp\u003e Ahora será redirigido a la pantalla principal del administrador principal de la Guía Edutec. Este usuario le permite: \u003c/p\u003e \u003cul\u003e \u003cli\u003e Crear nuevos países en su base de datos, con: \u003cul\u003e \u003cli\u003e Estructura geográfica \u003c/li\u003e \u003cli\u003e Afiliaciones administrativas \u003c/li\u003e \u003cli\u003e Escuelas \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003cli\u003e Cree usuarios de tipo administrador de país: \u003cul\u003e \u003cli\u003e Estos usuarios tienen los mismos permisos que el usuario administrador principal, pero con restricción de datos solo para el país que administran. \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003cli\u003e Configure traducciones de todos los textos en la Guía Edutec, como: \u003cul\u003e \u003cli\u003e Contenido general \u003c/li\u003e \u003cli\u003e Cuestionarios \u003c/li\u003e \u003cli \u003e Retroalimentaciones \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003c/ul\u003e \u003cp\u003e ¡Bienvenido a la Guía Edutec! \u003c/p\u003e",
 				"title": "Confirmación de configuración"
 			},
 			"ListActivities": {
