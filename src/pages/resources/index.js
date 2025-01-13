@@ -4,22 +4,10 @@ import classNames from "classnames";
 import Helmet from "react-helmet";
 import _ from "lodash";
 import { compose } from "redux";
-import {
-  FormattedMessage,
-  FormattedHTMLMessage,
-  injectIntl,
-  intlShape,
-} from "react-intl";
+import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
-import Field from "~/components/Form/Field";
 import PageHeader from "~/components/Header/PageHeader";
 import schema from "./schema";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemTitle,
-  AccordionItemBody,
-} from "react-accessible-accordion";
 import "!style!css!react-accessible-accordion/dist/minimal-example.css";
 import "!style!css!react-accessible-accordion/dist/fancy-example.css";
 import APIDataContainer from "~/containers/api_data";
@@ -27,12 +15,7 @@ import APIDataContainer from "~/containers/api_data";
 import history from "~/core/history";
 import AccountsContainer from "~/containers/accounts";
 import NonUserRedir from "~/containers/non_user_redir";
-import {
-  isDirector,
-  isTeacher,
-  isDirectorOrTeacher,
-  isOther,
-} from "~/helpers/users";
+import { isDirector, isTeacher, isDirectorOrTeacher } from "~/helpers/users";
 import {
   setSelectedSurvey,
   removeSelectedSurvey,
@@ -51,7 +34,6 @@ import InfrastructureFormModal from "~/components/InfrastructureFormModal";
 import ModalContainer from "~/containers/modal";
 
 import styles from "./Resources.styl";
-import stylesModal from "~/components/Modal/Modal.styl";
 
 import CONF from "~/api/index";
 import axios from "axios";
@@ -86,7 +68,6 @@ class Resources extends React.Component {
     this.handleInfrastructure = this.handleInfrastructure.bind(this);
     this.handleAcceptedTerm = this.handleAcceptedTerm.bind(this);
     this.infrastructureModalForceSubmitBeforeClose = false;
-
   }
 
   getLang = () => {
@@ -145,10 +126,10 @@ class Resources extends React.Component {
     axios
       .get(
         CONF.ApiURL +
-        "/api/v1/survey/surveys_list?access_token=" +
-        getUserToken() +
-        "&lang=" +
-        this.getLang(),
+          "/api/v1/survey/surveys_list?access_token=" +
+          getUserToken() +
+          "&lang=" +
+          this.getLang(),
         {}
       )
       .then(function (surveys) {
@@ -198,8 +179,8 @@ class Resources extends React.Component {
       axios
         .get(
           CONF.ApiURL +
-          "/api/v1/user_institution?access_token=" +
-          getUserToken(),
+            "/api/v1/user_institution?access_token=" +
+            getUserToken(),
           {}
         )
         .then(function (institution) {
@@ -326,10 +307,10 @@ class Resources extends React.Component {
     axios
       .post(
         CONF.ApiURL +
-        "/api/v1/resend_invite?id=" +
-        data.user_id +
-        "&access_token=" +
-        getUserToken(),
+          "/api/v1/resend_invite?id=" +
+          data.user_id +
+          "&access_token=" +
+          getUserToken(),
         {
           user: {
             name: data.user_name,
@@ -392,10 +373,10 @@ class Resources extends React.Component {
       axios
         .get(
           CONF.ApiURL +
-          "/api/v1/get_email_by_id?id=" +
-          id +
-          "&access_token=" +
-          getUserToken(),
+            "/api/v1/get_email_by_id?id=" +
+            id +
+            "&access_token=" +
+            getUserToken(),
           {}
         )
         .then((res) => {
@@ -437,8 +418,8 @@ class Resources extends React.Component {
     var surveyType = isDirector(user)
       ? "school"
       : isTeacher(user)
-        ? "personal"
-        : "";
+      ? "personal"
+      : "";
     if (
       this.state.surveys &&
       this.state.surveys.findIndex((s) => s.type == surveyType) > 0
@@ -503,189 +484,189 @@ class Resources extends React.Component {
 
             {this.state
               ? this.state.surveys.map((survey, idx) => (
-                <div className="container mb-30" key={survey.id.$oid}>
-                  <div
-                    className={classNames(
-                      "columns is-multiline",
-                      styles.box_main
-                    )}
-                  >
-                    <div className="column is-full">
-                      {survey.schedule.length > 0 && [
-                        <h1 className="is-size-3 mb-20 has-text-weight-light">
-                          {survey.schedule[0].survey_name}
-                        </h1>,
-                        <p>{survey.schedule[0].survey_description}</p>,
-                      ]}
-                    </div>
-                    <div className="column is-full">
-                      {survey.is_cyclic &&
-                        survey.schedule.length > 0 &&
-                        survey.schedule[0].name && (
-                          <h3 className="is-size-6">
-                            <span className="has-text-weight-bold">
-                              {parse(
-                                this.translate("Resources.currentCycle")
+                  <div className="container mb-30" key={survey.id.$oid}>
+                    <div
+                      className={classNames(
+                        "columns is-multiline",
+                        styles.box_main
+                      )}
+                    >
+                      <div className="column is-full">
+                        {survey.schedule.length > 0 && [
+                          <h1 className="is-size-3 mb-20 has-text-weight-light">
+                            {survey.schedule[0].survey_name}
+                          </h1>,
+                          <p>{survey.schedule[0].survey_description}</p>,
+                        ]}
+                      </div>
+                      <div className="column is-full">
+                        {survey.is_cyclic &&
+                          survey.schedule.length > 0 &&
+                          survey.schedule[0].name && (
+                            <h3 className="is-size-6">
+                              <span className="has-text-weight-bold">
+                                {parse(
+                                  this.translate("Resources.currentCycle")
+                                )}
+                                :
+                              </span>{" "}
+                              {survey.schedule[0].name}
+                            </h3>
+                          )}
+                        {!surveyOutPeriod(survey) &&
+                          !surveyAnswered(survey, user) &&
+                          isDirectorOrTeacher(user) &&
+                          !this.hasAnswer(survey.schedule) && (
+                            <Button
+                              className={classNames(
+                                "is-primary ml-0",
+                                styles.resources__buttons__button
                               )}
-                              :
-                            </span>{" "}
-                            {survey.schedule[0].name}
-                          </h3>
-                        )}
-                      {!surveyOutPeriod(survey) &&
-                        !surveyAnswered(survey, user) &&
-                        isDirectorOrTeacher(user) &&
-                        !this.hasAnswer(survey.schedule) && (
+                              onClick={() => this.gotToSurvey(survey)}
+                            >
+                              <span className={styles.with_icon}>
+                                <i
+                                  className={classNames(
+                                    "fas fa-clipboard-list is-size-5 mr-10",
+                                    styles.fa
+                                  )}
+                                ></i>
+                                {surveyStarted(survey, user)
+                                  ? parse(
+                                      this.translate("Resources.continueSurvey")
+                                    )
+                                  : parse(
+                                      this.translate("Resources.answerSurvey")
+                                    )}
+                              </span>
+                            </Button>
+                          )}
+                        {surveyOutPeriod(survey) &&
+                        !survey.is_cyclic &&
+                        isDirectorOrTeacher(user) ? (
+                          <div>
+                            <p>
+                              <strong>
+                                {parse(this.translate("Resources.attention"))}!
+                              </strong>
+                            </p>
+                            <p>
+                              {parse(this.translate("Resources.description1"))}{" "}
+                              <strong>
+                                {surveyNextResponse(survey).toLowerCase()}
+                              </strong>
+                              .
+                            </p>
+                            <p>
+                              {parse(this.translate("Resources.description2"))}
+                            </p>
+                          </div>
+                        ) : (
                           <Button
                             className={classNames(
-                              "is-primary ml-0",
+                              "is-primary",
                               styles.resources__buttons__button
                             )}
-                            onClick={() => this.gotToSurvey(survey)}
+                            onClick={() => this.gotToPrintSurvey(survey)}
                           >
                             <span className={styles.with_icon}>
-                              <i
-                                className={classNames(
-                                  "fas fa-clipboard-list is-size-5 mr-10",
-                                  styles.fa
-                                )}
-                              ></i>
-                              {surveyStarted(survey, user)
-                                ? parse(
-                                  this.translate("Resources.continueSurvey")
-                                )
-                                : parse(
-                                  this.translate("Resources.answerSurvey")
-                                )}
+                              <i className="fas fa-print is-size-5 mr-10"></i>
+                              {parse(this.translate("Resources.print"))}
                             </span>
                           </Button>
                         )}
-                      {surveyOutPeriod(survey) &&
-                        !survey.is_cyclic &&
-                        isDirectorOrTeacher(user) ? (
-                        <div>
-                          <p>
-                            <strong>
-                              {parse(this.translate("Resources.attention"))}!
-                            </strong>
-                          </p>
-                          <p>
-                            {parse(this.translate("Resources.description1"))}{" "}
-                            <strong>
-                              {surveyNextResponse(survey).toLowerCase()}
-                            </strong>
-                            .
-                          </p>
-                          <p>
-                            {parse(this.translate("Resources.description2"))}
-                          </p>
-                        </div>
-                      ) : (
-                        <Button
+                      </div>
+                      {this.hasAnswer(survey.schedule) && [
+                        <div className="column is-8 is-offset-2 mt-30 mb-20">
+                          <div className="has-text-weight-bold is-size-6">
+                            {parse(this.translate("Resources.historicTitle"))}
+                          </div>
+                        </div>,
+                        <div
                           className={classNames(
-                            "is-primary",
-                            styles.resources__buttons__button
+                            "column is-8 is-offset-2",
+                            styles.history
                           )}
-                          onClick={() => this.gotToPrintSurvey(survey)}
                         >
-                          <span className={styles.with_icon}>
-                            <i className="fas fa-print is-size-5 mr-10"></i>
-                            {parse(this.translate("Resources.print"))}
-                          </span>
-                        </Button>
-                      )}
-                    </div>
-                    {this.hasAnswer(survey.schedule) && [
-                      <div className="column is-8 is-offset-2 mt-30 mb-20">
-                        <div className="has-text-weight-bold is-size-6">
-                          {parse(this.translate("Resources.historicTitle"))}
-                        </div>
-                      </div>,
-                      <div
-                        className={classNames(
-                          "column is-8 is-offset-2",
-                          styles.history
-                        )}
-                      >
-                        <div className="columns">
-                          {this.state.school &&
-                            isDirector(user) &&
-                            survey.type == "school" && (
-                              <div className="column has-text-weight-bold">
-                                {parse(this.translate("Resources.cycle"))}
-                              </div>
-                            )}
-                          <div className="column has-text-weight-bold">
-                            {parse(this.translate("Resources.answered"))}
+                          <div className="columns">
+                            {this.state.school &&
+                              isDirector(user) &&
+                              survey.type == "school" && (
+                                <div className="column has-text-weight-bold">
+                                  {parse(this.translate("Resources.cycle"))}
+                                </div>
+                              )}
+                            <div className="column has-text-weight-bold">
+                              {parse(this.translate("Resources.answered"))}
+                            </div>
+                            <div className="column has-text-weight-bold">
+                              {parse(this.translate("Resources.devolutive"))}
+                            </div>
                           </div>
-                          <div className="column has-text-weight-bold">
-                            {parse(this.translate("Resources.devolutive"))}
-                          </div>
-                        </div>
-                        {survey.schedule.map(
-                          (schedule) =>
-                            schedule.answers &&
-                            schedule.answers.map((answer, idxAns) =>
-                              answer.status === "Complete" &&
+                          {survey.schedule.map(
+                            (schedule) =>
+                              schedule.answers &&
+                              schedule.answers.map((answer, idxAns) =>
+                                answer.status === "Complete" &&
                                 answer.user_id.$oid ===
-                                this.props.accounts.user._id.$oid &&
+                                  this.props.accounts.user._id.$oid &&
                                 answer.type !== "Combined" ? (
-                                <div className="columns" key={answer.id.$oid}>
-                                  {this.state.school &&
-                                    isDirector(user) &&
-                                    survey.type == "school" && (
-                                      <div className="column">
-                                        {schedule.name}
-                                      </div>
-                                    )}
-                                  <div className="column">
+                                  <div className="columns" key={answer.id.$oid}>
                                     {this.state.school &&
                                       isDirector(user) &&
-                                      survey.type == "school" && [
-                                        answer.user_name,
-                                        " - ",
-                                      ]}
-                                    {moment(answer.submitted_at).format(
-                                      "DD/MM/YYYY"
-                                    )}
-                                  </div>
-                                  <div className="column">
-                                    <a
-                                      className={styles.access_link}
-                                      onClick={() =>
-                                        window.open(
-                                          CONF.ApiURL +
-                                          "/api/v1/survey/feedback/" +
-                                          schedule.survey_id.$oid +
-                                          "/" +
-                                          answer.id.$oid +
-                                          "?access_token=" +
-                                          getUserToken() +
-                                          "&lang=" +
-                                          this.getLang(),
-                                          "target=_blank"
-                                        )
-                                      }
-                                    >
-                                      <span className={styles.with_icon}>
-                                        {parse(
-                                          this.translate(
-                                            "Resources.accessDevolutive"
+                                      survey.type == "school" && (
+                                        <div className="column">
+                                          {schedule.name}
+                                        </div>
+                                      )}
+                                    <div className="column">
+                                      {this.state.school &&
+                                        isDirector(user) &&
+                                        survey.type == "school" && [
+                                          answer.user_name,
+                                          " - ",
+                                        ]}
+                                      {moment(answer.submitted_at).format(
+                                        "DD/MM/YYYY"
+                                      )}
+                                    </div>
+                                    <div className="column">
+                                      <a
+                                        className={styles.access_link}
+                                        onClick={() =>
+                                          window.open(
+                                            CONF.ApiURL +
+                                              "/api/v1/survey/feedback/" +
+                                              schedule.survey_id.$oid +
+                                              "/" +
+                                              answer.id.$oid +
+                                              "?access_token=" +
+                                              getUserToken() +
+                                              "&lang=" +
+                                              this.getLang(),
+                                            "target=_blank"
                                           )
-                                        )}
-                                        <i className="ml-10 far fa-file-pdf"></i>
-                                      </span>
-                                    </a>
+                                        }
+                                      >
+                                        <span className={styles.with_icon}>
+                                          {parse(
+                                            this.translate(
+                                              "Resources.accessDevolutive"
+                                            )
+                                          )}
+                                          <i className="ml-10 far fa-file-pdf"></i>
+                                        </span>
+                                      </a>
+                                    </div>
                                   </div>
-                                </div>
-                              ) : null
-                            )
-                        )}
-                      </div>,
-                    ]}
+                                ) : null
+                              )
+                          )}
+                        </div>,
+                      ]}
+                    </div>
                   </div>
-                </div>
-              ))
+                ))
               : null}
           </section>
         </Body>
@@ -695,7 +676,9 @@ class Resources extends React.Component {
             isActive={this.props.modal.isInfrastructureModalActive}
             toggleModal={this.props.toggleInfrastructureModal}
             schoolId={this.state.school._id.$oid}
-            forceSubmitBeforeClose={this.infrastructureModalForceSubmitBeforeClose}
+            forceSubmitBeforeClose={
+              this.infrastructureModalForceSubmitBeforeClose
+            }
           />
         )}
       </Layout>
