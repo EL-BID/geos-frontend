@@ -3,13 +3,7 @@ import PropTypes from "prop-types";
 import history from "~/core/history";
 import SignInForm from "../components/SignInForm";
 import AccountsContainer from "~/containers/accounts";
-import ReactSpeedometer from "react-d3-speedometer";
-import {
-  FormattedMessage,
-  FormattedHTMLMessage,
-  injectIntl,
-  intlShape,
-} from "react-intl";
+import { FormattedMessage, injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
 import { redirectDefaultPageByUser } from "~/helpers/users";
@@ -148,9 +142,7 @@ export class LoginEducator extends React.Component {
               </div>
             </section>
           </div>
-          <div className={classNames("column is-full", styles.structure)}>
-            <EducatorHowItWorksSection translate={this.translate} />
-          </div>
+          <EducatorHowItWorksSection translate={this.translate} />
           <div className={classNames("column is-full", styles.devolutive)}>
             <section className={classNames("section", styles.section)}>
               <div className="container">

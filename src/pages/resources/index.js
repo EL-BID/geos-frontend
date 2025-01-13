@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Helmet from "react-helmet";
@@ -32,6 +32,8 @@ import Body from "~/components/Body";
 import Button from "~/components/Button";
 import InfrastructureFormModal from "~/components/InfrastructureFormModal";
 import ModalContainer from "~/containers/modal";
+import Modal from "~/components/Modal";
+import EducatorHowItWorksSection from "~/composables/EducatorHowItWorksSection";
 
 import styles from "./Resources.styl";
 
@@ -63,6 +65,7 @@ class Resources extends React.Component {
       validResend: false,
       tutorial: [],
       hasUser: false,
+      showModalHowItWorks: false,
     };
     this.handleCensusEdit = this.handleCensusEdit.bind(this);
     this.handleInfrastructure = this.handleInfrastructure.bind(this);
@@ -407,9 +410,7 @@ class Resources extends React.Component {
     });
   };
 
-  translate(id) {
-    return this.props.intl.formatMessage({ id });
-  }
+  translate = (id) => this.props.intl.formatMessage({ id });
 
   render() {
     const { user } = this.props.accounts;
@@ -504,7 +505,9 @@ class Resources extends React.Component {
                             "ml-0 mb-0",
                             styles.resources__buttons__button
                           )}
-                          onClick={() => this.gotToSurvey(survey)}
+                          onClick={() =>
+                            this.setState({ showModalHowItWorks: true })
+                          }
                         >
                           {this.translate("LoginEducator.howWorks")}
                         </Button>
@@ -692,10 +695,29 @@ class Resources extends React.Component {
             }
           />
         )}
+
+        <HowItWorksModal
+          translate={this.translate}
+          idTitle="LoginEducator.howWorks"
+          showModal={this.state.showModalHowItWorks}
+          modalClosed={() => this.setState({ showModalHowItWorks: false })}
+        />
       </Layout>
     );
   }
 }
+
+const HowItWorksModal = ({ idTitle, translate, showModal, modalClosed }) => {
+  return (
+    <Modal
+      title={translate(idTitle)}
+      isActive={showModal}
+      closeModal={modalClosed}
+    >
+      <EducatorHowItWorksSection translate={translate} />
+    </Modal>
+  );
+};
 
 Resources.propTypes = {
   modal: PropTypes.object,
