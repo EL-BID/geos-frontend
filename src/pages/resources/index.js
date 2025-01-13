@@ -481,7 +481,6 @@ class Resources extends React.Component {
                 </div>
               ) : null}
             </div>
-
             {this.state
               ? this.state.surveys.map((survey, idx) => (
                   <div className="container mb-30" key={survey.id.$oid}>
@@ -498,6 +497,17 @@ class Resources extends React.Component {
                           </h1>,
                           <p>{survey.schedule[0].survey_description}</p>,
                         ]}
+                      </div>
+                      <div className="column is-full">
+                        <Button
+                          className={classNames(
+                            "ml-0 mb-0",
+                            styles.resources__buttons__button
+                          )}
+                          onClick={() => this.gotToSurvey(survey)}
+                        >
+                          {this.translate("LoginEducator.howWorks")}
+                        </Button>
                       </div>
                       <div className="column is-full">
                         {survey.is_cyclic &&
@@ -517,6 +527,7 @@ class Resources extends React.Component {
                           !surveyAnswered(survey, user) &&
                           isDirectorOrTeacher(user) &&
                           !this.hasAnswer(survey.schedule) && (
+                            // Boton de responder cuestionario
                             <Button
                               className={classNames(
                                 "is-primary ml-0",
