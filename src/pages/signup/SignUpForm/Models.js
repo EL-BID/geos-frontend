@@ -14,13 +14,18 @@ export const UserModel = [
   "password",
   "born",
   "gender",
-  "term",
+  "tos",
+  "share_personal_data",
+  "share_work_data",
 
   "country_id",
   "province_id",
   "state_id",
   "city_id",
   "school_id",
+
+  "teacher_data",
+  "principal_data",
 ];
 
 /**

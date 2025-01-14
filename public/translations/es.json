@@ -1152,7 +1152,7 @@
 			"LoginEducator": {
 				"title": "DIAGNÓSTICO DE {brIsHiddenMobile} HABILIDADES DIGITALES {brIsHiddenMobile}DE ",
 				"teachers": "DOCENTES",
-				"whatIs": "¿Qué es el Diagnóstico?",
+				"whatIs": "¿Qué es el Diagnóstico de Habilidades?",
 				"descriptionSelfEvaluation": "Se trata de una herramienta en línea y gratuita* que permite a los docentes de educación básica identificar sus habilidades digitales para desarrollarse profesionalmente.",
 				"titleWhyUse": "Por qué utilizarla",
 				"descriptionWhyUse": "Estimula el/la docente a ser el protagonista de su propio desarrollo profesional, orientando itinerarios que posibiliten transformaciones en su práctica pedagógica.",
@@ -2232,7 +2232,7 @@
 			"SignUpForm": {
 				"personalData": "Datos personales",
 				"professionalsData": "Datos laborales",
-				"formation": "Formación",
+				"formation": "Datos de Perfil",
 				"label": {
 					"name": "Nombre y apellido",
 					"cpf": "Documento nacional de identidad",
@@ -2283,9 +2283,9 @@
 				"termsOfUse": "Términos y condiciones, y el Aviso de privacidad",
 				"termsOfUseAndDataSharing": "Condiciones de uso e intercambio de datos",
 				"btnSave": "Guardar",
-				"shareData": "Compartir datos con la red educativa",
-				"radioAcceptshareData": "Acepto compartir mis datos, nominalmente, con el Departamento de Educación",
-				"radioNoAcceptshareData": "Prefiero compartir mis datos de forma anónima con el Departamento de Educación",
+				"title_login_data": "Datos de acceso",
+				"share_personal_data": "Acepto compartir mis datos personales con el Departamento de Educación",
+				"share_personal_data_disclaimer": "El nombre y apellido y fecha de nacimiento no se compartirán",
 				"radioNoAcceptshareDataDescription": "Si la secretaría tiene acceso a los datos nominales de los docentes, es posible identificar las demandas e intereses de cada uno y, con ello, diseñar una formación focalizada y significativa. ¿Estás seguro de que prefieres compartir de forma anónima?",
 				"notificationNoSharingAnswers": "Si el Departamento de Educación tiene acceso a los datos nominales de los docentes, es posible identificar las demandas e intereses de cada uno y, con ello, diseñar una formación dirigida y significativa. ¿Estás seguro de que prefieres compartir de forma anónima?",
 				"register": "REGISTRARSE",
@@ -2298,13 +2298,12 @@
 				"btnWithLink": "Usuario con enlace funcional",
 				"btnWithoutLink": "Usuario sin enlace funcional",
 				"deleteAccount": "DESEO BORRAR MI CUENTA",
-				"noLink": "No me gustaría identificar mis datos laborales",
-				"withLink": "Me gustaría identificar mis datos laborales",
+				"withLink": "Me gustaría identificar estos datos laborales",
 				"GenderOptns": {
 					"male": "Masculino",
 					"female": "Femenino",
 					"other": "Otro",
-					"prefer_not_to_say": "Prefiero no decirlo"
+					"didnt_say": "Prefiero no decirlo"
 				},
 				"FormationLevelsOptns": {
 					"graduate": "Bachiller",
@@ -2364,7 +2363,9 @@
 				},
 				"errors": {
 					"found": "Se encontraron algunos errores",
-					"allFieldsRequired": "Todos los campos son requeridos.",
+					"personalDataRequired": "Todos los campos de los Datos Personales son requeridos.",
+					"workDataRequired": "Todos los campos de los Datos Laborales son requeridos.",
+					"profileDataRequired": "Todos los campos de los Datos de Perfil son requeridos.",
 					"email": "El correo electrónico no es válido.",
 					"emailConfirm": "Los correos electrónicos no coinciden.",
 					"password": "La contraseña debe tener al menos 6 caracteres.",

@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { reduxForm } from "redux-form";
 import { compose } from "redux";
-import "url-search-params-polyfill";
-import { concat, isEmpty, keys } from "lodash";
+import { concat, isEmpty, keys, toString, isNumber } from "lodash";
 import classnames from "classnames";
 import API from "~/api";
 import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 import { UserModel, TeacherDataModel, PrincipalDataModel } from "./Models";
-import styles from "../../signup.styl";
+import "url-search-params-polyfill";
+
+//Containers
+import ModalContainer from "~/containers/modal";
+import APIDataContainer from "~/containers/api_data";
 
 //Form Sections
 import DatosBasicos from "./FormSections/DatosBasicos";
 import DatosLaborables from "./FormSections/DatosLaborables";
+import DatosLogin from "./FormSections/DatosLogin";
 import ToS from "./FormSections/ToS";
 import Teacher from "./FormSections/Teacher";
 import Principal from "./FormSections/Principal";
@@ -20,8 +24,8 @@ import Principal from "./FormSections/Principal";
 // Components
 import SubmitBtn from "~/components/SubmitBtn";
 
-import ModalContainer from "~/containers/modal";
-import APIDataContainer from "~/containers/api_data";
+//Helpers
+import { validateModel } from "./Helpers/FormValidationHelpers";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
@@ -41,81 +45,34 @@ const saveUser = (userModel) => {
 };
 
 //Helper function to transform ReduxForm fields to array [key, value]
-
-const validateModel = (userModel, fields, l) => {
-  let allFieldsFilled = true;
-  let errors = [];
-
-  //Check if all basic user fields are filled
-  const ignoreFields = ["term"];
-  allFieldsFilled = UserModel.filter(
-    (key) => !ignoreFields.includes(key)
-  ).reduce((acc, key) => {
-    const value = userModel[key];
-    return acc && !isEmpty(value);
-  }, allFieldsFilled);
-
-  //Check user type fields
-  if (userModel.profile === "teacher") {
-    allFieldsFilled = TeacherDataModel.reduce((acc, key) => {
-      const value = userModel.teacher_data[key];
-      return acc && !isEmpty(value);
-    }, allFieldsFilled);
-  } else {
-    allFieldsFilled = PrincipalDataModel.reduce((acc, key) => {
-      const value = userModel.principal_data[key];
-      return acc && !isEmpty(value);
-    }, allFieldsFilled);
-  }
-
-  if (!allFieldsFilled) {
-    errors.push(l(`SignUpForm.errors.allFieldsRequired`));
-  }
-
-  //Check if the email is valid
-  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userModel.email)) {
-    errors.push(l(`SignUpForm.errors.email`));
-  }
-
-  //check if emails match
-  if (userModel.email !== fields.emailConfirm.value) {
-    errors.push(l(`SignUpForm.errors.emailConfirm`));
-  }
-
-  //Check if passwords match
-  if (userModel.password !== fields.passwordConfirm.value) {
-    errors.push(l(`SignUpForm.errors.passwordConfirm`));
-  }
-
-  //Check password is at least 6 chars long
-  if (userModel.password.length < 6) {
-    errors.push(l(`SignUpForm.errors.password`));
-  }
-
-  //Check ToS are accepted
-  if (!userModel.term) {
-    errors.push(l(`SignUpForm.errors.tos`));
-  }
-
-  return errors;
-};
-
-const toString = (value) => (value || "").toString();
-
 const reduxFormModelToUserModelConverter = (fields) => {
   const user = {};
 
   //Map basic model fields to user object
   UserModel.map((key) => {
-    user[key] = toString(fields[key].value);
+    const value = fields[key].value;
+    if (isNumber(value)) {
+      user[key] = toString(value);
+    } else {
+      user[key] = value;
+    }
   });
 
   //If profile is teacher, add teacher_data
   if (user.profile === "teacher") {
     user.teacher_data = {};
     TeacherDataModel.map((key) => {
-      user.teacher_data[key] = toString(fields[key].value);
+      const value = fields[key].value;
+      if (isNumber(value)) {
+        user.teacher_data[key] = toString(value);
+      } else {
+        user.teacher_data[key] = value;
+      }
     });
+    //Special case: tech_applications is an array
+    user.teacher_data.tech_application = fields.tech_application.value.map(
+      (ta) => ta.value
+    );
   }
 
   //Principal
@@ -133,6 +90,7 @@ const SignUpForm = ({
   intl,
   fields,
   submitting,
+  styles,
   handleSubmit,
   profile,
   apiData,
@@ -145,6 +103,12 @@ const SignUpForm = ({
   //Helper for internationalization
   const l = (id) => intl.formatMessage({ id });
 
+  //OnMount
+  useEffect(() => {
+    //Set default values for all fields
+    setFieldsDefaultValues(fields, profile);
+  }, []);
+
   const onSubmit = (e) => {
     e.preventDefault();
     const userModel = reduxFormModelToUserModelConverter(fields);
@@ -155,7 +119,7 @@ const SignUpForm = ({
       return alert(`${l("SignUpForm.errors.found")}:\n${errs}`);
     }
 
-    d("SAVING userModel", userModel);
+    d("SAVING userModel", j(userModel));
 
     return saveUser(userModel).then((res) => {
       //Error
@@ -175,9 +139,10 @@ const SignUpForm = ({
 
   return (
     <form className={styles.form} onSubmit={onSubmit} id="SignUpForm">
-      <DatosBasicos l={l} fields={fields} profile={profile} />
+      <DatosBasicos l={l} styles={styles} fields={fields} profile={profile} />
       <DatosLaborables
         l={l}
+        styles={styles}
         fields={fields}
         apiData={apiData}
         fetchCountries={fetchCountries}
@@ -187,11 +152,12 @@ const SignUpForm = ({
         fetchSchools={fetchSchools}
       />
       {profile === "teacher" ? (
-        <Teacher l={l} fields={fields} />
+        <Teacher l={l} fields={fields} styles={styles} />
       ) : profile === "principal" ? (
-        <Principal l={l} fields={fields} />
+        <Principal l={l} fields={fields} styles={styles} />
       ) : null}
-      <ToS l={l} field={fields.term} />
+      <DatosLogin l={l} styles={styles} fields={fields} />
+      <ToS l={l} field={fields.tos} />
       <div
         className={classnames(
           "control",
@@ -209,6 +175,34 @@ const SignUpForm = ({
       </div>
     </form>
   );
+};
+
+const setFieldsDefaultValues = (fields, profile) => {
+  //Set default values for fields
+  const defaultValues = {
+    share_personal_data: true,
+    share_work_data: true,
+    tos: false,
+    profile,
+  };
+
+  //Default born value to today minus 18 years
+  if (isEmpty(fields.born.value)) {
+    const today = new Date();
+    const year = today.getFullYear() - 18;
+    const month = today.getMonth();
+    const day = today.getDate();
+    const isoDate = new Date(year, month, day).toISOString();
+    // fields.born.onChange(isoDate);
+    defaultValues.born = isoDate;
+  }
+
+  for (const key in fields) {
+    const value = fields[key].value;
+    if (isEmpty(value)) {
+      fields[key].onChange(defaultValues[key]);
+    }
+  }
 };
 
 SignUpForm.propTypes = {};

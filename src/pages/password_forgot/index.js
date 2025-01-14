@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import Body from "../../components/Body";
 import Helmet from "react-helmet";
-import styles from "~/pages/signup/signup.styl";
+import styles from "~/pages/signup/styles.styl";
 import classnames from "classnames";
 import {
   FormattedMessage,
@@ -29,12 +29,15 @@ class PasswordForgot extends React.Component {
         <Body className="container">
           <section className={classnames("section columns", styles.section)}>
             <div className="column is-half">
-              <div className={classnames("title is-5 mb-15", styles.header__holder)}>
+              <div
+                className={classnames(
+                  "title is-5 mb-15",
+                  styles.header__holder
+                )}
+              >
                 {parse(this.translate("PasswordForgot.title"))}
               </div>
-              <p>
-                {parse(this.translate("PasswordForgot.description"))}
-              </p>
+              <p>{parse(this.translate("PasswordForgot.description"))}</p>
             </div>
             <div className="column is-half">
               <PasswordForgotForm />

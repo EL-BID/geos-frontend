@@ -3,12 +3,7 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import {
-  FormattedMessage,
-  FormattedHTMLMessage,
-  injectIntl,
-  intlShape,
-} from "react-intl";
+import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
 import APIDataContainer from "~/containers/api_data";
@@ -20,22 +15,12 @@ import schema from "./schema";
 import Field from "~/components/Form/Field";
 import stylesField from "~/components/Form/Field.styl";
 import FieldSelect from "~/components/Form/FieldSelect";
-import FieldSimpleSelect from "~/components/Form/FieldSimpleSelect";
-import FieldRadio from "~/components/Form/FieldRadio";
 import Layout from "~/components/Layout";
 import Body from "~/components/Body";
-import SignUpFormPrincipalFields from "~/pages/signup/components/SignUpForm/PrincipalFields";
 import FieldCreatableSelect from "~/components/Form/FieldCreatableSelect";
 import { removeCPFMask } from "~/helpers/form";
 import SubmitBtn from "~/components/SubmitBtn";
-import {
-  getStages,
-  getKnowledges,
-  getFormation,
-  getDevices,
-  getComputerFrequency,
-  getUseTechnologies,
-} from "~/helpers/data_const";
+import { getStages, getKnowledges, getFormation } from "~/helpers/data_const";
 
 import { omitFieldProperties } from "~/helpers/redux-form-fields";
 

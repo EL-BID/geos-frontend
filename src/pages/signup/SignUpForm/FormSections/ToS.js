@@ -1,7 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 import { FormattedMessage } from "react-intl";
-import styles from "../../../signup.styl";
+
+import styles from "~/pages/signup/styles.styl";
 
 //Helpers
 import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";

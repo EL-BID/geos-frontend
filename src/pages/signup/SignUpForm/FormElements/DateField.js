@@ -1,11 +1,12 @@
 import React from "react";
 import classnames from "classnames";
 import parse from "html-react-parser";
-import styles from "../../../signup.styl";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
+
+import styles from "~/pages/signup/styles.styl";
 
 const DateField = ({
   l,

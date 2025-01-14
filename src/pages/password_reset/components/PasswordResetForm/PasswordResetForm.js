@@ -16,12 +16,10 @@ import SubmitBtn from "~/components/SubmitBtn";
 import APIDataContainer from "~/containers/api_data";
 import AccountsContainer from "~/containers/accounts";
 
-import {
-  injectIntl
-} from "react-intl";
+import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
-import styles from "~/pages/signup/signup.styl";
+import styles from "~/pages/signup/styles.styl";
 
 /**
  * Based on http://stackoverflow.com/a/901144
@@ -93,7 +91,11 @@ class PasswordResetForm extends React.Component {
 
     return (
       <form className={styles.form} onSubmit={onSubmit}>
-        <Field label={parse(this.translate("PasswordReset.labelPassword"))} type="password" {...fields.password} />
+        <Field
+          label={parse(this.translate("PasswordReset.labelPassword"))}
+          type="password"
+          {...fields.password}
+        />
         <Field
           label={parse(this.translate("PasswordReset.labelConfirmPassword"))}
           type="password"

@@ -4,7 +4,7 @@ import classnames from "classnames";
 import { compose } from "redux";
 import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
-import styles from "~/pages/signup/signup.styl";
+import styles from "~/pages/signup/styles.styl";
 import Layout from "../../components/Layout";
 import Body from "../../components/Body";
 import PasswordChangeForm from "./components/PasswordChangeForm";

@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { isEmpty } from "lodash";
-import styles from "../../../signup.styl";
+import classnames from "classnames";
 
 //Form Elements
 import SelectField from "../FormElements/SelectField";
 
 //Helpers
+import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
 
 const DatosLaborables = ({
   l,
   fields,
+  styles,
   apiData,
   fetchCountries,
   fetchProvinces,
@@ -17,6 +19,8 @@ const DatosLaborables = ({
   fetchCities,
   fetchSchools,
 }) => {
+  const [showFields, setShowFields] = useState(fields.share_work_data.value);
+
   //OnMount
   useEffect(() => {
     //Fetch countries
@@ -68,14 +72,35 @@ const DatosLaborables = ({
     }
   }, [fields.city_id]);
 
-  const mapApiData = (data) =>
-    data.map((c) => ({ id: c._id.$oid, label: c.name }));
+  //Watcher: share checkbox
+  useEffect(() => {
+    setShowFields(fields.share_work_data.value);
+  }, [fields.share_work_data]);
 
   return (
     <div className="box">
       <h1 className={styles.title_section}>
         {l("SignUpForm.professionalsData")}
       </h1>
+      <label className={classnames("control is-block", styles.form__input)}>
+        <input
+          type="checkbox"
+          {...f(fields.share_work_data)}
+          className={styles.form__checkbox}
+        />
+        {l(`SignUpForm.withLink`)}
+      </label>
+      {showFields && <Fields l={l} fields={fields} apiData={apiData} />}
+    </div>
+  );
+};
+
+const Fields = ({ l, fields, apiData }) => {
+  const mapApiData = (data) =>
+    data.map((c) => ({ id: c._id.$oid, label: c.name }));
+
+  return (
+    <span>
       <SelectField
         l={l}
         field={fields.country_id}
@@ -111,7 +136,7 @@ const DatosLaborables = ({
         titleId="SignUpForm.label.school"
         onChange={(e) => fields.school_id.onChange(e.target.value)}
       />
-    </div>
+    </span>
   );
 };
 

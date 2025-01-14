@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import Body from "../../components/Body";
 import Helmet from "react-helmet";
-import styles from "~/pages/signup/signup.styl";
+import styles from "~/pages/signup/styles.styl";
 import classnames from "classnames";
 import { injectIntl } from "react-intl";
 import parse from "html-react-parser";

@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../../../signup.styl";
 import {
   FormationLevelsOptns,
   InitialFormationOptns,
@@ -32,7 +31,7 @@ const YesNoOptns = [
   },
 ];
 
-const Teacher = ({ l, fields }) => {
+const Teacher = ({ l, fields, styles }) => {
   return (
     <div className="box">
       <h1 className={styles.title_section}>{l("SignUpForm.formation")}</h1>

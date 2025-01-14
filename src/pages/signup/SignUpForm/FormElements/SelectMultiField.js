@@ -1,12 +1,19 @@
 import React from "react";
 import classnames from "classnames";
 import parse from "html-react-parser";
-import styles from "../../../signup.styl";
+import Select from "react-select";
+
+import styles from "~/pages/signup/styles.styl";
 
 //Helpers
 import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
 
-const SelectField = ({ l, field, titleId, descrId = null, options }) => {
+const SelectMultiField = ({ l, field, titleId, descrId = null, options }) => {
+  const dasOptns = options.map(({ id, label }) => ({
+    value: id,
+    label: l(label),
+  }));
+
   return (
     <div>
       <label className={classnames("label", styles.form__label)}>
@@ -19,18 +26,19 @@ const SelectField = ({ l, field, titleId, descrId = null, options }) => {
       )}
       <div className={classnames("control")}>
         <span className={classnames("select", styles.form__select)}>
-          <select {...f(field)}>
-            <option value="">Seleccione</option>
-            {options.map(({ id, label }) => (
-              <option key={id} value={id}>
-                {l(label)}
-              </option>
-            ))}
-          </select>
+          <Select
+            {...f(field)}
+            closeMenuOnSelect={false}
+            isMulti={true}
+            className={classnames("react-select-container")}
+            classNamePrefix="react-select"
+            options={dasOptns}
+            placeholder={l(`SignUpForm.placeholderSelectOptions`)}
+          />
         </span>
       </div>
     </div>
   );
 };
 
-export default SelectField;
+export default SelectMultiField;

@@ -6,7 +6,7 @@ import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
 // Components
-import SignUpForm from "./components/SignUpForm";
+import SignUpForm from "./SignUpForm";
 import Layout from "../../components/Layout";
 import Body from "../../components/Body";
 
@@ -14,7 +14,7 @@ import Body from "../../components/Body";
 import UserRedir from "~/containers/user_redir";
 
 // Style
-import styles from "./signup.styl";
+import styles from "./styles.styl";
 
 class SignUp extends React.Component {
   translate(id) {
@@ -86,7 +86,11 @@ class SignUp extends React.Component {
                 </div>
               ) : null}
               <div className="column is-full">
-                <SignUpForm profile={profile} isRouteConfig={!isHeader} />
+                <SignUpForm
+                  profile={profile}
+                  isRouteConfig={!isHeader}
+                  styles={styles}
+                />
               </div>
             </div>
           </section>

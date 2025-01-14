@@ -23,7 +23,7 @@ import SubmitBtn from "~/components/SubmitBtn";
 import APIDataContainer from "~/containers/api_data";
 import AccountsContainer from "~/containers/accounts";
 
-import styles from "~/pages/signup/signup.styl";
+import styles from "~/pages/signup/styles.styl";
 
 const forgotPassword = (values) => {
   return API.Users.forgotPassword({
