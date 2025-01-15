@@ -11,9 +11,13 @@ import APIDataContainer from "~/containers/api_data";
 import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 import { BarLoader } from "react-spinners";
+import { keys } from "lodash";
+
+// Components
 import Button from "~/components/Button";
 
-import { CreateSection } from "./Helpers/Api";
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 3);
 
 const params = new URLSearchParams(document.location.search.substring(1));
 const locale = params.get("lang") || process.env.DEFAULT_LOCALE;
@@ -79,6 +83,12 @@ class TranslationsQuestions extends React.Component {
     const route = "/api/v1/survey/update_question/";
     const accessToken = `?access_token=${getUserToken()}`;
     const URL_REQUEST = this.apiURL + route + accessToken + `&lang=${lang}`;
+
+    d(
+      "this.state.secondaryLanguageQuestionRender",
+      this.state.secondaryLanguageQuestionRender
+    );
+
     for (
       let i = 0;
       i < this.state.secondaryLanguageQuestionRender.length;
@@ -100,6 +110,9 @@ class TranslationsQuestions extends React.Component {
           i
         ].filter((item) => item.id !== 999 && item.id !== 777),
       };
+
+      d("data", j(data));
+      return;
 
       try {
         this.setState({ saving: true });
@@ -357,13 +370,14 @@ class TranslationsQuestions extends React.Component {
   }
 
   saveTranslations = () => {
-    this.setState({ saving: true });
+    // this.setState({ saving: true });
+    d("this.state.secondaryLang", this.state.secondaryLang);
     this.translateQuestions(this.state.secondaryLang);
-    this.translateSurveys(this.state.secondaryLang);
-    this.translateSections(
-      this.state.secondaryLang,
-      this.state.secondaryLanguageSection
-    );
+    // this.translateSurveys(this.state.secondaryLang);
+    // this.translateSections(
+    //   this.state.secondaryLang,
+    //   this.state.secondaryLanguageSection
+    // );
   };
 
   handleChangeSurveyFields = (e) => {
@@ -403,8 +417,46 @@ class TranslationsQuestions extends React.Component {
   getData2 = (index_question) => {
     const base = this.state.baseLanguageQuestionRender[index_question];
 
+    const makeIdCell = (question, index) => {
+      const { id } = question;
+      if (!question.isNew) {
+        return <div className={styles.column_width}>{id}</div>;
+      } else {
+        return (
+          <input
+            type="number"
+            value={id}
+            onChange={(e) => {
+              const { value } = e.target;
+              this.onQuestionChange(index_question, { id: value });
+            }}
+          />
+        );
+      }
+    };
+
+    const makeWeightCell = (question, index) => {
+      const { id, weight } = question;
+      if (!question.isNew) {
+        return <div className={styles.column_width}>{weight}</div>;
+      } else {
+        return (
+          <input
+            type="number"
+            value={weight}
+            onChange={(e) => {
+              const { value } = e.target;
+              this.onQuestionChange(index_question, { weight: value });
+            }}
+          />
+        );
+      }
+    };
+
     const data2 = base.map((question, index) => ({
       mapping: <div className={styles.column_width}>{"value"}</div>,
+      id: makeIdCell(question, index),
+      weight: makeWeightCell(question, index),
       baseLanguageTranslation: (
         <div className={styles.column_width}>{question && question.value}</div>
       ),
@@ -501,6 +553,84 @@ class TranslationsQuestions extends React.Component {
         </span>
       ),
     };
+  }
+
+  getColumnsQuestions() {
+    return {
+      id: () => "ID",
+      weight: () => "Weight",
+      baseLanguageTranslation: () => "Base Language",
+      secondaryLanguageTranslation: () => "Secondary Language",
+    };
+  }
+
+  addOptionToQuestion(index_question) {
+    const arrsCopy = [...this.state.secondaryLanguageQuestionRender];
+    arrsCopy[index_question].push({
+      isNew: true,
+      id: null,
+      weight: null,
+      value: "<ADD TEXT>",
+    });
+
+    d(arrsCopy[index_question]);
+
+    this.setState({
+      secondaryLanguageQuestionRender: arrsCopy,
+    });
+    // d("addOptionToQuestion", question);
+  }
+
+  getQuestion(index_question) {
+    return this.state.baseLanguageQuestionRender[index_question];
+  }
+
+  questionChanged(q, index) {
+    const index = this.state.secondaryLanguageQuestionRender[
+      index_question
+    ].findIndex((question) => question.id === Number(e.target.name));
+    const newSecondaryLanguageQuestionRender = [
+      ...this.state.secondaryLanguageQuestionRender,
+    ];
+    newSecondaryLanguageQuestionRender[index_question][index] = {
+      id: Number(e.target.name),
+      value: e.target.value,
+      weight,
+    };
+
+    this.setState({
+      secondaryLanguageQuestionRender: newSecondaryLanguageQuestionRender,
+    });
+  }
+
+  mapQuestionTableRow(index_question) {
+    const q = this.getQuestion(index_question);
+    d("q", q);
+    return q.map((q, index) => ({
+      id: q.id,
+      weight: q.weight,
+      baseLanguageTranslation: q.value,
+      secondaryLanguageTranslation: (
+        <textarea
+          className={styles.column_width}
+          rows={4}
+          //   name={question.id}
+          value={
+            this.state.secondaryLanguageQuestionRender[index_question][index] &&
+            this.state.secondaryLanguageQuestionRender[index_question][index]
+              .value
+          }
+          // defaultValue={secondTranslations[key]}
+          // disabled={loadingSecondTranslations}
+          style={{ padding: "10px", height: "100%", minWidth: "100%" }}
+          placeholder="Digite o texto traduzido..."
+          onChange={(e) => {
+            this.questionChanged(q, index);
+            this.handleChangeQuestionFields(e, question.weight, index_question);
+          }}
+        />
+      ),
+    }));
   }
 
   render() {
@@ -671,7 +801,7 @@ class TranslationsQuestions extends React.Component {
                       {this.state.baseLanguageQuestionRender &&
                         this.state.baseLanguageQuestionRender.map(
                           (base, index_question) => (
-                            <div>
+                            <div className="mb-4">
                               <h1 className={styles.title}>
                                 {parse(
                                   this.translate("Translations.questionData")
@@ -682,16 +812,16 @@ class TranslationsQuestions extends React.Component {
                                   "table is-bordered is-hoverable",
                                   styles.followup__info__table
                                 )}
-                                data={this.getData2(index_question)}
+                                data={this.mapQuestionTableRow(index_question)}
                                 style={{ margin: "20px 0 30px", width: "100%" }}
                               >
                                 <Thead>
                                   {_.map(
-                                    this.getColumnsWithoutSelectLanguage(),
+                                    this.getColumnsQuestions(),
                                     (renderer, column) => (
                                       <Th
                                         column={column}
-                                        style={{ width: "30px" }}
+                                        // style={{ width: "30px" }}
                                       >
                                         {renderer()}
                                       </Th>
@@ -699,6 +829,13 @@ class TranslationsQuestions extends React.Component {
                                   )}
                                 </Thead>
                               </Table>
+                              <Button
+                                onClick={() =>
+                                  this.addOptionToQuestion(index_question)
+                                }
+                              >
+                                Add option to this question
+                              </Button>
                             </div>
                           )
                         )}
@@ -708,11 +845,6 @@ class TranslationsQuestions extends React.Component {
               )}
             </div>
           </div>
-          <hr />
-          <AddSection
-            idSelectedSurvey={this.state.idSelectedSurvey}
-            lang={this.getLang()}
-          />
         </div>
         <TranslationsActionFooter
           onSubmit={this.saveTranslations}
@@ -729,51 +861,5 @@ class TranslationsQuestions extends React.Component {
     );
   }
 }
-
-const AddSection = ({ idSelectedSurvey, lang }) => {
-  const BASE_SECTION_MODEL = {
-    survey_id: idSelectedSurvey,
-    name: "New Section Name",
-    position: 99,
-    user_type: ["teacher"],
-    ceil_result: null,
-    description: null,
-    divisor: null,
-    has_feedback: false,
-    has_question: true,
-    has_result: false,
-    only_feedback: null,
-  };
-
-  const [section, setSection] = React.useState();
-
-  React.useEffect(() => {
-    setSection(JSON.stringify(BASE_SECTION_MODEL, null, 4));
-  }, [idSelectedSurvey]);
-
-  const addSection = () => {
-    const data = JSON.parse(section);
-    CreateSection(data, CONF.ApiURL, getUserToken(), lang).then((section) => {
-      location.reload();
-    });
-  };
-
-  return (
-    <div>
-      <h2>Add section</h2>
-      <p>Edit this JSON and push the button</p>
-      {idSelectedSurvey && (
-        <textarea
-          rows={10}
-          style={{ width: "100%" }}
-          value={section}
-          onChange={(e) => setSection(e.target.value)}
-        ></textarea>
-      )}
-      {!idSelectedSurvey && <p>Select a survey to add a section</p>}
-      <Button onClick={addSection}>Add section</Button>
-    </div>
-  );
-};
 
 export default injectIntl(compose(APIDataContainer)(TranslationsQuestions));
