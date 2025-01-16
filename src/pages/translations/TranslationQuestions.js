@@ -13,7 +13,15 @@ import parse from "html-react-parser";
 import { BarLoader } from "react-spinners";
 import Button from "~/components/Button";
 
-import { CreateSection } from "./Helpers/Api";
+import {
+  CreateSection,
+  CreateQuestion,
+  GetSection,
+  UpdateSection,
+} from "./Helpers/Api";
+
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 4);
 
 const params = new URLSearchParams(document.location.search.substring(1));
 const locale = params.get("lang") || process.env.DEFAULT_LOCALE;
@@ -403,33 +411,53 @@ class TranslationsQuestions extends React.Component {
   getData2 = (index_question) => {
     const base = this.state.baseLanguageQuestionRender[index_question];
 
-    const data2 = base.map((question, index) => ({
-      mapping: <div className={styles.column_width}>{"value"}</div>,
-      baseLanguageTranslation: (
-        <div className={styles.column_width}>{question && question.value}</div>
-      ),
-      secondaryLanguageTranslation: (
-        <textarea
-          className={styles.column_width}
-          rows={4}
-          name={question.id}
-          value={
-            this.state.secondaryLanguageQuestionRender[index_question] !==
-              undefined &&
-            this.state.secondaryLanguageQuestionRender[index_question][index] &&
-            this.state.secondaryLanguageQuestionRender[index_question][index]
-              .value
-          }
-          // defaultValue={secondTranslations[key]}
-          // disabled={loadingSecondTranslations}
-          style={{ padding: "10px", height: "100%", minWidth: "100%" }}
-          placeholder="Digite o texto traduzido..."
-          onChange={(e) =>
-            this.handleChangeQuestionFields(e, question.weight, index_question)
-          }
-        />
-      ),
-    }));
+    const data2 = base.map((question, index) => {
+      const { id, weight, value } = question;
+
+      const idEl =
+        id == 777
+          ? "Position"
+          : id == 999
+          ? "Question text"
+          : `Option Id: ${id}`;
+
+      const mapping = (
+        <div className={styles.column_width}>
+          <div>{idEl}</div>
+          {weight && <div>Weight: {weight}</div>}
+        </div>
+      );
+
+      return {
+        mapping,
+        baseLanguageTranslation: (
+          <div className={styles.column_width}>{value}</div>
+        ),
+        secondaryLanguageTranslation: (
+          <textarea
+            className={styles.column_width}
+            rows={4}
+            name={id}
+            value={
+              this.state.secondaryLanguageQuestionRender[index_question] !==
+                undefined &&
+              this.state.secondaryLanguageQuestionRender[index_question][
+                index
+              ] &&
+              this.state.secondaryLanguageQuestionRender[index_question][index]
+                .value
+            }
+            // defaultValue={secondTranslations[key]}
+            // disabled={loadingSecondTranslations}
+            style={{ padding: "10px", height: "100%", minWidth: "100%" }}
+            placeholder="Digite o texto traduzido..."
+            onChange={(e) =>
+              this.handleChangeQuestionFields(e, weight, index_question)
+            }
+          />
+        ),
+      };
+    });
 
     return data2;
   };
@@ -470,8 +498,8 @@ class TranslationsQuestions extends React.Component {
             defaultValue={this.state.secondaryLang}
           >
             {/* <option value="">
-              {parse(this.translate("Translations.selectLanguage"))}
-            </option> */}
+							{parse(this.translate("Translations.selectLanguage"))}
+						</option> */}
             {languages.map((l) => (
               <option value={l.lang}>{l.description}</option>
             ))}
@@ -648,6 +676,11 @@ class TranslationsQuestions extends React.Component {
                       <h1 className={styles.title}>
                         {parse(this.translate("Translations.sectionData"))}
                       </h1>
+                      <SectionAttributes
+                        lang={this.lang}
+                        idSection={this.state.idSelectedSection}
+                        isSaving={this.state.saving}
+                      />
                       <Table
                         className={classNames(
                           "table is-bordered is-hoverable",
@@ -710,7 +743,13 @@ class TranslationsQuestions extends React.Component {
           </div>
           <hr />
           <AddSection
-            idSelectedSurvey={this.state.idSelectedSurvey}
+            idSurvey={this.state.idSelectedSurvey}
+            lang={this.getLang()}
+          />
+          <hr />
+          <AddQuestion
+            idSurvey={this.state.idSelectedSurvey}
+            idSection={this.state.idSelectedSection}
             lang={this.getLang()}
           />
         </div>
@@ -730,9 +769,9 @@ class TranslationsQuestions extends React.Component {
   }
 }
 
-const AddSection = ({ idSelectedSurvey, lang }) => {
+const AddSection = ({ idSurvey, lang }) => {
   const BASE_SECTION_MODEL = {
-    survey_id: idSelectedSurvey,
+    survey_id: idSurvey,
     name: "New Section Name",
     position: 99,
     user_type: ["teacher"],
@@ -749,7 +788,7 @@ const AddSection = ({ idSelectedSurvey, lang }) => {
 
   React.useEffect(() => {
     setSection(JSON.stringify(BASE_SECTION_MODEL, null, 4));
-  }, [idSelectedSurvey]);
+  }, [idSurvey]);
 
   const addSection = () => {
     const data = JSON.parse(section);
@@ -762,7 +801,7 @@ const AddSection = ({ idSelectedSurvey, lang }) => {
     <div>
       <h2>Add section</h2>
       <p>Edit this JSON and push the button</p>
-      {idSelectedSurvey && (
+      {idSurvey && (
         <textarea
           rows={10}
           style={{ width: "100%" }}
@@ -770,8 +809,97 @@ const AddSection = ({ idSelectedSurvey, lang }) => {
           onChange={(e) => setSection(e.target.value)}
         ></textarea>
       )}
-      {!idSelectedSurvey && <p>Select a survey to add a section</p>}
+      {!idSurvey && <p>Select a survey to add a section</p>}
       <Button onClick={addSection}>Add section</Button>
+    </div>
+  );
+};
+
+const AddQuestion = ({ idSurvey, idSection, lang }) => {
+  const BASE_QUESTION_MODEL = {
+    type: "radio",
+    survey_id: idSurvey,
+    survey_section_id: idSection,
+    page: 1,
+    weight: 1,
+    question_order: 1,
+    name: "New Question Text",
+    survey_question_description: [
+      {
+        id: "999",
+        value: "una opcion 123",
+        weight: 999,
+      },
+    ],
+  };
+
+  const [question, setQuestion] = React.useState();
+
+  React.useEffect(() => {
+    setQuestion(JSON.stringify(BASE_QUESTION_MODEL, null, 4));
+  }, [idSurvey, idSection]);
+
+  const addThing = () => {
+    const data = JSON.parse(question);
+    CreateQuestion(data, CONF.ApiURL, getUserToken(), lang).then((question) => {
+      location.reload();
+    });
+  };
+
+  return (
+    <div>
+      <h2>Add Question</h2>
+      <p>Edit this JSON and push the button</p>
+      {idSurvey && idSection && (
+        <textarea
+          rows={10}
+          style={{ width: "100%" }}
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+        ></textarea>
+      )}
+      {(!idSurvey || !idSection) && (
+        <p>Select a survey and a section to add questions</p>
+      )}
+      <Button onClick={addThing}>Add question</Button>
+    </div>
+  );
+};
+
+const SectionAttributes = ({ idSection, lang, isSaving }) => {
+  const [section, setSection] = React.useState({});
+
+  React.useEffect(() => {
+    if (!idSection) {
+      return;
+    }
+    GetSection(idSection, CONF.ApiURL, getUserToken(), lang).then((section) =>
+      setSection(section)
+    );
+  }, [idSection]);
+
+  React.useEffect(() => {
+    const { position, user_type } = section;
+    if (isSaving && idSection) {
+      const partial = { position, user_type };
+      UpdateSection(idSection, partial, CONF.ApiURL, getUserToken(), lang);
+    }
+  }, [isSaving]);
+
+  const sectionChanged = (partial) =>
+    setSection({
+      ...section,
+      ...partial,
+    });
+
+  return (
+    <div>
+      Position:
+      <input
+        type="number"
+        value={section.position}
+        onChange={(e) => sectionChanged({ position: e.target.value })}
+      />
     </div>
   );
 };
