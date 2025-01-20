@@ -1,7 +1,7 @@
 import { UserModel, TeacherDataModel, PrincipalDataModel } from "../Models";
-import { isEmpty } from "lodash";
+import { concat, isEmpty, keys, toString, isNumber } from "lodash";
 
-export const validateModel = (userModel, fields, l) => {
+export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
   let errors = [];
 
   const { share_personal_data, share_work_data, profile } = userModel;
@@ -14,7 +14,12 @@ export const validateModel = (userModel, fields, l) => {
       return acc && !isEmpty(value);
     }, true);
     if (!allFieldsFilled) {
-      errors.push(l(`SignUpForm.errors.personalDataRequired`));
+      errors.push(`SignUpForm.errors.personalDataRequired`);
+    }
+
+    //Alert the user is born date was not set
+    if (userModel.born === DEFAULT_BDATE.toISOString()) {
+      errors.push("SignUpForm.errors.born");
     }
   }
 
@@ -32,7 +37,7 @@ export const validateModel = (userModel, fields, l) => {
       return acc && !isEmpty(value);
     }, true);
     if (!allFieldsFilled) {
-      errors.push(l(`SignUpForm.errors.workDataRequired`));
+      errors.push(`SignUpForm.errors.workDataRequired`);
     }
   }
 
@@ -51,33 +56,75 @@ export const validateModel = (userModel, fields, l) => {
   }
 
   if (!allFieldsFilled) {
-    errors.push(l(`SignUpForm.errors.profileDataRequired`));
+    errors.push(`SignUpForm.errors.profileDataRequired`);
   }
 
   //Check if the email is valid
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userModel.email)) {
-    errors.push(l(`SignUpForm.errors.email`));
+    errors.push(`SignUpForm.errors.email`);
   }
 
   //check if emails match
   if (userModel.email !== fields.emailConfirm.value) {
-    errors.push(l(`SignUpForm.errors.emailConfirm`));
+    errors.push(`SignUpForm.errors.emailConfirm`);
   }
 
   //Check if passwords match
   if (userModel.password !== fields.passwordConfirm.value) {
-    errors.push(l(`SignUpForm.errors.passwordConfirm`));
+    errors.push(`SignUpForm.errors.passwordConfirm`);
   }
 
   //Check password is at least 6 chars long
   if (userModel.password.length < 6) {
-    errors.push(l(`SignUpForm.errors.password`));
+    errors.push(`SignUpForm.errors.password`);
   }
 
   //Check ToS are accepted
   if (!userModel.tos) {
-    errors.push(l(`SignUpForm.errors.tos`));
+    errors.push(`SignUpForm.errors.tos`);
   }
 
   return errors;
+};
+
+//Helper function to transform ReduxForm fields to array [key, value]
+export const reduxFormModelToUserModelConverter = (fields) => {
+  const user = {};
+
+  //Map basic model fields to user object
+  UserModel.map((key) => {
+    const value = fields[key].value;
+    if (isNumber(value)) {
+      user[key] = toString(value);
+    } else {
+      user[key] = value;
+    }
+  });
+
+  //If profile is teacher, add teacher_data
+  if (user.profile === "teacher") {
+    user.teacher_data = {};
+    TeacherDataModel.map((key) => {
+      const value = fields[key].value;
+      if (isNumber(value)) {
+        user.teacher_data[key] = toString(value);
+      } else {
+        user.teacher_data[key] = value;
+      }
+    });
+    //Special case: tech_applications is an array
+    user.teacher_data.tech_application = (
+      fields.tech_application.value || []
+    ).map((ta) => ta.value);
+  }
+
+  //Principal
+  else {
+    user.principal_data = {};
+    PrincipalDataModel.map((key) => {
+      user.principal_data[key] = toString(fields[key].value);
+    });
+  }
+
+  return user;
 };

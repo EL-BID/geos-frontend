@@ -25,10 +25,15 @@ import Principal from "./FormSections/Principal";
 import SubmitBtn from "~/components/SubmitBtn";
 
 //Helpers
-import { validateModel } from "./Helpers/FormValidationHelpers";
+import {
+  validateModel,
+  reduxFormModelToUserModelConverter,
+} from "./Helpers/FormValidationHelpers";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
+
+const DEFAULT_BDATE = new Date(new Date().getFullYear() - 18, 0, 1);
 
 const ReduxFormFields = concat(
   UserModel,
@@ -42,48 +47,6 @@ const saveUser = (userModel) => {
   const noLogin = true;
   const noaff = false;
   return API.Users.create(userModel, noLogin, noaff);
-};
-
-//Helper function to transform ReduxForm fields to array [key, value]
-const reduxFormModelToUserModelConverter = (fields) => {
-  const user = {};
-
-  //Map basic model fields to user object
-  UserModel.map((key) => {
-    const value = fields[key].value;
-    if (isNumber(value)) {
-      user[key] = toString(value);
-    } else {
-      user[key] = value;
-    }
-  });
-
-  //If profile is teacher, add teacher_data
-  if (user.profile === "teacher") {
-    user.teacher_data = {};
-    TeacherDataModel.map((key) => {
-      const value = fields[key].value;
-      if (isNumber(value)) {
-        user.teacher_data[key] = toString(value);
-      } else {
-        user.teacher_data[key] = value;
-      }
-    });
-    //Special case: tech_applications is an array
-    user.teacher_data.tech_application = fields.tech_application.value.map(
-      (ta) => ta.value
-    );
-  }
-
-  //Principal
-  else {
-    user.principal_data = {};
-    PrincipalDataModel.map((key) => {
-      user.principal_data[key] = toString(fields[key].value);
-    });
-  }
-
-  return user;
 };
 
 const SignUpForm = ({
@@ -112,10 +75,10 @@ const SignUpForm = ({
   const onSubmit = (e) => {
     e.preventDefault();
     const userModel = reduxFormModelToUserModelConverter(fields);
-    const errors = validateModel(userModel, fields, l);
+    const errors = validateModel(userModel, fields, DEFAULT_BDATE, l);
 
     if (!isEmpty(errors)) {
-      const errs = errors.map((err) => `- ${err}`).join("\n");
+      const errs = errors.map((err) => `- ${l(err)}`).join("\n");
       return alert(`${l("SignUpForm.errors.found")}:\n${errs}`);
     }
 
@@ -188,13 +151,13 @@ const setFieldsDefaultValues = (fields, profile) => {
 
   //Default born value to today minus 18 years
   if (isEmpty(fields.born.value)) {
-    const today = new Date();
-    const year = today.getFullYear() - 18;
-    const month = today.getMonth();
-    const day = today.getDate();
-    const isoDate = new Date(year, month, day).toISOString();
-    // fields.born.onChange(isoDate);
-    defaultValues.born = isoDate;
+    //const today = new Date();
+    //const year = today.getFullYear() - 18;
+    //const month = today.getMonth();
+    //const day = today.getDate();
+    //const isoDate = new Date(year, month, day).toISOString();
+    //// fields.born.onChange(isoDate);
+    defaultValues.born = DEFAULT_BDATE.toISOString();
   }
 
   for (const key in fields) {

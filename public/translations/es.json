@@ -2363,6 +2363,7 @@
 				},
 				"errors": {
 					"found": "Se encontraron algunos errores",
+					"born": "Parece que no ha establecido su fecha de nacimiento.",
 					"personalDataRequired": "Todos los campos de los Datos Personales son requeridos.",
 					"workDataRequired": "Todos los campos de los Datos Laborales son requeridos.",
 					"profileDataRequired": "Todos los campos de los Datos de Perfil son requeridos.",
