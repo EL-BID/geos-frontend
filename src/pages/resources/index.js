@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Helmet from "react-helmet";
@@ -15,21 +15,17 @@ import APIDataContainer from "~/containers/api_data";
 import history from "~/core/history";
 import AccountsContainer from "~/containers/accounts";
 import NonUserRedir from "~/containers/non_user_redir";
-import { isDirector, isTeacher, isDirectorOrTeacher } from "~/helpers/users";
+import { isDirector, isTeacher } from "~/helpers/users";
 import {
   setSelectedSurvey,
   removeSelectedSurvey,
   setSelectedAnswer,
   surveyAnswered,
-  surveyStarted,
-  surveyOutPeriod,
-  surveyNextResponse,
 } from "~/actions/survey";
 import { getUserToken, getUserId } from "~/api/utils";
 
 import Layout from "~/components/Layout";
 import Body from "~/components/Body";
-import Button from "~/components/Button";
 import InfrastructureFormModal from "~/components/InfrastructureFormModal";
 import ModalContainer from "~/containers/modal";
 import Modal from "~/components/Modal";
@@ -40,10 +36,13 @@ import styles from "./Resources.styl";
 import CONF from "~/api/index";
 import axios from "axios";
 import API from "~/api";
-import moment from "moment";
-//import { BarLoader, PulseLoader } from "react-spinners";
 import $ from "jquery";
 import { reduxForm } from "redux-form";
+
+import SurveysList from "./components/SurveysList";
+
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 4);
 
 class Resources extends React.Component {
   constructor() {
@@ -125,7 +124,6 @@ class Resources extends React.Component {
   }
 
   getSurveys = () => {
-    const _this = this;
     axios
       .get(
         CONF.ApiURL +
@@ -135,28 +133,23 @@ class Resources extends React.Component {
           this.getLang(),
         {}
       )
-      .then(function (surveys) {
-        if (surveys.data) {
-          var has_anwers = false;
-          surveys.data.surveys.forEach(function (survey) {
-            let debugUser = getUserId();
-            if (
-              survey.type === "school" &&
-              surveyAnswered(survey, getUserId())
-            ) {
-              has_anwers = true;
-            }
-          });
+      .then(({ data }) => {
+        const { surveys = [] } = data;
+        var has_anwers = false;
+        surveys.forEach(function (survey) {
+          if (survey.type === "school" && surveyAnswered(survey, getUserId())) {
+            has_anwers = true;
+          }
+        });
 
-          _this.setState({
-            surveys: surveys.data.surveys,
-            loading: false,
-          });
+        this.setState({
+          surveys,
+          loading: false,
+        });
 
-          _this.checkSurveyInvited(_this.props.accounts.user);
-          if (has_anwers) _this.getHasSchoolPlan();
-          _this.getSchool();
-        }
+        this.checkSurveyInvited(this.props.accounts.user);
+        if (has_anwers) this.getHasSchoolPlan();
+        this.getSchool();
       });
   };
 
@@ -247,20 +240,10 @@ class Resources extends React.Component {
     this.acceptedTerm();
   }
 
-  gotToSurvey(survey) {
-    setSelectedSurvey(survey);
-    window.location = "/responder-questionario";
-  }
-
   gotToAnswers(survey, answer) {
     setSelectedSurvey(survey);
     setSelectedAnswer(answer);
     window.open("/acessar-respostas", "_blank");
-  }
-
-  gotToPrintSurvey(survey) {
-    setSelectedSurvey(survey);
-    window.open("/imprimir-questionario", "_blank");
   }
 
   _logout() {
@@ -278,21 +261,6 @@ class Resources extends React.Component {
       return false;
     }
   }
-
-  hasAnswer = (schedules) => {
-    const user = this.props.accounts.user;
-
-    const schedulesWithAnswer = schedules.filter(
-      (schedule) =>
-        schedule.answers &&
-        schedule.answers.find(
-          (answer) =>
-            answer.status === "Complete" &&
-            answer.user_id.$oid === user._id.$oid
-        )
-    );
-    return schedulesWithAnswer.length > 0;
-  };
 
   _resendInvite = (el) => {
     let target = $(el.target).is("i")
@@ -412,6 +380,10 @@ class Resources extends React.Component {
 
   translate = (id) => this.props.intl.formatMessage({ id });
 
+  setShowModalHowItWorks = (show) => {
+    this.setState({ showModalHowItWorks: show });
+  };
+
   render() {
     const { user } = this.props.accounts;
     const { fields } = this.props;
@@ -482,206 +454,14 @@ class Resources extends React.Component {
                 </div>
               ) : null}
             </div>
-            {this.state
-              ? this.state.surveys.map((survey, idx) => (
-                  <div className="container mb-30" key={survey.id.$oid}>
-                    <div
-                      className={classNames(
-                        "columns is-multiline",
-                        styles.box_main
-                      )}
-                    >
-                      <div className="column is-full">
-                        {survey.schedule.length > 0 && [
-                          <h1 className="is-size-3 mb-20 has-text-weight-light">
-                            {survey.schedule[0].survey_name}
-                          </h1>,
-                          <p>{survey.schedule[0].survey_description}</p>,
-                        ]}
-                      </div>
-                      <div className="column is-full">
-                        <Button
-                          className={classNames(
-                            "ml-0 mb-0",
-                            styles.resources__buttons__button
-                          )}
-                          onClick={() =>
-                            this.setState({ showModalHowItWorks: true })
-                          }
-                        >
-                          {this.translate("LoginEducator.howWorks")}
-                        </Button>
-                      </div>
-                      <div className="column is-full">
-                        {survey.is_cyclic &&
-                          survey.schedule.length > 0 &&
-                          survey.schedule[0].name && (
-                            <h3 className="is-size-6">
-                              <span className="has-text-weight-bold">
-                                {parse(
-                                  this.translate("Resources.currentCycle")
-                                )}
-                                :
-                              </span>{" "}
-                              {survey.schedule[0].name}
-                            </h3>
-                          )}
-                        {!surveyOutPeriod(survey) &&
-                          !surveyAnswered(survey, user) &&
-                          isDirectorOrTeacher(user) &&
-                          !this.hasAnswer(survey.schedule) && (
-                            // Boton de responder cuestionario
-                            <Button
-                              className={classNames(
-                                "is-primary ml-0",
-                                styles.resources__buttons__button
-                              )}
-                              onClick={() => this.gotToSurvey(survey)}
-                            >
-                              <span className={styles.with_icon}>
-                                <i
-                                  className={classNames(
-                                    "fas fa-clipboard-list is-size-5 mr-10",
-                                    styles.fa
-                                  )}
-                                ></i>
-                                {surveyStarted(survey, user)
-                                  ? parse(
-                                      this.translate("Resources.continueSurvey")
-                                    )
-                                  : parse(
-                                      this.translate("Resources.answerSurvey")
-                                    )}
-                              </span>
-                            </Button>
-                          )}
-                        {surveyOutPeriod(survey) &&
-                        !survey.is_cyclic &&
-                        isDirectorOrTeacher(user) ? (
-                          <div>
-                            <p>
-                              <strong>
-                                {parse(this.translate("Resources.attention"))}!
-                              </strong>
-                            </p>
-                            <p>
-                              {parse(this.translate("Resources.description1"))}{" "}
-                              <strong>
-                                {surveyNextResponse(survey).toLowerCase()}
-                              </strong>
-                              .
-                            </p>
-                            <p>
-                              {parse(this.translate("Resources.description2"))}
-                            </p>
-                          </div>
-                        ) : (
-                          <Button
-                            className={classNames(
-                              "is-primary",
-                              styles.resources__buttons__button
-                            )}
-                            onClick={() => this.gotToPrintSurvey(survey)}
-                          >
-                            <span className={styles.with_icon}>
-                              <i className="fas fa-print is-size-5 mr-10"></i>
-                              {parse(this.translate("Resources.print"))}
-                            </span>
-                          </Button>
-                        )}
-                      </div>
-                      {this.hasAnswer(survey.schedule) && [
-                        <div className="column is-8 is-offset-2 mt-30 mb-20">
-                          <div className="has-text-weight-bold is-size-6">
-                            {parse(this.translate("Resources.historicTitle"))}
-                          </div>
-                        </div>,
-                        <div
-                          className={classNames(
-                            "column is-8 is-offset-2",
-                            styles.history
-                          )}
-                        >
-                          <div className="columns">
-                            {this.state.school &&
-                              isDirector(user) &&
-                              survey.type == "school" && (
-                                <div className="column has-text-weight-bold">
-                                  {parse(this.translate("Resources.cycle"))}
-                                </div>
-                              )}
-                            <div className="column has-text-weight-bold">
-                              {parse(this.translate("Resources.answered"))}
-                            </div>
-                            <div className="column has-text-weight-bold">
-                              {parse(this.translate("Resources.devolutive"))}
-                            </div>
-                          </div>
-                          {survey.schedule.map(
-                            (schedule) =>
-                              schedule.answers &&
-                              schedule.answers.map((answer, idxAns) =>
-                                answer.status === "Complete" &&
-                                answer.user_id.$oid ===
-                                  this.props.accounts.user._id.$oid &&
-                                answer.type !== "Combined" ? (
-                                  <div className="columns" key={answer.id.$oid}>
-                                    {this.state.school &&
-                                      isDirector(user) &&
-                                      survey.type == "school" && (
-                                        <div className="column">
-                                          {schedule.name}
-                                        </div>
-                                      )}
-                                    <div className="column">
-                                      {this.state.school &&
-                                        isDirector(user) &&
-                                        survey.type == "school" && [
-                                          answer.user_name,
-                                          " - ",
-                                        ]}
-                                      {moment(answer.submitted_at).format(
-                                        "DD/MM/YYYY"
-                                      )}
-                                    </div>
-                                    <div className="column">
-                                      <a
-                                        className={styles.access_link}
-                                        onClick={() =>
-                                          window.open(
-                                            CONF.ApiURL +
-                                              "/api/v1/survey/feedback/" +
-                                              schedule.survey_id.$oid +
-                                              "/" +
-                                              answer.id.$oid +
-                                              "?access_token=" +
-                                              getUserToken() +
-                                              "&lang=" +
-                                              this.getLang(),
-                                            "target=_blank"
-                                          )
-                                        }
-                                      >
-                                        <span className={styles.with_icon}>
-                                          {parse(
-                                            this.translate(
-                                              "Resources.accessDevolutive"
-                                            )
-                                          )}
-                                          <i className="ml-10 far fa-file-pdf"></i>
-                                        </span>
-                                      </a>
-                                    </div>
-                                  </div>
-                                ) : null
-                              )
-                          )}
-                        </div>,
-                      ]}
-                    </div>
-                  </div>
-                ))
-              : null}
+            <SurveysList
+              l={this.translate}
+              lang={this.getLang()}
+              surveys={this.state.surveys}
+              user={this.props.accounts.user}
+              school={this.state.school}
+              setShowModalHowItWorks={this.setShowModalHowItWorks}
+            />
           </section>
         </Body>
 
@@ -700,7 +480,7 @@ class Resources extends React.Component {
           translate={this.translate}
           idTitle="LoginEducator.howWorks"
           showModal={this.state.showModalHowItWorks}
-          modalClosed={() => this.setState({ showModalHowItWorks: false })}
+          modalClosed={() => this.setShowModalHowItWorks(false)}
         />
       </Layout>
     );

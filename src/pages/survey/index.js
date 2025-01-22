@@ -1,6 +1,5 @@
 import React from "react";
 import Helmet from "react-helmet";
-import classnames from "classnames";
 import Layout from "../../components/Layout";
 import Body from "../../components/Body";
 import PageHeader from "~/components/Header/PageHeader";
@@ -9,18 +8,9 @@ import { BarLoader } from "react-spinners";
 
 import AccountsContainer from "~/containers/accounts";
 import NonUserRedir from "~/containers/non_user_redir";
-import {
-  FormattedMessage,
-  FormattedHTMLMessage,
-  injectIntl,
-  intlShape,
-} from "react-intl";
+import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
-import {
-  getSelectedSurvey,
-  removeSelectedSurvey,
-  surveyOutPeriod,
-} from "~/actions/survey";
+import { getSelectedSurvey, surveyOutPeriod } from "~/actions/survey";
 
 import Form from "./Form";
 
@@ -29,7 +19,7 @@ import { compose } from "redux";
 import CONF from "~/api/index";
 import axios from "axios";
 
-import { getUserToken, createUrlWithParams } from "~/api/utils";
+import { getUserToken } from "~/api/utils";
 
 class QuestionList extends React.Component {
   constructor() {

@@ -51,7 +51,6 @@
     "path": "/criar-admin-pais",
     "page": "./pages/admin_country"
   },
-
   {
     "path": "/criar-pergunta",
     "page": "./pages/local_question"
@@ -271,5 +270,9 @@
   {
     "path": "/privacy-notice",
     "page": "./pages/privacy_notice"
+  },
+  {
+    "path": "/survey-context",
+    "page": "./pages/survey_context"
   }
 ]

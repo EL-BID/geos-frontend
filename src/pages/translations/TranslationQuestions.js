@@ -774,7 +774,7 @@ const AddSection = ({ idSurvey, lang }) => {
     survey_id: idSurvey,
     name: "New Section Name",
     position: 99,
-    user_type: ["teacher"],
+    user_type: null,
     ceil_result: null,
     description: null,
     divisor: null,
@@ -894,12 +894,15 @@ const SectionAttributes = ({ idSection, lang, isSaving }) => {
 
   return (
     <div>
-      Position:
-      <input
-        type="number"
-        value={section.position}
-        onChange={(e) => sectionChanged({ position: e.target.value })}
-      />
+      <div>Section ID: {idSection}</div>
+      <div>
+        Position:
+        <input
+          type="number"
+          value={section.position}
+          onChange={(e) => sectionChanged({ position: e.target.value })}
+        />
+      </div>
     </div>
   );
 };

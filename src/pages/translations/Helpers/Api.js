@@ -6,14 +6,14 @@ const buildUrl = (apiURL, route, userToken, lang) => {
 };
 
 export const GetSection = (idSection, apiURL, userToken, lang) => {
-  const route = `sections/${idSection}`;
+  const route = `sections/` + idSection;
   const URL_REQUEST = buildUrl(apiURL, route, userToken, lang);
   return axios.get(URL_REQUEST).then(({ data }) => data);
 };
 
 export const CreateSection = (data, apiURL, userToken, lang) => {
   const route = "sections/";
-  const URL_REQUEST = buildUrl(apiURL, route + idSection, userToken, lang);
+  const URL_REQUEST = buildUrl(apiURL, route, userToken, lang);
   return axios.post(URL_REQUEST, data);
 };
 

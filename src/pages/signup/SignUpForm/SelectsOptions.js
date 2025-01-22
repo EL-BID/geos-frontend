@@ -16,8 +16,8 @@ export const GenderOptns = [
     label: "SignUpForm.GenderOptns.other",
   },
   {
-    id: "prefer_not_to_say",
-    label: "SignUpForm.GenderOptns.prefer_not_to_say",
+    id: "didnt_say",
+    label: "SignUpForm.GenderOptns.didnt_say",
   },
 ];
 

@@ -27,14 +27,14 @@ export function removeSelectedSurvey() {
 }
 
 export function surveyAnswered(survey, user) {
-  console.log(user);
-  if(
+  if (
     // because Object.keys(new Date()).length === 0;
-// we have to do some additional check
-user // 👈 null and undefined check
-&& Object.keys(user).length === 0
-&& Object.getPrototypeOf(user) === Object.prototype
-  ) return;
+    // we have to do some additional check
+    user && // 👈 null and undefined check
+    Object.keys(user).length === 0 &&
+    Object.getPrototypeOf(user) === Object.prototype
+  )
+    return;
   if (user && user._id) return;
   var schedule = survey.schedule.length > 0 ? survey.schedule[0] : false;
   let userLocal = typeof user == "object" ? user._id.$oid : user;

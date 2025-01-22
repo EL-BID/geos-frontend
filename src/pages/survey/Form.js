@@ -1,5 +1,4 @@
 import React from "react";
-import FormData from "react-form-data";
 import Question from "./Question";
 import CONF from "~/api/index";
 import axios from "axios";
@@ -9,23 +8,17 @@ import NonUserRedir from "~/containers/non_user_redir";
 import NonAdminDirectorOrTeacherRedir from "~/containers/non_admin_director_teacher_redir";
 import Button from "../../components/Button";
 import Progress from "../../components/Progress";
-import {
-  FormattedMessage,
-  FormattedHTMLMessage,
-  injectIntl,
-  intlShape,
-} from "react-intl";
+import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
-import {
-  getUserToken,
-  setUserToken,
-  removeUserToken,
-  createUrlWithParams,
-} from "~/api/utils";
+import { getUserToken } from "~/api/utils";
 import styles from "./styles.styl";
 import classnames from "classnames";
 import $ from "jquery";
+
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 4);
+
 var createReactClass = require("create-react-class");
 
 const Form = createReactClass({
@@ -139,7 +132,7 @@ const Form = createReactClass({
         if (question.weight > 0) totalQuestions++;
       });
     });
-    let sections = this.props.sections;
+    let { sections } = this.props;
     listToRemove.forEach(function (index) {
       sections.splice(index, 1);
     });
@@ -304,8 +297,13 @@ const Form = createReactClass({
       responsesSection: {},
     });
 
-    if (!(e.target instanceof HTMLAnchorElement) && !(e.target.parentNode instanceof HTMLAnchorElement)) return;
-    if (e.target.parentNode instanceof HTMLAnchorElement) e.target = e.target.parentNode;
+    if (
+      !(e.target instanceof HTMLAnchorElement) &&
+      !(e.target.parentNode instanceof HTMLAnchorElement)
+    )
+      return;
+    if (e.target.parentNode instanceof HTMLAnchorElement)
+      e.target = e.target.parentNode;
 
     this.setState({
       isSaving: true,
@@ -627,7 +625,9 @@ const Form = createReactClass({
                     <div className="columns is-multiline">
                       <div
                         className={classnames(
-                          section.pageTitleCssClass ? `${section.pageTitleCssClass}` : styles.not_question,
+                          section.pageTitleCssClass
+                            ? `${section.pageTitleCssClass}`
+                            : styles.not_question,
                           `${styles.h1}`,
                           "column is-full"
                         )}
@@ -641,7 +641,9 @@ const Form = createReactClass({
                             styles.page__description,
                             section.description == "" ? "is-hidden" : null
                           )}
-                          dangerouslySetInnerHTML={{ __html: section.description }}
+                          dangerouslySetInnerHTML={{
+                            __html: section.description,
+                          }}
                         ></div>
                       </div>
                       {section.survey_question.map((question) => {
@@ -652,142 +654,185 @@ const Form = createReactClass({
                             )
                             .filter(
                               (q) =>
-                                q.compound && q.compound_ref == question.compound_ref
+                                q.compound &&
+                                q.compound_ref == question.compound_ref
                             );
                         }
                       })}
                       {section.has_question
                         ? section.survey_question
-                          .sort((a, b) =>
-                            a.question_order > b.question_order ? 1 : -1
-                          )
-                          .map((question) => {
-                            return question.compound &&
-                              question.compound_first &&
-                              question.child_questions ? (
-                              <div
-                                className={classnames(
-                                  styles.question,
-                                  styles.question__compound,
-                                  "column is-half"
-                                )}
-                              >
-                                {hasFirst(section.survey_question, question) && (
-                                  <h1 className={styles.title__compound}>
-                                    Dados dos(as) professores(as) convidados(as)
-                                  </h1>
-                                )}
-                                <div className={styles.box__question__compound}>
-                                  <div className={styles.question__title}>
-                                    <div>
-                                      <p
-                                        className={styles.bold}
-                                        dangerouslySetInnerHTML={{
-                                          __html:
-                                            question.question_order +
-                                            " - " +
-                                            question.name,
-                                        }}
-                                      />
-                                    </div>
-                                    <div className={styles.question__obs}>
-                                      {parse(this.translate("Survey.mandatory"))}
-                                    </div>
-                                  </div>
-                                  {question.obs && (
-                                    <div
-                                      dangerouslySetInnerHTML={{
-                                        __html: question.obs,
-                                      }}
-                                    ></div>
+                            .sort((a, b) =>
+                              a.question_order > b.question_order ? 1 : -1
+                            )
+                            .map((question) => {
+                              return question.compound &&
+                                question.compound_first &&
+                                question.child_questions ? (
+                                <div
+                                  className={classnames(
+                                    styles.question,
+                                    styles.question__compound,
+                                    "column is-half"
                                   )}
-                                  {question.child_questions.map((child) => {
-                                    return (
-                                      <div
-                                        id={child._id.$oid}
-                                        key={child._id.$oid}
-                                        className={classnames(
-                                          `${section.position}`,
-                                          styles.hide,
-                                          styles.question__child
-                                        )}
-                                        data-compound={
-                                          child.compound ? child.compound : null
-                                        }
-                                        data-compound-ref={
-                                          child.compound_ref
-                                            ? child.compound_ref
-                                            : null
-                                        }
-                                        data-compound-first={
-                                          child.compound_first
-                                            ? child.compound_first
-                                            : null
-                                        }
-                                      >
-                                        <Question
-                                          surveyId={
-                                            this.props.response.survey_id.$oid
-                                          }
-                                          user={user}
-                                          elThis={this}
-                                          question={child}
-                                          questions={section.survey_question.sort(
-                                            (a, b) =>
-                                              a.question_order - b.question_order
-                                          )}
-                                          userResponses={this.props.userResponses}
-                                          handleCheckbox={this.handleCheckbox}
-                                          handleInputText={this.handleInputText}
-                                          handleInputRadio={this.handleInputRadio}
-                                          labelDirectorOne={parse(this.translate("Survey.labelDirectorOne"))}
-                                          labelDirectorTwo={parse(this.translate("Survey.labelDirectorTwo"))}
-                                          labelMandatory={parse(this.translate("Survey.mandatory"))}
+                                >
+                                  {hasFirst(
+                                    section.survey_question,
+                                    question
+                                  ) && (
+                                    <h1 className={styles.title__compound}>
+                                      Dados dos(as) professores(as)
+                                      convidados(as)
+                                    </h1>
+                                  )}
+                                  <div
+                                    className={styles.box__question__compound}
+                                  >
+                                    <div className={styles.question__title}>
+                                      <div>
+                                        <p
+                                          className={styles.bold}
+                                          dangerouslySetInnerHTML={{
+                                            __html:
+                                              question.question_order +
+                                              " - " +
+                                              question.name,
+                                          }}
                                         />
                                       </div>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            ) : (
-                              !question.compound && (
-                                <div
-                                  id={question._id.$oid}
-                                  key={question._id.$oid}
-                                  className={`${section.position} ${styles.hide} ${styles.question}`}
-                                  data-compound={
-                                    question.compound ? question.compound : null
-                                  }
-                                  data-compound-ref={
-                                    question.compound_ref
-                                      ? question.compound_ref
-                                      : null
-                                  }
-                                  data-compound-first={
-                                    question.compound_first
-                                      ? question.compound_first
-                                      : null
-                                  }
-                                >
-                                  <Question
-                                    surveyId={this.props.response.survey_id.$oid}
-                                    user={user}
-                                    elThis={this}
-                                    question={question}
-                                    questions={section.survey_question.sort(
-                                      (a, b) => a.question_order - b.question_order
+                                      <div className={styles.question__obs}>
+                                        {parse(
+                                          this.translate("Survey.mandatory")
+                                        )}
+                                      </div>
+                                    </div>
+                                    {question.obs && (
+                                      <div
+                                        dangerouslySetInnerHTML={{
+                                          __html: question.obs,
+                                        }}
+                                      ></div>
                                     )}
-                                    userResponses={this.props.userResponses}
-                                    handleCheckbox={this.handleCheckbox}
-                                    handleInputRadio={this.handleInputRadio}
-                                    labelDirectorOne={parse(this.translate("Survey.labelDirectorOne"))}
-                                    labelDirectorTwo={parse(this.translate("Survey.labelDirectorTwo"))}
-                                    labelMandatory={parse(this.translate("Survey.mandatory"))}
-                                  />
+                                    {question.child_questions.map((child) => {
+                                      return (
+                                        <div
+                                          id={child._id.$oid}
+                                          key={child._id.$oid}
+                                          className={classnames(
+                                            `${section.position}`,
+                                            styles.hide,
+                                            styles.question__child
+                                          )}
+                                          data-compound={
+                                            child.compound
+                                              ? child.compound
+                                              : null
+                                          }
+                                          data-compound-ref={
+                                            child.compound_ref
+                                              ? child.compound_ref
+                                              : null
+                                          }
+                                          data-compound-first={
+                                            child.compound_first
+                                              ? child.compound_first
+                                              : null
+                                          }
+                                        >
+                                          <Question
+                                            surveyId={
+                                              this.props.response.survey_id.$oid
+                                            }
+                                            user={user}
+                                            elThis={this}
+                                            question={child}
+                                            questions={section.survey_question.sort(
+                                              (a, b) =>
+                                                a.question_order -
+                                                b.question_order
+                                            )}
+                                            userResponses={
+                                              this.props.userResponses
+                                            }
+                                            handleCheckbox={this.handleCheckbox}
+                                            handleInputText={
+                                              this.handleInputText
+                                            }
+                                            handleInputRadio={
+                                              this.handleInputRadio
+                                            }
+                                            labelDirectorOne={parse(
+                                              this.translate(
+                                                "Survey.labelDirectorOne"
+                                              )
+                                            )}
+                                            labelDirectorTwo={parse(
+                                              this.translate(
+                                                "Survey.labelDirectorTwo"
+                                              )
+                                            )}
+                                            labelMandatory={parse(
+                                              this.translate("Survey.mandatory")
+                                            )}
+                                          />
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
                                 </div>
-                              )
-                            );
-                          })
+                              ) : (
+                                !question.compound && (
+                                  <div
+                                    id={question._id.$oid}
+                                    key={question._id.$oid}
+                                    className={`${section.position} ${styles.hide} ${styles.question}`}
+                                    data-compound={
+                                      question.compound
+                                        ? question.compound
+                                        : null
+                                    }
+                                    data-compound-ref={
+                                      question.compound_ref
+                                        ? question.compound_ref
+                                        : null
+                                    }
+                                    data-compound-first={
+                                      question.compound_first
+                                        ? question.compound_first
+                                        : null
+                                    }
+                                  >
+                                    <Question
+                                      surveyId={
+                                        this.props.response.survey_id.$oid
+                                      }
+                                      user={user}
+                                      elThis={this}
+                                      question={question}
+                                      questions={section.survey_question.sort(
+                                        (a, b) =>
+                                          a.question_order - b.question_order
+                                      )}
+                                      userResponses={this.props.userResponses}
+                                      handleCheckbox={this.handleCheckbox}
+                                      handleInputRadio={this.handleInputRadio}
+                                      labelDirectorOne={parse(
+                                        this.translate(
+                                          "Survey.labelDirectorOne"
+                                        )
+                                      )}
+                                      labelDirectorTwo={parse(
+                                        this.translate(
+                                          "Survey.labelDirectorTwo"
+                                        )
+                                      )}
+                                      labelMandatory={parse(
+                                        this.translate("Survey.mandatory")
+                                      )}
+                                    />
+                                  </div>
+                                )
+                              );
+                            })
                         : null}
                     </div>
                   </div>
@@ -795,51 +840,79 @@ const Form = createReactClass({
 
                 <div
                   className={classnames(
-                    `${this.state.lastSection + 1} ${styles.hide} ${styles.padding_left
+                    `${this.state.lastSection + 1} ${styles.hide} ${
+                      styles.padding_left
                     }`,
                     "section_page"
                   )}
                 >
-                  {
-                    this.props.survey.type == "personal" ? [
-                      <div className={styles.padding_top + " " + styles.bold}>
-                        <strong>
-                          {parse(this.translate("AcknowledgmentDevolutive.acknowledgmentTeacher"))}
-                        </strong>
-                      </div>,
-                      <div className={styles.padding_top + " " + styles.fields}>
-                        {parse(this.translate("AcknowledgmentDevolutive.devolutiveAccessTeacher"))}
-                      </div>
-                    ] : [
-                      <div className={styles.padding_top + " " + styles.bold}>
-                        <strong>
-                          {parse(this.translate("AcknowledgmentDevolutive.acknowledgmentPrincipal"))}
-                        </strong>
-                      </div>,
-                      <div className={styles.padding_top + " " + styles.fields}>
-                        {parse(this.translate("AcknowledgmentDevolutive.devolutiveAccessPrincipal"))}
-                      </div>
-                    ]
-                  }
+                  {this.props.survey.type == "personal"
+                    ? [
+                        <div className={styles.padding_top + " " + styles.bold}>
+                          <strong>
+                            {parse(
+                              this.translate(
+                                "AcknowledgmentDevolutive.acknowledgmentTeacher"
+                              )
+                            )}
+                          </strong>
+                        </div>,
+                        <div
+                          className={styles.padding_top + " " + styles.fields}
+                        >
+                          {parse(
+                            this.translate(
+                              "AcknowledgmentDevolutive.devolutiveAccessTeacher"
+                            )
+                          )}
+                        </div>,
+                      ]
+                    : [
+                        <div className={styles.padding_top + " " + styles.bold}>
+                          <strong>
+                            {parse(
+                              this.translate(
+                                "AcknowledgmentDevolutive.acknowledgmentPrincipal"
+                              )
+                            )}
+                          </strong>
+                        </div>,
+                        <div
+                          className={styles.padding_top + " " + styles.fields}
+                        >
+                          {parse(
+                            this.translate(
+                              "AcknowledgmentDevolutive.devolutiveAccessPrincipal"
+                            )
+                          )}
+                        </div>,
+                      ]}
                 </div>
               </div>
             </div>
 
             <div className="columns mt-50">
               {this.state.pagenow > 0 &&
-                this.state.pagenow > this.state.lastSection ? (
+              this.state.pagenow > this.state.lastSection ? (
                 <div className="column has-text-centered">
                   <Button
-                    className={classnames("is-primary", styles.controls__button)}
+                    className={classnames(
+                      "is-primary",
+                      styles.controls__button
+                    )}
                     to="/recursos?from=survey"
                   >
-                    {parse(this.translate("AcknowledgmentDevolutive.btnDevolutiveAccess"))}
+                    {parse(
+                      this.translate(
+                        "AcknowledgmentDevolutive.btnDevolutiveAccess"
+                      )
+                    )}
                   </Button>
                 </div>
               ) : null}
 
               {this.state.pagenow > 0 &&
-                this.state.pagenow <= this.state.lastSection ? (
+              this.state.pagenow <= this.state.lastSection ? (
                 <div className="column">
                   <Button
                     id={"beforePage"}
@@ -862,11 +935,17 @@ const Form = createReactClass({
                   <Button
                     id={"nextPage"}
                     onClick={
-                      this.state.pagenow === 0 ? this.nextPage : this.handleSubmit
+                      this.state.pagenow === 0
+                        ? this.nextPage
+                        : this.handleSubmit
                     }
-                    className={classnames("is-primary", styles.controls__button, {
-                      "is-loading": this.state.isSaving,
-                    })}
+                    className={classnames(
+                      "is-primary",
+                      styles.controls__button,
+                      {
+                        "is-loading": this.state.isSaving,
+                      }
+                    )}
                     {...(this.state.isSaving ? { disabled: true } : {})}
                   >
                     <span className={styles.with_icon}>
@@ -882,9 +961,13 @@ const Form = createReactClass({
                   <Button
                     id="finished"
                     onClick={this.handleSubmit}
-                    className={classnames("is-primary", styles.controls__button, {
-                      "is-loading": this.state.isSaving,
-                    })}
+                    className={classnames(
+                      "is-primary",
+                      styles.controls__button,
+                      {
+                        "is-loading": this.state.isSaving,
+                      }
+                    )}
                   >
                     {parse(this.translate("Survey.btnComplete"))}
                   </Button>
@@ -900,7 +983,7 @@ const Form = createReactClass({
 
 export default injectIntl(
   (APIDataContainer,
-    AccountsContainer,
-    NonUserRedir,
-    NonAdminDirectorOrTeacherRedir)(Form)
+  AccountsContainer,
+  NonUserRedir,
+  NonAdminDirectorOrTeacherRedir)(Form)
 );
