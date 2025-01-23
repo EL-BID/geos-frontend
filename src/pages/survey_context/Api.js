@@ -2,16 +2,45 @@ import axios from "axios";
 import CONF from "~/api/index";
 import { getUserToken, getUserId } from "~/api/utils";
 
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 4);
+
 const getLang = () =>
   localStorage.getItem("lang") || process.env.DEFAULT_LOCALE;
 
-export const FetchContextSurvey = () => {
-  const url =
-    CONF.ApiURL +
-    `/api/v1/survey/surveys_list?access_token=${getUserToken()}&lang=${getLang()}`;
+const buildUrl = (endpoint) =>
+  CONF.ApiURL +
+  `/api/v1/${endpoint}?access_token=${getUserToken()}&lang=${getLang()}`;
 
+export const FetchContextSurvey = () => {
+  const url = buildUrl("surveys");
   return axios
     .get(url)
     .then(({ data }) => data.surveys || [])
     .then((surveys) => surveys.find((s) => s.type === "context"));
+};
+
+export const FetchSections = (idSurvey) => {
+  const url = buildUrl(`surveys/${idSurvey}/sections`);
+  return axios.get(url).then(({ data }) => data || []);
+};
+
+export const FetchQuestions = (idSurvey) => {
+  const url = buildUrl(`surveys/${idSurvey}/questions`);
+  return axios.get(url).then(({ data }) => data);
+};
+
+/*
+answers = {
+  [idQuestion]: [idOption]
+}
+*/
+export const PostAnswers = (idSurvey, idSchedule, answers) => {
+  const url = buildUrl(`surveys/${idSurvey}/answers`);
+  return axios.post(url, {
+    idUser: getUserId(),
+    idSurvey,
+    idSchedule,
+    answers,
+  });
 };

@@ -710,6 +710,14 @@ class TranslationsQuestions extends React.Component {
                                   this.translate("Translations.questionData")
                                 )}
                               </h1>
+                              <QuestionAttributes
+                                question={
+                                  this.state.questions.sort(
+                                    (a, b) =>
+                                      a.question_order - b.question_order
+                                  )[index_question]
+                                }
+                              />
                               <Table
                                 className={classNames(
                                   "table is-bordered is-hoverable",
@@ -769,6 +777,21 @@ class TranslationsQuestions extends React.Component {
   }
 }
 
+const QuestionAttributes = ({ question }) => {
+  const {
+    _id: { $oid: idQuestion },
+    type,
+    name,
+  } = question;
+  return (
+    <div>
+      <div>Question ID: {idQuestion}</div>
+      <div>Type: {type}</div>
+      <div>Name: {name}</div>
+    </div>
+  );
+};
+
 const AddSection = ({ idSurvey, lang }) => {
   const BASE_SECTION_MODEL = {
     survey_id: idSurvey,
@@ -826,9 +849,14 @@ const AddQuestion = ({ idSurvey, idSection, lang }) => {
     name: "New Question Text",
     survey_question_description: [
       {
-        id: "999",
-        value: "una opcion 123",
-        weight: 999,
+        id: "990000",
+        value: "Option 1 Value",
+        weight: 1,
+      },
+      {
+        id: "990001",
+        value: "Option 2 Value",
+        weight: 2,
       },
     ],
   };

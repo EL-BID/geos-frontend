@@ -12,7 +12,12 @@ import APIDataContainer from "~/containers/api_data";
 import AccountsContainer from "~/containers/accounts";
 import NonUserRedir from "~/containers/non_user_redir";
 
-import { FetchContextSurvey } from "./Api";
+import {
+  FetchContextSurvey,
+  FetchQuestions,
+  FetchSections,
+  PostAnswers,
+} from "./Api";
 import Form from "./Form";
 
 const d = console.log;
@@ -23,21 +28,39 @@ const SurveyContext = ({ intl, accounts, apiData }) => {
   const l = (id) => intl.formatMessage({ id });
 
   const [survey, setSurvey] = useState(null);
+  const [sections, setSections] = useState([]);
+  const [questions, setQuestions] = useState([]);
 
   //On Mount
   useEffect(() => {
-    //Fetch Condtext Survey
-    FetchContextSurvey().then((data) => {
-      setSurvey(data);
-    });
+    FetchContextSurvey().then(setSurvey);
   }, []);
+
+  //Sections Watcher
+  useEffect(() => {
+    if (survey) {
+      FetchSections(survey.id).then(setSections);
+      FetchQuestions(survey.id).then(setQuestions);
+    }
+  }, [survey]);
+
+  const onSave = (answers) =>
+    PostAnswers(survey.id, survey.schedule[0].id.$oid, answers);
 
   return (
     <Layout className={styles.layout}>
       <Helmet title="Context Survey" />
       <Body>
         <Header user={user} />
-        {survey && <Form l={l} survey={survey} />}
+        {survey && (
+          <Form
+            l={l}
+            survey={survey}
+            sections={sections}
+            questions={questions}
+            onSave={onSave}
+          />
+        )}
       </Body>
     </Layout>
   );
