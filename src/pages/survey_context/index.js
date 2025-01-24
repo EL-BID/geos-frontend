@@ -14,6 +14,7 @@ import NonUserRedir from "~/containers/non_user_redir";
 
 import {
   FetchContextSurvey,
+  FetchAnswer,
   FetchQuestions,
   FetchSections,
   PostAnswers,
@@ -30,6 +31,8 @@ const SurveyContext = ({ intl, accounts, apiData }) => {
   const [survey, setSurvey] = useState(null);
   const [sections, setSections] = useState([]);
   const [questions, setQuestions] = useState([]);
+  const [answer, setAnswer] = useState({});
+  const [questionsResponses, setQuestionsResponses] = useState([]);
 
   //On Mount
   useEffect(() => {
@@ -39,8 +42,13 @@ const SurveyContext = ({ intl, accounts, apiData }) => {
   //Sections Watcher
   useEffect(() => {
     if (survey) {
-      FetchSections(survey.id).then(setSections);
-      FetchQuestions(survey.id).then(setQuestions);
+      const { id: idSurvey } = survey;
+      FetchSections(idSurvey).then(setSections);
+      FetchQuestions(idSurvey).then(setQuestions);
+      FetchAnswer(idSurvey).then(({ answer, questionsResponses }) => {
+        setAnswer(answer);
+        setQuestionsResponses(questionsResponses);
+      });
     }
   }, [survey]);
 
@@ -58,6 +66,8 @@ const SurveyContext = ({ intl, accounts, apiData }) => {
             survey={survey}
             sections={sections}
             questions={questions}
+            answer={answer}
+            questionsResponses={questionsResponses}
             onSave={onSave}
           />
         )}

@@ -11,7 +11,15 @@ import Button from "~/components/Button";
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
 
-const Form = ({ l, survey, sections, questions, onSave }) => {
+const Form = ({
+  l,
+  survey,
+  sections,
+  questions,
+  answer,
+  questionsResponses,
+  onSave,
+}) => {
   const { id, schedule: schedules } = survey;
   const schedule = schedules[0];
   const { survey_name } = schedule;
@@ -30,6 +38,7 @@ const Form = ({ l, survey, sections, questions, onSave }) => {
           key={section.id}
           section={section}
           questions={questions}
+          questionsResponses={questionsResponses}
           onAnswer={onAnswer}
         />
       ))}
@@ -40,7 +49,13 @@ const Form = ({ l, survey, sections, questions, onSave }) => {
   );
 };
 
-const SurveySection = ({ l, section, questions, onAnswer }) => {
+const SurveySection = ({
+  l,
+  section,
+  questions,
+  questionsResponses,
+  onAnswer,
+}) => {
   const {
     _id: { $oid: idSection },
     name,
@@ -58,6 +73,7 @@ const SurveySection = ({ l, section, questions, onAnswer }) => {
           l={l}
           key={q._id.$oid}
           question={q}
+          questionsResponses={questionsResponses}
           onAnswer={onAnswer}
         />
       ))}
@@ -65,13 +81,17 @@ const SurveySection = ({ l, section, questions, onAnswer }) => {
   );
 };
 
-const SurveyQuestion = ({ l, question, onAnswer }) => {
+const SurveyQuestion = ({ l, question, questionsResponses, onAnswer }) => {
   const {
     _id: { $oid: idQuestion },
     name,
     type,
     survey_question_description: options = [],
   } = question;
+
+  const response = questionsResponses.find(
+    (q) => q.survey_question_id === idQuestion
+  );
 
   return (
     <div className={classnames(styles.question, styles.question__compound)}>
@@ -81,6 +101,7 @@ const SurveyQuestion = ({ l, question, onAnswer }) => {
           <FieldRadio
             options={options}
             idQuestion={idQuestion}
+            response={response}
             onAnswer={onAnswer}
           />
         )}
@@ -88,6 +109,7 @@ const SurveyQuestion = ({ l, question, onAnswer }) => {
           <FieldCheckbox
             options={options}
             idQuestion={idQuestion}
+            response={response}
             onAnswer={onAnswer}
           />
         )}
@@ -96,7 +118,9 @@ const SurveyQuestion = ({ l, question, onAnswer }) => {
   );
 };
 
-const FieldRadio = ({ options, idQuestion, onAnswer }) => {
+const FieldRadio = ({ options, idQuestion, response, onAnswer }) => {
+  const selectedOption = response ? response.options.at(0) : null;
+
   return options.map(({ id, weight, value }) => (
     <div className="control ml-3">
       <label className="radio">
@@ -104,6 +128,7 @@ const FieldRadio = ({ options, idQuestion, onAnswer }) => {
           type="radio"
           name={idQuestion}
           value={id}
+          checked={selectedOption == id}
           onChange={() => onAnswer({ [idQuestion]: [id] })}
         />
         {value}

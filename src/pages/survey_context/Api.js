@@ -44,3 +44,8 @@ export const PostAnswers = (idSurvey, idSchedule, answers) => {
     answers,
   });
 };
+
+export const FetchAnswer = (idSurvey) => {
+  const url = buildUrl(`surveys/${idSurvey}/answers`);
+  return axios.get(url);
+};

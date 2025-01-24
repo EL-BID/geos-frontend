@@ -145,7 +145,13 @@ const SurveysList = ({
             )}
           </div>
           {hasAnswer(schedule) && (
-            <HasAnswer l={l} schedule={schedule} survey={survey} user={user} />
+            <HasAnswer
+              l={l}
+              schedule={schedule}
+              survey={survey}
+              user={user}
+              school={school}
+            />
           )}
         </div>
       </div>
@@ -153,7 +159,7 @@ const SurveysList = ({
   });
 };
 
-const HasAnswer = ({ l }) => {
+const HasAnswer = ({ l, schedule, user, school }) => {
   return (
     <div>
       <div className="column is-8 is-offset-2 mt-30 mb-20">
