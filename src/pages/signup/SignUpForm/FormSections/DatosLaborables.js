@@ -96,7 +96,7 @@ const DatosLaborables = ({
 };
 
 const Fields = ({ l, fields, apiData }) => {
-  const mapApiData = (data) =>
+  const mapApiData = (data = []) =>
     data.map((c) => ({ id: c._id.$oid, label: c.name }));
 
   return (

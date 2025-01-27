@@ -18,6 +18,9 @@ import axios from "axios";
 import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 4);
+
 class PrintList extends React.Component {
   constructor() {
     super();
@@ -37,7 +40,12 @@ class PrintList extends React.Component {
 
   componentWillMount() {
     if (this.state.survey) {
-      this.getQuestions();
+      const { id, type } = this.state.survey;
+      if (type != "personal") {
+        window.location.href = "/print/survey/" + id;
+      } else {
+        this.getQuestions();
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { injectIntl } from "react-intl";
 import APIDataContainer from "~/containers/api_data";
 import AccountsContainer from "~/containers/accounts";
@@ -7,7 +7,7 @@ import styles from "./styles.styl";
 import classnames from "classnames";
 
 import Button from "~/components/Button";
-import { pull, remove } from "lodash";
+import { pull } from "lodash";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);

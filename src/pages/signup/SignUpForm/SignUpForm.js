@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { reduxForm } from "redux-form";
 import { compose } from "redux";
-import { concat, isEmpty, keys, toString, isNumber } from "lodash";
+import { concat, isEmpty, keys } from "lodash";
 import classnames from "classnames";
 import API from "~/api";
 import { injectIntl } from "react-intl";

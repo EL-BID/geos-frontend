@@ -12,12 +12,24 @@ const buildUrl = (endpoint) =>
   CONF.ApiURL +
   `/api/v1/${endpoint}?access_token=${getUserToken()}&lang=${getLang()}`;
 
-export const FetchContextSurvey = () => {
+export const FetchAllSurveys = () => {
   const url = buildUrl("surveys");
   return axios
     .get(url)
-    .then(({ data }) => data.surveys || [])
-    .then((surveys) => surveys.find((s) => s.type === "context"));
+    .then(({ data }) => data || {})
+    .then((data) => data.surveys || []);
+};
+
+export const FetchSurvey = (idSurvey) => {
+  return FetchAllSurveys().then((surveys) =>
+    surveys.find((s) => s.id === idSurvey)
+  );
+};
+
+export const FetchContextSurvey = () => {
+  return FetchAllSurveys().then((surveys) =>
+    surveys.find((s) => s.type === "context")
+  );
 };
 
 export const FetchSections = (idSurvey) => {
@@ -48,5 +60,5 @@ export const PostAnswers = (idSurvey, idSchedule, answers) => {
 
 export const FetchAnswer = (idSurvey) => {
   const url = buildUrl(`surveys/${idSurvey}/answers`);
-  return axios.get(url);
+  return axios.get(url).then(({ data }) => data || {});
 };

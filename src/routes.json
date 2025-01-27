@@ -136,6 +136,10 @@
     "page": "./pages/resources/print"
   },
   {
+    "path": "/print/survey/:idSurvey",
+    "page": "./pages/print-survey"
+  },
+  {
     "path": "/criar-contato",
     "page": "./pages/manager"
   },

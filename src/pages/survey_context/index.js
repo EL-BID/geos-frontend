@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { compose } from "redux";
-import { injectIntl } from "react-intl";
-import Helmet from "react-helmet";
 
-import Layout from "~/components/Layout";
-import Body from "~/components/Body";
 import PageHeader from "~/components/Header/PageHeader";
-import styles from "./styles.styl";
-
-import APIDataContainer from "~/containers/api_data";
-import AccountsContainer from "~/containers/accounts";
-import NonUserRedir from "~/containers/non_user_redir";
+import PageLayoutWrapper from "~/components/PageLayoutWrapper";
 
 import {
   FetchContextSurvey,
@@ -18,16 +9,14 @@ import {
   FetchQuestions,
   FetchSections,
   PostAnswers,
-} from "./Api";
+} from "~/api/Survey";
+
 import Form from "./Form";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
 
-const SurveyContext = ({ intl, accounts, apiData }) => {
-  const { user } = accounts;
-  const l = (id) => intl.formatMessage({ id });
-
+const SurveyContext = ({}) => {
   const [survey, setSurvey] = useState(null);
   const [sections, setSections] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -58,23 +47,19 @@ const SurveyContext = ({ intl, accounts, apiData }) => {
     );
 
   return (
-    <Layout className={styles.layout}>
-      <Helmet title="Context Survey" />
-      <Body>
-        <Header user={user} />
-        {survey && (
-          <Form
-            l={l}
-            survey={survey}
-            sections={sections}
-            questions={questions}
-            answer={answer}
-            questionsResponses={questionsResponses}
-            onSave={onSave}
-          />
-        )}
-      </Body>
-    </Layout>
+    <PageLayoutWrapper pageTitle="Context Survey">
+      <Header />
+      {survey && (
+        <Form
+          survey={survey}
+          sections={sections}
+          questions={questions}
+          answer={answer}
+          questionsResponses={questionsResponses}
+          onSave={onSave}
+        />
+      )}
+    </PageLayoutWrapper>
   );
 };
 
@@ -94,6 +79,8 @@ const Header = ({ user }) => {
 
 SurveyContext.propTypes = {};
 
-export default injectIntl(
-  compose(APIDataContainer, AccountsContainer, NonUserRedir)(SurveyContext)
-);
+export default SurveyContext;
+
+//export default injectIntl(
+//  compose(APIDataContainer, AccountsContainer, NonUserRedir)(SurveyContext)
+//);
