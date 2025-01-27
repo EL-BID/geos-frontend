@@ -36,6 +36,7 @@ answers = {
 }
 */
 export const PostAnswers = (idSurvey, idSchedule, answers) => {
+  //d("PostAnswers", idSurvey, idSchedule, j(answers));
   const url = buildUrl(`surveys/${idSurvey}/answers`);
   return axios.post(url, {
     idUser: getUserId(),

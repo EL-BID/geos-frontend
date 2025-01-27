@@ -7,6 +7,7 @@ import styles from "./styles.styl";
 import classnames from "classnames";
 
 import Button from "~/components/Button";
+import { pull, remove } from "lodash";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
@@ -128,7 +129,7 @@ const FieldRadio = ({ options, idQuestion, response, onAnswer }) => {
           type="radio"
           name={idQuestion}
           value={id}
-          checked={selectedOption == id}
+          defaultChecked={selectedOption == id}
           onChange={() => onAnswer({ [idQuestion]: [id] })}
         />
         {value}
@@ -144,7 +145,7 @@ const FieldCheckbox = ({ options, idQuestion, onAnswer }) => {
     const copy = [...selectedOptions];
 
     if (copy.includes(id)) {
-      copy.splice(copy.indexOf(id), 1);
+      pull(copy, id);
     } else {
       copy.push(id);
     }

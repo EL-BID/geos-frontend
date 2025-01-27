@@ -46,14 +46,16 @@ const SurveyContext = ({ intl, accounts, apiData }) => {
       FetchSections(idSurvey).then(setSections);
       FetchQuestions(idSurvey).then(setQuestions);
       FetchAnswer(idSurvey).then(({ answer, questionsResponses }) => {
-        setAnswer(answer);
-        setQuestionsResponses(questionsResponses);
+        setAnswer(answer || {});
+        setQuestionsResponses(questionsResponses || []);
       });
     }
   }, [survey]);
 
   const onSave = (answers) =>
-    PostAnswers(survey.id, survey.schedule[0].id.$oid, answers);
+    PostAnswers(survey.id, survey.schedule[0].id.$oid, answers).then(
+      () => (window.location.href = "/recursos")
+    );
 
   return (
     <Layout className={styles.layout}>
