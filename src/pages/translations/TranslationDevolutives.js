@@ -356,7 +356,7 @@ class TranslationsDevolutives extends React.Component {
           secondaryLanguageTranslation: (
             <textarea
               className={styles.column_width}
-              rows={4}
+              rows={30}
               name={key}
               value={secondary[key]}
               // defaultValue={secondTranslations[key]}

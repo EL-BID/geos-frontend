@@ -94,7 +94,7 @@ const SignUpForm = ({
       }
       //Success
       else {
-        alert(`SignUpForm.success`);
+        alert(l(`SignUpForm.success`));
         window.location = "/listar-usuario/professores";
       }
     });

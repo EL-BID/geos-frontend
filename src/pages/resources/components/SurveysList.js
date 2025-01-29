@@ -29,18 +29,18 @@ const SurveysList = ({
   school,
   setShowModalHowItWorks,
 }) => {
-  const hasAnswer = (schedules) => {
-    const schedulesWithAnswer = schedules.filter(
-      (schedule) =>
-        schedule.answers &&
-        schedule.answers.find(
-          (answer) =>
-            answer.status === "Complete" &&
-            answer.user_id.$oid === user._id.$oid
-        )
-    );
-    return schedulesWithAnswer.length > 0;
-  };
+  //const hasAnswer = (schedules) => {
+  //  const schedulesWithAnswer = schedules.filter(
+  //    (schedule) =>
+  //      schedule.answers &&
+  //      schedule.answers.find(
+  //        (answer) =>
+  //          answer.status === "Complete" &&
+  //          answer.user_id.$oid === user._id.$oid
+  //      )
+  //  );
+  //  return schedulesWithAnswer.length > 0;
+  //};
 
   const gotToSurvey = (survey) => {
     setSelectedSurvey(survey);
@@ -64,6 +64,11 @@ const SurveysList = ({
     const firstSchedule = schedule[0];
     const hasDescr = !!firstSchedule.survey_description;
     const showHowItWorks = type == "personal";
+    const answer = firstSchedule.answers.find(
+      (answer) =>
+        answer.status === "Complete" && answer.user_id.$oid === user._id.$oid
+    );
+    const hasAnswer = !!answer;
 
     return (
       <div className="container mb-30" key={idSurvey}>
@@ -94,7 +99,7 @@ const SurveysList = ({
             {!surveyOutPeriod(survey) &&
               !surveyAnswered(survey, user) &&
               isDirectorOrTeacher(user) &&
-              !hasAnswer(schedule) && (
+              !hasAnswer && (
                 // Boton de responder cuestionario
                 <Button
                   className={classNames(
@@ -144,9 +149,11 @@ const SurveysList = ({
               </Button>
             )}
           </div>
-          {hasAnswer(schedule) && (
+          {hasAnswer && (
             <HasAnswer
               l={l}
+              lang={lang}
+              answer={answer}
               schedule={schedule}
               survey={survey}
               user={user}
@@ -159,7 +166,22 @@ const SurveysList = ({
   });
 };
 
-const HasAnswer = ({ l, schedule, user, school }) => {
+const HasAnswer = ({ l, schedule, lang, survey, answer, user, school }) => {
+  const openFeedback = () => {
+    window.open(
+      CONF.ApiURL +
+        "/api/v1/survey/feedback/" +
+        survey.id +
+        "/" +
+        answer.id.$oid +
+        "?access_token=" +
+        getUserToken() +
+        "&lang=" +
+        lang,
+      "target=_blank"
+    );
+  };
+
   return (
     <div>
       <div className="column is-8 is-offset-2 mt-30 mb-20">
@@ -201,20 +223,7 @@ const HasAnswer = ({ l, schedule, user, school }) => {
                   <div className="column">
                     <a
                       className={styles.access_link}
-                      onClick={() =>
-                        window.open(
-                          CONF.ApiURL +
-                            "/api/v1/survey/feedback/" +
-                            schedule.survey_id.$oid +
-                            "/" +
-                            answer.id.$oid +
-                            "?access_token=" +
-                            getUserToken() +
-                            "&lang=" +
-                            lang,
-                          "target=_blank"
-                        )
-                      }
+                      onClick={() => openFeedback()}
                     >
                       <span className={styles.with_icon}>
                         {parse(l("Resources.accessDevolutive"))}
