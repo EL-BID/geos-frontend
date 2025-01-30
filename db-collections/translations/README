@@ -1,0 +1,9 @@
+1- Delete the translation file from DB with MONGO CLI. Example for pt-BR:
+
+db.translations.deleteMany({lang:"pt-BR"})
+
+2- Edit the JSON file located in this directory
+
+3- Upload the file 
+
+mongoimport -h=localhost:30998 -u=admin -p=abc123 --authenticationDatabase admin -d=guia_edutec -c=translations ./pt-BR.json --jsonArray

@@ -74,35 +74,35 @@ class Translations extends React.Component {
       newTranslations: {},
     });
 
-    // axios
-    //   .get(CONF.ApiURL + `/api/v1/translation/${lang}`, {})
-    //   .then((res) => {
-    //     const data = _.get(res, "data.data") || {};
-    //     const dataOmitedProps = _.omit(data[0], [
-    //       "created_at",
-    //       "lang",
-    //       "updated_at",
-    //       "_id",
-    //     ]);
+    axios
+      .get(CONF.ApiURL + `/api/v1/translation/${lang}`, {})
+      .then((res) => {
+        const data = _.get(res, "data.data") || {};
+        const dataOmitedProps = _.omit(data[0], [
+          "created_at",
+          "lang",
+          "updated_at",
+          "_id",
+        ]);
 
-    //     this.setState({
-    //       [stateName || "translations"]: flattenMessages(dataOmitedProps),
-    //       [loadingState]: false,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     this.setState(
-    //       {
-    //         [stateName || "translations"]: [],
-    //         [loadingState]: false,
-    //       },
-    //       () =>
-    //         window.alert(
-    //           _.get(err, "response.data.message") ||
-    //             this.translate("Translations.errorFetchTranslations")
-    //         )
-    //     );
-    //   });
+        this.setState({
+          [stateName || "translations"]: flattenMessages(dataOmitedProps),
+          [loadingState]: false,
+        });
+      })
+      .catch((err) => {
+        this.setState(
+          {
+            [stateName || "translations"]: [],
+            [loadingState]: false,
+          },
+          () =>
+            window.alert(
+              _.get(err, "response.data.message") ||
+                this.translate("Translations.errorFetchTranslations")
+            )
+        );
+      });
   }
 
   translate(id) {

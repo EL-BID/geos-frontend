@@ -1,0 +1,2572 @@
+{
+	"AcknowledgmentDevolutive": {
+		"acknowledgmentPrincipal": "¡Gracias por responder el cuestionario de diagnóstico de adopción de tecnología de la escuela!",
+		"acknowledgmentTeacher": "¡Gracias por realizar el diagnóstico de las habilidades digitales de los docentes!",
+		"devolutiveAccessPrincipal": "En unos minutos, recibirá un correo electrónico automático con una retroalimentación que contiene el nivel de adopción de tecnología de su escuela en cada dimensión analizada. También recibirá sugerencias de acciones concretas que puede tomar para garantizar que el uso de la tecnología contribuya cada vez más a la enseñanza y la gestión en su escuela.",
+		"devolutiveAccessTeacher": "A los pocos minutos recibirás un correo electrónico automático con una retroalimentación con tu nivel de apropiación respecto al conocimiento y usos de las tecnologías digitales, además de consultar sugerencias para mejorar tus prácticas profesionales.",
+		"btnDevolutiveAccess": "ACCEDE A LA RETROALIMENTACIÓN"
+	},
+	"ActionsMenu": {
+		"users": "Usuarios",
+		"admin": "Gerentes",
+		"translations": "Traducciones",
+		"toManage": "Administrar",
+		"schools": "Escuelas",
+		"general": "General",
+		"classes": "Clases",
+		"directors": "Directores",
+		"infrastructure": "Infraestructura",
+		"pages": "Páginas",
+		"questions": "Cuestionarios",
+		"teachers": "Docentes",
+		"adminStates": "Gerentes",
+		"affiliations": "Afiliaciones administrativas",
+		"countries": "Países",
+		"devolutives": "Retroalimentación",
+		"adminCountry": "Administradores de países",
+		"country": "Pais"
+	},
+	"Admin": {
+		"admin": "Administrador",
+		"connectedSchoolMonitor": "Monitor Escuela Conectada",
+		"networksPanel": "Panel Redes",
+		"panels": "Paneles",
+		"selfEvaluationPanel": "Panel Diagnóstico",
+		"home": "Comienzo",
+		"menu": "Menú",
+		"dashboard": {
+			"view": "Visualizar"
+		}
+	},
+	"AdminStateTable": {
+		"adminStates": "GERENTES",
+		"btnDownloadAdminStateList": "Lista de descargas de Gerentes",
+		"btnFilter": "Filtrar",
+		"btnImportSpreadSheetAdminState": "Importar hoja de cálculo de Gerentes",
+		"tableHeaderAffiliation": "Afiliación",
+		"tableHeaderCountry": "País",
+		"tableHeaderEmail": "Correo",
+		"tableHeaderName": "Nombre",
+		"tableHeaderPermissions": "ACCESO LIBRE",
+		"tableHeaderPhoneNumber": "TELÉFONO",
+		"tableHeaderTerm": "CONTRATO DE ADHESIÓN",
+		"tableResponsibleName": "NOMBRE DEL RESPONSABLE",
+		"totalAdminStates": "Gerentes totales:",
+		"placeholderFilter": "Ingrese el nombre de la afiliación ...",
+		"tableHeaderResponsibleEmail": "CORREO ELECTRÓNICO RESPONSABLE",
+		"btnSave": "Guardar",
+		"term": "Contrato de adhesión"
+	},
+	"AdminsCountriesTable": {
+		"btnEdit": "Editar",
+		"adminsCountries": "ADMINISTRADORES DE PAÍS",
+		"btnDownloadAdminCountryList": "Descargar la lista de administradores de países",
+		"btnFilter": "Filtrar",
+		"btnImportSpreadSheetAdminsCountries": "Importar hoja de cálculo de administrador de país",
+		"btnNewAdminCountry": "Nuevo administrador de país",
+		"btnRemove": "Eliminar",
+		"placeholderFilter": "Ingrese el nombre del país ...",
+		"tableHeaderActions": "ACCIONES",
+		"tableHeaderCountry": "PAÍS",
+		"tableHeaderEmail": "CORREO ELECTRÓNICO",
+		"tableHeaderName": "NOMBRE",
+		"tableHeaderPhoneNumber": "TELÉFONO"
+	},
+	"AffiliationsTable": {
+		"btnEdit": "Editar",
+		"affiliations": "AFILIACIONES ADMINISTRATIVAS",
+		"btnDownloadAffiliationList": "Descargar lista de afiliaciones",
+		"btnFilter": "Filtrar",
+		"btnImportSpreadSheetAffiliations": "Importar hoja de cálculo de afiliaciones",
+		"btnNewAffiliation": "Nueva afiliación",
+		"btnRemove": "Eliminar",
+		"placeholderFilter": "Ingrese el nombre de la afiliación...",
+		"tableHeaderActions": "Acciones",
+		"tableHeaderAffiliation": "AFILIACIÓN",
+		"tableHeaderCity": "Nivel geográfico 4",
+		"tableHeaderCountry": "PAÍS",
+		"tableHeaderProvince": "Nivel geográfico 2",
+		"tableHeaderState": "Nivel geográfico 3",
+		"tableHeaderType": "TIPO",
+		"totalCountries": "Afiliaciones totales:"
+	},
+	"AnswersTable": {
+		"answered": "RESP.",
+		"city": "Ciudad",
+		"competenceLevel": "N.C.",
+		"contact": "Contacto",
+		"infrastructureLevel": "N.I.",
+		"obs": "OBS",
+		"regional": "Regional",
+		"resourceLevel": "N.R.",
+		"sample": "MUES.",
+		"school": "Escuelas",
+		"uniqueCode": "Código único",
+		"visionLevel": "N.V."
+	},
+	"BodyConfig": {
+		"btnBack": "Volver",
+		"btnFinish": "Concluir",
+		"btnNext": "Avanzar"
+	},
+	"CensusFormModal": {
+		"description": "Estimado director, los siguientes datos fueron extraídos de la base de datos nacional. Si algún dato es incorrecto, actualícelo a continuación con el valor correcto.",
+		"label1": "No. estudiantes de la mañana",
+		"label2": "No. estudiantes de la tarde",
+		"title": "Confirmación de datos",
+		"childEducation": "Infantil",
+		"confirm": "CONFIRMAR",
+		"educationLevel": "Niveles de educación",
+		"eja": "EJA",
+		"elementary1": "Primaria I",
+		"elementary2": "Primaria II",
+		"highSchool": "Escuela secundaria",
+		"label3": "No. estudiantes nocturnos",
+		"label4": "No. estudiantes completos",
+		"label5": "No. de docentes",
+		"label6": "Comentarios",
+		"technicalHighSchool": "Secundaria Técnica"
+	},
+	"ConfirmationUploadCountriesModal": {
+		"btnClose": "Cerrar",
+		"msgError": "¡Error al enviar el archivo!",
+		"msgSuccessful": "!Enviado con éxito!",
+		"upload": "Upload"
+	},
+	"ConfirmationUploadSchoolsModal": {
+		"btnClose": "Cerrar",
+		"msgError": "¡Error al enviar el archivo!",
+		"msgSuccessful": "!Enviado con éxito!",
+		"upload": "Upload"
+	},
+	"ConnectedSchoolMonitor": {
+		"advanced": "Avanzado",
+		"basic": "Básico",
+		"cities": "Nivel Geográfico 4",
+		"emerging": "Emergente",
+		"intermediate": "Intermediario",
+		"levelsConnectedSchool": "Niveles escolares conectados",
+		"resultsCity": "Resultado de las escuelas {Municipais} respondiendo a la Guía Edutec",
+		"resultsState": "Resultado de las escuelas {Estaduais} que respondieron a la Guía Edutec",
+		"states": "Nivel Geográfico 3",
+		"states1": "Nivel Geográfico 2"
+	},
+	"CountriesTable": {
+		"btnNewCountry": "Nuevo País",
+		"tableHeaderCountry": "PAÍS",
+		"btnEdit": "Editar",
+		"btnDownloadCountryList": "Descargar lista de países",
+		"btnDownloadSchoolsSpreadSheetModel": "Descargue la plantilla de la hoja de cálculo de importación CSV",
+		"btnFilter": "Filtrar",
+		"btnImportSpreadSheetCountries": "Hoja de cálculo de países de importación",
+		"btnRemove": "Eliminar",
+		"countries": "Países",
+		"placeholderFilter": "Ingrese el nombre del país ...",
+		"tableHeaderActions": "ACCIONES",
+		"tableHeaderLevel1": "EST. NIVEL GEOGRÁFICO 1",
+		"tableHeaderLevel2": "EST. NIVEL GEOGRÁFICO 2",
+		"tableHeaderLevel3": "EST. NIVEL GEOGRÁFICO 3",
+		"tableHeaderLevel4": "EST. NIVEL GEOGRÁFICO 4",
+		"totalCountries": "Total países:"
+	},
+	"CreateAdminCountry": {
+		"btnRegister": "REGISTRAR",
+		"btnRemove": "Eliminar administrador de país",
+		"btnSave": "GUARDAR",
+		"email": "Correo electrónico",
+		"name": "Nombre",
+		"pageHeader": "REGISTRE AL ADMINISTRADOR DEL PAÍS",
+		"phone_number": "Teléfono",
+		"registerData": "DATOS DE REGISTRO DEL ADMINISTRADOR DEL PAÍS",
+		"password": "Contraseña"
+	},
+	"CreateAffiliation": {
+		"btnRegister": "REGISTRAR",
+		"btnRemove": "Eliminar afiliación",
+		"btnSave": "GUARDAR",
+		"name": "Nombre",
+		"pageHeader": "REGÍSTRESE AFILIACIÓN",
+		"registerData": "DATOS DE REGISTRO DE MEMBRESÍA",
+		"typeInstitution": "Tipo de institución"
+	},
+	"CreateCountry": {
+		"btnEdit": "Editar",
+		"btnRemove": "Eliminar país",
+		"btnSave": "GUARDAR",
+		"btnregister": "REGISTRAR",
+		"level1": "Nivel geográfico 1",
+		"level2": "Nivel geográfico 2",
+		"level3": "Nivel geográfico 3",
+		"level4": "Nivel geográfico 4",
+		"name": "Nombre",
+		"pageHeader": "REGISTRO PAÍS",
+		"registerData": "DATOS DE REGISTRO DEL PAÍS",
+		"btnCreate": "Crear",
+		"create": "CREAR",
+		"edit": "EDITAR",
+		"geographicElements": "ELEMENTOS GEOGRÁFICOS",
+		"selectOption": "Seleccione una opción"
+	},
+	"CreateQuestion": {
+		"btnAddAlternative": "Añadir alternativa",
+		"btnAddQuestion": "Añadir pregunta",
+		"btnDeleteQuestion": "Eliminar la pregunta",
+		"btnSave": "GUARDAR",
+		"bullet1": "Elección simple, en la que se presenta un conjunto de alternativas y el encuestado elige solo una de las opciones.",
+		"bullet2": "Opciones múltiples, donde se presenta un conjunto de alternativas y el encuestado puede elegir todas las opciones que necesite.",
+		"createQuestionTitle": "Preguntas específicas de tu red",
+		"description": "En esta sesión puedes personalizar el cuestionario de la Guía EduTec añadiendo hasta 4 preguntas que deseas formular a tu red. Estas nuevas preguntas no tendrán ninguna repercusión ni alterarán el resultado del diagnóstico de la Guía EduTec (consulta el cuestionario aquí), pero pueden ayudarte a identificar o a obtener información importante para analizar o tomar decisiones. Por ejemplo, pregunta por la evaluación de cualquier programa que hayas puesto a disposición de la red.",
+		"description2": "Las preguntas adicionales pueden ser de dos tipos:",
+		"important": "IMPORTANTE",
+		"noQuestions": "No hay preguntas registradas",
+		"oneAlternative": "El encuestado solo puede elegir una alternativa como respuesta. (si permites múltiples alternativas, elimina esta opción)",
+		"pageHeader": "TEMAS ESPECÍFICOS",
+		"placeholderAlternative": "Nueva alternativa",
+		"placeholderquestionTitle": "Escriba aquí el enunciado de la pregunta",
+		"question": "Pregunta",
+		"registerQuestion": "Personalizar el cuestionario",
+		"typeOfQuestion": "TIPO DE PREGUNTA"
+	},
+	"CreateSchool": {
+		"selectOption": "Seleccione una opción",
+		"pageHeader": "INSCRIBIRSE EN LA ESCUELA",
+		"btnRemove": "Eliminar",
+		"btnSave": "Guardar",
+		"btnregister": "REGISTRAR",
+		"comments": "Comentarios",
+		"contact": "Contacto",
+		"country": "País",
+		"localizationType": "Tipo de ubicacion",
+		"name": "Nombre",
+		"new": "nuevo",
+		"numberOfAfternoonStudents": "No. estudiantes de la tarde",
+		"numberOfIntegralStudents": "No. estudiantes completos",
+		"numberOfMorningStudents": "No. estudiantes de la mañana",
+		"numberOfNightStudents": "No. estudiantes nocturnos",
+		"numberOfTeacher": "No. de docentes",
+		"registerData": "DATOS DE MATRÍCULA ESCOLAR",
+		"rural": "Rural",
+		"uniqueCode": "Código único",
+		"urban": "Urbano",
+		"regional": "Regional",
+		"city": "Nivel geográfico 4",
+		"province": "Nivel geográfico 2",
+		"state": "Nivel geográfico 3"
+	},
+	"Dashboard": {
+		"schools": "Escuelas",
+		"schoolSmallDescription": "ya han realizado el diagnóstico del grado de implementación de la tecnología.",
+		"schoolDescription": "realizaron el diagnóstico del nivel de implementación de la tecnología.",
+		"teachers": "Docentes",
+		"teacherSmallDescription": "que ya respondieron a el Diagnóstico de Habilidades Digitales.",
+		"teacherDescription": "respondieron a el diagnóstico de las habilidades digitales.",
+		"teste": "Testes",
+		"test": "Te"
+	},
+	"DataConst": {
+		"kindergarten": "Educación Infantil",
+		"elementarySchool1": "Primaria - Unidad Pedagógica 1",
+		"elementarySchool2": "Primaria - Unidad Pedagógica 2",
+		"elementarySchool3": "Primaria - Unidad Pedagógica 3",
+		"highSchool": "Escuela secundaria",
+		"eja": "Educación de jóvenes y adultos",
+		"technicalEducation": "Educación técnica",
+		"higherEducation": "Enseñanza superior",
+		"agrarianSciences": "Ciencias Agrarias",
+		"appliedSocialSciences": "Ciencias Sociales Aplicadas",
+		"art": "Arte",
+		"biologicalSciences": "Ciencias biologicas",
+		"continuingEducationCompleted": "Educación continua - Completado",
+		"continuingEducationInProgress": "Educación continua - En curso",
+		"elementarySchool": "Primaria",
+		"engineering": "Ingenieria",
+		"english": "Inglés",
+		"exactAndEarthSciences": "Ciencias Exactas y de la Tierra",
+		"experienceFields": "Campos de experiencia",
+		"geo": "Geografía",
+		"graduationCompleted": "Graduación - Completado",
+		"graduationInProgress": "Graduación en curso",
+		"healthScience": "Ciencias de la salud",
+		"history": "Historia",
+		"humanSciencesAndTechnologies": "Ciencias Humanas y Sociales Aplicadas",
+		"humanities": "Ciencias Humanas",
+		"languagesAndTechnologies": "Idiomas y sus tecnologías",
+		"linguisticsLettersAndArts": "Lingüística, Letras y Artes",
+		"masterCompleted": "Maestria",
+		"masterInProgress": "Maestro - En curso",
+		"math": "Matemáticas",
+		"mathAndTechnologies": "Matemáticas y sus tecnologías",
+		"naturalSciencesAndTechnologies": "Ciencias naturales y sus tecnologías",
+		"pe": "Educación Física",
+		"phdInCompleted": "Doctorado",
+		"phdInProgress": "Doctorado - En curso",
+		"polyvalent": "Polivalente",
+		"portuguese": "Lengua portuguesa",
+		"postDoctorateInCompleted": "Postdoctoral - Completado",
+		"postDoctorateInProgress": "Postdoctorado - En curso",
+		"religion": "Educación religiosa",
+		"science": "Ciencias",
+		"spanish": "Lengua española",
+		"specializationCompleted": "Especialización - Completado",
+		"specializationInProgress": "Especialización: en curso",
+		"bachelor": "Bachiller",
+		"bachelorDegree": "Licenciatura",
+		"technical": "Técnico (terciario)",
+		"postgrado": "Curso de Postgrado",
+		"all": "Todas las asignaturas"
+	},
+	"DeleteAdminCountryModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar",
+		"description1": "¿Está seguro de que desea eliminar a este administrador del país?",
+		"warning": "¡Atención!"
+	},
+	"DeleteAffiliationModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar",
+		"warning": "¡Atención!",
+		"description1": "Todas las estructuras vinculadas a la afiliación eliminada también se eliminarán {itemsToBeDeleted}",
+		"description2": "¿Está seguro de que desea eliminar esta afiliación?",
+		"itemsToBeDeleted": "(Escuelas, Directores, Gerentes y Docentes)"
+	},
+	"DeleteCountryModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar",
+		"warning": "¡Atención!",
+		"description1": "Todas las estructuras vinculadas al país excluido también se eliminarán {itemsToBeDeleted}",
+		"description2": "¿Está seguro de que desea eliminar este país?",
+		"itemsToBeDeleted": "(Afiliaciones, Escuelas, Directores, Gerentes y Docentes)"
+	},
+	"DeleteSchoolModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar",
+		"warning": "¡Atención!",
+		"description1": "También se eliminarán todas las estructuras vinculadas a la escuela excluida.",
+		"description2": "¿Estás seguro de que deseas eliminar esta escuela?",
+		"itemsToBeDeleted": "(Afiliaciones, Escuelas, Directores, Gerentes y Docentes)"
+	},
+	"Devolutive": {
+		"summary": {
+			"between": "Entre el",
+			"and": "y el",
+			"teachers": "docentes",
+			"info": "respondieron a el Diagnóstico de Habilidades Digitales del Docente. Se trata de una herramienta en línea gratuita desarrollada por el CIEB (Centro de Innovación para la Educación Brasileña), con 23 preguntas de opción única divididas en 3 áreas (pedagogía, ciudadanía digital y desarrollo profesional), en la que se evalúan 12 habilidades en 5 niveles de adquisición (exposición, familiarización, adaptación, integración y transformación). Al responder a este cuestionario, todo los docentes recibieron información personalizada, en la que se le indicaba en qué punto se encontraba, qué significaba y cómo podía mejorar su práctica profesional de forma inmediata y autónoma, basándose en directrices e indicaciones específicas.",
+			"obs": "según datos extraídos de la base nacional",
+			"thisDevolutive": "Estos resultados de la afiliación administrativa",
+			"info2": "consolidan todas las respuestas de los docentes de este departamento que respondieron a el Diagnóstico. El objetivo de este material es apoyar a los líderes regionales a tener un diagnóstico claro para que puedan planificar estrategias eficaces para desarrollar las habilidades digitales de los docentes en una dirección, ofreciendo una formación más significativa y enfocada en el área de innovación y tecnología educativa.",
+			"report": "El informe se divide en dos partes",
+			"networkStatus": "Situación actual",
+			"teacherDstribution": "muestra la distribución de los docentes por nivel de adquisición en cada área y por habilidades.",
+			"networkComparative": "Análisis comparativa",
+			"countryComparative": "en la que se pueden comparar las direcciones regionales con los resultados nacionales.",
+			"info3": "Esperamos que este material te sea útil para apoyar a las direcciones regionales y a las autoridades educativas en la promoción del desarrollo profesional de sus docentes en el ámbito de la innovación y la tecnología educativa, ofreciendo una formación continua más eficaz y significativa.",
+			"relation1": "(que corresponden al",
+			"relation2": "% de su red *)"
+		},
+		"title": "RESULTADOS: DIAGNÓSTICO DE LAS HABILIDADES DIGITALES DE LOS DOCENTES",
+		"filters": "Filtros",
+		"schoolsOrganization": "Organización Escolar",
+		"noOptions": "No hay más opciones.",
+		"loading": "Cargando...",
+		"allSchools": "Todas las escuelas",
+		"cities": "Ciudades",
+		"allCities": "Todas las ciudades",
+		"school": "Escuela",
+		"teachingStage": "Etapa de enseñanza",
+		"allStages": "Todas las etapas",
+		"knowledgeArea": "Área de conocimiento / competencia curricular",
+		"allAreas": "Todas las áreas / habilidades",
+		"analisePeriod": "Periodo de análisis, desde",
+		"to": "Hasta que",
+		"applyFilter": "Aplicar filtro",
+		"teachersAnswers": "Este análisis considera las respuestas de {total} docentes en tu Afiliación administrativa.",
+		"dataVisualization": "Visualización de datos",
+		"selectVisualizationType": "Seleccione el tipo de visualización de datos que desee",
+		"currentSituation": "Situación actual",
+		"generalInfo": "Información general sobre las respuestas de los docentes a el diagnóstico: número de docentes por nivel de adquisición en cada área y por habilidades.",
+		"comparative": "Análisis comparativa",
+		"networkComparison": "Comparación entre los resultados de tu Afiliación Administrativa y los resultados nacionales.",
+		"transformation": "Transformación",
+		"integration": "Integración",
+		"adaptation": "Adaptación",
+		"familiarization": "Familiarización",
+		"exposure": "Exposición",
+		"teachersDistributionArea": "Distribución de los docentes por nivel de adquisición en cada área",
+		"teachersDistributionCompetence": "Distribución de los docentes por nivel de adquisición de cada competencia según el área",
+		"notDisplayValues": "No mostrar valores",
+		"displayValuesChart": "Mostrar los valores en el gráfico",
+		"infoColor": "Cuanto más oscuro sea el color, mayor será el número de docentes en ese nivel de adquisición.",
+		"comparasionEducationNetworks": "COMPARATIVO",
+		"totalAnsweredNetwork": "Número total de docentes de su Afiliación Administrativa que respondieron a el diagnóstico",
+		"pedagogicalPractice": "Práctica Pedagógica",
+		"evaluation": "Evaluación",
+		"customization": "Personalización",
+		"criation": "Selección y creación",
+		"responsible": "Uso responsable",
+		"safe": "Uso seguro",
+		"critical": "Uso crítico",
+		"inclusion": "Inclusión",
+		"selfDevelopment": "Autodesarrollo",
+		"selfEvaluation": "Diagnóstico",
+		"share": "Compartir",
+		"communication": "Comunicación",
+		"municipalTeachers": "Los valores presentados en el radar representan el promedio de los niveles de apropiación de los docentes de su Afiliación Administrativa para cada una de las habilidades. Este promedio se puede comparar con el promedio nacional.",
+		"stateTeachers": "Los valores presentados en el radar representan el promedio de los niveles de apropiación de los docentes de su Afiliación Administrativa para cada una de las habilidades. Este promedio se puede comparar con el promedio nacional.",
+		"subtitle": "Leyenda",
+		"stateNetwork": "Afiliación administrativa promedio",
+		"stateCountryNetwork": "Promedio nacional",
+		"settlementLevel": "Nivel de apropiación",
+		"comparativeNetwork": "COMPARACIÓN ENTRAR EN CADA COMPETENCIA"
+	},
+	"DevolutiveList": {
+		"bullet1": "1 - Personalización de pautas: para cada dimensión y posible nivel de la Guía EduTec existe un conjunto de instrucciones o recomendaciones de lo que el director puede hacer para mejorar en esa dimensión. Estos textos se pueden personalizar, indicando programas y pautas específicas para su red.",
+		"bullet2": "2 - Agrega información a tu red: es posible agregar nuevas páginas con contenido específico de tu red. Indicamos esta opción para dar a conocer las políticas y programas disponibles o implementados.",
+		"description1": "En esta sección puede personalizar los comentarios que se envían al director de la escuela después de que haya respondido a la Guía EduTec. Esta personalización se puede realizar de dos formas:",
+		"description2": "Para ver la declaración enviada al director en su totalidad, con el formato, haga clic en el botón 'Ver' a continuación.",
+		"description3": "Para editar una página existente, haga clic en 'Editar' de la fila deseada en la tabla a continuación.",
+		"description4": "Para agregar una nueva página, haga clic en el botón 'Nueva página' a continuación.",
+		"description5": "Además del contenido es posible personalizar la última página, agregando hasta 3 imágenes (logos) de su red y / o secretaría en el pie de página. Para hacer esto, simplemente haga clic en 'Editar imágenes en la última página'.",
+		"helmetTitle": "Devoluciones personalizadas",
+		"pageHeader": "Devoluciones personalizadas de su red",
+		"title": "Personalice los comentarios para su red"
+	},
+	"DevolutiveReport": {
+		"title.h1": "RETROALIMENTACIÓN",
+		"title.h2": "Diagnóstico de habilidades digitales docentes",
+		"levels.0": "Exposición",
+		"levels.1": "Familiarización",
+		"levels.2": "Adaptación",
+		"levels.3": "Integración",
+		"levels.4": "Transformación",
+		"instruction.txt1": "La retroalimentación presenta su nivel de apropiación respecto al conocimiento y usos de las tecnologías digitales de dos formas, por área (Pedagógica, Ciudadanía Digital y Desarrollo Profesional) y por competencia (en total, son 12 habilidades).",
+		"instruction.txt2": "Los niveles de apropiación son cinco:",
+		"instruction.areas": "areas",
+		"instruction.comp": "habilidades",
+		"instruction.comp.ped.pp": "Práctica Pedagógica",
+		"instruction.comp.ped.pe": "Personalización",
+		"instruction.comp.ped.av": "Evaluación",
+		"instruction.comp.ped.cc": "Selección y creación",
+		"instruction.comp.cid.ur": "Uso responsable",
+		"instruction.comp.cid.uc": "Uso crítico",
+		"instruction.comp.cid.us": "Uso seguro",
+		"instruction.comp.cid.in": "Inclusión",
+		"instruction.comp.des.ad": "Autodesarrollo",
+		"instruction.comp.des.aa": "Diagnóstico",
+		"instruction.comp.des.cp": "Compartir",
+		"instruction.comp.des.cm": "Comunicación",
+		"label.div.txt1": "¿Dónde estoy?",
+		"label.div.txt2": "¿Qué significa eso?",
+		"label.div.txt3": "¿Cómo puedo evolucionar?",
+		"label.answered_by": "Respondido por",
+		"label.school": "Centro Educativo",
+		"label.city": "Nivel geografico 4",
+		"label.state": "Nivel geografico 3",
+		"label.consolidated_results_by_area": "Resultados consolidados por area",
+		"label.results_by_competence": "Resultado por competencia",
+		"label.results": "Resultado",
+		"label.area_ped": "Pedagogía",
+		"label.area_cid": "Ciudadanía Digital",
+		"label.area_dev_prof": "Desarrollo profesional",
+		"label.area_detail": "A continuación encontrará el detalle para cada una de las áreas con sus respectivas habilidades, sobre los niveles de desarrollo alcanzados, además de orientaciones y sugerencias para ayudarle a progresar.",
+		"footer.div.txt1": "El poder",
+		"footer.div.txt2": "transformador de la",
+		"footer.div.txt3": "e-ducación",
+		"footer.contact1": "Si tiene alguna sugerencia, duda, crítica, cumplido o comentario,",
+		"footer.contact2": "contáctenos.",
+		"footer.contact3": "+34 91 584 01 06",
+		"footer.email": "profuturo@telefonica.com",
+		"msgPrincipalNoAff": "Regrese al director no afiliado a la escuela",
+		"msgTeacherNoAff": "Devolver al maestro que no esté afiliado a la escuela",
+		"footer": {
+			"contact3": "+55 (11) 3031-7899 / +55 (11) 94544-7388",
+			"email": "contato@cieb.net.br"
+		}
+	},
+	"DevolutiveTable": {
+		"btnEdit": "Editar",
+		"btnEditImages": "Editar imágenes de la última página",
+		"btnNewPage": "Nueva pagina",
+		"btnView": "Visualizar",
+		"tableHeaderActions": "ACCIONES",
+		"tableHeaderPageTitle": "TÍTULO DE PÁGINA / SUBTÍTULO DE PÁGINA",
+		"tableHeaderPagesNumber": "NÚMERO DE PÁGINA PDF",
+		"withoutDevolutives": "[no se registraron devoluciones personalizadas]"
+	},
+	"DiagnosisPanel": {
+		"selectSurveySchedule": "Seleccione una opción",
+		"pageHeader": "Diagnóstico",
+		"surveys": "Ciclo de aplicación",
+		"exportMicrodataTitle": "Exportación de microdatos",
+		"btnRequestMicrodataSchools": "Solicitar microdatos de las escuelas",
+		"btnRequestMicrodataTeachers": "Solicitar microdatos a los docentes",
+		"requestDate": "Fecha de solicitud",
+		"requestHour": "Hora",
+		"requestType": "Tipo",
+		"requestStatus": "Estado",
+		"requestFile": "Archivo",
+		"btnDownloadFile": "Descargar archivo",
+		"concluded": "Concluido",
+		"progress": "En progreso"
+	},
+	"DiagnosisTable": {
+		"affiliation": "Afiliación",
+		"btnFilter": "Filtrar",
+		"competence": "Habilidades",
+		"country": "Padres",
+		"infrastructure": "Infraestructura",
+		"placeholderFilter": "Ingrese el nombre de la afiliación ...",
+		"resources": "Recursos",
+		"school": "Escuela",
+		"totalSchools": "Escuelas totales",
+		"vision": "Visión"
+	},
+	"DiagnosisTeacher": {
+		"pageHeader": "Herramienta de mapeo de las habilidades digitales docentes",
+		"titleHelmet": "Mapeamento de competências digitais de professores",
+		"description": " Este es el entorno de administración y configuración de la herramienta de mapeo. Siga los pasos y personalice la Guía EduTec - Mapeo de habilidades digitales de los docentes.",
+		"mappingFrequency": "FRECUENCIA DEL ESTUDIO DETALLADO",
+		"mappingFrequencyDescription": "Personaliza el periodo mínimo en el que tus docentes de la red pueden volver a la herramienta y realizar de nuevo el diagnóstico.",
+		"materials": "MATERIALES DE DIVULGACIÓN",
+		"materialsDescription": "Organiza acciones de divulgación con la ayuda de algunos de los materiales que hemos preparado.",
+		"result": "ANÁLISIS DE LOS RESULTADOS",
+		"resultDescription": "Implementa la Guía EduTec - Estudio detallado de las habilidades digitales de los docentes en tu dirección regional y descubre cuál es el perfil de los docentes en cuanto a la implementación de la tecnología.",
+		"description2": "El estudio detallado del perfil de los docentes se realiza a través de la herramienta en línea de diagnóstico de las habilidades digitales de los docentes.",
+		"description3": "Esta herramienta permite a los docentes de primaria identificar su nivel de adquisición y conocimiento de las tecnologías digitales.",
+		"skillsDescription": "Conozca las 12 habilidades digitales que están siendo evaluadas en el diagnóstico",
+		"skillsMatrix": "Matriz de habilidades digitales de los docentes- CIEB",
+		"areas": "ÁREAS",
+		"skills": "HABILIDADES",
+		"pedagogical": "PEDAGOGÍA",
+		"pedagogicalPractice": {
+			"title": "PRÁCTICA PEDAGÓGICA",
+			"description": "Ser capaz de incorporar la tecnología a las experiencias de aprendizaje de los estudiantes y a las estrategias de enseñanza."
+		},
+		"evaluation": {
+			"title": "EVALUACIÓN",
+			"description": "Ser capaz de usar tecnologías digitales para acompañar y orientar el proceso de aprendizaje y evaluar el desempeño de los estudiantes."
+		},
+		"customization": {
+			"title": "PERSONALIZACIÓN",
+			"description": "Ser capaz de utilizar la tecnología para crear experiencias de aprendizaje que atiendan a las necesidades de cada estudiante."
+		},
+		"criation": {
+			"title": "SELECCIÓN Y CREACIÓN",
+			"description": "Ser capaz de seleccionar y crear recursos digitales que contribuyan al proceso de enseñanza y aprendizaje, y a la gestión en el salón de clase."
+		},
+		"citizenship": "CIUDADANÍA DIGITAL",
+		"responsible": {
+			"title": "USO RESPONSABLE",
+			"description": "Ser capaz de hacer y promover el uso ético y responsable de la tecnología (cyberbullying, privacidad, identidad digital e implicaciones legales)."
+		},
+		"safe": {
+			"title": "USO SEGURO",
+			"description": "Ser capaz de hacer y promover el uso seguro de las tecnologías (estrategias y herramientas de protección de datos)"
+		},
+		"critical": {
+			"title": "USO CRÍTICO",
+			"description": "Ser capaz de hacer y promover la interpretación crítica de la información disponible en medios digitales."
+		},
+		"inclusion": {
+			"title": "INCLUSIÓN",
+			"description": "Ser capaz de utilizar recursos tecnológicos para promover la inclusión y la equidad educativa."
+		},
+		"professionals": "DESARROLLO PROFESIONAL",
+		"selfDevelopment": {
+			"title": "AUTODESARROLLO",
+			"description": "Ser capaz de usar tecnologías digitales en las actividades de formación continua y de desarrollo profesional."
+		},
+		"selfEvaluation": {
+			"title": "DIAGNÓSTICO",
+			"description": "Ser capaz de utilizar las tecnologías digitales para evaluar su práctica docente e implementar acciones para mejorar.",
+			"adaptation": "Adaptación",
+			"allNetworks": "\nTodas las redes",
+			"applyFilter": "Aplicar filtro",
+			"displayValues": "Mostrar valores",
+			"distributionTeachers": "Distribución de docentes",
+			"distributionTeachersCompetency": "Distribución de docentes por habilidades",
+			"exposure": "Exposición",
+			"familiarization": "Familiarización",
+			"infoColor": "Cuanto más oscuro sea el color, mayor será el número de docentes en ese nivel de apropiación.",
+			"integration": "Integración",
+			"notDisplayValues": "Ocultar valores",
+			"numberResponses": "Numero de respuestas",
+			"period": "del",
+			"to": "al",
+			"transformation": "Transformación",
+			"competencies": "habilidades",
+			"digitalCitizenship": "Ciudadanía digital",
+			"pedagogical": "Pedagogía",
+			"professionalDevelopment": "Desarrollo profesional",
+			"competenciesDescription": "Cada área tiene cuatro habilidades. Por tanto, se evalúan 12 habilidades relativas a la integración de tecnologías en la rutina diaria del docente:",
+			"curatorshipCreation": "Selección y creación",
+			"customization": "Personalización",
+			"evaluation": "Evaluación",
+			"pedagogicalPractice": "Práctica Pedagógica",
+			"communication": "Comunicación",
+			"criticalUse": "Uso crítico",
+			"inclusion": "Inclusión",
+			"responsibleUse": "Uso responsable",
+			"safeUse": "Uso seguro",
+			"selfDevelopment": "Autodesarrollo",
+			"selfEvaluation": "Diagnóstico",
+			"sharing": "Compartir",
+			"affiliation": "Afiliación",
+			"distributionAnswersByCityAndState": "DISTRIBUCIÓN DE RESPUESTAS POR UBICACIÓN"
+		},
+		"share": {
+			"title": "COMPARTIR",
+			"description": "Ser capaz de usar la tecnología para participar y promover la participación en comunidades virtuales de aprendizaje e intercambios entre colegas."
+		},
+		"communication": {
+			"title": "COMUNICACIÓN",
+			"description": "Ser capaz de utilizar tecnologías digitales para mantener una comunicación activa, sistemática y eficiente con los actores de mi comunidad educativa."
+		},
+		"tecnhicalNote": "¿Quieres saber más sobre los niveles de apropiación tecnológica y sus respectivos descriptores para cada una de las habilidades? Lea la nota técnica ",
+		"tecnhicalNoteTextLink": "nº 15 Diagnóstico del docente de habilidades digitales.",
+		"knowMore": "Para aprender un poco más sobre la herramienta, consulte el ",
+		"quiz": "cuestionario",
+		"and": "y un",
+		"devolutiveExample": "ejemplo de la retroalimentación",
+		"sendTeacher": "enviado a los docentes.",
+		"btnAccess": "Acceder"
+	},
+	"Dimensions": {
+		"competenceDescription": "Este eje trata de los conocimientos y las habilidades sobre el uso de las TIC como herramienta de enseñanza. A veces los docentes muestran habilidades en el uso personal de las TIC; sin embargo, tanto los docentes como los directivos y especialistas que apoyan en el uso de las TIC en el centro pueden no ser conscientes de su potencial educativo. Así, el eje prevé la competencia de los docentes, de los gestores educativos y del personal de apoyo. Se hace hincapié en la diferencia entre las habilidades en materia de TIC y las habilidades de uso didáctico de las TIC, que implica saber cuándo, cómo y por qué utilizarlas.",
+		"competenceTitle": "HABILIDADES/FORMACIÓN",
+		"dimensionsDescription1": "Sabemos que elaborar un buen plan tecnológico para tu red es un gran reto. Hay que tomar decisiones importantes: ¿cómo saber cuándo invertir en equipos y cuándo invertir, por ejemplo, en la formación de los docentes en el uso de la tecnología? La teoría de las 4 dimensiones es un marco conceptual importante para guiar la elaboración de planes de innovación y tecnología coherentes. Las cuatro dimensiones son:",
+		"dimensionsDescription2": "El uso de las tecnologías en la educación subraya la inserción del centro en el contexto digital, solicitando acciones que impulsen este movimiento, como la capacitación continua de los educadores en el uso de dispositivos electrónicos en la práctica docente desde una perspectiva de articulación entre la teoría y la práctica; la curaduría de los recursos que deben ser utilizados en los momentos de enseñanza y aprendizaje; la infraestructura adecuada para fomentar la práctica docente y la participación activa de los estudiantes, y la estrategia para tener éxito en todo este proceso. Al introducir la innovación y la tecnología en las políticas educativas, se gana en cuatro aspectos principales: gestión, calidad, equidad y contemporaneidad.",
+		"dimensionsDescription3": "Las políticas de implementación de tecnologías en la educación suelen establecer como visión u objetivo de sus propuestas el uso de las tecnologías de la información y la comunicación (TIC) para mejorar la calidad de la educación, además de abordar cuestiones de infraestructura, habilidades de sus gestores y docentes y la existencia de materiales de apoyo educativo.",
+		"dimensionsDescription4": "En este contexto, el Four in Balance funciona como referencia de planificación en Brasil, con el objetivo de cualificar la educación en el país y servir de base conceptual para analizar las políticas y acciones ya implementadas, así como para los proyectos futuros. Sin embargo, dadas las diferentes realidades de los dos países, es conveniente reconfigurar esta política para que dé lugar a una nueva propuesta que considere la estructura y el funcionamiento de los sistemas educativos y las relaciones entre las esferas federal, estatal y municipal, así como el contexto de las escuelas brasileñas.",
+		"dimensionsDescription5": "El concepto Four in Balance se ha utilizado tanto en el desarrollo como en la evaluación de situaciones educativas que tienen como objetivo el uso eficaz y eficiente de las TIC en la educación. Se compone de dos elementos: el humano y el tecnológico. El elemento humano consta de dos ejes: la visión y la competencia; mientras que el elemento tecnológico está compuesto por los recursos educativos digitales y la infraestructura.",
+		"dimensionsTitle": "CUATRO DIMENSIONES EN EL USO DE LA TECNOLOGÍA",
+		"educationalResourcesDescription1": "La enseñanza debe integrar las tecnologías y los medios digitales en el plan de estudios, y este uso debe estar en consonancia con la visión educativa del centro. Así, el eje de contenidos y recursos digitales se refiere a los materiales didácticos digitales creados con fines educativos y a las fuentes generales de información; a los paquetes de software educativo y a los sistemas de TIC, como los entornos virtuales de aprendizaje, los expedientes de los estudiantes y los sistemas de gestión de la información de los estudiantes; a las aplicaciones y al software del departamento en general, al software para controlar la agenda y a las herramientas de gestión de los recursos humanos.",
+		"educationalResourcesDescription2": "Los directivos y los docentes deben ser competentes tanto para obtener información sobre el software disponible y sus respectivos contenidos como para saber hacer una elección responsable, de acuerdo con la visión educativa del centro.",
+		"educationalResourcesTitle": "RECURSOS EDUCATIVOS DIGITALES",
+		"footer": "Estos cuatro ejes deben ser vistos en una relación de interdependencia y deben involucrar diferentes segmentos e instancias administrativas del sistema hasta el nivel del centro. Ciertamente, las tecnologías tienen un papel importante en las actividades que se realizan en la educación, pero también es necesario centrarse en los aspectos relacionados con la integración de estas dimensiones para ayudar a implementar las tecnologías en los procesos educativos y promover una educación de calidad.",
+		"infrastructureDescription": "El uso de las tecnologías en el centro educativo implica una infraestructura adecuada. Cada institución debe desplegar los recursos tecnológicos en función de sus necesidades y opciones. Así, el eje de infraestructura contempla: la disponibilidad y calidad del hardware, las redes y la conectividad dentro del sistema educativo y dentro de la institución, incluyendo la administración y la gestión de las TIC; y la implementación, la gestión y el mantenimiento de la infraestructura tecnológica y de soporte de aplicaciones.",
+		"infrastructureTitle": "INFRAESTRUCTURA",
+		"visionDescription1": "Hace referencia al hecho de que el sistema educativo y la institución educativa conciben una educación de calidad, sólida y eficiente, y plantea cuál es el papel de las TIC para alcanzarla; además de abordar los objetivos básicos de la institución y las condiciones necesarias para alcanzar sus objetivos, incluyendo las creencias sobre los roles de docentes y estudiantes, la elección de objetivos y materiales y las acciones de los directivos.",
+		"visionDescription2": "Desarrollar políticas públicas integradas entre diferentes sectores del gobierno en articulación con diferentes esferas de la administración pública y el centro es relevante para la construcción del eje de visión. Por lo tanto, esta visión la deben compartir todos los implicados en el proceso educativo en los diferentes ámbitos del sistema.",
+		"visionTitle": "VISIÓN",
+		"competence": "Habilidades",
+		"contentAndDigitalResources": "Recursos educativos digitales",
+		"infrastructure": "Infraestructura",
+		"vision": "Visión",
+		"contemporary": "\u003ch1\u003e Contemporaneidad \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Participación activa de los niños y jóvenes en el aprendizaje \u003c/li\u003e \u003cli\u003e Nuevos enfoques pedagógicos \u003c/li\u003e \u003cli\u003e Estímulos para la plena ciudadanía \u003c/li\u003e \u003cli\u003e Prácticas acordes con las mejores referencias internacionales adaptadas a la realidad local\u003c/li\u003e \u003c/ul\u003e",
+		"equity": "\u003ch1\u003e Equidad \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Ofrecer educación de calidad para todos los estudiantes \u003c/li\u003e \u003cli\u003e Dar acceso a contenidos y recursos digitales de calidad para estudiantes y docentes\n \u003c/li\u003e \u003cli\u003e     Incluir el alumnado con necesidades especiales\n \u003c/li\u003e \u003c/ul\u003e",
+		"management": "\u003ch1\u003e Gestión \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Proporcionar más eficiencia \u003c/li\u003e \u003cli\u003e Optimizar la asignación de recursos \u003c/li\u003e \u003cli\u003e Elaborar bases de datos (Big Data) \u003c/li\u003e \u003cli\u003e Dar información para apoyar en la toma de decisiones \u003c/li\u003e \u003c/ul\u003e",
+		"quality": "\u003ch1\u003e Calidad \u003c/h1\u003e \u003cul\u003e \u003cli\u003e Personalizar la experiencia de aprendizaje \u003c/li\u003e \u003cli\u003e Responder a las diferentes realidades, ritmos y  necesidades del estudiante \u003c/li\u003e \u003cli\u003e Evaluar y dar una retroalimentación a los educadores \u003c/ li\u003e \u003c/ul\u003e"
+	},
+	"Disclosure": {
+		"pageHeader": "Materiales de divulgación",
+		"titleHelmet": "Materiales de divulgación",
+		"description1": "A continuación te ofrecemos sugerencias de actividades para ayudarte en el proceso de difusión e implementación de el Diagnóstico de las Habilidades Digitales del Docente y hacer un estudio detallado de la red educativa.",
+		"description2": "Estos materiales se actualizan constantemente, basándose en las experiencias de las redes educativas que aplican la Guía EduTec.",
+		"downloadFile": "Descarga el archivo:",
+		"here": "aquí",
+		"material1": {
+			"title": "Funciones del / de la Secretario/a",
+			"description": "Como primer paso para difundir el Diagnóstico de Habilidades Digitales de los Docentes en la red, te aconsejamos que envíes correos electrónicos o cartas a todos los equipos directivos de los centros adjuntando una carta del Departamento de Educación, con la finalidad de informar y orientar sobre cómo acceder a la herramienta de la Guía EduTec. Esta función demuestra la seriedad e importancia de este proceso para la red.",
+			"href": "https://drive.google.com/file/d/13qvboZ8rqpFcS21LigfV695ya4u2hqUz/view"
+		},
+		"material2": {
+			"title": "Presentación y tutorial para las personas gestoras",
+			"description": "Este documento contiene una presentación rápida y sencilla sobre el diagnóstico de las habilidades digitales de los docentes, así como un tutorial para que los jefes de sección puedan acceder y utilizar la herramienta de estudio detallado de las habilidades digitales. Te sugerimos que los gestores lean el documento, que contiene directrices para acceder a la herramienta, y los datos recogidos.",
+			"href": "https://drive.google.com/file/d/1Jr1j9jGFOUk5ecEyk83zFx3drUEd1OO5/view"
+		},
+		"material3": {
+			"title": "Presentación y tutorial para el docente",
+			"description": "Este documento possui uma apresentação rápida e simples sobre a Autoavaliação de Competências Digitais de Professores (as), bem como um tutorial para que os docentes acessem e usem a ferramenta. Sugerimos o uso deste para orientação e divulgação da ferramenta com os diretores de escola e com os professores (as).",
+			"href": "https://drive.google.com/file/d/1NGSzWquPblpG_NF8LwF_CL9TvtpeLxE3/view"
+		},
+		"material4": {
+			"title": "Ejemplo de correo electrónico para enviar a los docentes",
+			"description": "Para empezar a implementar el Diagnóstico de las Habilidades Digitales del Docente, recomendamos enviar un correo electrónico a todos los equipos directivos de los centros para que compartan la información necesaria con el docente. El correo electrónico puede contener la carta firmada por el Secretario de Educación de tu red, el archivo de presentación y el tutorial para acceder a la herramienta.",
+			"href": "https://drive.google.com/file/d/1NxH_6rVMbc2rLS7BAa44T2pxYXPv-aou/view"
+		},
+		"material5": {
+			"title": "Cartel para la difusión en las escuelas",
+			"description": "Este archivo hace referencia a un póster que puede imprimirse y colgarse en un panel o en las paredes de los centros para que los docentes lo puedan ver y se sientan invitados a acceder a la herramienta de diagnóstico.",
+			"href": "https://drive.google.com/file/d/1S6SUubyHCwXLMgROZ6pco8cGB20pdVqp/view"
+		},
+		"material6": {
+			"title": "Pieza gráfica para entornos digitales",
+			"description": "Este archivo se refiere a una imagen que puede compartirse en entornos digitales, como redes sociales y sitios web, con los educadores.",
+			"href": "https://drive.google.com/file/d/1VbkVVLUG7NYXMui9I5kbKLx8vlAS2l8-/view"
+		},
+		"material7": {
+			"title": "Banners para el sitio web de la secretaria",
+			"description": "Este archivo contiene banners personalizables que pueden utilizarse en el sitio web de la secretaría para contribuir a la difusión de la herramienta y, en consecuencia, al compromiso de los docentes. Descarga los banners y añade tu logotipo.",
+			"href": "https://drive.google.com/file/d/1RMpZhi8p1h0MCRG_QQWojuL1RVyH0YTo/view"
+		}
+	},
+	"EditUser": {
+		"alert": "¡Atención! Mantenga siempre sus datos actualizados.",
+		"editUser": "Editar usuario",
+		"messageSuccessEditUserData": "Datos actualizados con éxito.",
+		"myRegister": "Mi catastro"
+	},
+	"EnjoyHints": {
+		"Resources": {
+			"0": {
+				"next #navbar-brand-logo": "Hola profesor(a)! Bienvenido al entorno de Mapeo de habilidades digitales de su profesor. Esta herramienta te ayuda a identificar tus necesidades formativas y planificar tu desarrollo en el uso de la tecnología en el aula.",
+				"scrollAnimationSpeed": 2000
+			},
+			"1": {
+				"next #tutorial-step-1": "Aquí puede comenzar o continuar completando el cuestionario. Encontrarás consejos para realizar el diagnóstico, las preguntas están divididas por áreas y, al final, tendrás acceso a la retroalimentación. También se enviará a su correo electrónico.",
+				"scrollAnimationSpeed": 2000
+			},
+			"2": {
+				"click #tutorial-step-2": "Puedes imprimir el cuestionario y el resultado de tu diagnóstico sobre habilidades digitales para consultar posteriormente. Simplemente haga clic aquí y descargue el archivo.",
+				"scrollAnimationSpeed": 2000,
+				"showNext": false
+			}
+		},
+		"Mainboard": {
+			"0": {
+				"next #navbar-brand-logo": "¡Hola del Ministerio de Educación! Bienvenido a la pantalla de inicio de Guía Edutec. ¿Aprenderemos a navegarlo?",
+				"scrollAnimationSpeed": 2000
+			},
+			"1": {
+				"next #navbar-start": "Esta barra indica que está en su entorno de registro de Edutec Guide. En el menú del lado izquierdo es posible actualizar el registro de escuelas en la red educativa en cualquier momento.",
+				"scrollAnimationSpeed": 2000
+			},
+			"2": {
+				"next #tutorial-step-2": "Aquí podrá conocer las referencias, principales conceptos y lineamientos para el uso pedagógico de las tecnologías, con el fin de promover una mejora en la calidad y equidad de la educación pública. ¡Descubre el concepto de Escuela Conectada creado por CIEB!",
+				"scrollAnimationSpeed": 2000
+			},
+			"3": {
+				"next #tutorial-step-3": "Para elaborar un Plan Estratégico de Innovación y Tecnología Educativa, es posible realizar el Diagnóstico del grado de adopción de tecnologías en las escuelas de toda la red - y luego seguir los pasos hasta alcanzar la visión y definición de prioridades.",
+				"scrollAnimationSpeed": 2000
+			},
+			"4": {
+				"next #tutorial-step-4": "Aquí encontrará todos los conceptos y herramientas relacionados con la dimensión Visión, como el Currículo de Referencia de Tecnología Educativa, desde niños hasta la escuela secundaria.",
+				"scrollAnimationSpeed": 2000
+			},
+			"5": {
+				"next #tutorial-step-5": "En este apartado se encuentran todos los conceptos y herramientas relacionados con la dimensión Formación - como el Diagnóstico del Docente en Habilidades Digitales y los Espacios de Formación y Experimentación en Tecnologías Educativas para Docentes (Efex).",
+				"scrollAnimationSpeed": 2000
+			},
+			"6": {
+				"next #tutorial-step-6": "Aquí encontrarás todos los conceptos y herramientas relacionados con la dimensión de Recursos Educativos Digitales, para conocer qué tipos de tecnologías educativas existen, cuáles tienen más sentido para la realidad de la red y cómo adquirirlas.",
+				"scrollAnimationSpeed": 2000
+			},
+			"7": {
+				"click #tutorial-step-7": "En esta sección se encuentran todos los conceptos y herramientas relacionados con la dimensión Infraestructura, como la Calculadora de Infraestructura que estima las inversiones necesarias para equipar su red con equipos y conectividad, por etapa de enseñanza.",
+				"scrollAnimationSpeed": 2000,
+				"showNext": false
+			}
+		},
+		"ResourcesDiagnosis": {
+			"0": {
+				"next #navbar-brand-logo": "Olá, Gestor(a)! Bem-vindo(a) a ferramenta de Diagnóstico que permite que você visualize o nível de adoção de tecnologias. Vamos aprender como configurar?",
+				"scrollAnimationSpeed": 2000
+			},
+			"1": {
+				"next #nav-menu-user": "Esta barra indica que você está no seu ambiente logado na ferramenta de Diagnóstico.",
+				"scrollAnimationSpeed": 2000
+			},
+			"2": {
+				"next #nav-action-menu": "Neste menu lateral, é possível atualizar os dados, como infraestrutura, das escolas da rede de ensino, como também de usuários, administradores (técnicos da secretária responsáveis pelo o aconhamento do diagnóstico), diretores escolares e professores da rede.",
+				"scrollAnimationSpeed": 2000
+			},
+			"3": {
+				"next #nav-home-btn": "Retorna a tela inicial do Portal Guia Edutec",
+				"scrollAnimationSpeed": 2000
+			},
+			"4": {
+				"next #nav-title-bar": "Para realizar o diagnóstico de adoção de tecnologia na sua rede de ensino, a ferramenta distribui as ações necessárias em sete passos e agrupadas em três seções. Confira!",
+				"scrollAnimationSpeed": 2000
+			},
+			"5": {
+				"next #tutorial-step-5": "Aqui você encontra as quatro primeiras ações para iniciar o diagnóstico na sua rede de ensino. Você pode revisar os dados das escolas, acrescentar até 4 perguntas ao questionário, personalizar o texto da retroalimentación que o(a) diretor(a) receberá e definir o período em que o diagnóstico estará disponível para que as escolas respondam. Essas quatro ações são importantes para uma aplicação eficaz, tenha atenção a ela!",
+				"scrollAnimationSpeed": 2000
+			},
+			"6": {
+				"next #tutorial-step-6": "Para engajar as escolas na aplicação do diagnóstico, você encontra nessa seção materiais que podem te apoiar na digulvação da ação. Logo após, você tem acesso acompanhar quais escolas já responderam ao questionário e quais ainda faltam.",
+				"scrollAnimationSpeed": 2000
+			},
+			"7": {
+				"next #tutorial-step-7": "Nesta última seção, você encontra o relatório consolidado do diagnóstico. Este resultado traz o nível de adoção da rede de ensino, por dimensão, além de orientações sobre o que procurar ao ler os dados; apresenta, por questão, a distribuição das respostas das escolas; permite que que você registre suas principais conclusões sobre o diagnóstico, em cada dimensão.",
+				"scrollAnimationSpeed": 2000
+			},
+			"8": {
+				"click #nav-menu-diag": "Você tem acesso a todas ações do diagnóstico também nesse menu superior. ",
+				"scrollAnimationSpeed": 2000,
+				"showNext": false
+			}
+		},
+		"ResourcesDiagnosisTeacher": {
+			"0": {
+				"next #navbar-brand-logo": "Olá, gestor(a)! Bem-vindo ao seu ambiente do Mapeamento das Competências Digitais dos(as) Professores(as). Aqui você pode entender como a ferramenta de Autoavaliação funciona e encontrar os dados de todos os(as) professores (as) que a responderam.",
+				"scrollAnimationSpeed": 2000
+			},
+			"1": {
+				"next #tutorial-step-1": "Em frequência de mapeamento, você pode determinar o período o acesso dos(as) professores(as) a ferramenta de Autoavaliação de Competências, ou seja, quando os(as) docentes poderão retornar e refazer o questionário.",
+				"scrollAnimationSpeed": 2000
+			},
+			"2": {
+				"next #tutorial-step-2": "Caso precise de uma ajudinha, disponibilizamos aqui alguns materiais que você pode utilizar nas suas ações de divulgação na rede de ensino e nas escolas.",
+				"scrollAnimationSpeed": 2000
+			},
+			"3": {
+				"next #tutorial-step-3": "Nesta seção você encontra os dados agregados de todos os(as) professores(as) da sua rede de ensino, o que possibilita realizar planejamento de formação continuada de acordo com as demandas.",
+				"scrollAnimationSpeed": 2000
+			},
+			"4": {
+				"next #tutorial-step-4": "Aqui você pode entender como a Autoavaliação está estruturada para mapear as competências digitais dos(as) docentes.",
+				"scrollAnimationSpeed": 2000
+			},
+			"5": {
+				"next #tutorial-step-5": "Conheça a matriz de competências digitais que norteia toda a ferramenta de Autoavaliação. Cada competência possui níveis de apropriação, que estão descritos na Nota Técnica 15.",
+				"scrollAnimationSpeed": 2000
+			},
+			"6": {
+				"next #tutorial-step-6": "Para conhecer o questionário que os(as) professores(as) respondem, você não precisa se cadastrar como docente. Basta clicar aqui!",
+				"scrollAnimationSpeed": 2000
+			},
+			"7": {
+				"click #tutorial-step-7": "Cada professor recebe uma retroalimentación personalizada ao final do questionário. Veja aqui um exemplo de como é essa retroalimentación, que indica onde o(a) docente está em cada área e competência e sugestões de como ele(a) pode evoluir.",
+				"scrollAnimationSpeed": 2000,
+				"showNext": false
+			}
+		}
+	},
+	"Error": {
+		"email": "contato@cieb.net.br",
+		"description1": "¿Lo que podría haber ocurrido?",
+		"description2": "Es posible que el contenido que buscaba se haya eliminado o no esté disponible temporalmente. Intente volver a cargar la página, si el error continúa, comuníquese con el correo electrónico:",
+		"ops": "¡UPSu0021",
+		"subtitle1": "Algo salió mal :(",
+		"subtitle2": "Lo sentimos, la página a la que está accediendo tiene un problema."
+	},
+	"FollowUp": {
+		"answered": "Respondió",
+		"answers": "total",
+		"btnBack": "ANTERIORES",
+		"btnDownloadAnswers": "DESCARGAR RESPUESTAS",
+		"btnFilter": "Filtrar",
+		"btnNext": "SIGUIENTES",
+		"competenceLevel": "Nivel de competencia",
+		"helmetTitle": "Seguimiento de las respuestas",
+		"infrastructureLevel": "Nivel de infraestructura",
+		"no": "No",
+		"pageHeaderTitle": "Seguimiento de las respuestas",
+		"placeholderFilter": "Texto...",
+		"placeholderSelect": "Filtrar...",
+		"resourcesLevel": "Nivel de recursos",
+		"sample": "muestras",
+		"samples": "Muestras",
+		"select": "Para ver el resultado de un ciclo, selecciona a continuación:",
+		"total": "total",
+		"universe": "universo",
+		"visionLevel": "Nivel de visión",
+		"yes": "Sí"
+	},
+	"Footer": {
+		"licenseTitle": "CC BY-SA",
+		"licenseContent": "El contenido publicado en el sitio web de CIEB está bajo la Licencia Creative Commons - {link}, a menos que condiciones específicas y / o restricciones adicionales estén claramente establecidas en la página correspondiente.",
+		"contactUs": "Contáctenos",
+		"mailTo": "consultasuefod@fod.ac.cr",
+		"address": "RUA LABORIOSA, 37 | CEP 05434-060 - SÃO PAULO-SP",
+		"bullet1": "Centros Educativos",
+		"bullet2": "Docentes Digitales",
+		"bullet3": "Red Educativa",
+		"bullet4": "Aviso legal",
+		"bullet5": "Política de privacidad",
+		"bullet6": "Política de cookies",
+		"copyright": "© 2021 TODOS LOS DERECHOS RESERVADOS",
+		"discover": "Acceso rapido:",
+		"bulletLink1": "/escola",
+		"bulletLink2": "/educador",
+		"bulletLink3": "/gestor",
+		"bulletLink4": "https://cieb.net.br",
+		"bulletLink5": "https://cieb.net.br",
+		"bulletLink6": "https://cieb.net.br"
+	},
+	"FrequencyAnswers": {
+		"btnSave": "Guardar",
+		"description": "\u003cp\u003e Para que la red educativa siga el progreso de los docentes, deben responder el cuestionario de diagnóstico más de una vez. De esta forma, se recopilan nuevos datos, permitiendo una comparación con los datos anteriores e identificando cambios en la red. \u003c/p\u003e \u003cp\u003e En este apartado, debes definir el período mínimo para que los docentes de tu red puedan volver a responder el cuestionario de diagnóstico. Elija, a continuación, el número de meses que debe esperar el docente para hacer un nuevo diagnóstico de sus habilidades. \u003c/p\u003e",
+		"description2": "Seleccione el número de meses que el docente debe esperar para volver a realizar el diagnóstico.",
+		"months": "meses",
+		"numberMonths": "Número de meses entre respuestas:",
+		"title": "Definición del periodo de implementación"
+	},
+	"Global": {
+		"loading": "Cargando...",
+		"loadingDevolutives": "Cargando retroalimentación ...",
+		"loadingQuestions": "Cargando cuestionario ...",
+		"loadingSectionsAndQuestions": "Cargando secciones y sus preguntas ..."
+	},
+	"Home": {
+		"clickHere": "PULSA AQUÍ",
+		"edutecGuideInNumbers": "GUÍA EDUTEC EN NÚMEROS",
+		"moreWhatIsEdutecGuide": "El instrumento, inspirado en iniciativas igualmente exitosas en otros países, también apunta a formas de aplicar mejores prácticas tecnológicas al aprendizaje de los estudiantes, el desarrollo de las habilidades digitales de los docentes y la gestión escolar.",
+		"school": "CENTRO EDUCATIVO",
+		"teacher": "DOCENTE",
+		"teachingNetwork": "RED EDUCATIVA",
+		"whatIsEdutecGuide": "\u003cp\u003e¿Cómo formar docentes capaces de estructurar e implementar prácticas pedagógicas apoyadas por las tecnologías digitales, de un modo innovador y motivador? ¿Qué habilidades deben ser trabajadas para hacer un uso efectivo de la tecnología para enseñar y para aprender? ¿cómo las escuelas pueden desarrollar una gestión que favorezca la inclusión de las tecnologías?\u003c/p\u003e\u003cp\u003eEsta herramienta, denominada Guía Edutec, desarrollada por el Centro de Innovación para la Educación Brasileña (CIEB), pretende estimular el desarrollo y la actualización de las habilidades digitales de docentes, escuelas y redes educativas. Se compone de tres módulos: una herramienta de diagnóstico de las habilidades digitales para los docentes, una herramienta de diagnóstico que identifica el nivel de implementación de las tecnologías digitales en los centros educativos y un tercer módulo que permite observar y gestionar la transformación digital en una red de escuelas. Los tres módulos proporcionan informes que permiten identificar buenas prácticas en el desarrollo de las habilidades digitales de los docentes, en la aplicación de la tecnología a la educación y en la gestión de los centros educativos.\u003c/p\u003e",
+		"whatIsTitle": "¿QUÉ ES LA GUÍA EDUTEC?",
+		"description": "Una herramienta para que los docentes puedan evaluar sus habilidades digitales y los centros educativos conocer cómo se están implementando las tecnologías digitales en la escuela",
+		"edutec": "EDUTEC",
+		"logoGuiaEdutec": "GUÍA {edutec}",
+		"createdByCIEB": "by CIEB",
+		"schoolDescription": "Conoce el grado de implementación de las tecnologías digitales en tu centro educativo",
+		"teacherDescription": "Evalúa tu nivel de competencia digital",
+		"teachingNetworkDescription": "Conoce el grado de implementación de las tecnologías digitales en los centros de tu red educativa",
+		"title": "Evaluación de Habilidades Digitales",
+		"poweredBy": "POWERED BY"
+	},
+	"InfraStructureFormModal": {
+		"title": "Inventario de las infraestructuras escolares",
+		"afternoon": "Tarde",
+		"btnSaved": "SALVADO",
+		"chargerCart": "Carro del cargador",
+		"classesNumber": "Numero de clases",
+		"computersToAdministrative": "Computadoras para administración",
+		"computersToStudents": "Dispositivos para estudiantes",
+		"computersToTeachers": "Ordenadores para docentes",
+		"educationLevel": "NIVELES DE EDUCACIÓN",
+		"eja": "EJA",
+		"elementary_1": "Primaria 1",
+		"elementary_2": "Primaria 2",
+		"equipmentRack": "Rack de equipo",
+		"firewall": "Firewall",
+		"highschool": "Escuela secundaria",
+		"hints": {
+			"computersToTeachers": {
+				"item1": "Suelen ser portátiles, en algunos casos ordenadores de sobremesa en ubicaciones específicas.",
+				"item2": "Diseñado para uso exclusivo de docentes de la escuela.",
+				"item3": "Pueden estar disponibles en la sala de maestros, disponibles para que los maestros las lleven al aula o fijas dentro de las aulas."
+			},
+			"title": "Descripción de la infraestructura",
+			"whatsIs": "¿Qué es?",
+			"whereToFind": "¿Donde encontrar?",
+			"whoUse": "¿Quién usa?",
+			"chargerCart": {
+				"item1": "Es un equipo, similar a un rack, diseñado para almacenar y recargar varios dispositivos simultáneamente (por ejemplo, portátiles, tabletas, etc.). Puede ser de diferentes tamaños para almacenar de 20 a 60 dispositivos.",
+				"item2": "Maestros y / o administradores escolares.",
+				"item3": "Se puede almacenar en una sala específica o en un laboratorio de computación. También se puede guardar en la sala de docentes o en la oficina de la escuela."
+			},
+			"computersToAdministrative": {
+				"item1": "Suelen ser ordenadores de sobremesa y / o portátiles.",
+				"item2": "Son utilizados exclusivamente por el sector administrativo de la escuela (consejo y secretaría).",
+				"item3": "Las computadoras generalmente se encuentran dentro de la sala de juntas o la oficina de la escuela."
+			},
+			"computersToStudents": {
+				"item1": "Son dispositivos digitales, que pueden ser: computadoras, notebooks, tablets, celulares escolares, etc.",
+				"item2": "Solo para uso de estudiantes.",
+				"item3": "Por lo general, se ubican en un espacio específico, como un laboratorio de computación, en las aulas o disponibles para su uso en el aula, y se almacenan en carritos o bastidores de equipos móviles."
+			},
+			"equipmentRack": {
+				"item1": "Es un tipo de gabinete cerrado fabricado en metal (acero al carbono) y tapa frontal de vidrio o acrílico, donde se guarda el equipo. Es dentro del rack donde se instala el equipo de red (módem, enrutador, conmutador, firewall, servidor de caché e incluso algunos modelos de UPS), puede ser un gabinete grande apoyado en el piso o uno pequeño pegado a la pared.",
+				"item2": "Técnicos informáticos escolares y / o subcontratados.",
+				"item3": "Por lo general, se instalan en la oficina del director, en las oficinas de la escuela o en el laboratorio de computación."
+			},
+			"firewall": {
+				"item1": "Controla la transferencia de datos entre la computadora e Internet. De esta manera, evita que el dispositivo (por ejemplo, computadora, teléfono móvil, tableta) o la red sean invadidos por piratas informáticos o accedidos por software malicioso. El firewall puede ser un programa o una computadora dedicada únicamente a cumplir la función de 'guardián' de la red.",
+				"item2": "Técnicos informáticos escolares y / o subcontratados.",
+				"item3": "Por lo general, se instalan en la oficina del director, en las salas de oficina de la escuela o en el laboratorio de computación dentro del bastidor del equipo."
+			},
+			"multimediaProjector": {
+				"item1": "Es un dispositivo que proyecta la imagen de una pantalla de computadora en paredes o estructuras utilizando tecnología basada en una lámpara.",
+				"item2": "Docentes para presentación de contenidos.",
+				"item3": "Por lo general, se instalan en el laboratorio de computación, en las aulas y / o auditorios, o están disponibles para que los maestros las lleven al aula."
+			},
+			"noBreak": {
+				"item1": "Equipo que utiliza la carga de baterías instaladas en el interior para alimentar los dispositivos, mientras se recarga con energía de la red. Cuando se produce un corte de energía, suministrará a los dispositivos la energía acumulada en las baterías durante unos minutos, hasta que se restablezca la energía.",
+				"item2": "Suele ser utilizado por técnicos informáticos o empleados administrativos que se ocupan de los equipos tecnológicos.",
+				"item3": "Por lo general, se instalan en la oficina del director, en las salas de oficina de la escuela o en el laboratorio de computación dentro del bastidor del equipo."
+			},
+			"printers": {
+				"item1": "Son dispositivos para imprimir contenido en papel, que en algunos casos tienen múltiples funciones, como: escanear un documento impreso.",
+				"item2": "La mayoría están disponibles para su uso por el personal administrativo de la escuela, también pueden estar disponibles para los maestros.",
+				"item3": "En la mesa directiva, oficina de la escuela y / o sala de docentes."
+			},
+			"roboticsKit": {
+				"item1": "Es un kit especial con piezas e instrucciones para el montaje de un robot, especialmente con movimiento autónomo. Están formados por los siguientes componentes básicos, tales como: piezas mecánicas, motores, circuito eléctrico, circuito electrónico, sensores etc.",
+				"item2": "Docentes y estudiantes para uso pedagógico.",
+				"item3": "Por lo general, se almacenan en el laboratorio de computación o incluso en el aula."
+			},
+			"switch": {
+				"item1": "Son dispositivos que conectan todos los dispositivos de la red, organizando el intercambio de datos entre ellos. Tienen un número variado de conectores (llamados 'puertos') para conectar cables de red y los más comunes son 8, 12, 16, 24, 32 o 48 puertos.",
+				"item2": "Técnicos informáticos escolares y / o subcontratados.",
+				"item3": "Por lo general, se instalan en la oficina del director, en las salas de oficina de la escuela o en el laboratorio de computación dentro del bastidor del equipo."
+			},
+			"wifi": {
+				"item1": "El punto de acceso, cuya traducción es un punto de acceso, es el equipo que se utiliza para transmitir la señal de la red Wifi a través de la escuela. También se conocen como enrutadores inalámbricos.",
+				"item2": "Por lo general, son configurados y mantenidos por los técnicos informáticos de la escuela y / o subcontratados, pero son utilizados por todos los que acceden a Internet de la escuela.",
+				"item3": "Se pueden instalar en cualquier lugar de la escuela, preferiblemente en lugares céntricos, pasillos, patios, etc. Suelen estar fijados al techo o en un lugar alto que facilite la difusión de la señal inalámbrica."
+			}
+		},
+		"integral": "Integral",
+		"kindergarten": "Infantil",
+		"level": "Nivel",
+		"morning": "Mañana",
+		"multimediaProjector": "Proyector multimedia",
+		"name": "Nombre",
+		"night": "Noche",
+		"noBreak": "NoBreak",
+		"numberOfStudentsInTheLargestClass": "Número de estudiantes en la clase más grande",
+		"period": "Curso del tiempo",
+		"printers": "Impresoras / Multifuncionales",
+		"roboticsKit": "Kit de robótica",
+		"schoolInfrastructure": "INFRAESTRUCTURA ESCOLAR",
+		"schoolInfrastructureDescription": "Identifique la cantidad de equipo a continuación disponible en la escuela",
+		"schoolRegisterData": "DATOS DE MATRÍCULA ESCOLAR",
+		"studentNumber": "Numero de estudiantes",
+		"switch": "Switch",
+		"technical": "Secundaria Técnica",
+		"wifi": "\t\nWifi/Access Point",
+		"btnSave": "GUARDAR"
+	},
+	"InfrastructureFormModal": {
+		"numberStudentsDiurnal": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberStudentsFull": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberStudentsNocturnal": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberStudentsVespertine": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberTeachers": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"InitSetup": {
+		"pageHeader": "Ajustes iniciales",
+		"description": "¡Bienvenido a la Guía Edutec! Este es el asistente de configuración inicial.",
+		"layoutSettings": "OPCIONES DE DISEÑO",
+		"colorPrimary": "Color primario (hexadecimal)",
+		"colorPrimaryDescription": "Establecer el color primario del proyecto (hexadecimal)",
+		"colorSecondary": "Color secundario (hexadecimal)",
+		"colorSecondaryDescription": "Establecer el color secundario del proyecto (hexadecimal)",
+		"imgBgHome": "Imagen de fondo de la página principal",
+		"imgBgHomeDescription": "Tamaño máximo de archivo de carga: 2 MB",
+		"imgLogoFooter": "Imagen de fondo de pie de página",
+		"imgLogoFooterDescription": "Tamaño máximo de archivo de carga: 2 MB",
+		"imgLogoFooterSec": "Imagen del logotipo del pie de página secundario",
+		"imgLogoFooterSecDescription": "Tamaño máximo de archivo de carga: 2 MB",
+		"imgLogoHeader": "Imagen del logo principal",
+		"imgLogoHeaderDescription": "Tamaño máximo de archivo de carga: 2 MB",
+		"imgLogoHeaderSec": "Imagen secundaria del logotipo principal",
+		"imgLogoHeaderSecDescription": "Tamaño máximo de archivo de carga: 2 MB",
+		"chooseOneFle": "Escoge un archivo...",
+		"changeAdminPassword": "CAMBIAR LA CONTRASEÑA DE USUARIO ADMINISTRADOR",
+		"email": "Correo electrónico",
+		"emailDescription": "Correo electrónico de acceso del administrador",
+		"adminPwd": "Contraseña",
+		"adminPwdDescription": "Ingrese una contraseña segura",
+		"staticLinks": "ENLACES ESTÁTICOS",
+		"mainLink": "Enlace principal",
+		"mainDescription": "Enlace de la institución que pone a disposición la Guía Edutec",
+		"mainEmail": "Email de contacto",
+		"mainEmailDescription": "Correo electrónico de contacto de la institución que pone a disposición la Guía Edutec",
+		"innovativePedagogicalPractices": "Prácticas pedagógicas innovadoras",
+		"innovativePedagogicalPracticesDescription": "Prácticas pedagógicas innovadoras",
+		"questions": "Cuestionarios",
+		"questionsDescription": "Cuestionarios",
+		"termLink": "Terminos de uso",
+		"termLinkDescription": "Terminos de uso",
+		"technicalNotes": "Notas técnicas",
+		"technicalNotesDescription": "Notas técnicas",
+		"uploadError": "La imagen no puede tener más de 2 MB",
+		"questionsExample": "Ejemplo de cuestionario",
+		"questionsExampleDescription": "Ejemplo de cuestionario",
+		"feedbackExample": "Ejemplo de retroalimentación",
+		"feedbackExampleDescription": "Ejemplo de retroalimentación",
+		"plans": "Planes de innovación",
+		"plansDescription": "Planes de innovación",
+		"btnConfirm": "CONFIRMAR",
+		"colorsDescription": "\u003cp\u003e¡Importante! Los logotipos y colores \u003cstrong\u003eprimarios\u003c/strong\u003e y \u003cstrong\u003esecundarios\u003c/strong\u003e ingresados ​​aquí se usarán \u003cstrong\u003esolo\u003c/strong\u003e en los comentarios.\u003c/p\u003e\u003cp\u003ePara cambiar los logotipos de la aplicación y colores, acceda a la documentación \u003ca href ='https://docs.devops.guiaedutec.com.br/v/espanol-1/front-end#6.-cambiar-la-identidad-visual' target='_ blank'\u003eaquí\u003c/a\u003e\u003c/p\u003e"
+	},
+	"InitSetupModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar",
+		"description": "\u003cp\u003e ¡Felicitaciones! Está a un paso de configurar la Guía Edutec para su uso en su institución. \u003c/p\u003e \u003cp\u003e \u003cstrong\u003e No olvide consultar la documentación de desarrollo \u003ca href = \"https: //docs.dev.guiaedutec .com .br / \"target =\" _ blank \"\u003e aquí \u003c/a\u003e para cambiar el diseño como mejor le parezca. \u003c/strong\u003e \u003c/p\u003e \u003cp\u003e Ahora será redirigido a la pantalla principal del administrador principal de la Guía Edutec. Este usuario le permite: \u003c/p\u003e \u003cul\u003e \u003cli\u003e Crear nuevos países en su base de datos, con: \u003cul\u003e \u003cli\u003e Estructura geográfica \u003c/li\u003e \u003cli\u003e Afiliaciones administrativas \u003c/li\u003e \u003cli\u003e Escuelas \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003cli\u003e Cree usuarios de tipo administrador de país: \u003cul\u003e \u003cli\u003e Estos usuarios tienen los mismos permisos que el usuario administrador principal, pero con restricción de datos solo para el país que administran. \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003cli\u003e Configure traducciones de todos los textos en la Guía Edutec, como: \u003cul\u003e \u003cli\u003e Contenido general \u003c/li\u003e \u003cli\u003e Cuestionarios \u003c/li\u003e \u003cli \u003e Retroalimentaciones \u003c/li\u003e \u003c/ul\u003e \u003c/li\u003e \u003c/ul\u003e \u003cp\u003e ¡Bienvenido a la Guía Edutec! \u003c/p\u003e",
+		"title": "Confirmación de configuración"
+	},
+	"ListActivities": {
+		"pageHeader": "LISTA DE TAREAS PENDIENTES",
+		"checkbox": {
+			"activity_0_description": "Como primer paso en la difusión de la Guía EduTec en la red, se sugiere enviar correos electrónicos o cartas a todos los equipos directivos de los centros adjuntando una carta del Departamento de Educación para informar y orientar sobre cómo acceder a la Guía EduTec. Esta función demuestra la seriedad e importancia de este proceso para la red.",
+			"activity_0_title": "1. Función del Secretario",
+			"activity_1_description": "Este es un documento que tiene una presentación rápida y sencilla sobre la Guía EduTec, y sugerimos utilizarlo para orientar y difundir la herramienta con los equipos directivos de los centros.",
+			"activity_1_title": "2. Directrices sobre la Guía EduTec",
+			"activity_2_description": "Para iniciar la implementación de la Guía EduTec, te aconsejamos que envíes un correo electrónico a todos los equipos directivos de los centros, con la carta firmada por el Secretario de Educación de tu red y el archivo de directrices sobre la Guía EduTec.",
+			"activity_2_title": "3. Primera divulgación por correo electrónico",
+			"activity_3_description": "Aconsejamos que, al menos semanalmente, tú y tu equipo de seguimiento analicéis la evolución de los encuestados y contactéis por correo electrónico y/o teléfono los equipos directivos que todavía no han respondido a la Guía EduTec.",
+			"activity_3_title": "4. Correo electrónico de seguimiento",
+			"activity_4_description": "Si tienes un equipo que te ayuda en el proceso de seguimiento de las respuestas, descarga y envía a este equipo el archivo que aparece a continuación. Esta es una guía de referencia rápida de las funciones disponibles en el panel de acompañamiento de la Guía EduTec.",
+			"activity_4_title": "5. Guía rápida para el equipo de seguimiento"
+		},
+		"description1": "A continuación le ofrecemos una lista de control con actividades para ayudarte en el proceso de difusión y aplicación de la Guía EduTec. Estos pasos y materiales se elaboraron —y se actualizan constantemente— a partir de experiencias exitosas de redes que ya han aplicado la Guía EduTec.",
+		"description2": "Marca cada actividad realizada o material utilizado haciendo clic en la casilla a la izquierda del título y haz clic en \"guardar\" en la parte inferior de la página. Esto te ayudará a hacer un seguimiento de lo que se ha logrado o no.",
+		"save": "GUARDAR",
+		"material1": "http://cieb-prod.s3.amazonaws.com/uploads/activity/file_upload/596cb961b95ba40013930fa3/Modelo_de_of_cio_para_diretores_de_escola.docx",
+		"material2": "http://cieb-prod.s3.amazonaws.com/uploads/activity/file_upload/596cc544b95ba40013930fa4/orienta%C3%A7%C3%B5es_sobre_o_guia_edutec_-_diretores.pdf",
+		"material3": "http://cieb-prod.s3.amazonaws.com/uploads/activity/file_upload/596cc63ab95ba40006930fa4/Modelo_de_e-mail__inicial__para_diretores_de_escola.docx",
+		"material4": "http://cieb-prod.s3.amazonaws.com/uploads/activity/file_upload/596cc78eb95ba40013930fa8/Modelo_de_e-mail__acompanhamento__para_diretores_de_escola.docx",
+		"material5": "http://cieb-prod.s3.amazonaws.com/uploads/activity/file_upload/596cc8b9b95ba40006930fa5/Acompanhamento_Respostas_Monitores.pdf",
+		"downloadFile": "Descarga el archivo",
+		"here": "aquí"
+	},
+	"ListSchoolsClasses": {
+		"helmetTitle": "Escuelas",
+		"pageHeaderTitle": "Escuelas"
+	},
+	"ListUsersAdmin": {
+		"helmetTitle": "Gerentes",
+		"pageHeaderTitle": "administradores"
+	},
+	"ListUsersDirectors": {
+		"helmetTitle": "Directores",
+		"pageHeaderTitle": "Diretores"
+	},
+	"ListUsersProfessores": {
+		"helmetTitle": "Docentes",
+		"pageHeaderTitle": "Professores"
+	},
+	"LocalQuestions": {
+		"responsesAlreadyRecorded": "Ya hay respuestas grabadas."
+	},
+	"LoginEducator": {
+		"title": "DIAGNÓSTICO DE {brIsHiddenMobile} HABILIDADES DIGITALES {brIsHiddenMobile}DE ",
+		"teachers": "DOCENTES",
+		"whatIs": "¿Qué es el Diagnóstico de Habilidades?",
+		"descriptionSelfEvaluation": "Se trata de una herramienta en línea y gratuita* que permite a los docentes de educación básica identificar sus habilidades digitales para desarrollarse profesionalmente.",
+		"titleWhyUse": "Por qué utilizarla",
+		"descriptionWhyUse": "Estimula el/la docente a ser el protagonista de su propio desarrollo profesional, orientando itinerarios que posibiliten transformaciones en su práctica pedagógica.",
+		"howWorks": "Ver cómo funciona",
+		"howWorksDescription": "El Diagnóstico de Habilidades Digitales está compuesta por 23 preguntas distribuidas en tres áreas",
+		"questions": "preguntas",
+		"areas": "áreas",
+		"competencies": "habilidades",
+		"pedagogical": "Pedagogía",
+		"digitalCitizenship": "Ciudadanía digital",
+		"professionalDevelopment": "Desarrollo profesional",
+		"competenciesDescription": "Se evalúan 12 habilidades, cuatro en cada área:",
+		"pedagogicalPractice": "Práctica pedagógica",
+		"evaluation": "Evaluación",
+		"customization": "Personalización",
+		"curatorshipCreation": "Curaduría y creación",
+		"responsibleUse": "Uso responsable",
+		"safeUse": "Uso seguro",
+		"criticalUse": "Uso crítico",
+		"inclusion": "Inclusión",
+		"selfDevelopment": "Autodesarrollo",
+		"startNow": "Empieza ahora la {brIsHiddenTablet}",
+		"selfEvaluation": "Diagnóstico",
+		"sharing": "Compartir",
+		"communication": "Comunicación",
+		"ownershipLevelsDescription": "El resultado de el Diagnóstico se expresa en un informe de resultados que muestra el perfil del / de la docente en cinco niveles de desarrollo, en cada área y en cada competencia:",
+		"ownershipLevels": "Niveles de desarrollo",
+		"exposure": "Exposición",
+		"exposureDescription": "Cuando no se usan las tecnologías en la práctica docente o cuando el/la docente requiere del apoyo de un tercero para utilizarlas, y también cuando su uso es solo personal. El/la docente identifica las tecnologías como una herramienta, no como parte de la cultura digital.",
+		"familiarization": "Familiarización",
+		"familiarizationDescription": "El/la docente empieza a conocer y a usar puntualmente las tecnologías en sus actividades. Identifica y percibe las tecnologías como un apoyo a su trabajo de enseñanza. El uso de las tecnologías se centra en el/la docente",
+		"adaptation": "Adaptación",
+		"adaptationDescription": "Las tecnologías se utilizan periódicamente y pueden integrarse en la planificación de las actividades pedagógicas. El/la docente identifica las tecnologías como recursos complementarios para mejorar los procesos de enseñanza y aprendizaje.",
+		"integration": "Integración",
+		"integrationDescription": "El uso de las tecnologías es frecuente en la planificación de actividades y en la interacción con los estudiantes. El/la docente trabaja con las tecnologías de forma integrada y contextualizada en los procesos de enseñanza y aprendizaje.",
+		"transformation": "Transformación",
+		"transformationDescription": "Cuando el/la docente utiliza las tecnologías de forma innovadora, las comparte con sus colegas y realiza proyectos de colaboración más allá de la escuela, mostrándose experimentado en relación con el uso de las tecnologías digitales, identificándolas como una herramienta de transformación social.",
+		"whereAmI": "¿Dónde estoy?",
+		"whatMean": "¿Qué significa esto?",
+		"howEvolve": "¿Cómo puedo progresar?",
+		"devolutive": "Informe de resultados",
+		"devolutiveDescription": "El informe de resultados contiene directrices y orientaciones para tu desarrollo profesional.",
+		"notes1": "*La base conceptual de la herramienta fue desarrollada por EL CIEB en colaboración con el Instituto Natura y la red Escola Digital. El contenido de este sitio fue desarrollado por el CIEB.",
+		"videoSrcSelfEvaluation": "//www.youtube.com/embed/-EDSndUuK-8",
+		"startNowSelfEvaluation": "Diagnóstico"
+	},
+	"LoginManager": {
+		"accessionDescription": "El Departamento de Educación solicita la inscripción gratuita a la Guía EduTec, indicando un responsable que recibe el usuario y la contraseña de la plataforma.",
+		"accessionTitle": "Inscripción",
+		"btnMakeAccession": "INSCRIBIRSE",
+		"conceptDegreeDescription": "Es la dimensión que indica las habilidades y habilidades necesarias para el uso potencial de las tecnologías en la educación. Incluye las habilidades y habilidades de los docentes (sus conocimientos sobre las tecnologías digitales y la forma en que las utilizan en sus prácticas pedagógicas; la capacidad de orientar el uso de las tecnologías digitales por parte de los estudiantes; su capacidad para desarrollar nuevos contenidos digitales) y de los equipos directivos y coordinadores (el uso de las tecnologías digitales para mejorar la gestión de los centros y los procesos de enseñanza y aprendizaje mediante el apoyo a los docentes y estudiantes).",
+		"conceptDegreeTitle": "HABILIDADES",
+		"conceptDescription1": "La Guía EduTec considera que el uso de la tecnología en la educación (para apoyar el aprendizaje de los estudiantes, el desarrollo de las habilidades digitales en los docentes y la gestión en el centro y en la red) sólo alcanza todo su potencial cuando tiene en cuenta cuatro dimensiones, que deben integrarse de forma equilibrada: visión, habilidades, recursos educativos digitales e infraestructura.",
+		"conceptDescription2": "En la práctica, esto significa, por ejemplo, que no tiene sentido invertir en infraestructuras y no ofrecer formación continua a los docentes; o que no es productivo establecer estrategias ambiciosas para el uso de la tecnología sin proporcionar una conectividad y recursos educativos digitales adecuados.",
+		"conceptEducacionalResourcesDescription": "Hace referencia al acceso y uso de los programas, las aplicaciones y los contenidos digitales utilizados en los procesos de enseñanza y aprendizaje y en la gestión escolar, como materiales didácticos para determinadas asignaturas, juegos, vídeos educativos y softwares que facilitan la gestión educativa.",
+		"conceptEducacionalResourcesTitle": "RECURSOS EDUCATIVOS DIGITALES",
+		"conceptInfrastructureDescription": "Es la dimensión que se ocupa de la gestión y el suministro de dispositivos tecnológicos adecuados (ordenadores, portátiles, tabletas, servidores y servicios de almacenamiento en la nube), así como del acceso y la calidad de la conectividad.",
+		"conceptInfrastructureTitle": "INFRAESTRUCTURA",
+		"conceptTitle": "CONCEPTO",
+		"conceptVisãoDescription": "Hace referencia a la creencia de que la tecnología tiene el potencial de influir de forma positiva en los centros educativos, promoviendo procesos de enseñanza y aprendizaje de calidad y una gestión escolar eficaz. También abarca las formas en que dicha creencia se refleja en las estrategias y políticas planificadas para que los centros educativos logren sus objetivos.",
+		"conceptVisãoTitle": "VISIÓN",
+		"conceptsDescription": "Comprende la importancia y los objetivos de elaborar un plan de innovación y tecnología para la educación. Conoce el modelo de las cuatro dimensiones en equilibrio y su importancia para el uso eficaz de la tecnología en una red educativa.",
+		"conceptsTitle": "CONCEPTOS",
+		"diagnosisCollectionOfResponsesDescription": "El sistema incorpora las respuestas de varios centros de la red educativa",
+		"diagnosisCollectionOfResponsesTitle": "Recogida de respuestas",
+		"diagnosisDescription": "Una herramienta de diagnóstico recoge los datos sobre el uso de la tecnología por parte de los centros de la red y, al final, genera un informe con los resultados globales y sistematizados para la persona gestora.",
+		"diagnosisDevolutiveDescription": "El centro recibe un informe de resultados con el diagnóstico y las sugerencias de mejora",
+		"diagnosisDevolutiveTitle": "Informe de resultados",
+		"diagnosisQuestionsDescription": "El/la director/a, junto con dos docentes, responde al cuestionario",
+		"diagnosisQuestionsTitle": "Cuestionario",
+		"diagnosisRegisterDescription": "El/la director/a accede y se registra en la herramienta de diagnóstico en línea y automatizada",
+		"diagnosisRegisterTitle": "Registro",
+		"diagnosisReportDescription": "El departamento de educación recibe un informe analítico y detallado sobre la implementación de la tecnología en sus centros",
+		"diagnosisReportTitle": "Informe con el diagnóstico",
+		"diagnosisSectionTitle": "DIAGNÓSTICO",
+		"diagnosisTitle": "Diagnóstico",
+		"diagnosticToolsDescription": "Elabora un diagnóstico sobre el nivel de implementación de la tecnología en los centros de tu red. La Guía EduTec - Diagnóstico es una herramienta en línea que te ayudará en este proceso.",
+		"diagnosticToolsTitle": "HERRAMIENTAS DE DIAGNÓSTICO",
+		"dignosisSectionDescription1": "La herramienta de diagnóstico, fácil de implementar, se basa en un cuestionario en línea que mide el nivel de implementación de la tecnología en los centros y en las redes educativas.",
+		"dignosisSectionDescription2": "Este cuestionario lo responde la dirección del centro. Tras responder, la dirección recibe —en tiempo real— un informe de resultados de su diagnóstico con las acciones que el centro puede llevar a cabo para que la tecnología contribuya cada vez más a la gestión, la enseñanza y el aprendizaje.",
+		"dignosisSectionDescription3": "Finalmente, el departamento de educación recibe un informe detallado basado en las respuestas de sus centros, que le permite elaborar una planificación en base a los datos.",
+		"mappingCollectionOfResponsesDescription": "El sistema organiza las respuestas de todos los/las docentes de la red educativa que han realizado el diagnóstico",
+		"mappingCollectionOfResponsesTitle": "Recogida de respuestas",
+		"mappingDescription": "Una plataforma que permite a la persona gestora conocer las habilidades digitales de los docentes de su red y la orienta en el análisis crítico de las políticas, los programas y los proyectos de formación continua relacionados con las tecnologías que ya están en marcha en la red educativa o que deberían implementarse.",
+		"mappingDevolutiveDescription": "Al final de el diagnóstico, el/la docente recibe una retroalimentación sobre su nivel de progreso.",
+		"mappingDevolutiveTitle": "Informe de resultados del/ de la docente",
+		"mappingQuestionsDescription": "El/la docente, de forma individual, responde al cuestionario",
+		"mappingQuestionsTitle": "Cuestionario",
+		"mappingRegisterDescription": "El/la docente accede y se registra en la herramienta de diagnóstico de las habilidades digitales de los docentes",
+		"mappingRegisterTitle": "Registro",
+		"mappingReportDescription": "Los gestores educativos tienen acceso a un informe de resultados que indica el estado de la red en cuanto a las habilidades digitales de los docentes, lo que permite hacer una comparación con otras redes y presentar prácticas pedagógicas innovadoras para ayudar en la planificación de la formación continua de los docentes.",
+		"mappingReportTitle": "Informe de resultados del departamento de educación",
+		"mappingSectionDescription1": "El área de estudio detallado se divide en dos etapas.",
+		"mappingSectionDescription2": "Una de ellas es el estudio detallado de las acciones (políticas, programas, proyectos e iniciativas) que tuvieron lugar en la red educativa.",
+		"mappingSectionDescription3": "La otra es el estudio detallado de las habilidades digitales. A través de la herramienta de Diagnóstico de Habilidades Digitales del Docente, los docentes responden a un cuestionario en el que se analizan 12 habilidades digitales. Tras responder al cuestionario, cada educador/a recibe una retroalimentación —personalizado y en tiempo real— con su nivel de desarrollo en cuanto a conocimientos y usos de la tecnología y sugerencias de materiales que ayuden a su desarrollo profesional. Finalmente, las personas responsables del departamento pueden acceder a los datos recopilados de los docentes para analizarlos e identificar las demandas que deben conformar la planificación de la formación continua.",
+		"mappingSectionTitle": "DIAGNÓSTICO",
+		"mappingSelfEvaluation": "Diagnóstico de las Habilidades Digitales del Docente",
+		"mappingTitle": "Diagnóstico",
+		"mappingToolsDescription": "Elabora un mapa sobre las habilidades digitales de los docentes y planifica una formación adecuada al perfil y a las necesidades de la red educativa. Identifica también las políticas, los programas y los proyectos que ya están en marcha en la red.",
+		"mappingToolsTitle": "HERRAMIENTAS DE DIAGNÓSTICO",
+		"title": "Conociendo el nivel de implementación de las tecnologías digitales en los centros y el nivel de habilidades digitales de los docentes",
+		"whatIsDescription": "Consulta aquí cómo acceder y a la Guía EduTec y qué puedes encontrar:",
+		"whatIsTitle": "Desarrollado por el CIEB, el portal de la Guía EduTec ofrece dos herramientas: el módulo de diagnóstico / la Guía EduTec y el diagnóstico de las habilidades digitales de los docentes. La primera identifica el nivel de implementación de las tecnologías digitales en los centros y proporciona informes por centro y red educativa; mientras que la segunda evalúa el desarrollo de las habilidades digitales de los docentes y genera informes individuales y globales.",
+		"videoSrcDiagnosis": "https://www.youtube.com/embed/-7OvClV0ick"
+	},
+	"LoginSchool": {
+		"school": "CENTRO EDUCATIVO",
+		"schoolLoginTitle": "¿QUIERES SABER CÓMO UTILIZA TU {school} LA TECNOLOGÍA?",
+		"contentDescription": "Se refiere al acceso y al uso de los programas, las aplicaciones y los contenidos digitales utilizados en los procesos de enseñanza y aprendizaje y en la gestión escolar, como materiales didácticos para determinadas asignaturas, juegos, vídeos educativos y softwares que facilitan la gestión educativa.",
+		"contentTitle": "Recursos educativos digitales",
+		"degree": "Habilidades",
+		"degreeDescription": "Es la dimensión que indica las habilidades necesarias para el uso potencial de las tecnologías en la educación. Incluye las habilidades de los docentes (sus conocimientos sobre las tecnologías digitales y la forma en que las utilizan en sus prácticas docentes, la capacidad de orientar el uso de las tecnologías digitales por parte de los estudiantes y su capacidad para desarrollar nuevos contenidos digitales) y de los equipos directivos y coordinadores (el uso de las tecnologías digitales para mejorar la gestión de los centros y los procesos de enseñanza y aprendizaje apoyando a docentes y estudiantes).",
+		"dimensionsDescription": "El uso de la tecnología para la educación (como apoyo a la enseñanza y a la gestión) solo alcanza todo su potencial cuando hay cuatro elementos en equilibrio: visión, habilidades, recursos educativos digitales e infraestructura. En la práctica, esto significa, por ejemplo, que no tiene sentido invertir demasiado en infraestructuras si no se ofrecen formaciones a los docentes; o que tampoco es útil crear estrategias ambiciosas para el uso de la tecnología sin proporcionar la conectividad y los recursos educativos digitales adecuados.",
+		"dimensionsTitle": "CUATRO DIMENSIONES {useTechnology}",
+		"infrastructureDescription": "Es la dimensión que se ocupa de la gestión y el suministro de dispositivos tecnológicos adecuados (ordenadores, portátiles, tabletas, servidores y servicios de almacenamiento en la nube), así como del acceso y la calidad de la conectividad.",
+		"infrastructureTitle": "Infraestructura",
+		"moreWhatIsEdutecGuide": "El módulo se basa en el concepto de Escuela Conectada, según el cual es necesario integrar cuatro dimensiones (visión, habilidades, recursos educativos digitales e infraestructura) para que la tecnología tenga un impacto positivo en el aprendizaje de los estudiantes.",
+		"networkReportDescription": "Al final, después de que las escuelas hayan respondido al cuestionario, los responsables de la red reciben un informe analítico con el diagnóstico del nivel de implementación de las tecnologías digitales en la red.",
+		"networkReportTitle": "Informe para la red",
+		"questionsToSchoolDescription": "Los centros educativos responden al cuestionario en línea, que tiene una duración aproximada de 20 minutos y que debe ser completado por el/la director/a del centro.",
+		"questionsToSchoolTitle": "Cuestionario para el centro educativo",
+		"returnToSchoolDescription": "Se envía un informe de resultados personalizado al correo electrónico de la dirección del centro, indicando cómo se encuentra la escuela en cada dimensión y sugiriendo mejoras en sus prácticas.",
+		"returnToSchoolTitle": "Informe de resultados para el centro",
+		"useTechnology": "EN EL USO DE LA TECNOLOGÍA",
+		"vision": "Visión",
+		"visionDescription": "Hace referencia a la creencia de que la tecnología tiene el potencial de influir de forma positiva en los centros educativos, promoviendo procesos de enseñanza y aprendizaje de calidad y una gestión escolar eficaz. También abarca las formas en que dicha creencia se refleja en las estrategias y políticas planificadas para que los centros educativos logren sus objetivos.",
+		"whatIsEdutecGuide": "El módulo de diagnóstico / la Guía EduTec identifica el nivel de implementación de las tecnologías digitales en los centros educativos en cada dimensión y proporciona informes por centro y red educativa.",
+		"whatIsTitle": "¿QUÉ ES LA GUÍA EDUTEC?"
+	},
+	"ManagerForm": {
+		"btnEdit": "Editar",
+		"btnRegister": "Registrar",
+		"btnRemove": "Eliminar",
+		"email": "Correo electrónico",
+		"name": "Nombre",
+		"phoneNumber": "Teléfono"
+	},
+	"ManagersTable": {
+		"name": "Nombre",
+		"btnEdit": "Editar",
+		"actions": "Acciones",
+		"btnFilter": "Filtrar",
+		"btnImportContactSpreadSheet": "Importar hoja de contacto",
+		"btnNewContact": "Nuevo contacto",
+		"email": "Correo electrónico",
+		"placeholderFilter": "Ingrese el nombre del contacto ...",
+		"schools": "Escuela"
+	},
+	"Miscellaneous": {
+		"mail": {
+			"resetPassword": {
+				"subject": "[GUIA EDUTEC] Solicitud de cambio de contraseña",
+				"bodyTitle": "¿Olvidó su contraseña?",
+				"body": "No se preocupe, dele clic en el botón de abajo para crear su nueva contraseña",
+				"bodyFoot": "En caso de que usted no haya solicitado un cambio de contraseña, por favor omita este correo",
+				"submitButton": "Crear nueva contraseña"
+			},
+			"newUserPassword": {
+				"subject": "[GUIA EDUTEC] Crea tu nueva contraseña",
+				"bodyTitle": "Nuevo usuario creado",
+				"body": "Dele clic en el botón de abajo para crear su contraseña",
+				"bodyFoot": "¿Este usuario no es para ti? No se preocupe, por favor omita este correo",
+				"submitButton": "Crear contraseña"
+			},
+			"confirmationInstructions": {
+				"subject": "[GUIA EDUTEC] Confirmación de correo electrónico",
+				"body1": "Estimado (a)",
+				"body2": "Para confirmar su registro y empezar a acceder a nuestros servicios, haga clic en el enlace de abajo!",
+				"body3": "HAGA CLIC AQUÍ Y CONFIRME",
+				"body4": "Si no se ha registrado en nuestro portal, ignore este correo electrónico.",
+				"body5": "Sinceramente",
+				"body6": "Equipo Guia EduTec"
+			},
+			"sendtInvite": {
+				"subject": "[GUIA EDUTEC] INVITACIÓN",
+				"body1": "Estimado (a)",
+				"body2": "Se le pide que responda al cuestionario de la Guía EduTec sobre la adopción de tecnologías digitales en su escuela.",
+				"body3": "Esta invitación fue hecha por el director de su escuela:",
+				"body4": "Para responder el cuestionario, sólo tiene que acceder al siguiente enlace:",
+				"body5": "¡Accede aquí!",
+				"body6": "Introduzca los datos a continuación:",
+				"body7": "Correo electrónico:",
+				"body8": "Contraseña:",
+				"body9": "Para responder el cuestionario, simplemente acceda al enlace siguiente:",
+				"body10": "¡Accede aquí!",
+				"body11": "Por favor ingrese este correo electrónico:",
+				"body12": "y la tuya",
+				"body13": "Contraseña",
+				"body14": "Nota:",
+				"body15": "Debe utilizar la contraseña que registró con la Guía EduTec o la que recibió por correo electrónico.",
+				"body16": "Si no lo tienes,",
+				"body17": "Haga clic aquí",
+				"body18": "para recuperar.",
+				"body19": "Enfatizamos que su participación es muy importante para el desarrollo de su escuela.",
+				"body20": "Sinceramente,",
+				"body21": "Equipo Guia EduTec"
+			}
+		}
+	},
+	"Modal": {
+		"print": "Imprimir"
+	},
+	"ModalDownloadSchoolsImportModel": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Descargar",
+		"description": "\u003cp\u003e Este archivo es una plantilla que se utilizará en la herramienta de importación de escuelas de GEOS \u003c/p\u003e \u003cp\u003e Todos los campos, excepto el código_único, son obligatorios. \u003c/p\u003e \u003cp\u003e GEOS tiene una estructura jerárquica interna de 4 niveles. \u003c/p\u003e \u003cul\u003e \u003cli\u003e El nivel 1 es siempre el país \u003c/li\u003e \u003cli\u003e Los niveles 2 a 4 deben ajustarse a la jerarquía geográfica de su país. \u003c/li\u003e \u003c/ ul\u003e \u003cp\u003e Para ejemplo: en Brasil la jerarquía es País, Región, Estado y Ciudad en Chile la jerarquía es País, Provincia, Estado, Ciudad \u003cp\u003e \u003cp\u003e Todas las escuelas están vinculadas tanto a la jerarquía geográfica como a una afiliación administrativa. La Afiliación es el departamento responsable de la escuela. Una afiliación puede administrar varias escuelas. \u003cp\u003e \u003cp\u003e Cada línea en el archivo .csv de plantilla representa la información mínima para una escuela en su país. \u003c/p\u003e \u003cp\u003e El campo unique_code puede ser cualquier código único utilizado para definir la escuela y puede ser alfanumérico. \u003c/p\u003e",
+		"title": "Plantilla de archivo de importación de escuelas"
+	},
+	"ModalExportMicrodata": {
+		"title": "Exportación de microdatos",
+		"description": "El proceso ha comenzado y se le notificará por correo electrónico cuando finalice.",
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar"
+	},
+	"ModalSignUpFormAdminState": {
+		"btnConfirm": "Confirmar",
+		"btnRectify": "Corregir",
+		"description": "\u003cp\u003e¿Es usted el gerente o el responsable de la red a continuación?\u003c/p\u003e\u003cp\u003eAl registrarse, debe esperar a que el administrador del país autorice su acceso.\u003c/p\u003e",
+		"network": "Red educativa",
+		"title": "VERIFICACIÓN DE LOS DATOS DE REGISTRO"
+	},
+	"ModalSignUpFormDirectors": {
+		"btnConfirm": "Confirmar",
+		"btnRectify": "Corregir",
+		"description": "\u003cp\u003e¿Confirma que es el director o responsable de la escuela informada?\u003c/p\u003e",
+		"network": "Red educativa",
+		"school": "Escuela",
+		"title": "VERIFICACIÓN DE LOS DATOS DE REGISTRO",
+		"withoutLinksDescription": "\u003cp\u003e ¿Confirmas el registro como director sin enlace funcional? \u003c/p\u003e"
+	},
+	"ModalSignUpFormTeachers": {
+		"btnConfirm": "Confirmar",
+		"btnRectify": "Corregir",
+		"description": "\u003cp\u003e¿Eres docente en la escuela de abajo?\u003c/p\u003e",
+		"network": "Red educativa",
+		"school": "Escuela",
+		"title": "VERIFICACIÓN DE LOS DATOS DE REGISTRO",
+		"withoutLinksDescription": "¿Confirmar la matrícula como docente sin enlace funcional?"
+	},
+	"NonUserActionsMenu": {
+		"meetTheCIEB": "Sobre CIEB",
+		"btnRegister": "Regístrese",
+		"start": "Inicio"
+	},
+	"PageHeader": {
+		"hello": "¡Hola",
+		"teacherMsg": "El Diagnóstico de las Habilidades Digitales de los Docentes es una herramienta en línea y gratuita que permite la identificación de habilidades digitales.",
+		"inovationTechPlanText": "plan de innovación y tecnología",
+		"videoLinkText": "vídeo",
+		"videoUrlTeacher": "https://www.youtube.com/embed/ob3H_KmGGvU?rel=0\u0026amp;showinfo=0",
+		"videoUrl": "https://www.youtube.com/embed/h1dew-O0T5A?rel=0\u0026amp;showinfo=0",
+		"btnCloseModal": "Cerrar",
+		"adminStateMsg": "La Guía EduTec es una plataforma que ofrece conceptos, metodologías y herramientas para promover el uso de la tecnología para la enseñanza y el aprendizaje.",
+		"principalMsg": "La Guía EduTec es una plataforma que proporciona al departamento de educación conceptos, metodologías y herramientas para promover el uso de la tecnología para la enseñanza y el aprendizaje."
+	},
+	"Panel": {
+		"diagnosisDescription": "Realiza el diagnóstico y conoce el nivel de implementación de la tecnología en los centros de tu red.",
+		"diagnosisLink": "DIAGNÓSTICO",
+		"diagnosisTitle": "REALIZA EL DIAGNÓSTICO DE LOS CENTROS",
+		"fourDimensionsDescription": "Conoce las cuatro dimensiones y la escuela conectada y lo que necesitas saber para crear un plan de implementación de la tecnología que alcance todo su potencial.",
+		"fourDimensionsLink": "TÉRMINOS IMPORTANTES",
+		"fourDimensionsTitle": "CONOCE LAS CUATRO DIMENSIONES EN EL USO DE LA TECNOLOGÍA",
+		"teacherSelfEvaluationDescription": "Realiza el estudio detallado de las habilidades digitales de los docentes en tu red y conoce el perfil de los docentes en cuanto a la implementación de la tecnología.",
+		"teacherSelfEvaluationLink": "DEFINIR EL PROFESORADO",
+		"teacherSelfEvaluationTitle": "Diagnóstico de los docentes",
+		"degree": "CAPACITACIÓN",
+		"tool": "Herramienta",
+		"trainingDegree": "CAPACITACIÓN / FORMACIÓN",
+		"followUpReportTitle": "Reporte de Seguimiento de Recolección de Auto-Evaluaciones",
+		"followUpReportDesc": "Genera un reporte en formato excel que permita hacer un seguimiento de los rectores que se han registrado y cuántos han respondido la Guía Edutec por centro, y por cada división geográfica.",
+		"followUpReportLink": "Generar reporte"
+	},
+	"PasswordChange": {
+		"pageHeader": "Cree su nueva contraseña",
+		"titleHelmet": "Cambiar contraseña",
+		"title": "Cambiar contraseña",
+		"description": "Escriba su nueva contraseña a continuación. Si tiene más preguntas, contáctenos en",
+		"messageMinCharacters": "ingrese al menos 5 caracteres",
+		"messageError": "No pudimos cambiar su contraseña. Entre en contacto.",
+		"messageSuccess": "¡Contraseña modificada correctamente!",
+		"labelNewPassword": "Nueva contraseña",
+		"labelConfirmNewPassword": "Confirmar nueva contraseña",
+		"btnSubmit": "CAMBIAR CONTRASEÑA"
+	},
+	"PasswordChangeForm": {
+		"confirmPassword": {
+			"equality": {
+				"message": "No marca"
+			}
+		},
+		"password": {
+			"length": {
+				"tooShort": "ingrese al menos 5 caracteres"
+			}
+		}
+	},
+	"PasswordForgot": {
+		"btnSubmit": "RECUPERAR LA CONTRASEÑA",
+		"description": "Solo debes introducir tu dirección de correo electrónico para recibir instrucciones sobre cómo recuperar tu contraseña.",
+		"labelEmail": "Correo electrónico",
+		"title": "RECUPERAR LA CONTRASEÑA ES FÁCIL",
+		"alertMessage": "¡Se ha enviado un correo electrónico a su bandeja de entrada si su correo electrónico está registrado en el sistema!",
+		"titleHelmet": "Recuperar contraseña"
+	},
+	"PasswordReset": {
+		"title": "Tu nueva contraseña",
+		"btnSubmit": "Restablecer la contraseña",
+		"description": "Ingrese su nueva contraseña a continuación para recuperar su cuenta. Si tiene más preguntas, comuníquese con nosotros al",
+		"labelConfirmPassword": "Confirma tu nueva contraseña",
+		"labelPassword": "Nueva contraseña",
+		"titleHelmet": "Crea tu nueva contraseña"
+	},
+	"PrintList": {
+		"infrastructure": "Infraestructura",
+		"pageHeader": "Impresión de cuestionarios"
+	},
+	"ProgressDirector": {
+		"competence": "COMPETENCIA",
+		"infrastructure": "INFRAESTRUCTURA",
+		"resources": "RECURSOS",
+		"vision": "VISIÓN"
+	},
+	"ProgressTeacher": {
+		"digitalCitizenship": "CIUDADANÍA DIGITAL",
+		"pedagogical": "PEDAGÓGICA",
+		"professionalDevelopment": "DESARROLLO PROFESIONAL"
+	},
+	"RegisterAdminCountryModal": {
+		"btnOk": "Ok",
+		"descriptionSuccess": "¡Datos registrados correctamente!",
+		"title": "VERIFICACIÓN DE LOS DATOS DE REGISTRO",
+		"titleError": "ERROR"
+	},
+	"Resources": {
+		"registrationUpdate": "Actualización de registro",
+		"hello": "Hola",
+		"descriptionModal": "Debe aceptar los Términos de uso a continuación para continuar usando la Guía EduTec.",
+		"exit": "Salir",
+		"readAndAcceptTerm": "He leído y acepto los Términos de uso de la Guía EduTec",
+		"answerSurvey": "RESPONDER AL CUESTIONARIO",
+		"print": "IMPRIMIR EL CUESTIONARIO",
+		"manageInvitation": "Gerenciar convite",
+		"invitationEmail": "O convite inicialmente foi enviado para o e-mail",
+		"continueSurvey": "CONTINUAR CON EL CUESTIONARIO",
+		"attention": "¡Atención",
+		"description1": "Para hacer un seguimiento de tu progreso, puedes volver a la herramienta de diagnóstico y responder al cuestionario de",
+		"description2": "Durante este tiempo, puedes acceder a los materiales indicados en tu retroalimentación y buscar formaciones nuevas para desarrollarte profesionalmente.",
+		"historicTitle": "Historial de los cuestionarios y retroalimentación",
+		"in": "El",
+		"answered": "Respondido",
+		"devolutive": "Comentarios",
+		"accessDevolutive": "Ver retroalimentación",
+		"btnSchoolInventary": "INVENTARIO DE LAS INFRAESTRUCTURAS ESCOLARES",
+		"school": "Centro",
+		"title": "Cuestionario y comentarios",
+		"currentCycle": "Ciclo actual",
+		"cycle": "Ciclo",
+		"btnEditCensusData": "EDITAR DATOS BASE NACIONALES"
+	},
+	"Results": {
+		"pageHeader": "Resultados Guía EduTec",
+		"analyzeTheResults": "ANALIZAR LOS RESULTADOS",
+		"results": "resultados",
+		"description": {
+			"p1": {
+				"text": "Tras la implementación de la Guía EduTec en tu red educativa, es el momento de analizar los resultados, haciendo una lectura atenta de los indicadores e interpretándolos en relación con la realidad local. A continuación encontrarás los resultados detallados de la Guía EduTec. Se dividen en cada una de las cuatro dimensiones (visión, habilidades/formación, recursos educativos digitales e infraestructura).",
+				"vision": "visión",
+				"competenceAndFormation": "habilidades",
+				"educationalResources": "recursos educativos digitales",
+				"infrastructure": "infraestructura"
+			},
+			"p2": {
+				"text": "A partir de este análisis, tendrás una imagen mucho más clara del grado de implementación de las tecnologías educativas en tu red educativa, y podrás pensar en las principales áreas de intervención (\u003cstrong\u003eprioridades\u003c/strong\u003e) que pueden garantizar la mejora de la calidad y la equidad de la educación pública mediante el uso de la tecnología."
+			},
+			"howToDoThisAnalysis": "¿CÓMO HACER ESTE ANÁLISIS?",
+			"p3": {
+				"text": "Un \u003cstrong\u003econsejo\u003c/strong\u003e es prestar atención a los porcentajes demasiado bajos o demasiado altos. Es importante hacer el ejercicio de dar un significado a cada número, con tus propias palabras. Intenta responder a las preguntas: ¿qué significa este indicador? ¿A qué reto/solución hace referencia el resultado presentado?"
+			},
+			"p4": {
+				"text": "A partir de la lectura atenta de los resultados, identifica, en cada una de las dimensiones, tres puntos a desarrollar (retos críticos de la red) y tres puntos positivos (potencialidades de la red) que más te hayan llamado la atención y descríbelos con tus palabras."
+			},
+			"p5": {
+				"text": "\u003cp\u003e\u003cstrong\u003eEJEMPLO DE PUNTO A DESARROLLAR\u003c/strong\u003e\u003cbr /\u003e Pregunta \u003cu\u003eVISIÓN E\u003c/u\u003e : ⅔ de los centros no tienen ningún profesional cuya función sea cuidar los recursos tecnológicos\u003cbr /\u003e \u003cbr /\u003e \u003cstrong\u003eEXEMPLO DE PONTO POSITIVO\u003c/strong\u003e \u003cbr /\u003e Pregunta \u003cu\u003eHABILIDADES A\u003c/u\u003e : El 70% de los centros educativos señalan que muchos de sus docentes han recibido formación sobre el uso pedagógico de los recursos tecnológicos\u003c/p\u003e\u003cp\u003eEste análisis es muy importante para que tengas un diagnóstico más estructurado sobre el uso de las tecnologías educativas en tu red, ayudándote a definir las prioridades (objetivos específicos) de tu Plan.\u003c/p\u003e"
+			}
+		},
+		"selectCycle": "Para visualizar el resultado de un ciclo, selecciona a continuación:",
+		"diagnosisResults": "RESULTADO DEL DIAGNÓSTICO GUÍA EDUTEC",
+		"warning": "¡ATENCIÓN! AÚN NO HAY RESPUESTAS SUFICIENTES PARA QUE EL RESULTADO SE CONSIDERE REPRESENTANTE DE SU RED",
+		"summary": {
+			"description1": "\u003cp\u003e El siguiente resultado es \u003cb\u003e\u003cu\u003eSAMPLE\u003c/u\u003e \u003c/b\u003e. \u003cbr /\u003e Se calculó a partir del diagnóstico de una muestra representativa, extraída al azar, de las escuelas de su red educativa. \u003c / p\u003e",
+			"description2": "El siguiente resultado es \u003cb\u003e \u003cu\u003e CENSITARIO \u003c/u\u003e \u003c/b\u003e. \u003cbr /\u003e Se calculó a partir del diagnóstico de las escuelas de su red educativa.",
+			"schoolsSample": "Escuelas de la muestra",
+			"registeredSchools": "Escuelas registradas",
+			"sampleAnswers": "Respuestas de muestra",
+			"totalAnswers": "Respuestas totales",
+			"footer1": "Hasta ahora, ninguna escuela ha respondido al cuestionario. Tan pronto como responda la primera escuela, los datos se mostrarán en esta página.",
+			"footer2": "Según las respuestas a los cuestionarios, estos son los niveles de adopción de tecnología en su red. La dimensión menos desarrollada en las escuelas de su red es",
+			"yourPriority": "y esa debería ser tu prioridad.",
+			"competenceAndFormation": "HABILIDADES",
+			"educationalResources": "RECURSOS EDUCATIVOS DIGITALES",
+			"infrastructure": "INFRAESTRUCTURA",
+			"vision": "VISIÓN"
+		},
+		"vision": "VISIÓN",
+		"competenceAndFormation": "HABILIDADES",
+		"educationalResources": "RECURSOS EDUCATIVOS DIGITALES",
+		"infrastructure": "INFRAESTRUCTURA",
+		"advancedLevel": "NIVEL\u003cbr /\u003eAVANZADO",
+		"intermediateLevel": "NIVEL\u003cbr /\u003eINTERMEDIARIO",
+		"basicLevel": "NIVEL\u003cbr /\u003eBÁSICO",
+		"emergingLevel": "NIVEL\u003cbr /\u003eEMERGENTE",
+		"dimension1": "DIMENSIÓN 1 - VISIÓN",
+		"dimension2": "DIMENSIÓN 2 - HABILIDADES",
+		"dimension3": "DIMENSIÓN 3 - RECURSOS EDUCATIVOS DIGITALES",
+		"dimension4": "DIMENSIÓN 4 - INFRAESTRUCTURA",
+		"visionSchoolDistribution": "Distribución de escuelas en los cuatro niveles para la dimensión VISIÓN:",
+		"competenceAndFormationSchoolDistribution": "Distribución de escuelas en los cuatro niveles para la dimensión COMPETENCIA:",
+		"educationalResourcesSchoolDistribution": "Distribución de escuelas en los cuatro niveles para la dimensión RECURSOS EDUCATIVOS DIGITALES:",
+		"infrastructureSchoolDistribution": "Distribución de escuelas en los cuatro niveles para la dimensión INFRAESTRUCTURA:",
+		"schoolDistributionByDimension": "Distribución de las escuelas según su respuesta a las diferentes preguntas de la dimensión:",
+		"schoolDistributionByQuestion": "Detalles de la distribución de escuelas por pregunta:",
+		"result": "Resultado",
+		"advanced": "Avanzado",
+		"intermediate": "Intermediario",
+		"basic": "Básico",
+		"emerging": "Emergente",
+		"studentPerComputer1": "50 estudiantes por computadora o más.",
+		"studentPerComputer2": "31-49 estudiantes por computadora.",
+		"studentPerComputer3": "17-30 estudiantes por computadora.",
+		"studentPerComputer4": "9-16 estudiantes por computadora.",
+		"studentPerComputer5": "3-8 estudiantes por computadora.",
+		"studentPerComputer6": "2 estudiantes por computadora o menos."
+	},
+	"Scheduling": {
+		"cycleOfApplication": "Ciclos de aplicación",
+		"description": "Gerente, el ciclo de aplicación para el diagnóstico de adopción de tecnología es anual, es decir, la herramienta está disponible (apertura y cierre automático) desde el inicio hasta el final del año para que los directores de las escuelas respondan el cuestionario. Pero cuidado, solo se permitirá una respuesta por año, por ejemplo: si el director de la escuela responde en abril, no podrá volver a responder en septiembre, incluso si durante este período hay un cambio de director. Pero no te preocupes, al año siguiente comienza otro ciclo y el cuestionario se puede responder nuevamente.",
+		"helmetTitle": "Periodo de Respuesta del Cuestionario",
+		"historyOfDiagnosis": "Historia de las aplicaciones de diagnóstico",
+		"pageHeader": "Periodo de Respuesta del Cuestionario"
+	},
+	"SchedulingForm": {
+		"btnSave": "GUARDAR",
+		"cycle": "Ciclo",
+		"days": "Dias",
+		"endDate": "Fecha de cierre",
+		"initialDateTitle": "Fecha de inicio:",
+		"startDate": "Fecha de inicio",
+		"daysDescription": "Elija el número de días que estará disponible la Guía EduTec.",
+		"daysTitle": "Número de días:",
+		"initialDateDescription": "Elija la fecha en que las escuelas pueden comenzar a responder a la Guía EduTec",
+		"lastDayDescription": "Último día para que las escuelas respondan al cuestionario"
+	},
+	"SchemaAdminCountryForm": {
+		"country_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"country_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"email": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"password": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"phone_number": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaAdminStateForm": {
+		"city_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"city_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"country_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"country_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"province_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"province_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"state_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"state_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"type_institution": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaAffiliationForm": {
+		"city_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"city_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"country_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"country_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"province_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"province_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"state_id": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"state_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"type_institution": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaCensusFormModal": {
+		"numberStudentsDiurnal": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberStudentsFull": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberStudentsNocturnal": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberStudentsVespertine": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"numberTeachers": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaCountryForm": {
+		"geo_structure_level1_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"geo_structure_level2_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"geo_structure_level3_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"geo_structure_level4_name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaForm": {
+		"email": {
+			"email": {
+				"message": "Debe ser un correo electrónico"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"length": {
+				"tooShort": "ingrese al menos 5 caracteres"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"phone": {
+			"email": {
+				"message": "Debe ser un telefono"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaInitSetup": {
+		"colorPrimary": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"colorSecondary": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"email": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"imgBgHome": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"imgLogoFooter": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"imgLogoFooterSec": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"imgLogoHeader": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"imgLogoHeaderSec": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"password": {
+			"length": {
+				"message": "ingrese al menos 6 caracteres"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaPasswordChangeForm": {
+		"confirmPassword": {
+			"equality": {
+				"message": "No marca"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"password": {
+			"length": {
+				"tooShort": "ingrese al menos 5 caracteres"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaPasswordForgotForm": {
+		"email": {
+			"email": {
+				"message": "Debe ser un correo electrónico"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaPasswordResetForm": {
+		"confirmPassword": {
+			"equality": {
+				"message": "No marca"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"password": {
+			"length": {
+				"tooShort": "ingrese al menos 5 caracteres"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaResources": {
+		"email": {
+			"message": "Debe ser un correo electrónico",
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaScheduling": {
+		"name": {
+			"length": {
+				"tooShort": "ingrese al menos 5 caracteres"
+			}
+		}
+	},
+	"SchemaSchoolForm": {
+		"location_type": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"length": {
+				"tooShort": "ingrese al menos 5 caracteres"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaSignInForm": {
+		"email": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"password": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaSignUpForm": {
+		"confirmPassword": {
+			"equality": {
+				"message": "No marca"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"email": {
+			"message": "Debe ser un correo electrónico",
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"emailConfirmation": {
+			"equality": {
+				"message": "Debe ser el mismo que el correo electrónico"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"formation_level": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"isNoRequiredIfIsTeacherOrPrincipalWithoutLinks": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"length": {
+				"tooShort": "ingrese al menos 5 caracteres"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"password": {
+			"length": {
+				"tooShort": "ingrese al menos 6 caracteres"
+			},
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"requiredForOther": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"requiredForTeacher": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"requiredForTeacherPrivate": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"requiredOnPrincipalAndNoInepCode": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchemaTechnicalForm": {
+		"city": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"email": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"name": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"password": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"profile": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"province": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"regional": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"state": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		},
+		"type": {
+			"presence": {
+				"message": "es un campo obligatorio."
+			}
+		}
+	},
+	"SchoolDiagnosis": {
+		"btnAccess": "ACCEDER",
+		"configurationCustomization": "Configuración y personalización",
+		"description1": "Es el entorno de administración y configuración de la herramienta de diagnóstico. Sigue los pasos y personaliza la Guía EduTec - Diagnóstico en tu red.",
+		"description2": "Puedes interrumpir el proceso y volver a esta herramienta tantas veces como desees; no es necesario realizar todos los pasos a la vez.",
+		"description3": "Con cada cambio, el sistema se actualizará y la información se guardará automáticamente.",
+		"disclosureMonitoring": "Divulgación y seguimiento",
+		"item1Description": "Comprueba si es necesario actualizar el registro de los centros de tu red.",
+		"item1Title": "REVISAR LOS CENTROS",
+		"item2Description": "Si deseas aprovechar el esfuerzo para recopilar cualquier información adicional, o identificar alguna característica de tu red, puedes añadir hasta 4 preguntas.",
+		"item2Title": "PERSONALIZAR EL CUESTIONARIO",
+		"item4Description": "Periodo de aplicación del diagnóstico de los centros de tu red.",
+		"item4Title": "PERÍODO DE APLICACIÓN",
+		"item5Description": "Organiza acciones de divulgación con la ayuda de algunos de los materiales que hemos preparado.",
+		"item5Title": "HERRAMIENTAS DE DIVULGACIÓN",
+		"item6Description": "Consulta aquí el progreso de las respuestas de la red.",
+		"item6Title": "SEGUIMIENTO DE LAS RESPUESTAS",
+		"item7Description": "Conoce y analiza los resultados de la aplicación del diagnóstico de implementación de la tecnología, comparándolos con otros indicadores disponibles en tu red educativa.",
+		"item7Title": "ANALIZAR LOS RESULTADOS",
+		"menu": {
+			"disclosure": "Herramientas de divulgación",
+			"followUp": "Seguimiento de las respuestas",
+			"period": "Período de aplicación",
+			"questions": "Personalizar el cuestionario",
+			"results": "Analizar los resultados",
+			"schools": "Revisar los centros",
+			"title": "Diagnóstico de los centros",
+			"home": "Comienzo",
+			"devolutive": "Retroalimentación"
+		},
+		"pageHeader": "Herramienta de diagnóstico del centro educativo",
+		"results": "Resultados",
+		"item3Description": "Descubre y personaliza el material que recibe el director con el resultado del diagnóstico realizado.",
+		"item3Title": "PERSONALIZA LA RETROALIMENTACIÓN"
+	},
+	"SchoolList": {
+		"btnClose": "Cerrar",
+		"census": "Censo",
+		"here1": "aquí",
+		"here2": "aquí",
+		"here3": "aquí",
+		"instructions": "Instrucciones:",
+		"instructions1": "{instructions} En la siguiente tabla se muestran los centros preinscritos en tu red. En esta fase debes validar la inscripción de los centros escolares (haz clic {here1} para saber cómo hacerlo) y registrar los datos de contacto de los centros (haz clic {here2} para saber cómo hacerlo).",
+		"instructions2": "Una vez finalizada la validación de los centros educativos, tendrás que pulsar el botón \"Seleccionar muestra\". En ese momento se extraerán los centros que formarán parte de la muestra mínima de centros que deberán responder a la Guía EduTec (pulsa {here3} para entender mejor el funcionamiento de la muestra de centros).",
+		"modal1Description1": "Debes validar la lista de los centros registrados. Para validarla, comprueba en la siguiente lista si hay centros que ya no están activos, o si hay nuevos centros que no están en la lista.",
+		"modal1Description2": "Para registrar nuevas centros, haz clic en el botón \"Nuevo\" situado en la esquina izquierda, justo encima de la tabla. Para eliminar o modificar la información de un centro educativo, haz clic en \"editar\" en la fila de la tabla del centro educativo que deseas eliminar o editar.",
+		"modal1Title": "INSTRUCCIONES DE VALIDACIÓN ESCOLAR",
+		"modal2Description1": "Además de registrar los centros, te sugerimos que registres los datos de contacto de los equipos directivos de los centros. Este es un paso muy importante para que tengas éxito en la aplicación de la Guía EduTec en tu red. El registro del director te ayudará a ponerte en contacto con los centros que todavía no han respondido a la Guía EduTec, proporcionando esta información de forma rápida y directa al equipo que está supervisando el proceso. Este registro no limita ni obliga al director a utilizar la misma información (nombre y correo electrónico) para acceder al sistema; se utilizará como referencia para contactar y verificar la información.",
+		"modal2Description2": "El registro de los contactos puede hacerse de 3 maneras diferentes:",
+		"modal2DescriptionBullet1": "importar un archivo Excel con la información de contacto del centro educativo y el código;",
+		"modal2DescriptionBullet2": "registrar manualmente cada contacto y luego asociarlo a su centro",
+		"modal2DescriptionBullet3": "editar el registro escolar y añadir el contacto.",
+		"modal2Title": "INSTRUCCIONES PARA EL REGISTRO DE CONTACTOS",
+		"modal3Description1": "Para que el resultado de la Guía EduTec muestre con exactitud la realidad de tu red hay dos opciones: el censo o la muestra, como se describe a continuación:",
+		"modal3Description2": "{census} : en esta opción debe asegurarse de que el 90% o más de sus centros escolares responden a la Guía EduTec.",
+		"modal3Description3": "{sample} : en esta opción debe asegurarse de que el 90% de los centros elegidos como muestra o más responden a la Guía EduTec. La muestra se compone de un conjunto de centros escolares elegidos al azar entre los de tu red; el número de centros de la muestra se calcula estadísticamente para garantizar la representación real de tu red.",
+		"modal3Title": "QUÉ ES LA MUESTRA Y CÓMO FUNCIONA",
+		"pageHeader": "Escuelas",
+		"sample": "Muestra"
+	},
+	"SchoolTableClasses": {
+		"tableHeaderInepCode": "Código",
+		"tableHeaderSchool": "Centro",
+		"AMT": "ECMG*",
+		"AMTObs": "* ECMG = Número de estudiantes en la clase más grande en este período",
+		"afternoon": "Tarde",
+		"eja": "EJA",
+		"elementarySchool1": "Escuela primaria 1",
+		"elementarySchool2": "Escuela primaria 2",
+		"highSchool": "Escuela secundaria",
+		"integral": "Integral",
+		"kindergarten": "Jardín de infancia",
+		"morning": "Mañana",
+		"night": "Noche",
+		"tableHeaderCity": "Nivel geográfico 4",
+		"tableHeaderClasses": "Clases",
+		"tableHeaderState": "Nivel geográfico 3",
+		"tableHeaderStudents": "Estudiantes",
+		"tableHeaderbiggestClassStudents": "Estudiantes de la clase más grande",
+		"technicalHighSchool": "Secundaria Técnica"
+	},
+	"SchoolsTable": {
+		"tableHeaderActions": "ACCIONES",
+		"tableHeaderContact": "CONTACTO",
+		"tableHeaderCountry": "PAÍS",
+		"tableHeaderSample": "MUESTRA",
+		"tableHeaderSchool": "CENTRO",
+		"tableHeaderUniqueCode": "CÓDIGO",
+		"totalSchools": "Total de centros:",
+		"btnContactList": "LISTA DE CONTRATOS",
+		"btnDownloadSchoolList": "DESCARGAR LA LISTA DE CENTROS",
+		"btnFilter": "FILTRO",
+		"btnImportSpreadSheetContact": "IMPORTAR HOJA DE CÁLCULO DE CONTRATOS",
+		"btnNewContact": "CONTACTO NUEVO",
+		"btnNewSchool": "NUEVA ESCUELA",
+		"btnNext": "SIGUIENTES",
+		"btnPrevious": "ANTERIORES",
+		"btnSelectSample": "SELECCIÓN DE MUESTRAS",
+		"btnEdit": "Editar",
+		"btnRemove": "Eliminar",
+		"btnDownloadSchoolsSpreadSheetModel": "Descargue la plantilla de la hoja de cálculo de importación CSV",
+		"btnImportSchoolsSpreadSheet": "Importar hoja de cálculo de la escuela",
+		"placeholderFilter": "Ingrese el nombre de la escuela ...",
+		"tableHeaderCity": "CIUDAD",
+		"tableHeaderLevelName1": "EST. NIVEL GEOGRÁFICO 1",
+		"tableHeaderLevelName2": "EST. NIVEL GEOGRÁFICO 2",
+		"tableHeaderLevelName3": "EST. NIVEL GEOGRÁFICO 3",
+		"tableHeaderLevelName4": "EST. NIVEL GEOGRÁFICO 4",
+		"tableHeaderState": "UNIDAD FEDERATIVA"
+	},
+	"SchoolsTableInfra": {
+		"school_name": "Centro",
+		"uniqueCode": "Código único",
+		"btnEdit": "Editar",
+		"charger": "Carr. Cargador",
+		"comp_admins": "Comp. Adm",
+		"comp_students": "Comp. Estudiante",
+		"comp_teachers": "Comp. Prof",
+		"editBox": "Acciones",
+		"firewall": "Firewall",
+		"maker": "Kit de robótica",
+		"nobreak": "Nobreak",
+		"placeholderFilter": "Ingrese el nombre de la escuela ...",
+		"printers": "Multifuncional",
+		"projector": "Proyector",
+		"rack": "Rack",
+		"school_city": "Nivel geográfico 4",
+		"school_state": "Nivel geográfico 3",
+		"switch": "Switch",
+		"wifi": "Wifi"
+	},
+	"SignInForm": {
+		"title": "Acceso a la Guía Edutec",
+		"emailPlaceholder": "Correo",
+		"passwordPlaceholder": "Contraseña",
+		"btnLogIn": "ENTRAR",
+		"forgotPassword": "He olvidado mi contraseña",
+		"titleNotRegistered": "¿Todavía no estás registrado?",
+		"btnRegister": "REGÍSTRATE",
+		"LoginError": "Su nombre de usuario o contraseña están incorrectos."
+	},
+	"SignUp": {
+		"helmetTitle": "Regístrese",
+		"firstAccessTitle": "Primer acceso de los ",
+		"teacher": "DOCENTES",
+		"descriptionTeacher1": "La herramienta de Diagnóstico de las Habilidades Digitales de los/las docentes se elaboró de tal forma que la respondieran los/las ",
+		"descriptionTeacher2": "docentes de educación básica.",
+		"director": "DIRECTORES",
+		"descriptionDirector1": "El cuestionario para el diagnóstico del nivel de implementación de la tecnología en la escuela fue elaborado con la finalidad de que sea respondido por la dirección de la escuela.",
+		"descriptionDirector2": "",
+		"adminState": "GERENTES",
+		"descriptionAdminState": "La Guía EduTec fue diseñada para proporcionar a los gerentes de redes datos importantes sobre el uso de la tecnología en la educación."
+	},
+	"SignUpForm": {
+		"personalData": "Datos personales",
+		"professionalsData": "Datos laborales",
+		"formation": "Datos de Perfil",
+		"label": {
+			"name": "Nombre y apellido",
+			"cpf": "Documento nacional de identidad",
+			"birthDate": "Fecha de nacimiento",
+			"email": "Correo electrónico",
+			"emailConfirmation": "Confirma tu correo electrónico",
+			"password": "Contraseña",
+			"confirmPassword": "Confirmar contraseña",
+			"region": "País",
+			"province": "Nivel geográfico 2",
+			"state": "Nivel geográfico 3",
+			"city": "Nivel geográfico 4",
+			"school": "Centro Educativo",
+			"teachingStages": "Etapas de la educación",
+			"knowledges": "Área de conocimiento / Componente del plan de estudios",
+			"formation": "¿A lo largo de tu carrera, has realizado o estás realizando alguna formación en innovación y tecnología?",
+			"formationLevel": "¿Cuál es tu mayor grado de estudios?",
+			"gender": "¿Con cuál género te identificas?",
+			"formation_level": "¿Cuál es tu mayor nivel de estudios alcanzado?",
+			"year_finished_formation": "¿Cuál fue el año de conclusión de tu formación inicial docente?",
+			"initial_formation": "Tu formación inicial docente fue en:",
+			"final_year_of_initial_formation": "¿Cuál fue el año de conclusión de tu formación inicial doocente?",
+			"internship_practice": "¿En tu formación inicial docente, has tenido práctica de pasantía?",
+			"institution_initial_formation": "¿Cuál es la institución de enseñanza en la que has estudiado (formación inicial docente)?",
+			"tech_in_teaching": "¿Has tenido alguna disciplina o contenido para el uso de la tecnología en la enseñanza y el aprendizaje en tu formación inicial docente?",
+			"course_modality": "¿Cuál ha sido la modalidad de tu formación inicial docente?",
+			"formation_in_tech": "¿Has participado de formaciones continuas para el uso de tecnologías digitales en los procesos de enseñanza y de aprendizaje en los últimos 2 años?",
+			"years_teaching": "¿Cuántos años llevas enseñando?",
+			"years_using_tech": "¿Hace cuántos años usas tecnología en los procesos de enseñanza y aprendizaje?",
+			"tech_application": "¿Cómo se aplica la tecnología en los procesos de enseñanza y aprendizaje?"
+		},
+		"help": {
+			"pleaseSelect": "Por favor, seleccione",
+			"password": "La contraseña debe tener al menos 6 caracteres",
+			"confirmPassword": "Repita la contraseña nuevamente",
+			"cpf": "Introduce solo los números",
+			"birthDate": "Formato correcto DD/MM/AAAA",
+			"email": "Introduce una dirección de correo electrónico válida",
+			"year_finished_formation": "Por favor, ingrese sólo el año."
+		},
+		"loading": "Cargando...",
+		"noOptions": "No hay más opciones.",
+		"placeholderSelectOptions": "Seleccione una o varias opciones",
+		"formationTitle": "Formación",
+		"yes": "Si",
+		"no": "No",
+		"acceptTermsOfUse": "He leido y acepto los {termsOfUseLink} de la Guía Edutec.",
+		"termsOfUse": "Términos y condiciones, y el Aviso de privacidad",
+		"termsOfUseAndDataSharing": "Condiciones de uso e intercambio de datos",
+		"btnSave": "Guardar",
+		"title_login_data": "Datos de acceso",
+		"share_personal_data": "Acepto compartir mis datos personales con el Departamento de Educación",
+		"share_personal_data_disclaimer": "El nombre y apellido y fecha de nacimiento no se compartirán",
+		"radioNoAcceptshareDataDescription": "Si la secretaría tiene acceso a los datos nominales de los docentes, es posible identificar las demandas e intereses de cada uno y, con ello, diseñar una formación focalizada y significativa. ¿Estás seguro de que prefieres compartir de forma anónima?",
+		"notificationNoSharingAnswers": "Si el Departamento de Educación tiene acceso a los datos nominales de los docentes, es posible identificar las demandas e intereses de cada uno y, con ello, diseñar una formación dirigida y significativa. ¿Estás seguro de que prefieres compartir de forma anónima?",
+		"register": "REGISTRARSE",
+		"termsOfUseModalTitle": "Términos de uso - Guía EduTec Diagnóstico de Competencia Digital de Docentes",
+		"titleVerificationModal": "VERIFICACIÓN DE DATOS DE REGISTRO",
+		"questionVerificationModal": "¿Es usted docente de este centro educativo?",
+		"placeholderStages": "Seleccione una opción",
+		"placeholderKnowledges": "Seleccione su especialidad",
+		"selectProvince": "Seleccione una opción",
+		"btnWithLink": "Usuario con enlace funcional",
+		"btnWithoutLink": "Usuario sin enlace funcional",
+		"deleteAccount": "DESEO BORRAR MI CUENTA",
+		"withLink": "Me gustaría identificar estos datos laborales",
+		"GenderOptns": {
+			"male": "Masculino",
+			"female": "Femenino",
+			"other": "Otro",
+			"didnt_say": "Prefiero no decirlo"
+		},
+		"FormationLevelsOptns": {
+			"graduate": "Bachiller",
+			"bachelor_degree": "Licenciatura de grado",
+			"teacher_graduate": "Egresado de formación docente",
+			"postgraduate": "Curso de posgrado",
+			"masters": "Maestría",
+			"phd": "Doctorado"
+		},
+		"InitialFormationOptns": {
+			"early_childhood_teacher": "Maestro de Primera Infancia",
+			"primary_education_teacher": "Maestro de Educación Primaria",
+			"secondary_education_teacher": "Profesor de Educación Media",
+			"technical_teacher": "Maestro/Profesor Técnico",
+			"other": "Otro"
+		},
+		"InternshipPracticeOptns": {
+			"no": "No tuve práctica de pasantía",
+			"yes_observational": "Sí, pero únicamente de observación",
+			"yes_non_explorative": "Sí, pero no se exploró el uso de tecnologías y materiales digitales en los procesos de enseñanza y de aprendizaje",
+			"yes_explorative": "Sí, y se exploró ampliamente el uso de tecnologías y materiales digitales en los procesos de enseñanza y aprendizaje"
+		},
+		"CourseModalityOptns": {
+			"on_site": "Presencial",
+			"online": "En línea",
+			"mixed": "Ambas",
+			"none": "Ninguno"
+		},
+		"FormationInTechOptns": {
+			"on_site": "Sí, presencial",
+			"online": "Sí, en línea",
+			"mixed": "Sí, ambas",
+			"no": "No"
+		},
+		"YearsTeachingOptns": {
+			"between_1_and_3": "Entre 1 y 3 años",
+			"between_4_and_6": "Entre 4 y 6 años",
+			"between_7_and_9": "Entre 7 y 9 años",
+			"more_than_10_years": "Más de 10 años"
+		},
+		"YearsUsingTechOptns": {
+			"no": "No uso",
+			"between_1_and_3": "Entre 1 y 3 años",
+			"between_4_and_6": "Entre 4 y 6 años",
+			"between_7_and_9": "Entre 7 y 9 años",
+			"more_than_10_years": "Más de 10 años"
+		},
+		"TechApplicationOptns": {
+			"preparation_of_materials": "Preparación de materiales",
+			"asynchronous_learning": "Aprendizaje asincrónico",
+			"sending_emails": "Envío de e-mails",
+			"develop_online_tasks_evaluations": "Desarrollar tareas/evaluaciones online",
+			"bureaucratic_and_planning_tasks": "Tareas burocráticas y de planificación",
+			"conducting_research": "Realización de investigaciones",
+			"study_group": "Grupo de estudios",
+			"use_of_tools": "Uso de herramientas"
+		},
+		"errors": {
+			"found": "Se encontraron algunos errores",
+			"born": "Parece que no ha establecido su fecha de nacimiento.",
+			"personalDataRequired": "Todos los campos de los Datos Personales son requeridos.",
+			"workDataRequired": "Todos los campos de los Datos Laborales son requeridos.",
+			"profileDataRequired": "Todos los campos de los Datos de Perfil son requeridos.",
+			"email": "El correo electrónico no es válido.",
+			"emailConfirm": "Los correos electrónicos no coinciden.",
+			"password": "La contraseña debe tener al menos 6 caracteres.",
+			"passwordConfirm": "Las contraseñas no coinciden.",
+			"tos": "Debe aceptar los Términos y condiciones, y el Aviso de privacidad de la Guía Edutec."
+		},
+		"success": "Usuario creado con éxito"
+	},
+	"SignUpFormAdminStates": {
+		"affiliationBox": {
+			"affiliationDescription": "Si su Afiliación Administrativa no aparece en la lista de su país a continuación, comuníquese con el administrador del sistema para que se agregue.",
+			"affiliationName": "Nombre de afiliación administrativa (AA)",
+			"responsibleEmail": "Correo electrónico del responsable de Afiliación Administrativa",
+			"responsibleName": "Seleccionar afiliación",
+			"responsiblePhoneNumber": "Teléfono del responsable de Afiliación Administrativa",
+			"selectAffiliation": "Seleccionar afiliación",
+			"title": "AFILIACIÓN ADMINISTRATIVA"
+		},
+		"term": {
+			"link": "Haga clic aquí para descargar el plazo de adhesión",
+			"selectFile": "Escoge un archivo...",
+			"title": "CONTRATO DE ADHESIÓN",
+			"upload": "Cargue el término de membresía firmado."
+		}
+	},
+	"SignUpFormDirectors": {
+		"ModalRegister": {
+			"title": "VERIFICACIÓN DE LOS DATOS DE REGISTRO",
+			"btnRectify": "Corregir",
+			"btnConfirm": "Confirmar",
+			"description": "¿Es usted el director o tutor de la siguiente escuela?",
+			"network": "La red",
+			"school": "Centro educativo"
+		}
+	},
+	"SignUpFormPrincipalFields": {
+		"label": {
+			"city": "Nivel geográfico 4",
+			"school": "Centro Educativo"
+		},
+		"selectCity": "Seleccione una opción",
+		"noCityFound": "No se encontraron distritos",
+		"placeholderSchool": "Nombre de centro educativo",
+		"selectSchool": "Seleccione una opción",
+		"noSchoolFound": "No se encontraron centros educativos"
+	},
+	"SocialMedia": {
+		"facebook": "https://fb.com/cieb.net",
+		"instagram": "https://www.instagram.com/cieb.inovacao/",
+		"twitter": "https://twitter.com/cieb_net",
+		"youtube": "https://youtube.com/CIEB_net"
+	},
+	"StaticLinks": {
+		"mainLink": "https://cieb.net.br/",
+		"mainEmail": "contato@cieb.net.br",
+		"questions": "https://drive.google.com/file/d/0B97exFk6t-vlaUI2Uk9JMWp4UEE",
+		"termLink": "https://drive.google.com/file/d/0B97exFk6t-vlUnp4Vjlfdm5XV3M/view",
+		"technicalNotes": "https://drive.google.com/file/d/1fq7_waCAvk2UdUe3m5fAQAn7Q5JH2Gfm/view?usp=sharing",
+		"questionsExample": "https://drive.google.com/file/d/1gRs1VEIoOfPWj5G8p51Rg7VLtlfOkT_O/view",
+		"feedbackExample": "https://drive.google.com/file/d/1gP3wC-9NKc1-GovIKM_4--g5X1oVDg-1/view"
+	},
+	"Survey": {
+		"btnNext": "SIGUIENTE",
+		"btnBack": "ANTERIOR",
+		"btnComplete": "CONCLUIR",
+		"labelDirectorOne": "La pregunta",
+		"labelDirectorTwo": "fue respondida por el director porque es una pregunta relacionada con la gestión escolar.",
+		"mandatory": "*Esta pregunta es obligatoria.",
+		"surveyTitle": "Cuestionario"
+	},
+	"TeacherMappingMenu": {
+		"disclosure": "Divulgación",
+		"frequency": "Frecuencia",
+		"home": "Comienzo",
+		"results": "Resultados",
+		"title": "Mapeo de docentes"
+	},
+	"Technical": {
+		"adminEdit": "Editar cuenta",
+		"adminCreate": "Crea una cuenta"
+	},
+	"TechnicalForm": {
+		"updateErrorMessage": "Lo sentimos, no pudimos actualizar la información en el servidor",
+		"createErrorMessage": "Lo sentimos, no fue posible registrar la información en el servidor",
+		"btnEdit": "Editar",
+		"adminState": "Gerente",
+		"btnRegister": "REGISTRAR",
+		"btnRemove": "Eliminar",
+		"placeholderChooseProfile": "Elige tu perfil ...",
+		"profile": "Perfil",
+		"monitorState": "Monitor",
+		"monitorStateRegional": "Monitor regional",
+		"regional": "Regional"
+	},
+	"TechnicalsList": {
+		"description1": "Aqui você poderá gerenciar usuários {profile}, que lhe ajudará no processo de aplicação do Guia EduTec.",
+		"description2": "Você pode cadastrar os membros da sua equipe com diferentes perfis, cada um com um grau diferente de acesso às informações da rede:",
+		"item1": {
+			"stateMonitors": "Monitores estaduais",
+			"municipalMonitors": "Monitores municipais",
+			"description": "só têm acesso à página de acompanhamento do diagnóstico, e poderão acompanhar a resposta de todas as escolas de sua rede."
+		},
+		"item2": {
+			"regionalMunicipalMonitors": "Monitores municipais regionais",
+			"regionalStateMonitors": "Monitores estaduais regionais",
+			"regionalMunicipalMonitorsDescription": "são associados a uma regional de ensino do município. Eles também têm acesso restrito à página de acompanhamento do diagnóstico, e só poderão acompanhar as respostas das escolas que estiverem associadas à mesma regional.",
+			"regionalStateMonitorsDescription": "são associados a uma regional de ensino do estado. Eles também têm acesso restrito à página de acompanhamento do diagnóstico, e só poderão acompanhar as respostas das escolas que estiverem associadas à mesma regional."
+		},
+		"item3": {
+			"municipalAdmin": "Administradores municipais",
+			"stateAdmin": "Administradores estaduais",
+			"municipalAdminDescription": ", por fim, possuem um acesso completo à plataforma, inclusive às etapas de planejamneto após o diagnóstico. O seu cadastro atual, por exemplo, possui o perfil de Administrador municipal.",
+			"stateAdminDescription": ", por fim, possuem um acesso completo à plataforma, inclusive às etapas de planejamneto após o diagnóstico. O seu cadastro atual, por exemplo, possui o perfil de Administrador estadual."
+		},
+		"principalDescription": "Aquí podrás gestionar los usuarios de \u003cstrong\u003eDirectores\u003c/strong\u003e, que te ayudarán en el proceso de aplicación de la Guía EduTec.",
+		"teachersDescription": "Aquí podrás gestionar los usuarios \u003cstrong\u003eDocentes\u003c/strong\u003e, que te ayudarán en el proceso de aplicación de la Guía EduTec.",
+		"managersDescription": "Aquí podrás gestionar los usuarios \u003cstrong\u003eGerentes\u003c/strong\u003e, que te ayudarán en el proceso de aplicación de la Guía EduTec."
+	},
+	"TechnicalsModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar",
+		"description1": "¿Está seguro de que desea eliminar a este administrador?",
+		"warning": "¡Atención!"
+	},
+	"TechnicalsTable": {
+		"addUser": "Agregar usuario",
+		"filter": "Filtrar",
+		"text": "Texto...",
+		"successChangePassword": "Contraseña modificada correctamente!",
+		"insertMincharacterss": "Ingrese al menos 5 caracteres en la nueva contraseña.",
+		"unsuccessChangePassword": "No pudimos cambiar su contraseña. Entre en contacto.",
+		"name": "Nombre",
+		"email": "Correo Electrónico",
+		"profile": "Tipo",
+		"school": "Escola",
+		"editBox": "Acciones",
+		"edit": "Editar",
+		"changePassword": "Cambiar contraseña",
+		"btnNext": "Siguientes",
+		"btnPrevious": "Anteriores",
+		"placeholder": "Introduzca su nombre de usuario ..."
+	},
+	"Teste": {
+		"Mais um teste": "Testando a requisição"
+	},
+	"Translations": {
+		"new": "Nuevo",
+		"title": "Traducciones",
+		"description": "\u003cp\u003eEste es el entorno de traducción de la Guía Edutec. Aquí puede cambiar cualquier texto o enlace en la Guía Edutec para cada uno de los idiomas configurados. \u003c/p\u003e \u003cp\u003e Todos los campos aceptan etiquetas HTML.\u003c/p\u003e",
+		"mapping": "Rastreo",
+		"baseLanguage": "Idioma base",
+		"languageToTranslate": "Idioma para traducir",
+		"selectLanguage": "Seleccione el idioma",
+		"questionData": "Datos de la pregunta",
+		"questions": "Cuestionarios",
+		"questionsData": "Datos generales del cuestionario",
+		"sectionData": "Datos de la sección",
+		"sections": "Secciones",
+		"selectQuestion": "Seleccione el cuestionario",
+		"selectSection": "Seleccione una sección de la encuesta"
+	},
+	"TranslationsActionFooter": {
+		"save": "Salvar"
+	},
+	"UploadCountriesModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Confirmar",
+		"description1": "¿Quieres confirmar la carga del archivo?",
+		"importSpreadShettCountries": "HOJA DE TRABAJO DEL PAÍS DE IMPORTACIÓN"
+	},
+	"UploadSchoolsModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Cofirrmar",
+		"description1": "¿Quieres confirmar la carga del archivo?",
+		"importSpreadSheetSchools": "HOJA DE TRABAJO DE LAS ESCUELAS DE IMPORTACIÓN"
+	},
+	"UserActionsMenu": {
+		"start": "Inicio",
+		"main": "Principal",
+		"settings": "Configuraciones",
+		"meetTheMain": "Sobre CIEB",
+		"btnRegister": "Regístrese",
+		"title": "Evaluación de Habilidades Digitales"
+	},
+	"UserMenu": {
+		"myCadastre": "Mi perfil",
+		"changePassword": "Cambiar contraseña",
+		"goOut": "Salir",
+		"editCadastre": "Editar registro"
+	},
+	"UsersModal": {
+		"btnCancel": "Cancelar",
+		"btnConfirm": "Eliminar mi cuenta",
+		"description": "Quiero eliminar permanentemente mi cuenta y todos los datos que contiene.",
+		"title": "Eliminar mi cuenta"
+	},
+	"lang": "es",
+	"title": "ActionsMenu",
+	"unflattenTranslations": {
+		"EnjoyHints": {
+			"Resources": [
+				{
+					"next .navbar-brand-logo": "Olá, professor(a)! Bem-vindo ao seu ambiente do Mapeamento das Competências Digitais dos(as) Professores(as). Esta ferramenta te ajuda a identificar suas necessidades de formação e planejar seu desenvolvimento no uso de tecnologia em sala de aula"
+				}
+			]
+		}
+	}
+}

@@ -1,1 +1,0 @@
-mongoimport -h=<MONGO_DB_HOST_AND_PORT> -u=<USER> -p=<PASS> -d=guia_edutec -c=translations —file=./translations.json

@@ -3,6 +3,8 @@ import _ from "lodash";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { flattenMessages } from "~/i18n/utils";
+import CONF from "~/api/index";
+
 let locale = localStorage.getItem("lang") || process.env.DEFAULT_LOCALE;
 
 export default class LangConfig extends React.Component {
@@ -23,14 +25,14 @@ export default class LangConfig extends React.Component {
   }
 
   componentDidMount() {
-    // this.insertLangInLocalStorage();
+    this.insertLangInLocalStorage();
     this.fetchTranslations();
   }
 
   async fetchTranslations() {
     try {
-      //   const dictionaryLocation = CONF.ApiURL + `/api/v1/translation/${locale}`;
-      const dictionaryLocation = `/translations/${locale}.json`;
+      const dictionaryLocation = CONF.ApiURL + `/api/v1/translation/${locale}`;
+      //const dictionaryLocation = `/translations/${locale}.json`;
 
       this.setState({ loading: true });
       const response = await axios.get(dictionaryLocation);

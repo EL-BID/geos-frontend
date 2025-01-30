@@ -18,13 +18,17 @@ const PageLayoutWrapper = ({
 }) => {
   const { user } = accounts;
 
-  // Define localization helper
+  const params = new URLSearchParams(document.location.search.substring(1));
+  const locale = params.get("lang") || process.env.DEFAULT_LOCALE;
+
+  // Define localization helpers
+  const lang = localStorage.getItem("lang") || locale;
   const l = (id) => intl.formatMessage({ id });
 
   // Clone children and pass additional props only to custom React components
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child) && typeof child.type === "function") {
-      return React.cloneElement(child, { l, user, apiData });
+      return React.cloneElement(child, { l, lang, params, user, apiData });
     }
     return child;
   });
