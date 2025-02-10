@@ -87,6 +87,7 @@ class TranslationsQuestions extends React.Component {
     const route = "/api/v1/survey/update_question/";
     const accessToken = `?access_token=${getUserToken()}`;
     const URL_REQUEST = this.apiURL + route + accessToken + `&lang=${lang}`;
+
     for (
       let i = 0;
       i < this.state.secondaryLanguageQuestionRender.length;
@@ -108,6 +109,8 @@ class TranslationsQuestions extends React.Component {
           i
         ].filter((item) => item.id !== 999 && item.id !== 777),
       };
+
+      d("data", data);
 
       try {
         this.setState({ saving: true });
@@ -252,6 +255,7 @@ class TranslationsQuestions extends React.Component {
         },
       });
     }
+
     const secondaryLanguageQuestionRender =
       section.survey_question &&
       section.survey_question
@@ -263,7 +267,7 @@ class TranslationsQuestions extends React.Component {
               value: secondary.name,
             },
             { id: 777, value: secondary.question_order },
-            ...secondary.survey_question_description.filter(
+            ...(secondary.survey_question_description || []).filter(
               (item) => item.id !== 888 && item.id !== 777
             ),
           ];
@@ -346,21 +350,13 @@ class TranslationsQuestions extends React.Component {
     const lang = event.target.value;
     this.setState({ mainLang: lang });
     this.getSection();
-
     this.getSurvey(lang, this.state.idSelectedSurvey, "baseLanguage");
-
-    this.getSection(lang, this.state.idSelectedSurvey, "baseLanguage");
-
     this.getSection(lang, this.state.idSelectedSurvey, "baseLanguage");
   };
   handleSecondaryLanguageChange(event) {
     const lang = event.target.value;
     this.setState({ secondaryLang: lang });
-
     this.getSurvey(lang, this.state.idSelectedSurvey, "secondaryLanguage");
-
-    this.getSection(lang, this.state.idSelectedSurvey, "secondaryLanguage");
-
     this.getSection(lang, this.state.idSelectedSurvey, "secondaryLanguage");
   }
 
@@ -391,17 +387,25 @@ class TranslationsQuestions extends React.Component {
     });
   };
   handleChangeQuestionFields = (e, weight, index_question) => {
-    const index = this.state.secondaryLanguageQuestionRender[
-      index_question
-    ].findIndex((question) => question.id === Number(e.target.name));
+    const { value, name } = e.target;
     const newSecondaryLanguageQuestionRender = [
       ...this.state.secondaryLanguageQuestionRender,
     ];
-    newSecondaryLanguageQuestionRender[index_question][index] = {
-      id: Number(e.target.name),
-      value: e.target.value,
+    const obj = {
+      id: Number(name),
+      value,
       weight,
     };
+
+    const index = this.state.secondaryLanguageQuestionRender[
+      index_question
+    ].findIndex((question) => question.id === Number(name));
+
+    if (index < 0) {
+      newSecondaryLanguageQuestionRender[index_question].push(obj);
+    } else {
+      newSecondaryLanguageQuestionRender[index_question][index] = obj;
+    }
 
     this.setState({
       secondaryLanguageQuestionRender: newSecondaryLanguageQuestionRender,

@@ -1,44 +1,39 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import classnames from 'classnames';
-import {
-  compose
-} from 'redux';
-import { injectIntl } from 'react-intl';
+import React from "react";
+import Helmet from "react-helmet";
+import { compose } from "redux";
+import { injectIntl } from "react-intl";
 
 // Components
-import Translations from './components/Translations';
-import Layout from '../../components/Layout';
-import BodyConfig from '~/components/BodyConfig';
+import Translations from "./components/Translations";
+import Layout from "../../components/Layout";
+import BodyConfig from "~/components/BodyConfig";
 
 // Containers
-import UserRedir from '~/containers/user_redir';
 
 // Style
-import styles from './technical.styl';
+import styles from "./technical.styl";
 
 var getQueryString = function (field, url) {
   var href = url ? url : window.location.href;
-  var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
+  var reg = new RegExp("[?&]" + field + "=([^&#]*)", "i");
   var string = reg.exec(href);
   return string ? string[1] : null;
 };
 
 class Technical extends React.Component {
-
-  constructor () {
+  constructor() {
     super();
     this.state = {
-      editable: false
+      editable: false,
     };
   }
 
-  componentWillMount(){
-    var idParam = getQueryString('id');
+  componentWillMount() {
+    var idParam = getQueryString("id");
     if (idParam) {
       this.setState({
-        editable: true
-      })
+        editable: true,
+      });
     }
   }
 
@@ -48,14 +43,30 @@ class Technical extends React.Component {
 
   render() {
     return (
-      <Layout className={styles.layout} pageHeader={this.state.editable ? this.translate("Technical.adminEdit") : this.translate("Technical.adminCreate")}>
+      <Layout
+        className={styles.layout}
+        pageHeader={
+          this.state.editable
+            ? this.translate("Technical.adminEdit")
+            : this.translate("Technical.adminCreate")
+        }
+      >
         <Helmet
-          title={this.state.editable ? this.translate("Technical.adminEdit") : this.translate("Technical.adminCreate")}
+          title={
+            this.state.editable
+              ? this.translate("Technical.adminEdit")
+              : this.translate("Technical.adminCreate")
+          }
         />
 
-        <BodyConfig className={styles.followup_container} classBodyName="body_imege" hideNext="true" prevURL={'/listar-usuario/administradores'}>
+        <BodyConfig
+          className={styles.followup_container}
+          classBodyName="body_imege"
+          hideNext="true"
+          prevURL={"/listar-usuario/administradores"}
+        >
           <div className="column">
-            <Translations editable={this.state.editable}/>
+            <Translations editable={this.state.editable} />
           </div>
         </BodyConfig>
       </Layout>
