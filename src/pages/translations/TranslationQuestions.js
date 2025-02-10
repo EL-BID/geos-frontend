@@ -26,6 +26,9 @@ const j = (m) => JSON.stringify(m, null, 4);
 const params = new URLSearchParams(document.location.search.substring(1));
 const locale = params.get("lang") || process.env.DEFAULT_LOCALE;
 
+const NAME_FIELD_ID = "999";
+const POSITION_FIELD_ID = "777";
+
 class TranslationsQuestions extends React.Component {
   constructor(props) {
     super(props);
@@ -95,10 +98,10 @@ class TranslationsQuestions extends React.Component {
     ) {
       const question_id = this.state.secondaryLanguageQuestion[i]._id.$oid;
       const title = this.state.secondaryLanguageQuestionRender[i].find(
-        (question) => question.id === 999
+        (question) => question.id === NAME_FIELD_ID
       ).value;
       const question_order = this.state.secondaryLanguageQuestionRender[i].find(
-        (question) => question.id === 777
+        (question) => question.id === POSITION_FIELD_ID
       ).value;
       const data = {
         id: question_id,
@@ -107,7 +110,9 @@ class TranslationsQuestions extends React.Component {
         obs: "",
         survey_question_description: this.state.secondaryLanguageQuestionRender[
           i
-        ].filter((item) => item.id !== 999 && item.id !== 777),
+        ].filter(
+          (item) => item.id !== NAME_FIELD_ID && item.id !== POSITION_FIELD_ID
+        ),
       };
 
       d("data", data);
@@ -202,6 +207,11 @@ class TranslationsQuestions extends React.Component {
     const accessToken = `?access_token=${getUserToken()}`;
     const URL_REQUEST =
       this.apiURL + route + idSelectedSurvey + accessToken + `&lang=${lang}`;
+
+    this.setState({
+      secondaryLanguageQuestionRender: [],
+    });
+
     const response = await axios.get(URL_REQUEST);
     const section = response.data.result.find(
       (section) => section._id.$oid === this.state.idSelectedSection
@@ -228,12 +238,16 @@ class TranslationsQuestions extends React.Component {
           .map((base) => {
             return [
               {
-                id: 999,
+                id: NAME_FIELD_ID,
                 value: base.name,
               },
-              { id: 777, value: base.question_order },
+              {
+                id: POSITION_FIELD_ID,
+                value: base.question_order,
+              },
               ...base.survey_question_description.filter(
-                (item) => item.id !== 888 && item.id !== 777
+                (item) =>
+                  item.id !== NAME_FIELD_ID && item.id !== POSITION_FIELD_ID
               ),
             ];
           });
@@ -263,12 +277,16 @@ class TranslationsQuestions extends React.Component {
         .map((secondary) => {
           return [
             {
-              id: 999,
+              id: NAME_FIELD_ID,
               value: secondary.name,
             },
-            { id: 777, value: secondary.question_order },
+            {
+              id: POSITION_FIELD_ID,
+              value: secondary.question_order,
+            },
             ...(secondary.survey_question_description || []).filter(
-              (item) => item.id !== 888 && item.id !== 777
+              (item) =>
+                item.id !== NAME_FIELD_ID && item.id !== POSITION_FIELD_ID
             ),
           ];
         });
@@ -386,20 +404,22 @@ class TranslationsQuestions extends React.Component {
       },
     });
   };
-  handleChangeQuestionFields = (e, weight, index_question) => {
-    const { value, name } = e.target;
+  handleChangeQuestionFields = (target, weight, index_question) => {
+    const { value, name } = target;
     const newSecondaryLanguageQuestionRender = [
       ...this.state.secondaryLanguageQuestionRender,
     ];
     const obj = {
-      id: Number(name),
+      id: name,
       value,
       weight,
     };
 
-    const index = this.state.secondaryLanguageQuestionRender[
-      index_question
-    ].findIndex((question) => question.id === Number(name));
+    const index = newSecondaryLanguageQuestionRender[index_question].findIndex(
+      (question) => {
+        return question.id === name;
+      }
+    );
 
     if (index < 0) {
       newSecondaryLanguageQuestionRender[index_question].push(obj);
@@ -414,14 +434,15 @@ class TranslationsQuestions extends React.Component {
 
   getData2 = (index_question) => {
     const base = this.state.baseLanguageQuestionRender[index_question];
+    const estilos = { padding: "10px", height: "100%", minWidth: "100%" };
 
     const data2 = base.map((question, index) => {
       const { id, weight, value } = question;
 
       const idEl =
-        id == 777
+        id == POSITION_FIELD_ID
           ? "Position"
-          : id == 999
+          : id == NAME_FIELD_ID
           ? "Question text"
           : `Option Id: ${id}`;
 
@@ -435,10 +456,16 @@ class TranslationsQuestions extends React.Component {
       return {
         mapping,
         baseLanguageTranslation: (
-          <div className={styles.column_width}>{value}</div>
+          <textarea
+            defaultValue={value}
+            rows={4}
+            style={estilos}
+            readOnly={true}
+          ></textarea>
         ),
         secondaryLanguageTranslation: (
           <textarea
+            key={id}
             className={styles.column_width}
             rows={4}
             name={id}
@@ -453,7 +480,7 @@ class TranslationsQuestions extends React.Component {
             }
             // defaultValue={secondTranslations[key]}
             // disabled={loadingSecondTranslations}
-            style={{ padding: "10px", height: "100%", minWidth: "100%" }}
+            style={estilos}
             placeholder="Digite o texto traduzido..."
             onChange={(e) =>
               this.handleChangeQuestionFields(e, weight, index_question)
@@ -462,6 +489,8 @@ class TranslationsQuestions extends React.Component {
         ),
       };
     });
+
+    d("data2", data2);
 
     return data2;
   };
@@ -722,28 +751,17 @@ class TranslationsQuestions extends React.Component {
                                   )[index_question]
                                 }
                               />
-                              <Table
-                                className={classNames(
-                                  "table is-bordered is-hoverable",
-                                  styles.followup__info__table
-                                )}
-                                data={this.getData2(index_question)}
-                                style={{ margin: "20px 0 30px", width: "100%" }}
-                              >
-                                <Thead>
-                                  {_.map(
-                                    this.getColumnsWithoutSelectLanguage(),
-                                    (renderer, column) => (
-                                      <Th
-                                        column={column}
-                                        style={{ width: "30px" }}
-                                      >
-                                        {renderer()}
-                                      </Th>
-                                    )
-                                  )}
-                                </Thead>
-                              </Table>
+                              <QuestionTable
+                                index_question={index_question}
+                                baseLanguageQuestionRender={
+                                  this.state.baseLanguageQuestionRender
+                                }
+                                secondaryLanguageQuestionRender={
+                                  this.state.secondaryLanguageQuestionRender
+                                }
+                                onChange={this.handleChangeQuestionFields}
+                              />
+                              <div></div>
                             </div>
                           )
                         )}
@@ -780,6 +798,66 @@ class TranslationsQuestions extends React.Component {
     );
   }
 }
+
+const QuestionTable = ({
+  index_question,
+  baseLanguageQuestionRender,
+  secondaryLanguageQuestionRender: slqr,
+  onChange,
+}) => {
+  const base = baseLanguageQuestionRender[index_question];
+  const estilos = { padding: "10px", height: "100%", minWidth: "100%" };
+
+  return (
+    <table width={"100%"} className="mb-2">
+      {base.map((question, index) => {
+        const { id, weight, value } = question;
+
+        const idEl =
+          id == POSITION_FIELD_ID
+            ? "Position"
+            : id == NAME_FIELD_ID
+            ? "Question text"
+            : `Option Id: ${id}`;
+
+        let secondaryValue = null;
+
+        if (slqr[index_question]) {
+          secondaryValue = (slqr[index_question].find((q) => q.id == id) || {})
+            .value;
+        }
+
+        return (
+          <tr>
+            <td className={styles.column_width}>
+              <div>{idEl}</div>
+              {weight && <div>Weight: {weight}</div>}
+            </td>
+            <td>
+              <textarea
+                defaultValue={value}
+                rows={4}
+                style={estilos}
+                readOnly={true}
+              ></textarea>
+            </td>
+            <td>
+              <textarea
+                key={id}
+                className={styles.column_width}
+                rows={4}
+                name={id}
+                value={secondaryValue}
+                style={estilos}
+                onChange={(e) => onChange(e.target, weight, index_question)}
+              />
+            </td>
+          </tr>
+        );
+      })}
+    </table>
+  );
+};
 
 const QuestionAttributes = ({ question }) => {
   const {
