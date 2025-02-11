@@ -89,8 +89,6 @@ const SignUpForm = ({
       return alert(`${l("SignUpForm.errors.found")}:\n${errs}`);
     }
 
-    d("SAVING userModel", j(userModel));
-
     return saveUser(userModel).then((res) => {
       //Error
       if (isEmpty(res._id)) {
@@ -101,8 +99,13 @@ const SignUpForm = ({
       }
       //Success
       else {
+        const { email, password } = userModel;
+        API.Users.login({
+          email,
+          password,
+        });
         alert(l(`SignUpForm.success`));
-        window.location = "/listar-usuario/professores";
+        window.location = "/recursos";
       }
     });
   };
