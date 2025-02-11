@@ -7,14 +7,16 @@ import styles from "~/pages/signup/styles.styl";
 //Helpers
 import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
 
-const ToS = ({ l, field }) => {
+const ToS = ({ l, field, onShowTos }) => {
   return (
     <div className={classnames("control", styles.form__input)}>
       <input type="checkbox" {...f(field)} className={styles.form__checkbox} />
       <FormattedMessage
         id="SignUpForm.acceptTermsOfUse"
         values={{
-          termsOfUseLink: <a>{l("SignUpForm.termsOfUse")}</a>,
+          termsOfUseLink: (
+            <a onClick={onShowTos}>{l("SignUpForm.termsOfUse")}</a>
+          ),
         }}
       />
     </div>

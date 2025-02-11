@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { reduxForm } from "redux-form";
 import { compose } from "redux";
 import { concat, isEmpty, keys } from "lodash";
@@ -8,6 +8,7 @@ import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 import { UserModel, TeacherDataModel, PrincipalDataModel } from "./Models";
 import "url-search-params-polyfill";
+import DOMPurify from "dompurify";
 
 //Containers
 import ModalContainer from "~/containers/modal";
@@ -23,6 +24,10 @@ import Principal from "./FormSections/Principal";
 
 // Components
 import SubmitBtn from "~/components/SubmitBtn";
+import Modal from "~/components/Modal";
+import ReactModal from "react-modal";
+import stylesModal from "~/components/Modal/Modal.styl";
+import styles from "~/pages/signup/styles.styl";
 
 //Helpers
 import {
@@ -65,6 +70,8 @@ const SignUpForm = ({
 }) => {
   //Helper for internationalization
   const l = (id) => intl.formatMessage({ id });
+
+  const [showModalTos, setShowModalTos] = React.useState(false);
 
   //OnMount
   useEffect(() => {
@@ -120,7 +127,7 @@ const SignUpForm = ({
         <Principal l={l} fields={fields} styles={styles} />
       ) : null}
       <DatosLogin l={l} styles={styles} fields={fields} />
-      <ToS l={l} field={fields.tos} />
+      <ToS l={l} field={fields.tos} onShowTos={() => setShowModalTos(true)} />
       <div
         className={classnames(
           "control",
@@ -136,6 +143,12 @@ const SignUpForm = ({
           {parse(l("SignUpForm.register"))}
         </SubmitBtn>
       </div>
+      <ToSModal
+        title={l("SignUpForm.termsOfUse")}
+        lang={intl.locale}
+        show={showModalTos}
+        onClose={() => setShowModalTos(false)}
+      />
     </form>
   );
 };
@@ -166,6 +179,32 @@ const setFieldsDefaultValues = (fields, profile) => {
       fields[key].onChange(defaultValues[key]);
     }
   }
+};
+
+const ToSModal = ({ show, title, lang, onClose }) => {
+  const [htmlContent, setHtmlContent] = useState("");
+
+  useEffect(() => {
+    fetch(`/terms_of_service/${lang}.html`)
+      .then((response) => response.text())
+      .then((html) => DOMPurify.sanitize(html))
+      .then((html) => setHtmlContent(html))
+      .catch((error) => {
+        console.error("Error fetching the HTML content:", error);
+      });
+  }, []);
+
+  return (
+    <Modal
+      isActive={show}
+      title={title}
+      className={styles.modal_termo}
+      closeModal={onClose}
+      print={false}
+      privacyNotice={false}
+      children={parse(htmlContent)}
+    />
+  );
 };
 
 SignUpForm.propTypes = {};
