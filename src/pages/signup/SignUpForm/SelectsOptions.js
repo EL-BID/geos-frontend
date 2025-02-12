@@ -120,6 +120,9 @@ export const TechApplicationOptns = [
   {
     id: "use_of_tools",
   },
+  {
+    id: "no",
+  },
 ];
 for (const opt of TechApplicationOptns) {
   opt.label = `SignUpForm.TechApplicationOptns.${opt.id}`;

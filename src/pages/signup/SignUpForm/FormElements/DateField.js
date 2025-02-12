@@ -21,7 +21,7 @@ const DateField = ({
         {parse(l(titleId))}
       </label>
       <div className={classnames("is-small", styles.field__description)}>
-        Formato correcto: {dateFormat}
+        {l(`SignUpForm.help.format`)}: {dateFormat}
       </div>
       <div className={classnames("control")}>
         <DatePicker
