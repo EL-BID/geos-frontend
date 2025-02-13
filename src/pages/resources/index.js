@@ -40,6 +40,7 @@ import $ from "jquery";
 import { reduxForm } from "redux-form";
 
 import SurveysList from "./components/SurveysList";
+import { FetchSurveysLegacy } from "~/api/Survey";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
@@ -124,33 +125,22 @@ class Resources extends React.Component {
   }
 
   getSurveys = () => {
-    axios
-      .get(
-        CONF.ApiURL +
-          "/api/v1/survey/surveys_list?access_token=" +
-          getUserToken() +
-          "&lang=" +
-          this.getLang(),
-        {}
-      )
-      .then(({ data }) => {
-        const { surveys = [] } = data;
-        var has_anwers = false;
-        surveys.forEach(function (survey) {
-          if (survey.type === "school" && surveyAnswered(survey, getUserId())) {
-            has_anwers = true;
-          }
-        });
-
-        this.setState({
-          surveys,
-          loading: false,
-        });
-
-        this.checkSurveyInvited(this.props.accounts.user);
-        if (has_anwers) this.getHasSchoolPlan();
-        this.getSchool();
+    FetchSurveysLegacy().then((surveys) => {
+      this.setState({
+        surveys,
+        loading: false,
       });
+
+      var has_anwers = false;
+      surveys.forEach(function (survey) {
+        if (survey.type === "school" && surveyAnswered(survey, getUserId())) {
+          has_anwers = true;
+        }
+      });
+      this.checkSurveyInvited(this.props.accounts.user);
+      if (has_anwers) this.getHasSchoolPlan();
+      this.getSchool();
+    });
   };
 
   getSchool = () => {

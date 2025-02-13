@@ -29,24 +29,11 @@ const SurveysList = ({
   school,
   setShowModalHowItWorks,
 }) => {
-  //const hasAnswer = (schedules) => {
-  //  const schedulesWithAnswer = schedules.filter(
-  //    (schedule) =>
-  //      schedule.answers &&
-  //      schedule.answers.find(
-  //        (answer) =>
-  //          answer.status === "Complete" &&
-  //          answer.user_id.$oid === user._id.$oid
-  //      )
-  //  );
-  //  return schedulesWithAnswer.length > 0;
-  //};
-
   const gotToSurvey = (survey) => {
     setSelectedSurvey(survey);
     const { type } = survey;
-    window.location =
-      type == "context" ? "survey-context" : "/responder-questionario";
+    window.location = "survey-context";
+    //type == "context" ? "survey-context" : "/responder-questionario";
   };
 
   const gotToPrintSurvey = (survey) => {
@@ -60,6 +47,10 @@ const SurveysList = ({
       type,
       schedule,
     } = survey;
+
+    if (type == "context") {
+      return null;
+    }
 
     const firstSchedule = schedule[0];
     const hasDescr = !!firstSchedule.survey_description;
@@ -125,14 +116,7 @@ const SurveysList = ({
             !survey.is_cyclic &&
             isDirectorOrTeacher(user) ? (
               <div>
-                <p>
-                  <strong>{parse(l("Resources.attention"))}!</strong>
-                </p>
-                <p>
-                  {parse(l("Resources.description1"))}{" "}
-                  <strong>{surveyNextResponse(survey).toLowerCase()}</strong>.
-                </p>
-                <p>{parse(l("Resources.description2"))}</p>
+                <p>{parse(l("Resources.description1"))} </p>
               </div>
             ) : (
               <Button

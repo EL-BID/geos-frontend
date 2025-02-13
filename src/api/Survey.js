@@ -48,7 +48,6 @@ answers = {
 }
 */
 export const PostAnswers = (idSurvey, idSchedule, answers) => {
-  //d("PostAnswers", idSurvey, idSchedule, j(answers));
   const url = buildUrl(`surveys/${idSurvey}/answers`);
   return axios.post(url, {
     idUser: getUserId(),
@@ -62,3 +61,19 @@ export const FetchAnswer = (idSurvey) => {
   const url = buildUrl(`surveys/${idSurvey}/answers`);
   return axios.get(url).then(({ data }) => data || {});
 };
+
+//Copied from their code
+export const FetchSurveysLegacy = () =>
+  axios
+    .get(
+      CONF.ApiURL +
+        "/api/v1/survey/surveys_list?access_token=" +
+        getUserToken() +
+        "&lang=" +
+        getLang(),
+      {}
+    )
+    .then(({ data }) => {
+      const { surveys = [] } = data;
+      return surveys;
+    });

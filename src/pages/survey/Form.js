@@ -593,8 +593,6 @@ const Form = createReactClass({
       return sq.length > 0 && sq[0]._id.$oid == question._id.$oid;
     };
 
-    console.log("this.state", this.state);
-
     return (
       <form
         onChange={this.updateFormData}
@@ -934,7 +932,6 @@ const Form = createReactClass({
 
               {this.state.pagenow < this.state.lastSection ? (
                 <div className="column has-text-right">
-                  feithfuthftlh
                   <Button
                     id={"nextPage"}
                     onClick={

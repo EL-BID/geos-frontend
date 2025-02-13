@@ -10,7 +10,17 @@ import {
   FetchQuestions,
   FetchSections,
   PostAnswers,
+  FetchSurveysLegacy,
 } from "~/api/Survey";
+
+import {
+  setSelectedSurvey,
+  surveyAnswered,
+  surveyStarted,
+  surveyOutPeriod,
+  surveyNextResponse,
+} from "~/actions/survey";
+import { getUserToken } from "~/api/utils";
 
 import Form from "./Form";
 import introStyles from "./introduction.css";
@@ -50,9 +60,16 @@ const SurveyContext = ({ lang }) => {
     }
   }, [survey]);
 
+  const openLegacySurvey = () => {
+    FetchSurveysLegacy().then((surveys) => {
+      setSelectedSurvey(surveys[0]);
+      window.location.href = "/responder-questionario";
+    });
+  };
+
   const onSave = (answers) =>
     PostAnswers(survey.id, survey.schedule[0].id.$oid, answers).then(
-      () => (window.location.href = "/responder-questionario")
+      openLegacySurvey
     );
 
   if (!contextualLangDict) {

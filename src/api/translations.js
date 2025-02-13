@@ -8,11 +8,9 @@ const j = (m) => JSON.stringify(m, null, 4);
 const getLang = () =>
   localStorage.getItem("lang") || process.env.DEFAULT_LOCALE;
 
-const buildUrl = (locale = null, dictionary = "") =>
+const buildUrl = (locale, dictionary = "") =>
   CONF.ApiURL +
-  `/api/v1/translation/${
-    locale || getLang()
-  }/${dictionary}?access_token=${getUserToken()}&lang=${getLang()}`;
+  `/api/v1/translation/${locale}/${dictionary}?access_token=${getUserToken()}&lang=${getLang()}`;
 
 export default function ({ apiURL, translations }) {
   return {
@@ -34,7 +32,7 @@ export const FetchLanguageDictionary = (locale, dictionary) => {
 };
 
 export const FetchLanguageDictionaryForCurrentLang = (dictionary) =>
-  FetchLanguageDictionary(null, dictionary);
+  FetchLanguageDictionary(getLang(), dictionary);
 
 export const UpdateLanguageDictionary = (locale, data, dictionary) => {
   const url = buildUrl(locale, dictionary);
