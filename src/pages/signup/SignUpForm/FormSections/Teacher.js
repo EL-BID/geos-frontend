@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FormationLevelsOptns,
   InitialFormationOptns,
@@ -20,6 +20,9 @@ import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
 // Components
 import Field from "~/components/Form/Field";
 
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 4);
+
 const YesNoOptns = [
   {
     id: "yes",
@@ -32,6 +35,12 @@ const YesNoOptns = [
 ];
 
 const Teacher = ({ l, fields, styles }) => {
+  const [showTechApplication, setShowTechApplication] = React.useState(true);
+
+  useEffect(() => {
+    setShowTechApplication(fields.years_using_tech.value !== "no");
+  }, [fields.years_using_tech]);
+
   return (
     <div className="box">
       <h1 className={styles.title_section}>{l("SignUpForm.formation")}</h1>
@@ -97,12 +106,14 @@ const Teacher = ({ l, fields, styles }) => {
         titleId="SignUpForm.label.years_using_tech"
         options={YearsUsingTechOptns}
       />
-      <SelectMultiField
-        l={l}
-        field={fields.tech_application}
-        titleId="SignUpForm.label.tech_application"
-        options={TechApplicationOptns}
-      />
+      {showTechApplication && (
+        <SelectMultiField
+          l={l}
+          field={fields.tech_application}
+          titleId="SignUpForm.label.tech_application"
+          options={TechApplicationOptns}
+        />
+      )}
     </div>
   );
 };

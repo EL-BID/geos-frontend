@@ -44,7 +44,16 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
   //Check user type fields
   let allFieldsFilled = true;
   if (profile === "teacher") {
-    allFieldsFilled = TeacherDataModel.reduce((acc, key) => {
+    let notRequiredFields = [];
+
+    //Exception: years_using_tech == "no" means tech_application is not required
+    if (userModel.teacher_data.years_using_tech === "no") {
+      notRequiredFields.push("tech_application");
+    }
+
+    allFieldsFilled = TeacherDataModel.filter(
+      (key) => !notRequiredFields.includes(key)
+    ).reduce((acc, key) => {
       const value = userModel.teacher_data[key];
       return acc && !isEmpty(value);
     }, allFieldsFilled);
@@ -112,10 +121,13 @@ export const reduxFormModelToUserModelConverter = (fields) => {
         user.teacher_data[key] = value;
       }
     });
+
     //Special case: tech_applications is an array
-    user.teacher_data.tech_application = (
-      fields.tech_application.value || []
-    ).map((ta) => ta.value);
+    //Special case: years_using_tech == "no" means tech_application is empty
+    user.teacher_data.tech_application =
+      user.teacher_data.years_using_tech === "no"
+        ? []
+        : (fields.tech_application.value || []).map((ta) => ta.value);
   }
 
   //Principal
