@@ -8,9 +8,11 @@ const j = (m) => JSON.stringify(m, null, 4);
 const getLang = () =>
   localStorage.getItem("lang") || process.env.DEFAULT_LOCALE;
 
-const buildUrl = (locale) =>
+const buildUrl = (locale = null, dictionary = "") =>
   CONF.ApiURL +
-  `/api/v1/translation/${locale}?access_token=${getUserToken()}&lang=${getLang()}`;
+  `/api/v1/translation/${
+    locale || getLang()
+  }/${dictionary}?access_token=${getUserToken()}&lang=${getLang()}`;
 
 export default function ({ apiURL, translations }) {
   return {
@@ -22,12 +24,19 @@ export default function ({ apiURL, translations }) {
   };
 }
 
-export const FetchLanguageDictionary = (locale) => {
-  const url = buildUrl(locale);
-  return axios.get(url).then(({ data }) => data);
+export const FetchLanguageDictionary = (locale, dictionary) => {
+  const url = buildUrl(locale, dictionary);
+  return axios
+    .get(url)
+    .then(({ data }) => data)
+    .then(({ data }) => data)
+    .then((data) => data[0]);
 };
 
-export const UpdateLanguageDictionary = (locale, data) => {
-  const url = buildUrl(locale);
+export const FetchLanguageDictionaryForCurrentLang = (dictionary) =>
+  FetchLanguageDictionary(null, dictionary);
+
+export const UpdateLanguageDictionary = (locale, data, dictionary) => {
+  const url = buildUrl(locale, dictionary);
   return axios.post(url, { data }).then((data) => data);
 };

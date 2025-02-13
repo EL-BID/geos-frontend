@@ -1,0 +1,39 @@
+#context_survey p {
+  margin-bottom: 1rem;
+}
+#context_survey div.section {
+  padding-top: 0;
+}
+#context_survey h1,
+#context_survey h2,
+#context_survey h3 {
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.33333;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+#context_survey h1 {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1rem;
+}
+#context_survey h2 {
+  font-size: 1.5rem;
+}
+#context_survey h3 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+#introduction {
+  margin-top: -2rem;
+  margin-bottom: 2rem;
+}
+#introduction img {
+  display: block;
+}
+#introduction i {
+  display: block;
+  opacity: 0.75;
+  font-size: small;
+}

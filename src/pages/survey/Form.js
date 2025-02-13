@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Question from "./Question";
 import CONF from "~/api/index";
 import axios from "axios";
@@ -210,7 +210,7 @@ const Form = createReactClass({
 
   componentDidMount() {
     this.setBulletProgress(false);
-    this.updatePage(0, 0);
+    this.updatePage(1, 0);
   },
 
   handleInputText(e, question) {
@@ -593,6 +593,8 @@ const Form = createReactClass({
       return sq.length > 0 && sq[0]._id.$oid == question._id.$oid;
     };
 
+    console.log("this.state", this.state);
+
     return (
       <form
         onChange={this.updateFormData}
@@ -932,6 +934,7 @@ const Form = createReactClass({
 
               {this.state.pagenow < this.state.lastSection ? (
                 <div className="column has-text-right">
+                  feithfuthftlh
                   <Button
                     id={"nextPage"}
                     onClick={

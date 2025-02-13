@@ -14,6 +14,7 @@ const j = (m) => JSON.stringify(m, null, 4);
 
 const Form = ({
   l,
+  langDict: ld,
   survey,
   sections,
   questions,
@@ -32,10 +33,9 @@ const Form = ({
 
   return (
     <FormWrap>
-      <h1 className="title">{survey_name}</h1>
+      <h1 className="">{survey_name}</h1>
       {sections.map((section) => (
         <SurveySection
-          l={l}
           key={section.id}
           section={section}
           questions={questions}
@@ -44,14 +44,13 @@ const Form = ({
         />
       ))}
       <Button onClick={save} className="is-primary">
-        Finalizar
+        {ld.ui.btnContinue}
       </Button>
     </FormWrap>
   );
 };
 
 const SurveySection = ({
-  l,
   section,
   questions,
   questionsResponses,
@@ -71,7 +70,6 @@ const SurveySection = ({
       <h3 className="subtitle">{name}</h3>
       {sectionQuestions.map((q) => (
         <SurveyQuestion
-          l={l}
           key={q._id.$oid}
           question={q}
           questionsResponses={questionsResponses}
@@ -82,7 +80,7 @@ const SurveySection = ({
   );
 };
 
-const SurveyQuestion = ({ l, question, questionsResponses, onAnswer }) => {
+const SurveyQuestion = ({ question, questionsResponses, onAnswer }) => {
   const {
     _id: { $oid: idQuestion },
     name,
@@ -173,7 +171,7 @@ const FormWrap = ({ children }) => {
   return (
     <form id="questionForm">
       <div className={classnames("section", styles.section_questions)}>
-        <div className="container mt-50">
+        <div className="container">
           <div className="columns">
             <div className="column">{children}</div>
           </div>
