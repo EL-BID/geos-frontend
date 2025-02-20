@@ -13,14 +13,7 @@ import {
   FetchSurveysLegacy,
 } from "~/api/Survey";
 
-import {
-  setSelectedSurvey,
-  surveyAnswered,
-  surveyStarted,
-  surveyOutPeriod,
-  surveyNextResponse,
-} from "~/actions/survey";
-import { getUserToken } from "~/api/utils";
+import { setSelectedSurvey } from "~/actions/survey";
 
 import Form from "./Form";
 import introStyles from "./introduction.css";
@@ -53,9 +46,9 @@ const SurveyContext = ({ lang }) => {
       const { id: idSurvey } = survey;
       FetchSections(idSurvey).then(setSections);
       FetchQuestions(idSurvey).then(setQuestions);
-      FetchAnswer(idSurvey).then(({ answer, questionsResponses }) => {
-        setAnswer(answer || {});
-        setQuestionsResponses(questionsResponses || []);
+      FetchAnswer(idSurvey).then(({ survey_response, question_responses }) => {
+        setAnswer(survey_response || {});
+        setQuestionsResponses(question_responses || []);
       });
     }
   }, [survey]);
@@ -158,8 +151,6 @@ const Header = ({ user }) => {
     </section>
   );
 };
-
-//SurveyContext.propTypes = {};
 
 export default () => {
   return (

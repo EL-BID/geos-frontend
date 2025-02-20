@@ -3,13 +3,7 @@ import classnames from "classnames";
 
 import PageLayoutWrapper from "~/components/PageLayoutWrapper";
 
-import {
-  FetchSurvey,
-  FetchAnswer,
-  FetchQuestions,
-  FetchSections,
-  PostAnswers,
-} from "~/api/Survey";
+import { FetchSurvey, FetchAnswer, FetchQuestions } from "~/api/Survey";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);

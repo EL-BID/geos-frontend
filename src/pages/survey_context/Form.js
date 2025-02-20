@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { injectIntl } from "react-intl";
 import APIDataContainer from "~/containers/api_data";
 import AccountsContainer from "~/containers/accounts";
@@ -7,7 +7,7 @@ import styles from "./styles.styl";
 import classnames from "classnames";
 
 import Button from "~/components/Button";
-import { pull } from "lodash";
+import { isArray, pull } from "lodash";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
@@ -30,6 +30,16 @@ const Form = ({
   const onAnswer = (newAnswer) => setAnswers({ ...answers, ...newAnswer });
 
   const save = () => onSave(answers);
+
+  useEffect(() => {
+    setAnswers(
+      questionsResponses.reduce((acc, { survey_question_id, options }) => {
+        const id = survey_question_id.$oid;
+        acc[id] = options;
+        return acc;
+      }, {})
+    );
+  }, [questionsResponses]);
 
   return (
     <FormWrap>
@@ -89,7 +99,7 @@ const SurveyQuestion = ({ question, questionsResponses, onAnswer }) => {
   } = question;
 
   const response = questionsResponses.find(
-    (q) => q.survey_question_id === idQuestion
+    (q) => q.survey_question_id.$oid === idQuestion
   );
 
   return (
@@ -118,7 +128,8 @@ const SurveyQuestion = ({ question, questionsResponses, onAnswer }) => {
 };
 
 const FieldRadio = ({ options, idQuestion, response, onAnswer }) => {
-  const selectedOption = response ? response.options.at(0) : null;
+  const selectedOption =
+    response && isArray(response.options) ? response.options.at(0) : null;
 
   return options.map(({ id, weight, value }) => (
     <div className="control ml-3">
@@ -136,8 +147,10 @@ const FieldRadio = ({ options, idQuestion, response, onAnswer }) => {
   ));
 };
 
-const FieldCheckbox = ({ options, idQuestion, onAnswer }) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+const FieldCheckbox = ({ options, idQuestion, response, onAnswer }) => {
+  const [selectedOptions, setSelectedOptions] = useState(
+    response && isArray(response.options) ? response.options : []
+  );
 
   const onOptionSelected = (id) => {
     const copy = [...selectedOptions];
@@ -159,6 +172,7 @@ const FieldCheckbox = ({ options, idQuestion, onAnswer }) => {
           type="checkbox"
           name={idQuestion}
           value={id}
+          defaultChecked={selectedOptions.includes(id)}
           onChange={() => onOptionSelected(id)}
         />
         {value}
