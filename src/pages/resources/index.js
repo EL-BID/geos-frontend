@@ -40,7 +40,7 @@ import $ from "jquery";
 import { reduxForm } from "redux-form";
 
 import SurveysList from "./components/SurveysList";
-import { FetchSurveysLegacy } from "~/api/Survey";
+import { FetchSurveysLegacy, FetchContextSurvey } from "~/api/Survey";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
@@ -66,6 +66,7 @@ class Resources extends React.Component {
       tutorial: [],
       hasUser: false,
       showModalHowItWorks: false,
+      contextSurvey: null,
     };
     this.handleCensusEdit = this.handleCensusEdit.bind(this);
     this.handleInfrastructure = this.handleInfrastructure.bind(this);
@@ -140,6 +141,12 @@ class Resources extends React.Component {
       this.checkSurveyInvited(this.props.accounts.user);
       if (has_anwers) this.getHasSchoolPlan();
       this.getSchool();
+    });
+    FetchContextSurvey().then((contextSurvey) => {
+      console.log("Context Survey", contextSurvey);
+      this.setState({
+        contextSurvey,
+      });
     });
   };
 
@@ -450,6 +457,7 @@ class Resources extends React.Component {
               surveys={this.state.surveys}
               user={this.props.accounts.user}
               school={this.state.school}
+              contextSurvey={this.state.contextSurvey}
               setShowModalHowItWorks={this.setShowModalHowItWorks}
             />
           </section>

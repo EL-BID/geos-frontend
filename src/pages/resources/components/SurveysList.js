@@ -27,6 +27,7 @@ const SurveysList = ({
   surveys,
   user,
   school,
+  contextSurvey,
   setShowModalHowItWorks,
 }) => {
   const gotToSurvey = (survey) => {
@@ -39,6 +40,11 @@ const SurveysList = ({
   const gotToPrintSurvey = (survey) => {
     setSelectedSurvey(survey);
     window.open("/imprimir-questionario", "_blank");
+  };
+
+  const gotToPrintSurveyContext = () => {
+    const url = `/print/survey/${contextSurvey.id}`;
+    window.open(url, "_blank");
   };
 
   return surveys.map((survey, idx) => {
@@ -119,18 +125,26 @@ const SurveysList = ({
                 <p>{parse(l("Resources.description1"))} </p>
               </div>
             ) : (
-              <Button
-                className={classNames(
-                  "is-primary",
-                  styles.resources__buttons__button
-                )}
-                onClick={() => gotToPrintSurvey(survey)}
-              >
-                <span className={styles.with_icon}>
-                  <i className="fas fa-print is-size-5 mr-10"></i>
-                  {parse(l("Resources.print"))}
-                </span>
-              </Button>
+              <span>
+                <Button
+                  className={classNames(styles.resources__buttons__button)}
+                  onClick={() => gotToPrintSurveyContext()}
+                >
+                  <span className={styles.with_icon}>
+                    <i className="fas fa-print is-size-5 mr-10"></i>
+                    {parse(l("Resources.printContext"))}
+                  </span>
+                </Button>
+                <Button
+                  className={classNames(styles.resources__buttons__button)}
+                  onClick={() => gotToPrintSurvey(survey)}
+                >
+                  <span className={styles.with_icon}>
+                    <i className="fas fa-print is-size-5 mr-10"></i>
+                    {parse(l("Resources.print"))}
+                  </span>
+                </Button>
+              </span>
             )}
           </div>
           {hasAnswer && (

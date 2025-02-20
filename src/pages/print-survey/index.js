@@ -51,8 +51,6 @@ const Question = ({ question, questionResponses }) => {
     survey_question_description: options = [],
   } = question;
 
-  d("questionResponses", j(questionResponses));
-
   const response = questionResponses.find(
     (qr) => qr.survey_question_id.$oid === idQuestion
   ) || { options: [] };
@@ -62,7 +60,7 @@ const Question = ({ question, questionResponses }) => {
     <div className="mt-4">
       <h4 className="is-size-5 mb-1">{name}</h4>
       <ul>
-        {options.map((option, index) => (
+        {(options || []).map((option, index) => (
           <QuestionOption
             key={index}
             option={option}
