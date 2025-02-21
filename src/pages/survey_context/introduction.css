@@ -7,7 +7,6 @@
 #context_survey h1,
 #context_survey h2,
 #context_survey h3 {
-  text-transform: capitalize;
   font-size: 2rem;
   font-weight: normal;
   line-height: 1.33333;
@@ -17,6 +16,7 @@
 #context_survey h1 {
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 1rem;
+  text-transform: none;
 }
 #context_survey h2 {
   font-size: 1.5rem;
