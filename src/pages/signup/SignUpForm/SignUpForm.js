@@ -82,7 +82,7 @@ const SignUpForm = ({
   const onSubmit = (e) => {
     e.preventDefault();
     const userModel = reduxFormModelToUserModelConverter(fields);
-    const errors = validateModel(userModel, fields, DEFAULT_BDATE, l);
+    const errors = validateModel({ ...userModel }, fields, DEFAULT_BDATE, l);
 
     if (!isEmpty(errors)) {
       const errs = errors.map((err) => `- ${l(err)}`).join("\n");
@@ -112,6 +112,7 @@ const SignUpForm = ({
 
   return (
     <form className={styles.form} onSubmit={onSubmit} id="SignUpForm">
+      {profile}
       <DatosBasicos l={l} styles={styles} fields={fields} profile={profile} />
       <DatosLaborables
         l={l}

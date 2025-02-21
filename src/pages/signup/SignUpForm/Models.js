@@ -23,6 +23,8 @@ export const UserModel = [
   "state_id",
   "city_id",
   "school_id",
+  "stages",
+  "knowledges",
 
   "teacher_data",
   "principal_data",

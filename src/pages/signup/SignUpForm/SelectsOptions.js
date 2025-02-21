@@ -124,3 +124,46 @@ export const TechApplicationOptns = [
 for (const opt of TechApplicationOptns) {
   opt.label = `SignUpForm.TechApplicationOptns.${opt.id}`;
 }
+
+export const StagesOptns = [
+  { id: "primary_1" },
+  { id: "primary_2" },
+  { id: "primary_3" },
+];
+for (const opt of StagesOptns) {
+  opt.label = `SignUpForm.StagesOptns.${opt.id}`;
+}
+
+//Groug by each Stage
+export const KnowledgesOptns = [
+  {
+    stage: "primary_1",
+    options: [
+      { id: "primary_1_english" },
+      { id: "primary_1_phys_ed" },
+      { id: "primary_1_all" },
+    ],
+  },
+  {
+    stage: "primary_2",
+    options: [
+      { id: "primary_2_english" },
+      { id: "primary_2_phys_ed" },
+      { id: "primary_2_all" },
+    ],
+  },
+  {
+    stage: "primary_3",
+    options: [
+      { id: "primary_3_english" },
+      { id: "primary_3_phys_ed" },
+      { id: "primary_3_all" },
+    ],
+  },
+];
+
+for (const opt of KnowledgesOptns) {
+  for (const subopt of opt.options) {
+    subopt.label = `SignUpForm.KnowledgesOptns.${subopt.id}`;
+  }
+}

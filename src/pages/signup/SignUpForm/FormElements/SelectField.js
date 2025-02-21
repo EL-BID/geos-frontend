@@ -21,7 +21,7 @@ const SelectField = ({ l, field, titleId, descrId = null, options }) => {
       <div className={classnames("control")}>
         <span className={classnames("select", styles.form__select)}>
           <select {...f(field)}>
-            <option value="">Seleccione</option>
+            <option value="">{l(`SignUpForm.help.pleaseSelect`)}</option>
             {options.map(({ id, label }) => (
               <option key={id} value={id}>
                 {l(label)}

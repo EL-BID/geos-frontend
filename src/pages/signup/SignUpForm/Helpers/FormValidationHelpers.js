@@ -1,5 +1,5 @@
 import { UserModel, TeacherDataModel, PrincipalDataModel } from "../Models";
-import { concat, isEmpty, keys, toString, isNumber } from "lodash";
+import { concat, isEmpty, keys, toString, isNumber, isArray } from "lodash";
 
 export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
   let errors = [];
@@ -31,6 +31,8 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
       "state_id",
       "city_id",
       "school_id",
+      "stages",
+      "knowledges",
     ];
     const allFieldsFilled = requiredFields.reduce((acc, key) => {
       const value = userModel[key];
@@ -105,6 +107,8 @@ export const reduxFormModelToUserModelConverter = (fields) => {
     const value = fields[key].value;
     if (isNumber(value)) {
       user[key] = toString(value);
+    } else if (isArray(value)) {
+      user[key] = value.map((v) => v.value);
     } else {
       user[key] = value;
     }
@@ -117,17 +121,17 @@ export const reduxFormModelToUserModelConverter = (fields) => {
       const value = fields[key].value;
       if (isNumber(value)) {
         user.teacher_data[key] = toString(value);
+      } else if (isArray(value)) {
+        user.teacher_data[key] = value.map((v) => v.value);
       } else {
         user.teacher_data[key] = value;
       }
     });
 
-    //Special case: tech_applications is an array
     //Special case: years_using_tech == "no" means tech_application is empty
-    user.teacher_data.tech_application =
-      user.teacher_data.years_using_tech === "no"
-        ? []
-        : (fields.tech_application.value || []).map((ta) => ta.value);
+    if (user.teacher_data.years_using_tech === "no") {
+      user.teacher_data.tech_application = [];
+    }
   }
 
   //Principal

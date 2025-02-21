@@ -4,9 +4,14 @@ import classnames from "classnames";
 
 //Form Elements
 import SelectField from "../FormElements/SelectField";
+import SelectMultiField from "../FormElements/SelectMultiField";
+import { StagesOptns, KnowledgesOptns } from "../SelectsOptions";
 
 //Helpers
 import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
+
+const d = console.log;
+const j = (m) => JSON.stringify(m, null, 4);
 
 const DatosLaborables = ({
   l,
@@ -99,6 +104,19 @@ const Fields = ({ l, fields, apiData }) => {
   const mapApiData = (data = []) =>
     data.map((c) => ({ id: c._id.$oid, label: c.name }));
 
+  const [knowledgesOptns, setKnowledgesOptns] = useState([]);
+
+  //stages watcher
+  useEffect(() => {
+    const stages = (fields.stages.value || []).map(({ value, label }) => value);
+
+    const knowledges = KnowledgesOptns.filter((k) =>
+      stages.includes(k.stage)
+    ).map((k) => k.options);
+
+    setKnowledgesOptns(knowledges.flat());
+  }, [fields.stages]);
+
   return (
     <span>
       <SelectField
@@ -136,6 +154,20 @@ const Fields = ({ l, fields, apiData }) => {
         titleId="SignUpForm.label.school"
         onChange={(e) => fields.school_id.onChange(e.target.value)}
       />
+      <hr />
+      <SelectMultiField
+        l={l}
+        field={fields.stages}
+        titleId="SignUpForm.label.stages"
+        options={StagesOptns}
+      />
+      <SelectMultiField
+        l={l}
+        field={fields.knowledges}
+        titleId="SignUpForm.label.knowledges"
+        options={knowledgesOptns}
+      />
+      <br />
     </span>
   );
 };
