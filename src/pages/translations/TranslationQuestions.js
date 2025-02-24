@@ -406,6 +406,7 @@ class TranslationsQuestions extends React.Component {
   };
   handleChangeQuestionFields = (target, weight, index_question) => {
     const { value, name } = target;
+
     const newSecondaryLanguageQuestionRender = [
       ...this.state.secondaryLanguageQuestionRender,
     ];
@@ -417,7 +418,7 @@ class TranslationsQuestions extends React.Component {
 
     const index = newSecondaryLanguageQuestionRender[index_question].findIndex(
       (question) => {
-        return question.id === name;
+        return question.id.toString() === name.toString();
       }
     );
 
@@ -859,7 +860,7 @@ const QuestionTable = ({
   );
 };
 
-const QuestionAttributes = ({ question }) => {
+const QuestionAttributes = ({ question = { _id: {} } }) => {
   const {
     _id: { $oid: idQuestion },
     type,
