@@ -31,6 +31,7 @@
 }
 #introduction img {
   display: block;
+  margin-bottom: 1rem;
 }
 #introduction i {
   display: block;
