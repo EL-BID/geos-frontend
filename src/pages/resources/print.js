@@ -100,15 +100,19 @@ class PrintList extends React.Component {
       CONF.ApiURL + `/api/v1/survey/questions/${surveyId}`,
       { params }
     );
-    const questions = this.organizeInfraQuestions(response.data.result);
+    let questions = this.organizeInfraQuestions(response.data.result);
+    questions = questions.filter(({ name }) => {
+      if (!name) {
+        return true;
+      }
+      const shouldNotContain = ["resultado", "RÉSULTAT", "RESULT"];
+      return !shouldNotContain.some((str) =>
+        name.toLowerCase().includes(str.toLowerCase())
+      );
+    });
     this.setState({
       fetchedQuestions: true,
-      questions: questions.filter(
-        ({ name }) =>
-          !name.toLowerCase().includes("anexo") &&
-          !name.toLowerCase().includes("perguntas extra") &&
-          !name.toLowerCase().includes("resultado")
-      ),
+      questions,
     });
   }
 
