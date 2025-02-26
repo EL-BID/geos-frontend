@@ -15,6 +15,7 @@ const j = (m) => JSON.stringify(m, null, 4);
 
 const DatosLaborables = ({
   l,
+  profile,
   fields,
   styles,
   apiData,
@@ -25,6 +26,7 @@ const DatosLaborables = ({
   fetchSchools,
 }) => {
   const [showFields, setShowFields] = useState(fields.share_work_data.value);
+  const isTeacher = profile === "teacher";
 
   //OnMount
   useEffect(() => {
@@ -95,12 +97,14 @@ const DatosLaborables = ({
         />
         {l(`SignUpForm.withLink`)}
       </label>
-      {showFields && <Fields l={l} fields={fields} apiData={apiData} />}
+      {showFields && (
+        <Fields l={l} fields={fields} apiData={apiData} isTeacher={isTeacher} />
+      )}
     </div>
   );
 };
 
-const Fields = ({ l, fields, apiData }) => {
+const Fields = ({ l, fields, apiData, isTeacher }) => {
   const mapApiData = (data = []) =>
     data.map((c) => ({ id: c._id.$oid, label: c.name }));
 
@@ -154,20 +158,24 @@ const Fields = ({ l, fields, apiData }) => {
         titleId="SignUpForm.label.school"
         onChange={(e) => fields.school_id.onChange(e.target.value)}
       />
-      <hr />
-      <SelectMultiField
-        l={l}
-        field={fields.stages}
-        titleId="SignUpForm.label.stages"
-        options={StagesOptns}
-      />
-      <SelectMultiField
-        l={l}
-        field={fields.knowledges}
-        titleId="SignUpForm.label.knowledges"
-        options={knowledgesOptns}
-      />
-      <br />
+      {isTeacher && (
+        <span>
+          <hr />
+          <SelectField
+            l={l}
+            field={fields.stages}
+            titleId="SignUpForm.label.stages"
+            options={StagesOptns}
+          />
+          <SelectMultiField
+            l={l}
+            field={fields.knowledges}
+            titleId="SignUpForm.label.knowledges"
+            options={KnowledgesOptns}
+          />
+          <br />
+        </span>
+      )}
     </span>
   );
 };

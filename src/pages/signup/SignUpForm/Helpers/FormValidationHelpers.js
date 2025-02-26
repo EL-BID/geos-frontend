@@ -25,15 +25,21 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
 
   //Check Datos Laborables
   if (share_work_data) {
-    const requiredFields = [
-      "country_id",
-      "province_id",
-      "state_id",
+    //Required fields for all profiles
+    let requiredFields = [
+      //"country_id",
+      //"province_id",
+      //"state_id",
       "city_id",
       "school_id",
-      "stages",
-      "knowledges",
     ];
+
+    //These only required for teachers
+    if (profile === "teacher") {
+      requiredFields.push("stages");
+      requiredFields.push("knowledges");
+    }
+
     const allFieldsFilled = requiredFields.reduce((acc, key) => {
       const value = userModel[key];
       return acc && !isEmpty(value);

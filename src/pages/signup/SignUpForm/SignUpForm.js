@@ -72,6 +72,7 @@ const SignUpForm = ({
   const l = (id) => intl.formatMessage({ id });
 
   const [showModalTos, setShowModalTos] = React.useState(false);
+  const isTeacher = profile === "teacher";
 
   //OnMount
   useEffect(() => {
@@ -116,6 +117,7 @@ const SignUpForm = ({
       <DatosBasicos l={l} styles={styles} fields={fields} profile={profile} />
       <DatosLaborables
         l={l}
+        profile={profile}
         styles={styles}
         fields={fields}
         apiData={apiData}
