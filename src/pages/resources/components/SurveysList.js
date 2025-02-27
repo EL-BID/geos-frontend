@@ -33,8 +33,8 @@ const SurveysList = ({
   const gotToSurvey = (survey) => {
     setSelectedSurvey(survey);
     const { type } = survey;
-    window.location = "survey-context";
-    //type == "context" ? "survey-context" : "/responder-questionario";
+    window.location =
+      type == "personal" ? "survey-context" : "/responder-questionario";
   };
 
   const gotToPrintSurvey = (survey) => {
@@ -46,6 +46,8 @@ const SurveysList = ({
     const url = `/print/survey/${contextSurvey.id}`;
     window.open(url, "_blank");
   };
+
+  const showPrintContextSurveyBtn = user._profile === "teacher";
 
   return surveys.map((survey, idx) => {
     const {
@@ -126,15 +128,17 @@ const SurveysList = ({
               </div>
             ) : (
               <span>
-                <Button
-                  className={classNames(styles.resources__buttons__button)}
-                  onClick={() => gotToPrintSurveyContext()}
-                >
-                  <span className={styles.with_icon}>
-                    <i className="fas fa-print is-size-5 mr-10"></i>
-                    {parse(l("Resources.printContext"))}
-                  </span>
-                </Button>
+                {showPrintContextSurveyBtn && (
+                  <Button
+                    className={classNames(styles.resources__buttons__button)}
+                    onClick={() => gotToPrintSurveyContext()}
+                  >
+                    <span className={styles.with_icon}>
+                      <i className="fas fa-print is-size-5 mr-10"></i>
+                      {parse(l("Resources.printContext"))}
+                    </span>
+                  </Button>
+                )}
                 <Button
                   className={classNames(styles.resources__buttons__button)}
                   onClick={() => gotToPrintSurvey(survey)}
