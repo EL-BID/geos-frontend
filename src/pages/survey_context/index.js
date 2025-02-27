@@ -109,24 +109,11 @@ const Introduction = ({ lang, langDict: { Introduction: l }, setBegan }) => {
             <p>{label(l.S1.Descr)}</p>
             <h3>1. {label(l.S1.SS1.Title)}</h3>
             <p>{label(l.S1.SS1.Descr)}</p>
-            <h3>1. {label(l.S1.SS2.Title)}</h3>
+            <h3>2. {label(l.S1.SS2.Title)}</h3>
             <p>{label(l.S1.SS2.Descr)}</p>
             <img src={img(`01`)} />
             <i>{label(l.S1.caption1)}</i>
             <i>{label(l.S1.caption2)}</i>
-            <hr />
-            <h2>{label(l.S2.Title)}</h2>
-            <p>{label(l.S2.P1)}</p>
-            <p>{label(l.S2.P2)}</p>
-            <p>{label(l.S2.P3)}</p>
-            <p>{label(l.S2.P4)}</p>
-            <h3>{label(l.S2.SS1)}</h3>
-            <p>{label(l.S2.P5)}</p>
-            <h3>{label(l.S2.SS2)}</h3>
-            <p>{label(l.S2.P6)}</p>
-            <h3>{label(l.S2.SS3)}</h3>
-            <p>{label(l.S2.P7)}</p>
-            <img src={img(`02`)} />
             <hr />
             <Button onClick={() => setBegan(true)} className="is-primary mt-4">
               {label(l.btnStart)}
