@@ -5,10 +5,19 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
   let errors = [];
 
   const { share_personal_data, share_work_data, profile } = userModel;
+  const isTeacher = profile === "teacher";
 
   //Check basic data required fields
   if (share_personal_data) {
-    const requiredFields = ["name", "born", "gender"];
+    //Required fields for all profiles
+    let requiredFields = ["name"];
+
+    //These only required for teachers
+    if (isTeacher) {
+      requiredFields.push("born");
+      requiredFields.push("gender");
+    }
+
     const allFieldsFilled = requiredFields.reduce((acc, key) => {
       const value = userModel[key];
       return acc && !isEmpty(value);
@@ -35,7 +44,7 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
     ];
 
     //These only required for teachers
-    if (profile === "teacher") {
+    if (isTeacher) {
       requiredFields.push("stages");
       requiredFields.push("knowledges");
     }

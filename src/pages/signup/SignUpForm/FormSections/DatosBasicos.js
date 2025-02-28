@@ -26,6 +26,7 @@ const DatosBasicos = ({ l, fields, profile, styles }) => {
 
   return (
     <div className="box">
+      <input type="hidden" {...f(fields.profile)} />
       <h1 className={styles.title_section}>{l("SignUpForm.personalData")}</h1>
       {isTeacher && (
         <div>
@@ -39,12 +40,12 @@ const DatosBasicos = ({ l, fields, profile, styles }) => {
           </label>
         </div>
       )}
-      {showFields && <Fields l={l} fields={fields} />}
+      {showFields && <Fields l={l} fields={fields} isTeacher={isTeacher} />}
     </div>
   );
 };
 
-const Fields = ({ l, fields }) => {
+const Fields = ({ l, fields, isTeacher }) => {
   return (
     <span>
       <Field
@@ -52,27 +53,26 @@ const Fields = ({ l, fields }) => {
         classField="slim"
         {...f(fields.name)}
       />
-      <div className="columns" style={{ marginBottom: 0, marginTop: 0 }}>
-        <div className="column">
-          <DateField
-            l={l}
-            field={fields.born}
-            name="born"
-            titleId="SignUpForm.label.birthDate"
-            maxDate={new Date()}
-            minDate={new Date(1900, 0, 1)}
-          />
+      {isTeacher && (
+        <div className="columns" style={{ marginBottom: 0, marginTop: 0 }}>
+          <div className="column">
+            <SelectField
+              l={l}
+              field={fields.born}
+              options={BornOptns}
+              titleId="SignUpForm.label.birthDate"
+            />
+          </div>
+          <div className="column">
+            <SelectField
+              l={l}
+              field={fields.gender}
+              options={GenderOptns}
+              titleId="SignUpForm.label.gender"
+            />
+          </div>
         </div>
-        <div className="column">
-          <SelectField
-            l={l}
-            field={fields.gender}
-            options={GenderOptns}
-            titleId="SignUpForm.label.gender"
-            descrId="SignUpForm.help.pleaseSelect"
-          />
-        </div>
-      </div>
+      )}
     </span>
   );
 };
