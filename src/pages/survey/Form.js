@@ -210,7 +210,7 @@ const Form = createReactClass({
 
   componentDidMount() {
     this.setBulletProgress(false);
-    this.updatePage(1, 0);
+    this.updatePage(0, 0);
   },
 
   handleInputText(e, question) {
