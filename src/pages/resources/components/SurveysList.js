@@ -209,7 +209,7 @@ const HasAnswer = ({ l, schedule, lang, survey, answer, user, school }) => {
           (schedule) =>
             schedule.answers &&
             schedule.answers.map((answer, idxAns) =>
-              answer.status === "Complete" &&
+              answer.status === "Complete" && answer.results !== null &&
               answer.user_id.$oid === user._id.$oid &&
               answer.type !== "Combined" ? (
                 <div className="columns" key={answer.id.$oid}>
