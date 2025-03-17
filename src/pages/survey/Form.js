@@ -623,29 +623,32 @@ const Form = createReactClass({
                     )}
                   >
                     <div className="columns is-multiline">
-                      <div
-                        className={classnames(
-                          section.pageTitleCssClass
-                            ? `${section.pageTitleCssClass}`
-                            : styles.not_question,
-                          `${styles.h1}`,
-                          "column is-full"
-                        )}
-                      >
-                        <div
-                          className={styles.page__title}
-                          dangerouslySetInnerHTML={{ __html: section.name }}
-                        ></div>
+                      {this.state.pagenow > 0 &&
+                        this.state.pagenow > this.state.lastSection ? null : (
                         <div
                           className={classnames(
-                            styles.page__description,
-                            section.description == "" ? "is-hidden" : null
+                            section.pageTitleCssClass
+                              ? `${section.pageTitleCssClass}`
+                              : styles.not_question,
+                            `${styles.h1}`,
+                            "column is-full"
                           )}
-                          dangerouslySetInnerHTML={{
-                            __html: section.description,
-                          }}
-                        ></div>
-                      </div>
+                        >
+                          <div
+                            className={styles.page__title}
+                            dangerouslySetInnerHTML={{ __html: section.name }}
+                          ></div>
+                          <div
+                            className={classnames(
+                              styles.page__description,
+                              section.description == "" ? "is-hidden" : null
+                            )}
+                            dangerouslySetInnerHTML={{
+                              __html: section.description,
+                            }}
+                          ></div>
+                        </div>
+                      )}
                       {section.survey_question.map((question) => {
                         if (question.compound && question.compound_first) {
                           question.child_questions = section.survey_question
