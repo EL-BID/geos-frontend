@@ -56,11 +56,13 @@ const Fields = ({ l, fields, isTeacher }) => {
       {isTeacher && (
         <div className="columns" style={{ marginBottom: 0, marginTop: 0 }}>
           <div className="column">
-            <SelectField
+            <DateField
               l={l}
               field={fields.born}
-              options={BornOptns}
+              name="born"
               titleId="SignUpForm.label.birthDate"
+              maxDate={new Date()}
+              minDate={new Date(1900, 0, 1)}
             />
           </div>
           <div className="column">
