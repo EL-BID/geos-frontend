@@ -108,6 +108,19 @@ const Fields = ({ l, fields, apiData, isTeacher }) => {
   const mapApiData = (data = []) =>
     data.map((c) => ({ id: c._id.$oid, label: c.name }));
 
+  const [knowledgesOptns, setKnowledgesOptns] = useState([]);
+
+  //stages watcher
+  useEffect(() => {
+    const stages = (fields.stages.value || []).map(({ value, label }) => value);
+
+    const knowledges = KnowledgesOptns.filter((k) =>
+      stages.includes(k.stage)
+    ).map((k) => k.options);
+
+    setKnowledgesOptns(knowledges.flat());
+  }, [fields.stages]);
+
 
   return (
     <span>
@@ -149,7 +162,7 @@ const Fields = ({ l, fields, apiData, isTeacher }) => {
       {isTeacher && (
         <span>
           <hr />
-          <SelectField
+          <SelectMultiField
             l={l}
             field={fields.stages}
             titleId="SignUpForm.label.stages"
@@ -159,7 +172,7 @@ const Fields = ({ l, fields, apiData, isTeacher }) => {
             l={l}
             field={fields.knowledges}
             titleId="SignUpForm.label.knowledges"
-            options={KnowledgesOptns}
+            options={knowledgesOptns}
           />
           <br />
         </span>

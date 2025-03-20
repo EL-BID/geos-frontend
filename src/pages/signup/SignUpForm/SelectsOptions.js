@@ -137,68 +137,35 @@ for (const opt of StagesOptns) {
 //Groug by each Stage
 export const KnowledgesOptns = [
   {
-    id: "literature_language",
+    stage: "primary_1",
+    options: [
+      { id: "primary_1_english" },
+      { id: "primary_1_phys_ed" },
+      { id: "primary_1_all" },
+    ],
   },
   {
-    id: "agri_education",
+    stage: "primary_2",
+    options: [
+      { id: "primary_2_english" },
+      { id: "primary_2_phys_ed" },
+      { id: "primary_2_all" },
+    ],
   },
   {
-    id: "biology",
-  },
-  {
-    id: "business_education",
-  },
-  {
-    id: "chemistry",
-  },
-  {
-    id: "physics",
-  },
-  {
-    id: "comp_sci_it",
-  },
-  {
-    id: "early_childhood",
-  },
-  {
-    id: "guidance_counselling",
-  },
-  {
-    id: "human_ecology",
-  },
-  {
-    id: "humanities",
-  },
-  {
-    id: "institutional_mgmt_leadership",
-  },
-  {
-    id: "mathematics",
-  },
-  {
-    id: "modern_languages",
-  },
-  {
-    id: "music",
-  },
-  {
-    id: "pe_sports",
-  },
-  {
-    id: "performing_visual_arts",
-  },
-  {
-    id: "primary_education",
-  },
-  {
-    id: "special_education",
-  },
-  {
-    id: "tvet_construction_industrial_tech",
+    stage: "primary_3",
+    options: [
+      { id: "primary_3_english" },
+      { id: "primary_3_phys_ed" },
+      { id: "primary_3_all" },
+    ],
   },
 ];
+
 for (const opt of KnowledgesOptns) {
-  opt.label = `SignUpForm.KnowledgesOptns.${opt.id}`;
+  for (const subopt of opt.options) {
+    subopt.label = `SignUpForm.KnowledgesOptns.${subopt.id}`;
+  }
 }
 
 
