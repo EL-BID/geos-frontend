@@ -27,7 +27,8 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
     }
 
     //Alert the user is born date was not set
-    if (userModel.born === DEFAULT_BDATE.toISOString() && isTeacher) {
+    if ((new Date(userModel.born) > DEFAULT_BDATE ||
+        userModel.born === DEFAULT_BDATE.toISOString()) && isTeacher) {
       errors.push("SignUpForm.errors.born");
     }
   }
