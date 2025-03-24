@@ -6,11 +6,19 @@ import NonUserRedir from "~/containers/non_user_redir";
 import styles from "./styles.styl";
 import classnames from "classnames";
 
-import Button from "~/components/Button";
+import Button from "~/components/Button"; // Components
+import Field from "~/components/Form/Field";
 import { isArray, pull } from "lodash";
 
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
+
+const OtherLabelLocalized = [
+  /^Otr(o|a)(s)?$/i,
+  /^Other(s)?$/i,
+  /^Outr(a|o)(s)?$/i,
+  /^Autre(s)?$/i,
+];
 
 const Form = ({
   l,
@@ -18,27 +26,34 @@ const Form = ({
   survey,
   sections,
   questions,
-  answer,
+  response,
   questionsResponses,
   onSave,
 }) => {
   const { id, schedule: schedules } = survey;
   const schedule = schedules[0];
   const { survey_name } = schedule;
-  const [answers, setAnswers] = useState({});
+  const [localQuestionResponses, setLocalQuestionResponses] = useState(
+    questionsResponses || []
+  );
 
-  const onAnswer = (newAnswer) => setAnswers({ ...answers, ...newAnswer });
+  const onAnswer = (newResponse) => {
+    const copy = [...localQuestionResponses];
+    const index = copy.findIndex(
+      (q) => q.survey_question_id.$oid === newResponse.survey_question_id.$oid
+    );
+    if (index >= 0) {
+      copy[index] = newResponse;
+    } else {
+      copy.push(newResponse);
+    }
+    setLocalQuestionResponses(copy);
+  };
 
-  const save = () => onSave(answers);
+  const save = () => onSave(localQuestionResponses);
 
   useEffect(() => {
-    setAnswers(
-      questionsResponses.reduce((acc, { survey_question_id, options }) => {
-        const id = survey_question_id.$oid;
-        acc[id] = options;
-        return acc;
-      }, {})
-    );
+    setLocalQuestionResponses(questionsResponses);
   }, [questionsResponses]);
 
   return (
@@ -46,10 +61,11 @@ const Form = ({
       <h1 className="">{survey_name}</h1>
       {sections.map((section) => (
         <SurveySection
+          langDict={ld}
           key={section.id}
           section={section}
           questions={questions}
-          questionsResponses={questionsResponses}
+          questionsResponses={localQuestionResponses}
           onAnswer={onAnswer}
         />
       ))}
@@ -61,6 +77,7 @@ const Form = ({
 };
 
 const SurveySection = ({
+  langDict: ld,
   section,
   questions,
   questionsResponses,
@@ -80,6 +97,7 @@ const SurveySection = ({
       <h3 className="subtitle">{name}</h3>
       {sectionQuestions.map((q) => (
         <SurveyQuestion
+          langDict={ld}
           key={q._id.$oid}
           question={q}
           questionsResponses={questionsResponses}
@@ -90,7 +108,12 @@ const SurveySection = ({
   );
 };
 
-const SurveyQuestion = ({ question, questionsResponses, onAnswer }) => {
+const SurveyQuestion = ({
+  langDict: ld,
+  question,
+  questionsResponses,
+  onAnswer,
+}) => {
   const {
     _id: { $oid: idQuestion },
     name,
@@ -98,8 +121,12 @@ const SurveyQuestion = ({ question, questionsResponses, onAnswer }) => {
     survey_question_description: options = [],
   } = question;
 
-  const response = questionsResponses.find(
-    (q) => q.survey_question_id.$oid === idQuestion
+  const response =
+    questionsResponses.find((q) => q.survey_question_id.$oid === idQuestion) ||
+    makeNewResponse(idQuestion);
+
+  const hasOptionOther = options.find((o) =>
+    OtherLabelLocalized.some((r) => r.test(o.value))
   );
 
   return (
@@ -108,18 +135,22 @@ const SurveyQuestion = ({ question, questionsResponses, onAnswer }) => {
         <label className="label">{name}</label>
         {type == "radio" && (
           <FieldRadio
+            langDict={ld}
             options={options}
             idQuestion={idQuestion}
             response={response}
             onAnswer={onAnswer}
+            hasOptionOther={hasOptionOther}
           />
         )}
         {type == "checkbox" && (
           <FieldCheckbox
+            langDict={ld}
             options={options}
             idQuestion={idQuestion}
             response={response}
             onAnswer={onAnswer}
+            hasOptionOther={hasOptionOther}
           />
         )}
       </div>
@@ -127,58 +158,137 @@ const SurveyQuestion = ({ question, questionsResponses, onAnswer }) => {
   );
 };
 
-const FieldRadio = ({ options, idQuestion, response, onAnswer }) => {
-  const selectedOption =
-    response && isArray(response.options) ? response.options.at(0) : null;
+const FieldRadio = ({
+  langDict: ld,
+  options,
+  idQuestion,
+  response,
+  onAnswer,
+  hasOptionOther = {},
+}) => {
+  const onOptionSelected = (id, isSelected) => {
+    const copy = { ...response };
 
-  return options.map(({ id, weight, value }) => (
-    <div className="control ml-3">
-      <label className="radio">
-        <input
-          type="radio"
-          name={idQuestion}
-          value={id}
-          defaultChecked={selectedOption == id}
-          onChange={() => onAnswer({ [idQuestion]: [id] })}
-        />
-        {value}
-      </label>
-    </div>
-  ));
-};
-
-const FieldCheckbox = ({ options, idQuestion, response, onAnswer }) => {
-  const [selectedOptions, setSelectedOptions] = useState(
-    response && isArray(response.options) ? response.options : []
-  );
-
-  const onOptionSelected = (id) => {
-    const copy = [...selectedOptions];
-
-    if (copy.includes(id)) {
-      pull(copy, id);
+    if (isSelected) {
+      copy.options = [id];
     } else {
-      copy.push(id);
+      copy.options = [];
+      copy.other_text = null;
     }
 
-    setSelectedOptions(copy);
-    onAnswer({ [idQuestion]: copy });
+    onAnswer(copy);
   };
 
-  return options.map(({ id, weight, value }) => (
-    <div className="control ml-3">
-      <label className="checkbox">
-        <input
-          type="checkbox"
-          name={idQuestion}
-          value={id}
-          defaultChecked={selectedOptions.includes(id)}
-          onChange={() => onOptionSelected(id)}
-        />
-        {value}
-      </label>
-    </div>
-  ));
+  return options.map(({ id: idAny, value }) => {
+    const id = idAny.toString();
+    const isOther = id == hasOptionOther.id;
+    const isSelected = response.options.includes(id);
+
+    return (
+      <div className="control ml-3">
+        <label className="radio">
+          <input
+            type="radio"
+            name={idQuestion}
+            value={id}
+            defaultChecked={isSelected}
+            onChange={({ target }) =>
+              onOptionSelected(target.value, target.checked)
+            }
+          />
+          {value}
+        </label>
+        {isOther && (
+          <OtherField
+            langDict={ld}
+            idQuestion={idQuestion}
+            response={response}
+            onChange={onAnswer}
+            disabled={!isSelected}
+          />
+        )}
+      </div>
+    );
+  });
+};
+
+const FieldCheckbox = ({
+  langDict: ld,
+  options,
+  idQuestion,
+  response,
+  onAnswer,
+  hasOptionOther = {},
+}) => {
+  const onOptionSelected = (id, isSelected, isOther) => {
+    const copy = { ...response };
+    const { options } = copy;
+
+    if (isSelected && !options.includes(id)) {
+      options.push(id);
+    } else {
+      pull(options, id);
+    }
+
+    if (isOther && !isSelected) {
+      copy.other_text = null;
+    }
+
+    copy.options = options;
+
+    onAnswer(copy);
+  };
+
+  return options.map(({ id: idAny, value }) => {
+    const id = idAny.toString();
+    const isOther = id == hasOptionOther.id;
+    const isSelected = response.options.includes(id);
+
+    return (
+      <div className="control ml-3">
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            name={idQuestion}
+            value={id}
+            defaultChecked={isSelected}
+            onChange={({ target }) => {
+              onOptionSelected(target.value, target.checked, isOther);
+            }}
+          />
+          {value}
+        </label>
+        {isOther && (
+          <OtherField
+            langDict={ld}
+            idQuestion={idQuestion}
+            response={response}
+            onChange={onAnswer}
+            disabled={!isSelected}
+          />
+        )}
+      </div>
+    );
+  });
+};
+
+const OtherField = ({ langDict, idQuestion, response, onChange, disabled }) => {
+  const otherText = response.other_text || "";
+
+  d(langDict.ui);
+
+  return (
+    <Field
+      type="text"
+      style={{ width: "100%" }}
+      name={idQuestion + `__other`}
+      value={otherText}
+      maxLength={100}
+      onChange={(e) => onChange({ ...response, other_text: e.target.value })}
+      disabled={disabled}
+      placeholder={langDict.ui.indique}
+    />
+  );
 };
 
 const FormWrap = ({ children }) => {
@@ -193,6 +303,14 @@ const FormWrap = ({ children }) => {
       </div>
     </form>
   );
+};
+
+const makeNewResponse = (idQuestion) => {
+  return {
+    survey_question_id: { $oid: idQuestion },
+    options: [],
+    other_text: null,
+  };
 };
 
 export default injectIntl(

@@ -84,7 +84,7 @@ const SurveyContext = ({ lang }) => {
           survey={survey}
           sections={sections}
           questions={questions}
-          answer={answer}
+          response={answer}
           questionsResponses={questionsResponses}
           onSave={onSave}
         />
