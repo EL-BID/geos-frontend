@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { FormattedMessage } from "react-intl";
+import parse from "html-react-parser";
 
 import styles from "~/pages/signup/styles.styl";
 
@@ -11,14 +11,14 @@ const ToS = ({ l, field, onShowTos }) => {
   return (
     <div className={classnames("control", styles.form__input)}>
       <input type="checkbox" {...f(field)} className={styles.form__checkbox} />
-      <FormattedMessage
-        id="SignUpForm.acceptTermsOfUse"
-        values={{
-          termsOfUseLink: (
-            <a onClick={onShowTos}>{l("SignUpForm.termsOfUse")}</a>
-          ),
-        }}
-      />
+      <span onClick={onShowTos}>
+        {parse(
+          l.acceptTermsOfUse.replace(
+            "{termsOfUseLink}",
+            `<a>${l.termsOfUse}</a>`
+          )
+        )}
+      </span>
     </div>
   );
 };

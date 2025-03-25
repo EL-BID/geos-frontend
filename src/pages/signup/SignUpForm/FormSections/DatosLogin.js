@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { isEmpty } from "lodash";
-import { GenderOptns } from "../SelectsOptions";
+import { GenderOptns } from "~/models/UserSignUpSelectOptions";
 
 //Form Elements
 import SelectField from "../FormElements/SelectField";
@@ -17,21 +17,15 @@ const DatosLogin = ({ l, fields, styles }) => {
   return (
     <div className="box">
       <input type="hidden" {...f(fields.profile)} />
-      <h1 className={styles.title_section}>
-        {l("SignUpForm.title_login_data")}
-      </h1>
+      <h1 className={styles.title_section}>{l.title_login_data}</h1>
 
       <div className="columns" style={{ marginBottom: 0, marginTop: 0 }}>
         <div className="column">
-          <Field
-            label={l("SignUpForm.label.email")}
-            classField="slim"
-            {...f(fields.email)}
-          />
+          <Field label={l.label.email} classField="slim" {...f(fields.email)} />
         </div>
         <div className="column">
           <Field
-            label={l("SignUpForm.label.emailConfirmation")}
+            label={l.label.emailConfirmation}
             classField="slim"
             {...f(fields.emailConfirm)}
           />
@@ -41,8 +35,8 @@ const DatosLogin = ({ l, fields, styles }) => {
       <div className="columns" style={{ marginBottom: 0, marginTop: 0 }}>
         <div className="column">
           <Field
-            label={l("SignUpForm.label.password")}
-            description={l("SignUpForm.help.password")}
+            label={l.label.password}
+            description={l.help.password}
             type="password"
             classField="slim"
             {...f(fields.password)}
@@ -50,8 +44,8 @@ const DatosLogin = ({ l, fields, styles }) => {
         </div>
         <div className="column">
           <Field
-            label={l("SignUpForm.label.confirmPassword")}
-            description={l("SignUpForm.help.confirmPassword")}
+            label={l.label.confirmPassword}
+            description={l.help.confirmPassword}
             type="password"
             classField="slim"
             {...f(fields.passwordConfirm)}

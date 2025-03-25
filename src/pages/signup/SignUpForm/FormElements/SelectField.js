@@ -1,30 +1,27 @@
 import React from "react";
 import classnames from "classnames";
-import parse from "html-react-parser";
 
 import styles from "~/pages/signup/styles.styl";
 
 //Helpers
 import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
 
-const SelectField = ({ l, field, titleId, descrId = null, options }) => {
+const SelectField = ({ l, field, title, descr, options }) => {
   return (
     <div>
-      <label className={classnames("label", styles.form__label)}>
-        {l(titleId)}
-      </label>
-      {descrId && (
+      <label className={classnames("label", styles.form__label)}>{title}</label>
+      {descr && (
         <div className={classnames("is-small", styles.field__description)}>
-          {parse(l(descrId))}
+          {descr}
         </div>
       )}
       <div className={classnames("control")}>
         <span className={classnames("select", styles.form__select)}>
           <select {...f(field)}>
-            <option value="">{l(`SignUpForm.help.pleaseSelect`)}</option>
+            <option value="">{l.help.pleaseSelect}</option>
             {options.map(({ id, label }) => (
               <option key={id} value={id}>
-                {l(label)}
+                {label}
               </option>
             ))}
           </select>

@@ -8,7 +8,7 @@ import {
   YearsTeachingOptns,
   YearsUsingTechOptns,
   TechApplicationOptns,
-} from "../SelectsOptions";
+} from "~/models/UserSignUpSelectOptions";
 
 //Form Elements
 import SelectField from "../FormElements/SelectField";
@@ -23,19 +23,19 @@ import Field from "~/components/Form/Field";
 const d = console.log;
 const j = (m) => JSON.stringify(m, null, 4);
 
-const YesNoOptns = [
-  {
-    id: "yes",
-    label: `SignUpForm.yes`,
-  },
-  {
-    id: "no",
-    label: `SignUpForm.no`,
-  },
-];
-
 const Teacher = ({ l, fields, styles }) => {
   const [showTechApplication, setShowTechApplication] = React.useState(true);
+
+  const YesNoOptns = [
+    {
+      id: "yes",
+      label: l.yes,
+    },
+    {
+      id: "no",
+      label: l.no,
+    },
+  ];
 
   useEffect(() => {
     setShowTechApplication(fields.years_using_tech.value !== "no");
@@ -43,23 +43,23 @@ const Teacher = ({ l, fields, styles }) => {
 
   return (
     <div className="box">
-      <h1 className={styles.title_section}>{l("SignUpForm.formation")}</h1>
+      <h1 className={styles.title_section}>{l.formation}</h1>
       <SelectField
         l={l}
         field={fields.formation_level}
-        titleId="SignUpForm.label.formation_level"
-        options={FormationLevelsOptns}
+        title={l.label.formation_level}
+        options={FormationLevelsOptns(l)}
       />
       <SelectField
         l={l}
         field={fields.initial_formation}
-        titleId="SignUpForm.label.initial_formation"
-        options={InitialFormationOptns}
+        title={l.label.initial_formation}
+        options={InitialFormationOptns(l)}
       />
       <Field
-        label={l(`SignUpForm.label.year_finished_formation`)}
+        label={l.label.year_finished_formation}
         classField="slim"
-        description={l(`SignUpForm.help.year_finished_formation`)}
+        description={l.help.year_finished_formation}
         {...f(fields.year_finished_formation)}
         type="number"
         min="1950"
@@ -68,50 +68,50 @@ const Teacher = ({ l, fields, styles }) => {
       <SelectField
         l={l}
         field={fields.internship_practice}
-        titleId="SignUpForm.label.internship_practice"
-        options={InternshipPracticeOptns}
+        title={l.label.internship_practice}
+        options={InternshipPracticeOptns(l)}
       />
       <Field
-        label={l(`SignUpForm.label.institution_initial_formation`)}
+        label={l.label.institution_initial_formation}
         classField="slim"
         {...f(fields.institution_initial_formation)}
       />
       <SelectField
         l={l}
         field={fields.tech_in_teaching}
-        titleId="SignUpForm.label.tech_in_teaching"
+        title={l.label.tech_in_teaching}
         options={YesNoOptns}
       />
       <SelectField
         l={l}
         field={fields.course_modality}
-        titleId="SignUpForm.label.course_modality"
-        options={CourseModalityOptns}
+        title={l.label.course_modality}
+        options={CourseModalityOptns(l)}
       />
       <SelectField
         l={l}
         field={fields.formation_in_tech}
-        titleId="SignUpForm.label.formation_in_tech"
-        options={FormationInTechOptns}
+        title={l.label.formation_in_tech}
+        options={FormationInTechOptns(l)}
       />
       <SelectField
         l={l}
         field={fields.years_teaching}
-        titleId="SignUpForm.label.years_teaching"
-        options={YearsTeachingOptns}
+        title={l.label.years_teaching}
+        options={YearsTeachingOptns(l)}
       />
       <SelectField
         l={l}
         field={fields.years_using_tech}
-        titleId="SignUpForm.label.years_using_tech"
-        options={YearsUsingTechOptns}
+        title={l.label.years_using_tech}
+        options={YearsUsingTechOptns(l)}
       />
       {showTechApplication && (
         <SelectMultiField
           l={l}
           field={fields.tech_application}
-          titleId="SignUpForm.label.tech_application"
-          options={TechApplicationOptns}
+          title={l.label.tech_application}
+          options={TechApplicationOptns(l)}
         />
       )}
     </div>

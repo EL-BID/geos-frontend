@@ -57,7 +57,7 @@ const Form = ({
   }, [questionsResponses]);
 
   return (
-    <FormWrap>
+    <MainContentWrap>
       <h1 className="">{survey_name}</h1>
       {sections.map((section) => (
         <SurveySection
@@ -72,7 +72,7 @@ const Form = ({
       <Button onClick={save} className="is-primary">
         {ld.ui.btnContinue}
       </Button>
-    </FormWrap>
+    </MainContentWrap>
   );
 };
 
@@ -291,7 +291,7 @@ const OtherField = ({ langDict, idQuestion, response, onChange, disabled }) => {
   );
 };
 
-const FormWrap = ({ children }) => {
+const MainContentWrap = ({ children }) => {
   return (
     <form id="questionForm">
       <div className={classnames("section", styles.section_questions)}>

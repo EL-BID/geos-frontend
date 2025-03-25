@@ -1,7 +1,5 @@
 import React from "react";
-import classnames from "classnames";
-import _ from "lodash";
-import { FormattedMessage, injectIntl } from "react-intl";
+import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
 import { isTeacher, isDirector, isStateAdmin } from "~/helpers/users";
@@ -25,15 +23,13 @@ class PageHeader extends React.Component {
           {parse(this.translate("PageHeader.hello"))}, {user.name}!
         </h1>
         <p>
-          {
-            isTeacher(user) ?
-              parse(this.translate("PageHeader.teacherMsg"))
-            : isDirector(user) ?
-              parse(this.translate("PageHeader.principalMsg"))
-            : isStateAdmin(user) ?
-              parse(this.translate("PageHeader.adminStateMsg"))
-            : null
-          }
+          {isTeacher(user)
+            ? parse(this.translate("PageHeader.teacherMsg"))
+            : isDirector(user)
+            ? parse(this.translate("PageHeader.principalMsg"))
+            : isStateAdmin(user)
+            ? parse(this.translate("PageHeader.adminStateMsg"))
+            : null}
         </p>
       </div>
     );

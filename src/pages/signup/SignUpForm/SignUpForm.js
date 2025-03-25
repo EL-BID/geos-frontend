@@ -6,9 +6,14 @@ import classnames from "classnames";
 import API from "~/api";
 import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
-import { UserModel, TeacherDataModel, PrincipalDataModel } from "./Models";
+import {
+  UserModel,
+  TeacherDataModel,
+  PrincipalDataModel,
+} from "~/models/Users";
 import "url-search-params-polyfill";
 import DOMPurify from "dompurify";
+import { FetchLanguageDictionaryForCurrentLang } from "~/api/translations";
 
 //Containers
 import ModalContainer from "~/containers/modal";
@@ -25,8 +30,6 @@ import Principal from "./FormSections/Principal";
 // Components
 import SubmitBtn from "~/components/SubmitBtn";
 import Modal from "~/components/Modal";
-import ReactModal from "react-modal";
-import stylesModal from "~/components/Modal/Modal.styl";
 import styles from "~/pages/signup/styles.styl";
 
 //Helpers
@@ -34,9 +37,6 @@ import {
   validateModel,
   reduxFormModelToUserModelConverter,
 } from "./Helpers/FormValidationHelpers";
-
-const d = console.log;
-const j = (m) => JSON.stringify(m, null, 4);
 
 const DEFAULT_BDATE = new Date(new Date().getFullYear() - 18, 0, 1);
 
@@ -68,9 +68,7 @@ const SignUpForm = ({
   fetchCities,
   fetchSchools,
 }) => {
-  //Helper for internationalization
-  const l = (id) => intl.formatMessage({ id });
-
+  const [l, setContextualLangDict] = useState({});
   const [showModalTos, setShowModalTos] = React.useState(false);
   const isTeacher = profile === "teacher";
 
@@ -78,6 +76,10 @@ const SignUpForm = ({
   useEffect(() => {
     //Set default values for all fields
     setFieldsDefaultValues(fields, profile);
+    //Load lang dict
+    FetchLanguageDictionaryForCurrentLang("sign-up-form").then(
+      setContextualLangDict
+    );
   }, []);
 
   const onSubmit = (e) => {
@@ -86,17 +88,17 @@ const SignUpForm = ({
     const errors = validateModel({ ...userModel }, fields, DEFAULT_BDATE, l);
 
     if (!isEmpty(errors)) {
-      const errs = errors.map((err) => `- ${l(err)}`).join("\n");
-      return alert(`${l("SignUpForm.errors.found")}:\n${errs}`);
+      const errs = errors.map((err) => `- ${l.errors[err]}`).join("\n");
+      return alert(`${l.errors.found}:\n${errs}`);
     }
 
     return saveUser(userModel).then((res) => {
       //Error
       if (isEmpty(res._id)) {
         let msg = keys(res)
-          .map((key) => `- ${l(`SignUpForm.label.${key}`)}: ${res[key]}`)
+          .map((key) => `- ${l.label[key]}: ${res[key]}`)
           .join("\n");
-        alert(`${l("SignUpForm.errors.found")}:\n${msg}`);
+        alert(`${l.errors.found}:\n${msg}`);
       }
       //Success
       else {
@@ -105,15 +107,16 @@ const SignUpForm = ({
           email,
           password,
         });
-        alert(l(`SignUpForm.success`));
+        alert(l.success);
         window.location = "/recursos";
       }
     });
   };
 
+  if (isEmpty(l)) return null;
+
   return (
     <form className={styles.form} onSubmit={onSubmit} id="SignUpForm">
-      {profile}
       <DatosBasicos l={l} styles={styles} fields={fields} profile={profile} />
       <DatosLaborables
         l={l}
@@ -146,11 +149,11 @@ const SignUpForm = ({
             "is-loading": submitting,
           })}
         >
-          {parse(l("SignUpForm.register"))}
+          {l.register}
         </SubmitBtn>
       </div>
       <ToSModal
-        title={l("SignUpForm.termsOfUse")}
+        title={l.termsOfUse}
         lang={intl.locale}
         show={showModalTos}
         onClose={() => setShowModalTos(false)}
@@ -168,14 +171,7 @@ const setFieldsDefaultValues = (fields, profile) => {
     profile,
   };
 
-  //Default born value to today minus 18 years
   if (isEmpty(fields.born.value)) {
-    //const today = new Date();
-    //const year = today.getFullYear() - 18;
-    //const month = today.getMonth();
-    //const day = today.getDate();
-    //const isoDate = new Date(year, month, day).toISOString();
-    //// fields.born.onChange(isoDate);
     defaultValues.born = DEFAULT_BDATE.toISOString();
   }
 
