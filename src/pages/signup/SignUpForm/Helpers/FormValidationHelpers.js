@@ -30,13 +30,16 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
       errors.push(`personalDataRequired`);
     }
 
-    //Alert the user is born date was not set
-    if (
-      (new Date(userModel.born) > DEFAULT_BDATE ||
-        userModel.born === DEFAULT_BDATE.toISOString()) &&
-      isTeacher
-    ) {
-      errors.push("born");
+    //Check user is at least 18yo
+    if (!isEmpty(userModel.born)) {
+      const birthDate = new Date(userModel.born);
+      const ageDiff = new Date(Date.now() - birthDate.getTime());
+      const age = Math.abs(ageDiff.getUTCFullYear() - 1970);
+      console.log("Age", age);
+
+      if (age < 18) {
+        errors.push("born");
+      }
     }
   }
 
