@@ -2,18 +2,18 @@ import React from "react";
 import classnames from "classnames";
 import s from "../styles.styl";
 
-const SelectField = ({ l, field, title, descr, placeholder, options }) => {
+export default ({ l, field, title, descr, placeholder, options }) => {
   return (
-    <div>
+    <div className={classnames("", s.field)}>
       <label className="label">{title}</label>
       {descr && <div className="is-small">{descr}</div>}
-      <div className="control">
+      <div className={classnames("control")}>
         <span className={classnames("select", s.select)}>
           <select {...field}>
             <option value="">{placeholder}</option>
             {options.map(({ id, label }) => (
               <option key={id} value={id}>
-                {l(label)}
+                {label}
               </option>
             ))}
           </select>
@@ -22,5 +22,3 @@ const SelectField = ({ l, field, title, descr, placeholder, options }) => {
     </div>
   );
 };
-
-export default SelectField;

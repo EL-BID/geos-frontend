@@ -5,7 +5,9 @@ import Field from "~/components/Form/Field";
 import DateField from "../FormElements/Date";
 import SelectField from "../FormElements/Select";
 
-export default ({ l, user, onChange }) => {
+import { GenderOptns } from "~/models/UserSignUpSelectOptions";
+
+export default ({ l, s, user, onChange }) => {
   const isTeacher = user._profile === "teacher";
 
   return (
@@ -16,16 +18,17 @@ export default ({ l, user, onChange }) => {
         description={l.help.name}
         classField="slim"
         value={user.name}
-        onChange={onChange}
+        onChange={({ target }) => onChange({ name: target.value })}
+        maxLength="100"
       />
       {isTeacher && (
-        <TeacherFieldsBasic l={l} user={user} onChange={onChange} />
+        <TeacherFieldsBasic l={l} s={s} user={user} onChange={onChange} />
       )}
     </div>
   );
 };
 
-const TeacherFieldsBasic = ({ l, user, onChange }) => {
+const TeacherFieldsBasic = ({ l, s, user, onChange }) => {
   const { born } = user;
   return (
     <div className="columns" style={{ marginBottom: 0, marginTop: 0 }}>
@@ -34,7 +37,7 @@ const TeacherFieldsBasic = ({ l, user, onChange }) => {
           l={l}
           field={{
             selected: born ? new Date(born) : null,
-            onChange,
+            onChange: (date) => onChange({ born: date.toISOString() }),
           }}
           name="born"
           title={l.label.born}
@@ -47,12 +50,12 @@ const TeacherFieldsBasic = ({ l, user, onChange }) => {
           l={l}
           field={{
             value: user.gender,
-            onChange,
+            onChange: ({ target }) => onChange({ gender: target.value }),
           }}
           title={l.label.gender}
           descr={l.help.gender}
           placeholder={l.ui.select.placeholder}
-          options={[]}
+          options={GenderOptns(s)}
         />
       </div>
     </div>

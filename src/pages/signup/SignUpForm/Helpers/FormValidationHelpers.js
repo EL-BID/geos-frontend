@@ -35,8 +35,6 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
       const birthDate = new Date(userModel.born);
       const ageDiff = new Date(Date.now() - birthDate.getTime());
       const age = Math.abs(ageDiff.getUTCFullYear() - 1970);
-      console.log("Age", age);
-
       if (age < 18) {
         errors.push("born");
       }

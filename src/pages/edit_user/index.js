@@ -3,30 +3,73 @@ import { isEmpty } from "lodash";
 import classnames from "classnames";
 import { c, j } from "~/helpers/Debug";
 import { FetchLanguageDictionaryForCurrentLang } from "~/api/translations";
-import s from "./styles.styl";
+import API from "~/api";
+
+import { validateModel } from "./Helpers/FormValidationHelpers";
 
 import PageLayoutWrapper from "~/components/PageLayoutWrapper";
+import SubmitBtn from "~/components/SubmitBtn";
 
 import DatosBasicos from "./FormSections/DatosBasicos";
 import DatosLaborables from "./FormSections/DatosLaborables";
 
-const EditUser = ({ d, lang, params, user }) => {
+const EditUser = ({ d, s, lang, params, user }) => {
   const isTeacher = user._profile === "teacher";
+  const [isApiBusy, setIsApiBusy] = useState(false);
+  const [model, setModel] = useState(user);
 
-  c(j(user));
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    //Reduce model to only updateable fields
+    const {
+      _id: { $oid: _id },
+      name,
+      born,
+      gender,
+      stages,
+      knowledges,
+    } = model;
+    const userModel = { _id, name, born, gender, stages, knowledges };
+
+    //Validation
+    const errs = validateModel(userModel);
+    if (!isEmpty(errs)) {
+      const trans = errs.map((e) => `* ${d.error[e]}`).join("\n");
+      alert(`${d.error.found}:\n${trans}`);
+      return;
+    }
+
+    //c("Saving....", j(userModel));
+    setIsApiBusy(true);
+    return API.Users.patch(userModel).finally(() => setIsApiBusy(false));
+  };
+
+  const onUserDataChange = (partial) => {
+    setModel({ ...model, ...partial });
+  };
 
   return (
-    <MainContentWrap>
+    <MainContentWrap onSubmit={onSubmit}>
       <h1 className="title">{d.h1}</h1>
-      <DatosBasicos l={d} user={user} />
-      {isTeacher && <DatosLaborables l={d} user={user} />}
+      <DatosBasicos l={d} s={s} user={model} onChange={onUserDataChange} />
+      {isTeacher && (
+        <DatosLaborables l={d} s={s} user={model} onChange={onUserDataChange} />
+      )}
+      <SubmitBtn
+        className={classnames("is-primary", "submitBtn", {
+          "is-loading": isApiBusy,
+        })}
+      >
+        {d.ui.save}
+      </SubmitBtn>
     </MainContentWrap>
   );
 };
 
-const MainContentWrap = ({ children }) => {
+const MainContentWrap = ({ onSubmit, children }) => {
   return (
-    <form id="questionForm">
+    <form onSubmit={onSubmit}>
       <div className={classnames("section")}>
         <div className="container">
           <div className="columns">
@@ -40,17 +83,23 @@ const MainContentWrap = ({ children }) => {
 
 export default () => {
   const [contextualLangDict, setContextualLangDict] = useState({});
+  const [signUpFormLangDict, setSignUpFormLangDict] = useState({});
 
   //On Mount
   useEffect(() => {
     FetchLanguageDictionaryForCurrentLang("edit-user").then(
       setContextualLangDict
     );
+    FetchLanguageDictionaryForCurrentLang("sign-up-form").then(
+      setSignUpFormLangDict
+    );
   }, []);
+
+  if (isEmpty(contextualLangDict) || isEmpty(signUpFormLangDict)) return null;
 
   return (
     <PageLayoutWrapper pageTitle="Edit User">
-      {!isEmpty(contextualLangDict) && <EditUser d={contextualLangDict} />}
+      <EditUser d={contextualLangDict} s={signUpFormLangDict} />
     </PageLayoutWrapper>
   );
 };
