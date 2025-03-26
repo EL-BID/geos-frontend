@@ -36,13 +36,18 @@ const EditUser = ({ d, s, lang, params, user }) => {
     const errs = validateModel(userModel);
     if (!isEmpty(errs)) {
       const trans = errs.map((e) => `* ${d.error[e]}`).join("\n");
-      alert(`${d.error.found}:\n${trans}`);
-      return;
+      return alert(`${d.error.found}:\n${trans}`);
     }
 
     //c("Saving....", j(userModel));
     setIsApiBusy(true);
-    return API.Users.patch(userModel).finally(() => setIsApiBusy(false));
+    return API.Users.patch(userModel)
+      .finally(() => setIsApiBusy(false))
+      .then((res) => {
+        if (!isEmpty(res.message)) {
+          alert(res.message);
+        }
+      });
   };
 
   const onUserDataChange = (partial) => {
