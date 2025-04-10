@@ -30,7 +30,69 @@ const SurveysList = ({
 	contextSurvey,
 	setShowModalHowItWorks,
 }) => {
+	return surveys.map((survey, idx) => {
+		const {
+			id: { $oid: idSurvey },
+			type,
+			schedule: schedules,
+		} = survey;
+
+		if (type == "context") {
+			return null;
+		}
+
+		return (
+			<div className="container mb-4" key={idSurvey}>
+				<div className={classNames("", styles.box_main)}>
+					{schedules.map((schedule) => (
+						<Schedule
+							l={l}
+							lang={lang}
+							schedule={schedule}
+							survey={survey}
+							user={user}
+							school={school}
+							contextSurvey={contextSurvey}
+							setShowModalHowItWorks={setShowModalHowItWorks}
+						/>
+					))}
+				</div>
+			</div>
+		);
+	});
+};
+
+const Schedule = ({
+	l,
+	lang,
+	schedule,
+	survey,
+	user,
+	school,
+	contextSurvey,
+	setShowModalHowItWorks,
+}) => {
+	const {
+		id: { $oid: idSurvey },
+		type,
+	} = survey;
+
+	const {
+		survey_name: name = null,
+		survey_description: descr = null,
+		answers = [],
+	} = schedule;
+
+	const completedAnswers = answers.filter((a) => a.results) || [];
+	const hasAnswers = completedAnswers.length > 0;
+	const showHowItWorks = type == "personal";
+
 	const showPrintContextSurveyBtn = user._profile === "teacher";
+
+	const surveyBtnLabel =
+		answers.length > 0
+			? "Resources.continueSurvey"
+			: "Resources.answerSurvey";
 
 	const gotToSurvey = (survey) => {
 		setSelectedSurvey(survey);
@@ -39,111 +101,55 @@ const SurveysList = ({
 			type == "personal" ? "survey-context" : "/responder-questionario";
 	};
 
-	return surveys.map((survey, idx) => {
-		const {
-			id: { $oid: idSurvey },
-			type,
-			schedule,
-		} = survey;
-
-		if (type == "context") {
-			return null;
-		}
-
-		const firstSchedule = schedule[0];
-		const hasDescr = !!firstSchedule.survey_description;
-		const showHowItWorks = type == "personal";
-		const answer = firstSchedule.answers.find(
-			(answer) =>
-				answer.status === "Complete" &&
-				answer.user_id.$oid === user._id.$oid
-		);
-		const hasAnswer = !!answer;
-		const surveyBtnLabel = hasAnswer
-			? "Resources.continueSurvey"
-			: "Resources.answerSurvey";
-
-		return (
-			<div className="container mb-30" key={idSurvey}>
-				<div className={classNames("", styles.box_main)}>
-					<div className="column is-full">
-						<h1 className="is-size-3 has-text-weight-light mb-0">
-							{firstSchedule.survey_name}
-						</h1>
-						{hasDescr && (
-							<p className="mt-1">
-								{firstSchedule.survey_description}
-							</p>
-						)}
-					</div>
-					<div className="column is-full">
-						{survey.is_cyclic &&
-							schedule.length > 0 &&
-							firstSchedule.name && (
-								<h3 className="is-size-6">
-									<span className="has-text-weight-bold">
-										{parse(l("Resources.currentCycle"))}:
-									</span>{" "}
-									{firstSchedule.name}
-								</h3>
-							)}
-						{/*{surveyOutPeriod(survey) &&
-						!survey.is_cyclic &&
-						isDirectorOrTeacher(user) ? (
-							<div>
-								<p>{parse(l("Resources.description1"))} </p>
-							</div>
-						) : (
-							AQUIIIIIII
-						)}*/}
-					</div>
-					{hasAnswer ? (
-						<HasAnswer
-							l={l}
-							lang={lang}
-							answer={answer}
-							schedule={schedule}
-							survey={survey}
-							user={user}
-							school={school}
-						/>
-					) : (
-						<Button
-							className={classNames(
-								"is-primary ml-0",
-								styles.resources__buttons__button
-							)}
-							onClick={() => gotToSurvey(survey)}
-						>
-							<span className={styles.with_icon}>
-								<i
-									className={classNames(
-										"fas fa-clipboard-list is-size-5 mr-10",
-										styles.fa
-									)}
-								></i>
-								{parse(l(surveyBtnLabel))}
-							</span>
-						</Button>
-					)}
-					<Actions
-						l={l}
-						survey={survey}
-						contextSurvey={contextSurvey}
-						setSelectedSurvey={setSelectedSurvey}
-						showPrintContextSurveyBtn={true}
-						showAnswerBtn={true}
-						showHowItWorks={showHowItWorks}
-						setShowModalHowItWorks={setShowModalHowItWorks}
-					/>
-				</div>
+	return (
+		<div>
+			<div className="column is-full mb-2">
+				<h1 className="is-size-3 has-text-weight-light mb-0">{name}</h1>
+				{descr && <p className="mt-1">{descr}</p>}
 			</div>
-		);
-	});
+			{hasAnswers ? (
+				<ScheduleAnswers
+					l={l}
+					lang={lang}
+					answers={completedAnswers}
+					survey={survey}
+					user={user}
+					school={school}
+				/>
+			) : (
+				<Button
+					className={classNames(
+						"is-primary mb-0",
+						styles.resources__buttons__button
+					)}
+					onClick={() => gotToSurvey(survey)}
+				>
+					<span className={styles.with_icon}>
+						<i
+							className={classNames(
+								"fas fa-clipboard-list is-size-5 mr-10",
+								styles.fa
+							)}
+						></i>
+						{parse(l(surveyBtnLabel))}
+					</span>
+				</Button>
+			)}
+			<ScheduleActions
+				l={l}
+				survey={survey}
+				contextSurvey={contextSurvey}
+				setSelectedSurvey={setSelectedSurvey}
+				showPrintContextSurveyBtn={showPrintContextSurveyBtn}
+				showHowItWorks={showHowItWorks}
+				setShowModalHowItWorks={setShowModalHowItWorks}
+			/>
+		</div>
+	);
 };
 
-const HasAnswer = ({ l, schedule, lang, survey, answer, user, school }) => {
-	const openFeedback = () => {
+const ScheduleAnswers = ({ l, answers, lang, survey, user, school }) => {
+	const openFeedback = (answer) => {
 		window.open(
 			CONF.ApiURL +
 				"/api/v1/survey/feedback/" +
@@ -158,49 +164,39 @@ const HasAnswer = ({ l, schedule, lang, survey, answer, user, school }) => {
 		);
 	};
 
+	const seeFeedbackLabel = l("Resources.accessDevolutive");
+
 	return (
-		<div>
-			<div className="column mt-30 mb-20">
+		<div className="column is-full pt-0 pb-0">
+			<div className=" mb-2 mt-0">
 				<div className="has-text-weight-bold is-size-6">
-					{parse(l("Resources.historicTitle"))}
+					{l("Resources.historicTitle")}
 				</div>
 			</div>
-			<div
-				className={classNames(
-					"column is-8 is-offset-2",
-					styles.history
-				)}
-			>
-				<div className="columns">
-					{school && isDirector(user) && survey.type == "school" && (
-						<div className="column has-text-weight-bold">
-							{parse(l("Resources.cycle"))}
-						</div>
-					)}
-					<div className="column has-text-weight-bold">
-						{parse(l("Resources.answered"))}
-					</div>
-					<div className="column has-text-weight-bold">
-						{parse(l("Resources.devolutive"))}
-					</div>
-				</div>
-				{schedule.map(
-					(schedule) =>
-						schedule.answers &&
-						schedule.answers.map((answer, idxAns) =>
-							answer.status === "Complete" &&
-							answer.results !== null &&
-							answer.user_id.$oid === user._id.$oid &&
-							answer.type !== "Combined" ? (
-								<div className="columns" key={answer.id.$oid}>
+
+			<table className="table pb-0" width="100%">
+				<thead>
+					<tr>
+						{school &&
+							isDirector(user) &&
+							survey.type == "school" && (
+								<th>{l("Resources.cycle")}</th>
+							)}
+						<th>{l("Resources.answered")}</th>
+						<th>{l("Resources.devolutive")}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{answers.map(
+						(answer, idxAns) =>
+							answer.type !== "Combined" && (
+								<tr key={answer.id.$oid}>
 									{school &&
 										isDirector(user) &&
 										survey.type == "school" && (
-											<div className="column">
-												{schedule.name}
-											</div>
+											<td>{schedule.name}</td>
 										)}
-									<div className="column">
+									<td>
 										{school &&
 											isDirector(user) &&
 											survey.type == "school" && [
@@ -210,32 +206,29 @@ const HasAnswer = ({ l, schedule, lang, survey, answer, user, school }) => {
 										{moment(answer.submitted_at).format(
 											"DD/MM/YYYY"
 										)}
-									</div>
-									<div className="column">
+									</td>
+									<td>
+										{j}
 										<a
 											className={styles.access_link}
-											onClick={() => openFeedback()}
+											onClick={() => openFeedback(answer)}
 										>
 											<span className={styles.with_icon}>
-												{parse(
-													l(
-														"Resources.accessDevolutive"
-													)
-												)}
-												<i className="ml-10 far fa-file-pdf"></i>
+												<i className="mr-1 far fa-file-pdf"></i>
+												{seeFeedbackLabel}
 											</span>
 										</a>
-									</div>
-								</div>
-							) : null
-						)
-				)}
-			</div>
+									</td>
+								</tr>
+							)
+					)}
+				</tbody>
+			</table>
 		</div>
 	);
 };
 
-const Actions = ({
+const ScheduleActions = ({
 	l,
 	survey,
 	contextSurvey,
@@ -255,45 +248,47 @@ const Actions = ({
 	};
 
 	return (
-		<div className="mt-4">
-			{/*Boton de Como funciona*/}
-			{showHowItWorks && (
-				<Button
-					className={classNames(
-						"ml-0 mb-0 is-small",
-						styles.resources__buttons__button
-					)}
-					onClick={() => setShowModalHowItWorks(true)}
-				>
-					{l("LoginEducator.howWorks")}
-				</Button>
-			)}
-			{showPrintContextSurveyBtn && (
+		<div className="columns mt-2">
+			<div className="column">
+				{/*Boton de Como funciona*/}
+				{showHowItWorks && (
+					<Button
+						className={classNames(
+							"is-small",
+							styles.resources__buttons__button
+						)}
+						onClick={() => setShowModalHowItWorks(true)}
+					>
+						{l("LoginEducator.howWorks")}
+					</Button>
+				)}
+				{showPrintContextSurveyBtn && (
+					<Button
+						className={classNames(
+							"is-small",
+							styles.resources__buttons__button
+						)}
+						onClick={() => gotToPrintSurveyContext()}
+					>
+						<span className={styles.with_icon}>
+							<i className="fas fa-print mr-10"></i>
+							{parse(l("Resources.printContext"))}
+						</span>
+					</Button>
+				)}
 				<Button
 					className={classNames(
 						"is-small",
 						styles.resources__buttons__button
 					)}
-					onClick={() => gotToPrintSurveyContext()}
+					onClick={() => gotToPrintSurvey(survey)}
 				>
 					<span className={styles.with_icon}>
 						<i className="fas fa-print mr-10"></i>
-						{parse(l("Resources.printContext"))}
+						{parse(l("Resources.print"))}
 					</span>
 				</Button>
-			)}
-			<Button
-				className={classNames(
-					"is-small",
-					styles.resources__buttons__button
-				)}
-				onClick={() => gotToPrintSurvey(survey)}
-			>
-				<span className={styles.with_icon}>
-					<i className="fas fa-print mr-10"></i>
-					{parse(l("Resources.print"))}
-				</span>
-			</Button>
+			</div>
 		</div>
 	);
 };
