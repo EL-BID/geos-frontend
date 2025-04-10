@@ -177,11 +177,6 @@ const ScheduleAnswers = ({ l, answers, lang, survey, user, school }) => {
 			<table className="table pb-0" width="100%">
 				<thead>
 					<tr>
-						{school &&
-							isDirector(user) &&
-							survey.type == "school" && (
-								<th>{l("Resources.cycle")}</th>
-							)}
 						<th>{l("Resources.answered")}</th>
 						<th>{l("Resources.devolutive")}</th>
 					</tr>
@@ -191,11 +186,6 @@ const ScheduleAnswers = ({ l, answers, lang, survey, user, school }) => {
 						(answer, idxAns) =>
 							answer.type !== "Combined" && (
 								<tr key={answer.id.$oid}>
-									{school &&
-										isDirector(user) &&
-										survey.type == "school" && (
-											<td>{schedule.name}</td>
-										)}
 									<td>
 										{school &&
 											isDirector(user) &&
