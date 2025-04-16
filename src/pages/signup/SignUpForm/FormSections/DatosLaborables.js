@@ -5,7 +5,7 @@ import classnames from "classnames";
 //Form Elements
 import SelectField from "../FormElements/SelectField";
 import SelectMultiField from "../FormElements/SelectMultiField";
-import { StagesOptns, KnowledgesOptns } from "../SelectsOptions";
+import { StagesOptns, KnowledgesOptns } from "~/models/UserSignUpSelectOptions";
 
 //Helpers
 import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
@@ -86,16 +86,14 @@ const DatosLaborables = ({
 
   return (
     <div className="box">
-      <h1 className={styles.title_section}>
-        {l("SignUpForm.professionalsData")}
-      </h1>
+      <h1 className={styles.title_section}>{l.professionalsData}</h1>
       <label className={classnames("control is-block", styles.form__input)}>
         <input
           type="checkbox"
           {...f(fields.share_work_data)}
           className={styles.form__checkbox}
         />
-        {l(`SignUpForm.withLink`)}
+        {l.withLink}
       </label>
       {showFields && (
         <Fields l={l} fields={fields} apiData={apiData} isTeacher={isTeacher} />
@@ -114,13 +112,12 @@ const Fields = ({ l, fields, apiData, isTeacher }) => {
   useEffect(() => {
     const stages = (fields.stages.value || []).map(({ value, label }) => value);
 
-    const knowledges = KnowledgesOptns.filter((k) =>
-      stages.includes(k.stage)
-    ).map((k) => k.options);
+    const knowledges = KnowledgesOptns(l)
+      .filter((k) => stages.includes(k.stage))
+      .map((k) => k.options);
 
     setKnowledgesOptns(knowledges.flat());
   }, [fields.stages]);
-
 
   return (
     <span>
@@ -128,35 +125,35 @@ const Fields = ({ l, fields, apiData, isTeacher }) => {
         l={l}
         field={fields.country_id}
         options={mapApiData(apiData.countries)}
-        titleId="SignUpForm.label.region"
+        title={l.label.region}
         onChange={(e) => fields.country_id.onChange(e.target.value)}
       />
       <SelectField
         l={l}
         field={fields.province_id}
         options={mapApiData(apiData.provinces)}
-        titleId="SignUpForm.label.province"
+        title={l.label.province}
         onChange={(e) => fields.province_id.onChange(e.target.value)}
       />
       <SelectField
         l={l}
         field={fields.state_id}
         options={mapApiData(apiData.states)}
-        titleId="SignUpForm.label.state"
+        title={l.label.state}
         onChange={(e) => fields.state_id.onChange(e.target.value)}
       />
       <SelectField
         l={l}
         field={fields.city_id}
         options={mapApiData(apiData.cities)}
-        titleId="SignUpForm.label.city"
+        title={l.label.city}
         onChange={(e) => fields.city_id.onChange(e.target.value)}
       />
       <SelectField
         l={l}
         field={fields.school_id}
         options={mapApiData(apiData.schools)}
-        titleId="SignUpForm.label.school"
+        title={l.label.school}
         onChange={(e) => fields.school_id.onChange(e.target.value)}
       />
       {isTeacher && (
@@ -165,13 +162,13 @@ const Fields = ({ l, fields, apiData, isTeacher }) => {
           <SelectMultiField
             l={l}
             field={fields.stages}
-            titleId="SignUpForm.label.stages"
-            options={StagesOptns}
+            title={l.label.stages}
+            options={StagesOptns(l)}
           />
           <SelectMultiField
             l={l}
             field={fields.knowledges}
-            titleId="SignUpForm.label.knowledges"
+            title={l.label.knowledges}
             options={knowledgesOptns}
           />
           <br />

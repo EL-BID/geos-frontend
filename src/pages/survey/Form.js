@@ -11,7 +11,7 @@ import Progress from "../../components/Progress";
 import { injectIntl } from "react-intl";
 import parse from "html-react-parser";
 
-import { getUserToken } from "~/api/utils";
+import { getUserToken, getLang } from "~/api/utils";
 import styles from "./styles.styl";
 import classnames from "classnames";
 import $ from "jquery";
@@ -379,7 +379,9 @@ const Form = createReactClass({
         "/" +
         this.props.response._id.$oid +
         "?access_token=" +
-        getUserToken();
+        getUserToken() + 
+		"&lang=" +
+		getLang();
       try {
         const response = await axios.post(URL_REQUEST, { teachers });
       } catch (error) {

@@ -43,17 +43,15 @@ export const FetchQuestions = (idSurvey) => {
 };
 
 /*
-answers = {
-  [idQuestion]: [idOption]
-}
+answers = Array of response_answeres
 */
-export const PostAnswers = (idSurvey, idSchedule, answers) => {
+export const PostAnswers = (idSurvey, idSchedule, responses) => {
   const url = buildUrl(`surveys/${idSurvey}/answers`);
   return axios.post(url, {
     idUser: getUserId(),
     idSurvey,
     idSchedule,
-    answers,
+    responses,
   });
 };
 

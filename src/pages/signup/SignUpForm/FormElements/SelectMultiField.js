@@ -1,6 +1,5 @@
 import React from "react";
 import classnames from "classnames";
-import parse from "html-react-parser";
 import Select from "react-select";
 
 import styles from "~/pages/signup/styles.styl";
@@ -8,20 +7,18 @@ import styles from "~/pages/signup/styles.styl";
 //Helpers
 import { fieldDestruture as f } from "../Helpers/ReduxFormHelpers";
 
-const SelectMultiField = ({ l, field, titleId, descrId = null, options }) => {
+const SelectMultiField = ({ l, field, title, descr, options }) => {
   const dasOptns = options.map(({ id, label }) => ({
     value: id,
-    label: l(label),
+    label,
   }));
 
   return (
     <div>
-      <label className={classnames("label", styles.form__label)}>
-        {l(titleId)}
-      </label>
-      {descrId && (
+      <label className={classnames("label", styles.form__label)}>{title}</label>
+      {descr && (
         <div className={classnames("is-small", styles.field__description)}>
-          {parse(l(descrId))}
+          {descr}
         </div>
       )}
       <div className={classnames("control")}>
@@ -33,7 +30,7 @@ const SelectMultiField = ({ l, field, titleId, descrId = null, options }) => {
             className={classnames("react-select-container")}
             classNamePrefix="react-select"
             options={dasOptns}
-            placeholder={l(`SignUpForm.placeholderSelectOptions`)}
+            placeholder={l.placeholderSelectOptions}
           />
         </span>
       </div>

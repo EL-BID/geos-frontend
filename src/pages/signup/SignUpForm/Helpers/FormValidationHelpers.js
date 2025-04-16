@@ -1,5 +1,9 @@
-import { UserModel, TeacherDataModel, PrincipalDataModel } from "../Models";
-import { concat, isEmpty, keys, toString, isNumber, isArray } from "lodash";
+import {
+  UserModel,
+  TeacherDataModel,
+  PrincipalDataModel,
+} from "~/models/Users";
+import { isEmpty, toString, isNumber, isArray } from "lodash";
 
 export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
   let errors = [];
@@ -23,13 +27,17 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
       return acc && !isEmpty(value);
     }, true);
     if (!allFieldsFilled) {
-      errors.push(`SignUpForm.errors.personalDataRequired`);
+      errors.push(`personalDataRequired`);
     }
 
-    //Alert the user is born date was not set
-    if ((new Date(userModel.born) > DEFAULT_BDATE ||
-        userModel.born === DEFAULT_BDATE.toISOString()) && isTeacher) {
-      errors.push("SignUpForm.errors.born");
+    //Check user is at least 18yo
+    if (!isEmpty(userModel.born)) {
+      const birthDate = new Date(userModel.born);
+      const ageDiff = new Date(Date.now() - birthDate.getTime());
+      const age = Math.abs(ageDiff.getUTCFullYear() - 1970);
+      if (age < 18) {
+        errors.push("born");
+      }
     }
   }
 
@@ -55,7 +63,7 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
       return acc && !isEmpty(value);
     }, true);
     if (!allFieldsFilled) {
-      errors.push(`SignUpForm.errors.workDataRequired`);
+      errors.push(`workDataRequired`);
     }
   }
 
@@ -83,32 +91,32 @@ export const validateModel = (userModel, fields, DEFAULT_BDATE) => {
   }
 
   if (!allFieldsFilled) {
-    errors.push(`SignUpForm.errors.profileDataRequired`);
+    errors.push(`profileDataRequired`);
   }
 
   //Check if the email is valid
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userModel.email)) {
-    errors.push(`SignUpForm.errors.email`);
+    errors.push(`email`);
   }
 
   //check if emails match
   if (userModel.email !== fields.emailConfirm.value) {
-    errors.push(`SignUpForm.errors.emailConfirm`);
+    errors.push(`emailConfirm`);
   }
 
   //Check if passwords match
   if (userModel.password !== fields.passwordConfirm.value) {
-    errors.push(`SignUpForm.errors.passwordConfirm`);
+    errors.push(`passwordConfirm`);
   }
 
   //Check password is at least 6 chars long
   if (userModel.password.length < 6) {
-    errors.push(`SignUpForm.errors.password`);
+    errors.push(`password`);
   }
 
   //Check ToS are accepted
   if (!userModel.tos) {
-    errors.push(`SignUpForm.errors.tos`);
+    errors.push(`tos`);
   }
 
   return errors;
