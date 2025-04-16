@@ -151,7 +151,7 @@ const SurveysList = ({
               </span>
             )}
           </div>
-          {hasAnswer && (
+          {hasAnswer && survey.type !== "context" && (
             <HasAnswer
               l={l}
               lang={lang}
@@ -183,6 +183,11 @@ const HasAnswer = ({ l, schedule, lang, survey, answer, user, school }) => {
       "target=_blank"
     );
   };
+
+  // Don't show feedback for context surveys
+  if (survey.type === "context") {
+    return null;
+  }
 
   return (
     <div>
