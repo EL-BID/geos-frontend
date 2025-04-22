@@ -174,11 +174,15 @@ const ScheduleAnswers = ({ l, answers, lang, survey, user, school }) => {
 				</div>
 			</div>
 
-			<table className="table pb-0" width="100%">
+			<table className={classNames(
+						"table pb-0",
+						styles.resources__list
+					)}
+					width="100%">
 				<thead>
 					<tr>
 						<th>{l("Resources.answered")}</th>
-						<th>{l("Resources.devolutive")}</th>
+						<th width="85%">{l("Resources.devolutive")}</th>
 					</tr>
 				</thead>
 				<tbody>
