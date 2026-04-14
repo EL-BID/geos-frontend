@@ -34,6 +34,7 @@ node run start
 _The Guia Edutec was originally developed by CIEB. The process of opening the code has made possible by financial support of Fundación ProFuturo._
 
 
+
 ## Acknowledgments / Reconocimientos
 
 **Copyright © [2025]. Inter-American Development Bank ("IDB"). Authorized Use.**  
